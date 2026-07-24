@@ -1,3 +1,5 @@
 .DS_Store
 node_modules/
 evals/reports/
+tools/proxy/
+tools/.run-registry.json

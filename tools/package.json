@@ -1,0 +1,14 @@
+{
+  "name": "qa-lab-oracle",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "API seed / verify / teardown oracle and pass-through observation proxy for the sim-use research (stage 6).",
+  "bin": {
+    "oracle": "./oracle.mjs",
+    "proxy": "./proxy.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

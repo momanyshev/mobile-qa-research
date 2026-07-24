@@ -1,0 +1,70 @@
+{
+  "verdict": "PASS",
+  "workspaceA": "8f1aa202-4d42-4158-bccf-483feee9f25a",
+  "workspaceB": "8c9c3d6d-0787-46f2-b724-d3f11015d5e7",
+  "checks": [
+    {
+      "name": "seed создал три записи",
+      "ok": true
+    },
+    {
+      "name": "expectCount = 3",
+      "ok": true
+    },
+    {
+      "name": "read-only не изменил backend",
+      "ok": true
+    },
+    {
+      "name": "expectFields точной записи",
+      "ok": true
+    },
+    {
+      "name": "PATCH статуса: изменился только status",
+      "ok": true
+    },
+    {
+      "name": "Workspace isolation",
+      "ok": true
+    },
+    {
+      "name": "DELETE → 204",
+      "ok": true
+    },
+    {
+      "name": "удалённая запись → 404 NOT_FOUND",
+      "ok": true
+    },
+    {
+      "name": "после удаления остаётся 2",
+      "ok": true
+    },
+    {
+      "name": "teardown очистил Workspace A",
+      "ok": true
+    },
+    {
+      "name": "teardown очистил Workspace B",
+      "ok": true
+    },
+    {
+      "name": "teardown report",
+      "ok": true,
+      "detail": {
+        "A": {
+          "deleted": [
+            "a847d804-522e-4f0c-b04e-081bcf24ace0",
+            "415331e5-9afd-487c-9f92-a211549c751d"
+          ],
+          "alreadyAbsent": [],
+          "failed": []
+        },
+        "B": {
+          "deleted": [],
+          "alreadyAbsent": [],
+          "failed": []
+        }
+      }
+    }
+  ]
+}
