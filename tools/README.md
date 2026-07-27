@@ -51,6 +51,34 @@ node oracle.mjs teardown <ws>     # без id — очистка всего Work
 `{ deleted, alreadyAbsent, failed }`. Поэтому очистка отрабатывает после `FAIL`,
 `BLOCKED` и аварийного завершения сценария (проверено на этапе 6).
 
+## Журнал прогонов и полный evidence pack (`runlog.mjs`)
+
+Стандарт прогона для этапа 14 (закрывает пункты 3 и 5 «Общего DoD» этапа 7
+автоматически): на каждый run сохраняются initial/final UI outline, screenshot,
+transcript и API before/after, а `record` проверяет полноту.
+
+```bash
+# 1) в начале run — снимок исходного состояния
+node runlog.mjs snapshot --stage 14 --platform ios --run S2-guided --phase initial --device <UDID>
+#    + API before: node oracle.mjs list <ws> > api-before.json
+
+# 2) … агент выполняет сценарий, команды пишутся в transcript.txt …
+
+# 3) в конце run — снимок финального состояния
+node runlog.mjs snapshot --stage 14 --platform ios --run S2-guided --phase final --device <UDID>
+#    + API after: node oracle.mjs list <ws> > api-after.json
+
+# 4) регистрация run + артефактов + проверка полноты
+node runlog.mjs record --stage 14 --platform ios --run S2-guided --verdict PASS \
+     --json '{"mode":"guided","oracle":"…","note":"…"}' \
+     --transcript transcript.txt --api-before api-before.json --api-after api-after.json
+#    печатает «✓ evidence pack полон» или «⚠ evidence неполон, нет: …»
+```
+
+Артефакты складываются в `evidence/stage-<N>/<platform>/runs/<runId>/`; запись —
+в `evidence/stage-<N>/<platform>/runs.jsonl` с полем `evidenceComplete`. Легаси
+`runlog.mjs <platform> <id> <verdict> [json]` (этап 7) сохранён.
+
 ## Proxy наблюдения
 
 Схема без пересборки приложения (приложение собрано на порт 8888):

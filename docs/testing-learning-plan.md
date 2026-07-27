@@ -2485,20 +2485,24 @@ pack.
   seed через `tools/oracle.mjs` на каждый run).
 - [x] Инструкция не содержит координат, alias или `testID` (формулировки
   бизнес-уровня; см. `stage-8-agent-modes.md` для формата промптов).
-- [ ] Сохранены исходные UI и API. **Частично:** API до/после проверялся
-  oracle, но сырые initial-UI outline не сохранялись отдельными файлами.
+- [ ] Сохранены исходные UI и API. **Частично** на этапе 7 (API проверялся
+  oracle, сырые initial-UI не сохранялись). **Закрыто как стандарт для этапа
+  14:** `tools/runlog.mjs snapshot`/`record` автоматически сохраняют initial-UI
+  и API before и проверяют полноту (`evidenceComplete`).
 - [x] Агент выполнил задачу либо корректно остановился (все run'ы завершены или
   честно `BLOCKED` с причиной).
-- [ ] Сохранены transcript, финальный outline и screenshot. **Частично:**
-  финальные screenshot сохранены в `evidence/stage-7/`, но transcript и
-  outline отдельными файлами не persist'ились.
+- [ ] Сохранены transcript, финальный outline и screenshot. **Частично** на
+  этапе 7 (финальные screenshot есть, transcript/outline — нет). **Закрыто как
+  стандарт для этапа 14:** `runlog.mjs` сохраняет final-UI, screenshot и
+  transcript в `evidence/stage-<N>/<platform>/runs/<runId>/`.
 - [x] Независимый oracle выставил verdict (`runs.jsonl`, поле `verdict`).
 - [x] Выполнен teardown (после каждого run).
 - [x] Записан вывод о возможностях или ограничении `sim-use` (`runs.jsonl`,
   поле `note`).
-- [ ] Новая критическая или основная проверка классифицирована по сквозному
+- [x] Новая критическая или основная проверка классифицирована по сквозному
   процессу и при необходимости добавлена в test asset register.
-  **Не выполнено:** классификационный проход не проводился, register не создан.
+  **Выполнено:** классификация проверок и наблюдений этапов 3–7 —
+  `docs/test-asset-register.md` (категории TC/CL/AUTO/CH/DEV/MAN/APP).
 
 ### 7.1. Первый запуск и Workspace
 
