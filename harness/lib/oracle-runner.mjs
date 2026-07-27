@@ -1,18 +1,15 @@
 // Исполнитель oracle: превращает секцию oracle манифеста в итоговый verdict.
 //
-// Правила (этап 6.2 и 10.0):
-//   * PASS выставляют только функции verify.mjs, а не формулировка агента;
+// Правила (этапы 6.2, 10.0):
+//   * PASS выставляют только проверки, а не формулировка агента;
 //   * любая провалившаяся проверка → FAIL;
 //   * проверка неизвестного типа или неподтверждённая ручная проверка →
 //     INCONCLUSIVE (явная маркировка, а не тихий PASS);
 //   * ошибка самого oracle (сеть, отсутствие данных) → INCONCLUSIVE с причиной.
-
-import {
-  AssertionError, expectCount, expectFields, expectOnlyChanged,
-  expect404, expectUnchanged, expectWorkspaceIsolation,
-} from "../../tools/lib/verify.mjs";
-import { newWorkspaceId } from "../../tools/lib/workspace.mjs";
-import { SUPPORTED_API_CHECKS, SUPPORTED_UI_CHECKS } from "./manifest.mjs";
+//
+// С этапа 12.2 предметные проверки живут в project adapter: здесь остаётся
+// только generic-логика сведения результатов к verdict и UI-проверки по
+// финальному outline, одинаковые для любого приложения.
 
 const PASS = "pass", FAIL = "fail", UNSUPPORTED = "unsupported", ERROR = "error";
 
@@ -33,26 +30,37 @@ export function uiText(uiJsonRaw) {
   return out.join("\n");
 }
 
-function findWhere(items, where) {
-  return (items || []).filter((it) => Object.entries(where || {}).every(([k, v]) => it[k] === v));
-}
+/** UI-проверки, не зависящие от приложения: работают по финальному outline. */
+const GENERIC_UI_CHECKS = {
+  async containsText(check, { finalUiText }) {
+    return finalUiText.includes(check.text)
+      ? { status: PASS, message: `финальный UI содержит «${check.text}»` }
+      : { status: FAIL, message: `финальный UI не содержит «${check.text}»` };
+  },
+  async notContainsText(check, { finalUiText }) {
+    return !finalUiText.includes(check.text)
+      ? { status: PASS, message: `финальный UI не содержит «${check.text}», как и ожидалось` }
+      : { status: FAIL, message: `финальный UI неожиданно содержит «${check.text}»` };
+  },
+};
 
-function normalizeList(body) {
-  return (body?.items || []).slice().sort((a, b) => String(a.id).localeCompare(String(b.id)));
+export function genericUiCheckNames() {
+  return Object.keys(GENERIC_UI_CHECKS);
 }
 
 /**
- * @param ctx { client, workspaceId, seeded, apiBefore, apiAfter, finalUiText, manualConfirmed }
- * @returns { verdict, checks, reasons }
+ * @param adapter project adapter (harness/adapters)
+ * @param ctx { context, seeded, before, after, finalUiText, manualConfirmed }
  */
-export async function runOracle(manifest, ctx) {
+export async function runOracle(manifest, adapter, ctx) {
   const checks = [];
 
   for (const check of manifest.oracle.api?.checks || []) {
-    checks.push(await runApiCheck(check, ctx));
+    checks.push(await runCheck(check, adapter.checks?.[check.type], "api", ctx));
   }
   for (const check of manifest.oracle.ui?.checks || []) {
-    checks.push(await runUiCheck(check, ctx));
+    const impl = GENERIC_UI_CHECKS[check.type] || adapter.uiChecks?.[check.type];
+    checks.push(await runCheck(check, impl, "ui", ctx, { needsUi: true }));
   }
   for (const manual of manifest.oracle.manualChecks || []) {
     checks.push({
@@ -79,113 +87,18 @@ export async function runOracle(manifest, ctx) {
   return { verdict, checks, reasons };
 }
 
-async function runApiCheck(check, ctx) {
-  const base = { kind: "api", type: check.type, spec: check };
-  if (!SUPPORTED_API_CHECKS.includes(check.type)) {
-    return { ...base, status: UNSUPPORTED, message: `verifier не реализует проверку api.${check.type}` };
+async function runCheck(check, impl, kind, ctx, { needsUi = false } = {}) {
+  const base = { kind, type: check.type, spec: check };
+  if (!impl) {
+    return { ...base, status: UNSUPPORTED, message: `verifier не реализует проверку ${kind}.${check.type}` };
   }
-  try {
-    switch (check.type) {
-      case "count": {
-        const list = check.query
-          ? await ctx.client.list({ workspaceId: ctx.workspaceId, query: check.query })
-          : ctx.apiAfter;
-        expectCount(list, check.expected);
-        return { ...base, status: PASS, message: `ровно ${check.expected} записей` };
-      }
-      case "fields": {
-        const found = findWhere(ctx.apiAfter?.body?.items, check.where);
-        if (found.length !== 1) {
-          return { ...base, status: FAIL, message: `по условию ${JSON.stringify(check.where)} найдено записей: ${found.length}, ожидалась 1` };
-        }
-        expectFields(found[0], check.expect);
-        return { ...base, status: PASS, message: `поля совпали: ${JSON.stringify(check.expect)}` };
-      }
-      case "onlyChanged": {
-        const seed = ctx.seeded?.[check.seedIndex];
-        if (!seed) return { ...base, status: ERROR, message: `нет seed с индексом ${check.seedIndex}` };
-        const before = findWhere(ctx.apiBefore?.body?.items, { id: seed.id })[0];
-        const after = findWhere(ctx.apiAfter?.body?.items, { id: seed.id })[0];
-        if (!before) return { ...base, status: ERROR, message: "запись отсутствует в api-before" };
-        if (!after) return { ...base, status: FAIL, message: "запись исчезла к моменту api-after" };
-        expectOnlyChanged(before, after, check.changed);
-        return { ...base, status: PASS, message: `изменилось ровно ${JSON.stringify(check.changed)}` };
-      }
-      case "absent": {
-        const seed = ctx.seeded?.[check.seedIndex];
-        if (!seed) return { ...base, status: ERROR, message: `нет seed с индексом ${check.seedIndex}` };
-        const res = await ctx.client.get(seed.id, { workspaceId: ctx.workspaceId });
-        expect404(res);
-        return { ...base, status: PASS, message: `запись ${seed.id} удалена (404 NOT_FOUND)` };
-      }
-      case "unchanged": {
-        expectUnchanged(normalizeList(ctx.apiBefore?.body), normalizeList(ctx.apiAfter?.body));
-        return { ...base, status: PASS, message: "backend не изменился (read-only сценарий)" };
-      }
-      case "isolation": {
-        const found = findWhere(ctx.apiAfter?.body?.items, check.where);
-        if (found.length !== 1) {
-          return { ...base, status: FAIL, message: `по условию ${JSON.stringify(check.where)} найдено записей: ${found.length}, ожидалась 1` };
-        }
-        const probeWs = newWorkspaceId();
-        const other = await ctx.client.list({ workspaceId: probeWs });
-        expectWorkspaceIsolation(ctx.apiAfter, other, found[0].id);
-        return { ...base, status: PASS, message: `запись не видна в постороннем Workspace ${probeWs}` };
-      }
-      default:
-        return { ...base, status: UNSUPPORTED, message: "не реализовано" };
-    }
-  } catch (err) {
-    if (err instanceof AssertionError) return { ...base, status: FAIL, message: err.message, details: err.details };
-    return { ...base, status: ERROR, message: `сбой oracle: ${err.message}` };
-  }
-}
-
-async function runUiCheck(check, ctx) {
-  const base = { kind: "ui", type: check.type, spec: check };
-  if (!SUPPORTED_UI_CHECKS.includes(check.type)) {
-    return { ...base, status: UNSUPPORTED, message: `verifier не реализует проверку ui.${check.type}` };
-  }
-  if (!ctx.finalUiText) {
+  if (needsUi && !ctx.finalUiText) {
     return { ...base, status: ERROR, message: "нет финального UI outline — постусловие UI недоказуемо" };
   }
   try {
-    switch (check.type) {
-      case "containsText": {
-        const ok = ctx.finalUiText.includes(check.text);
-        return ok
-          ? { ...base, status: PASS, message: `финальный UI содержит «${check.text}»` }
-          : { ...base, status: FAIL, message: `финальный UI не содержит «${check.text}»` };
-      }
-      case "notContainsText": {
-        const ok = !ctx.finalUiText.includes(check.text);
-        return ok
-          ? { ...base, status: PASS, message: `финальный UI не содержит «${check.text}», как и ожидалось` }
-          : { ...base, status: FAIL, message: `финальный UI неожиданно содержит «${check.text}»` };
-      }
-      case "listMatchesQuery": {
-        // Независимый оракул фильтрации: что вернул API по тому же запросу,
-        // то и только то должно быть видно в UI.
-        const matching = await ctx.client.list({ workspaceId: ctx.workspaceId, query: check.query });
-        const matchIds = new Set((matching.body?.items || []).map((i) => i.id));
-        const expectVisible = (matching.body?.items || []).map((i) => i.title);
-        const expectHidden = (ctx.apiAfter?.body?.items || []).filter((i) => !matchIds.has(i.id)).map((i) => i.title);
-
-        const missing = expectVisible.filter((t) => !ctx.finalUiText.includes(t));
-        const leaked = expectHidden.filter((t) => ctx.finalUiText.includes(t));
-        if (missing.length || leaked.length) {
-          return {
-            ...base, status: FAIL,
-            message: `UI не совпал с API-запросом ${JSON.stringify(check.query)}: не показаны [${missing.join(", ")}], лишние [${leaked.join(", ")}]`,
-          };
-        }
-        return { ...base, status: PASS, message: `UI совпал с API-запросом: видно ${expectVisible.length}, скрыто ${expectHidden.length}` };
-      }
-      default:
-        return { ...base, status: UNSUPPORTED, message: "не реализовано" };
-    }
+    const result = await impl(check, ctx);
+    return { ...base, ...result };
   } catch (err) {
-    if (err instanceof AssertionError) return { ...base, status: FAIL, message: err.message, details: err.details };
     return { ...base, status: ERROR, message: `сбой oracle: ${err.message}` };
   }
 }

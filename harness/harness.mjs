@@ -29,11 +29,9 @@ import {
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
-import { IssuesClient } from "../tools/lib/client.mjs";
 import { newWorkspaceId } from "../tools/lib/workspace.mjs";
-import { seedIssues, teardownWorkspace } from "../tools/lib/fixtures.mjs";
 import { captureSnapshot, evidenceRoot, runDir } from "../tools/lib/capture.mjs";
-import { loadManifest, listCases, unsupportedChecks, ManifestError } from "./lib/manifest.mjs";
+import { loadManifest, listCases, unsupportedChecks, adapterFor, ManifestError } from "./lib/manifest.mjs";
 import { runOracle, uiText } from "./lib/oracle-runner.mjs";
 import { versionManifest } from "./lib/versions.mjs";
 import { renderReport, reportStructure } from "./lib/report.mjs";
@@ -42,7 +40,6 @@ import { captureDeviceLog, needsDiagnostics } from "./lib/diagnostics.mjs";
 import { renderSummary } from "./lib/summary.mjs";
 
 const STAGE = process.env.HARNESS_STAGE || "10";
-const PROXY_CLI = fileURLToPath(new URL("../tools/proxy.mjs", import.meta.url));
 
 // ── аргументы ─────────────────────────────────────────────────────────────────
 
@@ -85,17 +82,9 @@ function saveState(state) {
   writeFileSync(`${dir}/run.json`, JSON.stringify(state, null, 2));
 }
 
-function client(state) {
-  return new IssuesClient(state.versions?.baseUrl || undefined, state.workspaceId);
-}
-
-function resetFaultProfile() {
-  try {
-    execFileSync("node", [PROXY_CLI, "reset"], { stdio: ["ignore", "pipe", "pipe"] });
-    return "fault profile → passthrough";
-  } catch (err) {
-    return `сброс fault profile не выполнен: ${err.message}`;
-  }
+/** Контекст данных run'а восстанавливается из run.json и отдаётся адаптеру. */
+function contextOf(state) {
+  return state.context;
 }
 
 // ── start ─────────────────────────────────────────────────────────────────────
@@ -113,13 +102,19 @@ async function cmdStart(f) {
     die("Нужен --device <UDID> (или --no-device для прогона без устройства, тогда UI-evidence будет отсутствовать)");
   }
 
+  const adapter = adapterFor(manifest);
   const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+Z$/, "Z");
   const runId = f.run && f.run !== true ? f.run : `${manifest.id}-${platform}-${stamp}`;
-  // --workspace позволяет заранее навести приложение на пространство run'а,
-  // чтобы исходный снимок UI отражал реальное стартовое состояние агента.
-  const workspaceId = f.workspace && f.workspace !== true ? f.workspace : newWorkspaceId();
   const dir = runDir(STAGE, platform, runId);
   mkdirSync(dir, { recursive: true });
+
+  const context = await adapter.createContext({ platform, device });
+  // --workspace позволяет заранее навести приложение на контекст run'а, чтобы
+  // исходный снимок UI отражал реальное стартовое состояние агента.
+  if (f.workspace && f.workspace !== true) {
+    if (context.kind !== "workspace") die(`--workspace неприменим к adapter «${adapter.id}»`);
+    context.workspaceId = f.workspace;
+  }
 
   const versions = versionManifest({
     deviceId: device, platform,
@@ -129,14 +124,10 @@ async function cmdStart(f) {
   writeFileSync(`${dir}/version-manifest.json`, JSON.stringify(versions, null, 2));
 
   // Seed строго до UI-задачи: агент получает точное известное начальное состояние.
-  const api = new IssuesClient(versions.baseUrl, workspaceId);
-  let seeded = [];
-  if (manifest.preconditions.apiSeed.length) {
-    seeded = await seedIssues(api, manifest.preconditions.apiSeed);
-  }
+  const seeded = await adapter.seed(context, manifest.preconditions.apiSeed);
 
-  const apiBefore = await api.list();
-  writeFileSync(`${dir}/api-before.json`, JSON.stringify(apiBefore.body, null, 2));
+  const stateBefore = await adapter.readState(context);
+  writeFileSync(`${dir}/api-before.json`, JSON.stringify(stateBefore, null, 2));
 
   let capture = null;
   if (device) {
@@ -149,9 +140,10 @@ async function cmdStart(f) {
   }
 
   const state = {
-    runId, caseId: manifest.id, platform, device, workspaceId,
+    runId, caseId: manifest.id, platform, device,
+    adapter: adapter.id, context,
     startedAt: new Date().toISOString(),
-    seeded: seeded.map((s) => ({ id: s.id, title: s.title, status: s.status, severity: s.severity })),
+    seeded,
     versions, manifestPath: `cases/${manifest.id}.yaml`,
     limits: manifest.limits,
     status: "started",
@@ -160,8 +152,9 @@ async function cmdStart(f) {
 
   console.log(`run:        ${runId}`);
   console.log(`case:       ${manifest.id} (${manifest.title || "—"})`);
+  console.log(`adapter:    ${adapter.id} (${adapter.displayName})`);
   console.log(`platform:   ${platform}${device ? ` / ${device}` : " (без устройства)"}`);
-  console.log(`workspace:  ${workspaceId}`);
+  console.log(`workspace:  ${adapter.describeContext(context)}`);
   console.log(`seed:       ${seeded.length} записей`);
   console.log(`evidence:   ${dir}`);
   console.log(`initial UI: ${capture ? "снят" : "НЕ снят (--no-device)"}`);
@@ -174,8 +167,8 @@ async function cmdStart(f) {
   console.log(manifest.instruction.trim());
   console.log("");
   if (seeded.length && device) {
-    console.log(`ВНИМАНИЕ: seed создан после снимка. Наведите приложение на Workspace ${workspaceId},`);
-    console.log(`дождитесь загрузки списка и переснимите исходное состояние:`);
+    console.log(`ВНИМАНИЕ: seed создан после снимка. Наведите приложение на ${adapter.describeContext(context)},`);
+    console.log(`дождитесь загрузки данных и переснимите исходное состояние:`);
     console.log(`  node harness.mjs arm --run ${runId}`);
   }
   console.log(`По завершении: node harness.mjs finish --run ${runId} --transcript <файл>`);
@@ -202,7 +195,8 @@ async function cmdFinish(f) {
   const state = findRun(runId, f.platform !== true ? f.platform : null);
   const manifest = loadManifest(state.caseId);
   const dir = runDir(STAGE, state.platform, runId);
-  const api = client(state);
+  const adapter = adapterFor(manifest);
+  const context = contextOf(state);
 
   // 1. Финальное состояние устройства.
   let finalUiRaw = null;
@@ -216,26 +210,25 @@ async function cmdFinish(f) {
     }
   }
 
-  // 2. Финальное состояние API — до teardown.
-  const apiAfter = await api.list();
-  writeFileSync(`${dir}/api-after.json`, JSON.stringify(apiAfter.body, null, 2));
-  const apiBefore = { status: 200, body: JSON.parse(readFileSync(`${dir}/api-before.json`, "utf8")) };
+  // 2. Финальное состояние приложения — до teardown.
+  const after = await adapter.readState(context);
+  writeFileSync(`${dir}/api-after.json`, JSON.stringify(after, null, 2));
+  const before = JSON.parse(readFileSync(`${dir}/api-before.json`, "utf8"));
 
   // 3. Артефакты агента.
   const transcript = resolveTranscript(f, dir);
 
   // 4. Oracle.
-  const oracle = await runOracle(manifest, {
-    client: api, workspaceId: state.workspaceId,
-    seeded: state.seeded, apiBefore, apiAfter,
+  const oracle = await runOracle(manifest, adapter, {
+    context, seeded: state.seeded, before, after,
     finalUiText: uiText(finalUiRaw),
     manualConfirmed: Boolean(f["confirm-manual"]),
   });
 
   // 5. Teardown — всегда, независимо от verdict.
-  const teardown = await doTeardown(manifest, api, state);
+  const teardown = await doTeardown(manifest, adapter, context);
 
-  finalizeRun({ f, state, manifest, dir, runId, apiBefore, apiAfter, oracle, teardown, transcript, captureError });
+  finalizeRun({ f, state, manifest, dir, runId, before, after, oracle, teardown, transcript, captureError });
 }
 
 // ── abort: аварийное завершение ───────────────────────────────────────────────
@@ -246,7 +239,8 @@ async function cmdAbort(f) {
   const state = findRun(runId, f.platform !== true ? f.platform : null);
   const manifest = loadManifest(state.caseId);
   const dir = runDir(STAGE, state.platform, runId);
-  const api = client(state);
+  const adapter = adapterFor(manifest);
+  const context = contextOf(state);
 
   // Всё собирается best-effort: run уже аварийный, отсутствие артефакта не
   // должно мешать очистке данных.
@@ -256,18 +250,18 @@ async function cmdAbort(f) {
       captureSnapshot({ stage: STAGE, platform: state.platform, run: runId, phase: "final", device: state.device });
     } catch (err) { captureError = err.message; }
   }
-  let apiAfter = { status: null, body: { items: [], total: null } };
+  let after = null;
   try {
-    apiAfter = await api.list();
-    writeFileSync(`${dir}/api-after.json`, JSON.stringify(apiAfter.body, null, 2));
-  } catch (err) { captureError = `${captureError ? captureError + "; " : ""}api-after: ${err.message}`; }
+    after = await adapter.readState(context);
+    writeFileSync(`${dir}/api-after.json`, JSON.stringify(after, null, 2));
+  } catch (err) { captureError = `${captureError ? captureError + "; " : ""}состояние «после»: ${err.message}`; }
 
-  const apiBefore = existsSync(`${dir}/api-before.json`)
-    ? { status: 200, body: JSON.parse(readFileSync(`${dir}/api-before.json`, "utf8")) }
-    : { status: null, body: { items: [] } };
+  const before = existsSync(`${dir}/api-before.json`)
+    ? JSON.parse(readFileSync(`${dir}/api-before.json`, "utf8"))
+    : null;
   const transcript = resolveTranscript(f, dir);
 
-  const teardown = await doTeardown(manifest, api, state, { force: true });
+  const teardown = await doTeardown(manifest, adapter, context, { force: true });
 
   const verdict = f.verdict && f.verdict !== true ? f.verdict : "BLOCKED";
   const oracle = {
@@ -276,7 +270,7 @@ async function cmdAbort(f) {
     reasons: [`run прерван до завершения: ${reason}`],
   };
   finalizeRun({
-    f, state, manifest, dir, runId, apiBefore, apiAfter, oracle, teardown, transcript, captureError,
+    f, state, manifest, dir, runId, before, after, oracle, teardown, transcript, captureError,
     aborted: true, abortReason: reason,
     category: f.category && f.category !== true ? f.category : "environment",
   });
@@ -306,25 +300,26 @@ function resolveTranscript(f, dir) {
 
 function basename(p) { return p.split("/").filter(Boolean).pop(); }
 
-async function doTeardown(manifest, api, state, { force = false } = {}) {
+async function doTeardown(manifest, adapter, context, { force = false } = {}) {
   const parts = [];
-  if (manifest.teardown.deleteCreatedIssues || force) {
+  if (manifest.teardown.resetState || force) {
     try {
-      const report = await teardownWorkspace(api, { workspaceId: state.workspaceId });
-      parts.push(`удалено ${report.deleted.length}, отсутствовало ${report.alreadyAbsent.length}, не удалось ${report.failed.length}`);
-      if (report.failed.length) parts.push(`НЕОЧИЩЕННЫЕ FIXTURES: ${JSON.stringify(report.failed)}`);
+      parts.push(await adapter.teardown(context));
     } catch (err) {
       parts.push(`ОШИБКА teardown: ${err.message}`);
     }
   } else {
-    parts.push("удаление данных отключено манифестом");
+    parts.push("сброс состояния отключён манифестом");
   }
-  if (manifest.teardown.resetFaultProfile !== false) parts.push(resetFaultProfile());
   return parts.join("; ");
 }
 
 function finalizeRun(o) {
-  const { f, state, manifest, dir, runId, apiBefore, apiAfter, oracle, teardown, transcript, captureError } = o;
+  const { f, state, manifest, dir, runId, before, after, oracle, teardown, transcript, captureError } = o;
+  const adapter = adapterFor(manifest);
+  // Размер состояния приложения: у REST-адаптера это total, у контейнерного —
+  // число ключей. Generic-слой не знает формы состояния, поэтому измеряет обобщённо.
+  const sizeOf = (s) => (s?.total ?? (s ? Object.keys(s.defaults ?? s).length : "?"));
 
   // Неуспешный run требует системного контекста, которого нет в UI-дереве.
   let diagnostics = null;
@@ -369,8 +364,8 @@ function finalizeRun(o) {
     "sim-use version": state.versions?.simUseVersion,
     "Agent model": state.versions?.agentModel,
     "Agent skill revision": state.versions?.skillRevision,
-    "Workspace / test namespace": state.workspaceId,
-    "Start state": `seed ${state.seeded.length} записей, api-before total=${apiBefore.body?.total ?? "?"}`,
+    "Workspace / test namespace": `${adapter.id}: ${adapter.describeContext(state.context)}`,
+    "Start state": `seed ${state.seeded.length} записей, состояние «до» = ${sizeOf(before)}`,
     "Instruction": manifest.instruction.trim().replace(/\n+/g, " "),
     "Allowed / forbidden actions":
       `разрешено: ${manifest.allowedActions.join(", ")} | запрещено: ${manifest.forbiddenActions.join(", ")}`,
@@ -381,8 +376,8 @@ function finalizeRun(o) {
       : num(f["tool-calls"]),
     "Retries": num(f.retries),
     "Manual interventions": num(f.interventions),
-    "API before": `total=${apiBefore.body?.total ?? "?"} → runs/${runId}/api-before.json`,
-    "API after": `total=${apiAfter.body?.total ?? "?"} → runs/${runId}/api-after.json`,
+    "API before": `${sizeOf(before)} → runs/${runId}/api-before.json`,
+    "API after": `${sizeOf(after)} → runs/${runId}/api-after.json`,
     "UI postcondition": artifacts.finalUi
       ? `финальный outline снят (runs/${runId}/final-ui.json)`
       : `финальный outline отсутствует${captureError ? `: ${captureError}` : ""}`,
@@ -407,7 +402,7 @@ function finalizeRun(o) {
     verdict: oracle.verdict,
     startedAt: state.startedAt, finishedAt,
     durationMs: new Date(finishedAt) - new Date(state.startedAt),
-    workspaceId: state.workspaceId,
+    adapter: adapter.id, context: state.context,
     device: state.device, versions: state.versions,
     oracleChecks: oracle.checks.map((c) => ({ kind: c.kind, type: c.type, status: c.status, message: c.message })),
     oracleReasons: oracle.reasons,

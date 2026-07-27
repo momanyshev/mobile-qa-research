@@ -1,0 +1,88 @@
+{
+  "frozenAt": "2026-07-27T15:23:36.069Z",
+  "commit": "aefff7c",
+  "note": "Baseline generic-слоя ДО адаптации под второе приложение (этап 12.2). Служит знаменателем для % переиспользования в 12.4.",
+  "totalLines": 2822,
+  "files": [
+    {
+      "file": "harness/harness.mjs",
+      "lines": 539
+    },
+    {
+      "file": "harness/lib/cmdlog.mjs",
+      "lines": 126
+    },
+    {
+      "file": "harness/lib/diagnostics.mjs",
+      "lines": 52
+    },
+    {
+      "file": "harness/lib/manifest.mjs",
+      "lines": 123
+    },
+    {
+      "file": "harness/lib/oracle-runner.mjs",
+      "lines": 191
+    },
+    {
+      "file": "harness/lib/report.mjs",
+      "lines": 31
+    },
+    {
+      "file": "harness/lib/summary.mjs",
+      "lines": 145
+    },
+    {
+      "file": "harness/lib/versions.mjs",
+      "lines": 57
+    },
+    {
+      "file": "harness/lib/yaml.mjs",
+      "lines": 216
+    },
+    {
+      "file": "harness/selftest.mjs",
+      "lines": 319
+    },
+    {
+      "file": "harness/sim.mjs",
+      "lines": 61
+    },
+    {
+      "file": "tools/lib/capture.mjs",
+      "lines": 37
+    },
+    {
+      "file": "tools/lib/client.mjs",
+      "lines": 60
+    },
+    {
+      "file": "tools/lib/fixtures.mjs",
+      "lines": 54
+    },
+    {
+      "file": "tools/lib/http.mjs",
+      "lines": 78
+    },
+    {
+      "file": "tools/lib/verify.mjs",
+      "lines": 114
+    },
+    {
+      "file": "tools/lib/workspace.mjs",
+      "lines": 71
+    },
+    {
+      "file": "tools/oracle.mjs",
+      "lines": 156
+    },
+    {
+      "file": "tools/proxy.mjs",
+      "lines": 283
+    },
+    {
+      "file": "tools/runlog.mjs",
+      "lines": 109
+    }
+  ]
+}

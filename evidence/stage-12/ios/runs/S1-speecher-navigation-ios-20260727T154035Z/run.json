@@ -1,0 +1,48 @@
+{
+  "runId": "S1-speecher-navigation-ios-20260727T154035Z",
+  "caseId": "S1-speecher-navigation",
+  "platform": "ios",
+  "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+  "adapter": "speecher",
+  "context": {
+    "kind": "container",
+    "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+    "bundleId": "app.speecher.mobile",
+    "container": "/Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/Containers/Data/Application/A8BDCCA0-5310-41F1-BD74-30AE662425F9"
+  },
+  "startedAt": "2026-07-27T15:40:37.491Z",
+  "seeded": [],
+  "versions": {
+    "capturedAt": "2026-07-27T15:40:36.234Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e80c20e",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "aefff7c",
+      "dirty": true
+    },
+    "platform": "ios",
+    "device": {
+      "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+      "name": "iPhone 17 Pro Max",
+      "platform": "ios",
+      "runtime": "iOS 26.5",
+      "state": "Booted"
+    },
+    "agentModel": "opus-4.8 (drive-only)",
+    "skillRevision": "sim-use-skill-v0.10.0",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/S1-speecher-navigation.yaml",
+  "limits": {
+    "timeoutSeconds": 300,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "finishedAt": "2026-07-27T15:41:12.375Z",
+  "verdict": "PASS"
+}

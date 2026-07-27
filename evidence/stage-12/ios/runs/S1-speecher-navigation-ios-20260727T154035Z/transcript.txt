@@ -1,0 +1,19 @@
+#1 2026-07-27T15:40:50.744Z sim-use tap --label Главная --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 499ms selector=selector
+    | ✓ Tap at (73.33333396911621, 893.5005493164062) completed successfully
+#2 2026-07-27T15:40:54.361Z sim-use tap --label Драфты --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 605ms selector=selector
+    | ✓ Tap at (219.99999237060547, 893.5) completed successfully
+#3 2026-07-27T15:40:58.059Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 446ms
+    | App: Speecher  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)
+#4 2026-07-27T15:40:58.567Z sim-use tap --label Настройки --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 445ms selector=selector
+    | ✓ Tap at (366.6666564941406, 893.4412231445312) completed successfully
+#5 2026-07-27T15:41:02.106Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 449ms
+    | App: Speecher  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)

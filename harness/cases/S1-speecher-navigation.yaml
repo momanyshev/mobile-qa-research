@@ -1,0 +1,42 @@
+id: S1-speecher-navigation
+title: Speecher — навигация, список и прокрутка
+adapter: speecher
+platform: ios
+appId: app.speecher.mobile
+instruction: >-
+  Пройди по всем трём разделам приложения: главный экран, «Драфты» и
+  «Настройки». Убедись, что раздел «Драфты» открывается и показывает своё
+  состояние списка, а в «Настройках» видна секция с языком приложения. Ничего
+  не меняй и не создавай — это только осмотр.
+preconditions:
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+forbiddenActions:
+  - production-access
+  - settings-modification
+  - silent-app-relaunch-after-crash
+limits:
+  timeoutSeconds: 300
+  retryPerAction: 3
+oracle:
+  api:
+    # Осмотр не должен менять сохранённое состояние приложения.
+    checks:
+      - type: unchanged
+  ui:
+    checks:
+      - type: containsText
+        text: Настройки
+      - type: containsText
+        text: ЯЗЫК
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: false

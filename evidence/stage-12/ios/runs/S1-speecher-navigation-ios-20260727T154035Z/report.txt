@@ -1,0 +1,27 @@
+Run ID: S1-speecher-navigation-ios-20260727T154035Z
+Case ID: S1-speecher-navigation
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: opus-4.8 (drive-only)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: speecher: контейнер app.speecher.mobile на A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+Start state: seed 0 записей, состояние «до» = 1
+Instruction: Пройди по всем трём разделам приложения: главный экран, «Драфты» и «Настройки». Убедись, что раздел «Драфты» открывается и показывает своё состояние списка, а в «Настройках» видна секция с языком приложения. Ничего не меняй и не создавай — это только осмотр.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction | запрещено: production-access, settings-modification, silent-app-relaunch-after-crash
+Started at / finished at: 2026-07-27T15:40:37.491Z → 2026-07-27T15:41:12.375Z
+Tool calls: 5 (действий 3, по координатам 0, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 1 → runs/S1-speecher-navigation-ios-20260727T154035Z/api-before.json
+API after: 1 → runs/S1-speecher-navigation-ios-20260727T154035Z/api-after.json
+UI postcondition: финальный outline снят (runs/S1-speecher-navigation-ios-20260727T154035Z/final-ui.json)
+Oracle result: api.unchanged=pass, ui.containsText=pass, ui.containsText=pass
+Agent self-report: Все три раздела открыты, список драфтов и секция языка видны
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: удаление данных отключено манифестом; fault profile → passthrough
+New knowledge: Speecher: селекторы по label работают, несмотря на полное отсутствие accessibilityIdentifier
+Follow-up decision: —

@@ -1,0 +1,46 @@
+id: S2-speecher-language-persist
+title: Speecher — смена языка и сохранение после перезапуска
+adapter: speecher
+platform: ios
+appId: app.speecher.mobile
+instruction: >-
+  В настройках приложения смени язык интерфейса на английский (English (UK)).
+  Затем полностью перезапусти приложение и убедись, что после перезапуска
+  интерфейс остался на английском. Других настроек не меняй.
+preconditions:
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - app-relaunch
+forbiddenActions:
+  - production-access
+  - unrelated-settings-modification
+limits:
+  timeoutSeconds: 420
+  retryPerAction: 3
+oracle:
+  api:
+    # Ключевая проверка: изменился ровно язык и ничего больше. Значение
+    # читается из UserDefaults приложения, а не из UI, поэтому оракул
+    # независим от того, что агент увидел на экране.
+    checks:
+      - type: onlyKeyChanged
+        key: speecher.appLanguage
+        expected: en-GB
+  ui:
+    # Интерфейс после перезапуска локализован: русские подписи исчезли.
+    checks:
+      - type: containsText
+        text: Settings
+      - type: notContainsText
+        text: Настройки
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: true

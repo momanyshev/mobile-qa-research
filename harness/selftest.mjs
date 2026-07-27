@@ -14,7 +14,10 @@ import { fileURLToPath } from "node:url";
 
 import { parseYaml, YamlError } from "./lib/yaml.mjs";
 import { validateManifest, loadManifest, listCases, ManifestError } from "./lib/manifest.mjs";
-import { runOracle, uiText } from "./lib/oracle-runner.mjs";
+import { runOracle as runOracleRaw, uiText } from "./lib/oracle-runner.mjs";
+import qalabAdapter from "./adapters/qalab.mjs";
+import speecherAdapter from "./adapters/speecher.mjs";
+import { getAdapter, listAdapters } from "./adapters/index.mjs";
 import { renderReport, reportStructure, REPORT_FIELDS } from "./lib/report.mjs";
 import { classifyCall, runLogged, summarizeLog, renderTranscript } from "./lib/cmdlog.mjs";
 import { needsDiagnostics } from "./lib/diagnostics.mjs";
@@ -53,9 +56,13 @@ function runIdFrom(output) {
   return m[1];
 }
 
-function workspaceFrom(output) {
-  const m = /^workspace:\s+(\S+)/m.exec(output);
-  return m ? m[1] : null;
+/**
+ * Контекст run'а читается из run.json, а не из строки вывода: формат вывода
+ * зависит от адаптера, а run.json — машинный контракт.
+ */
+function workspaceOf(runId, platform = "ios") {
+  const state = JSON.parse(readFileSync(`${EV_DIR}/${platform}/runs/${runId}/run.json`, "utf8"));
+  return state.context.workspaceId;
 }
 
 function jsonlLast(platform) {
@@ -116,14 +123,27 @@ async function oracleTests(t) {
     severity: "high", status: "open", createdAt: "2026-01-01T00:00:00.000Z",
     updatedAt: "2026-01-01T00:00:00.000Z",
   };
-  const list = (items) => ({ status: 200, body: { items, total: items.length } });
-  const stubClient = { list: async () => list([]), get: async () => ({ status: 404, body: { error: { code: "NOT_FOUND" } } }) };
+  const list = (items) => ({ items, total: items.length });
+  // Подменяем сетевые методы адаптера, чтобы проверять логику сведения
+  // verdict без живого backend.
+  const adapter = {
+    ...qalabAdapter,
+    checks: {
+      ...qalabAdapter.checks,
+      count: async (check, c) => (check.query
+        ? { status: "pass", message: "запрос-проверка не участвует в selftest" }
+        : qalabAdapter.checks.count(check, c)),
+      absent: async () => ({ status: "pass", message: "запись удалена (404 NOT_FOUND)" }),
+      isolation: async () => ({ status: "pass", message: "изоляция подтверждена" }),
+    },
+  };
   const ctx = (over = {}) => ({
-    client: stubClient, workspaceId: "ws", seeded: [issue],
-    apiBefore: list([issue]), apiAfter: list([issue]),
+    context: { kind: "workspace", workspaceId: "ws" }, seeded: [issue],
+    before: list([issue]), after: list([issue]),
     finalUiText: "Тест\nПрочий текст", manualConfirmed: false, ...over,
   });
   const man = (oracle) => ({ ...minimal(), oracle });
+  const runOracle = (m, c) => runOracleRaw(m, adapter, c);
 
   let r = await runOracle(man({ api: { checks: [{ type: "count", expected: 1 }] } }), ctx());
   t.ok("count совпал → PASS", r.verdict === "PASS", r.reasons.join("; "));
@@ -139,18 +159,18 @@ async function oracleTests(t) {
 
   const edited = { ...issue, severity: "blocker", updatedAt: "2026-01-02T00:00:00.000Z" };
   r = await runOracle(man({ api: { checks: [{ type: "onlyChanged", seedIndex: 0, changed: { severity: "blocker" } }] } }),
-    ctx({ apiAfter: list([edited]) }));
+    ctx({ after: list([edited]) }));
   t.ok("onlyChanged: изменилось ровно ожидаемое → PASS", r.verdict === "PASS", r.reasons.join("; "));
 
   const overEdited = { ...edited, title: "Изменённый заголовок" };
   r = await runOracle(man({ api: { checks: [{ type: "onlyChanged", seedIndex: 0, changed: { severity: "blocker" } }] } }),
-    ctx({ apiAfter: list([overEdited]) }));
+    ctx({ after: list([overEdited]) }));
   t.ok("onlyChanged: непрошеная мутация → FAIL", r.verdict === "FAIL");
 
   r = await runOracle(man({ api: { checks: [{ type: "unchanged" }] } }), ctx());
   t.ok("unchanged: backend не тронут → PASS", r.verdict === "PASS");
 
-  r = await runOracle(man({ api: { checks: [{ type: "unchanged" }] } }), ctx({ apiAfter: list([]) }));
+  r = await runOracle(man({ api: { checks: [{ type: "unchanged" }] } }), ctx({ after: list([]) }));
   t.ok("unchanged: состояние изменилось → FAIL", r.verdict === "FAIL");
 
   r = await runOracle(man({ api: { checks: [{ type: "absent", seedIndex: 0 }] } }), ctx());
@@ -183,6 +203,54 @@ async function oracleTests(t) {
 
   t.ok("uiText вытаскивает строки из дерева",
     uiText(JSON.stringify({ a: { label: "Кнопка" }, b: [{ label: "Поле" }] })).includes("Кнопка"));
+}
+
+// ── 3.4. Слой адаптеров (этап 12.2) ───────────────────────────────────────────
+
+async function adapterTests(t) {
+  console.log("\nProject adapters:");
+  t.ok("зарегистрированы qalab и speecher",
+    listAdapters().includes("qalab") && listAdapters().includes("speecher"));
+  t.ok("манифест без поля adapter получает qalab", getAdapter().id === "qalab");
+  await t.throws("неизвестный adapter отвергнут", () => getAdapter("нет-такого"));
+  await t.throws("манифест с неизвестным adapter отвергнут",
+    () => validateManifest({ ...minimal(), adapter: "нет-такого" }), ManifestError);
+
+  const contract = ["createContext", "seed", "readState", "teardown", "describeContext"];
+  for (const a of [qalabAdapter, speecherAdapter]) {
+    t.ok(`${a.id} реализует контракт адаптера`,
+      contract.every((m) => typeof a[m] === "function"));
+  }
+
+  // Speecher: нет backend, поэтому apiSeed должен отвергаться явно, а не
+  // молча игнорироваться — иначе run стартовал бы с неизвестным состоянием.
+  await t.throws("speecher отвергает apiSeed (у приложения нет backend)",
+    () => speecherAdapter.seed({ device: "X" }, [{ title: "x" }]));
+  await t.throws("speecher требует устройство",
+    () => speecherAdapter.createContext({ platform: "ios" }));
+  await t.throws("speecher отвергает android",
+    () => speecherAdapter.createContext({ platform: "android", device: "X" }));
+
+  // Предметные проверки Speecher работают на снимках UserDefaults.
+  const before = { defaults: { "speecher.appLanguage": "ru" } };
+  const after = { defaults: { "speecher.appLanguage": "en-GB" } };
+  let r = await speecherAdapter.checks.defaultsEqual(
+    { key: "speecher.appLanguage", expected: "en-GB" }, { after });
+  t.ok("defaultsEqual совпал → pass", r.status === "pass", r.message);
+  r = await speecherAdapter.checks.defaultsEqual(
+    { key: "speecher.appLanguage", expected: "ru" }, { after });
+  t.ok("defaultsEqual разошёлся → fail", r.status === "fail");
+  r = await speecherAdapter.checks.unchanged({}, { before, after });
+  t.ok("unchanged видит изменение → fail", r.status === "fail");
+  r = await speecherAdapter.checks.unchanged({}, { before, after: before });
+  t.ok("unchanged на неизменном состоянии → pass", r.status === "pass");
+  r = await speecherAdapter.checks.onlyKeyChanged(
+    { key: "speecher.appLanguage", expected: "en-GB" }, { before, after });
+  t.ok("onlyKeyChanged: изменился ровно ключ → pass", r.status === "pass", r.message);
+  r = await speecherAdapter.checks.onlyKeyChanged(
+    { key: "speecher.appLanguage", expected: "en-GB" },
+    { before, after: { defaults: { ...after.defaults, "speecher.icon": "dark" } } });
+  t.ok("onlyKeyChanged: побочное изменение → fail", r.status === "fail");
 }
 
 // ── 3.5. Журнал вызовов ───────────────────────────────────────────────────────
@@ -245,7 +313,7 @@ async function cycleTests(t) {
   // 5.1. Корректное выполнение задачи «агентом» через API.
   let out = harness(["start", "--case", "C1-create-issue", "--platform", "ios", "--no-device"]);
   const run1 = runIdFrom(out);
-  const ws1 = workspaceFrom(out);
+  const ws1 = workspaceOf(run1);
   await api.create({
     title: "Кнопка сохранения не реагирует",
     description: "Кнопка остаётся неактивной после заполнения всех обязательных полей",
@@ -264,7 +332,7 @@ async function cycleTests(t) {
   // 5.2. Неверно выполненная задача обязана давать FAIL, а не INCONCLUSIVE.
   out = harness(["start", "--case", "C1-create-issue", "--platform", "ios", "--no-device"]);
   const run2 = runIdFrom(out);
-  const ws2 = workspaceFrom(out);
+  const ws2 = workspaceOf(run2);
   await api.create({
     title: "Кнопка сохранения не реагирует",
     description: "Кнопка остаётся неактивной после заполнения всех обязательных полей",
@@ -286,7 +354,7 @@ async function cycleTests(t) {
   // 5.4. Аварийное прерывание: seed обязан быть убран, verdict — BLOCKED.
   out = harness(["start", "--case", "C2-filters", "--platform", "ios", "--no-device"]);
   const run3 = runIdFrom(out);
-  const ws3 = workspaceFrom(out);
+  const ws3 = workspaceOf(run3);
   const seeded = await api.list({ workspaceId: ws3 });
   t.ok("seed создан до прерывания", seeded.body.total === 4, `total=${seeded.body.total}`);
   harness(["abort", "--run", run3, "--reason", "selftest: намеренное прерывание run"]);
@@ -311,6 +379,7 @@ export async function selftest() {
   await yamlTests(t);
   await manifestTests(t);
   await oracleTests(t);
+  await adapterTests(t);
   await cmdlogTests(t);
   await reportTests(t);
   await cycleTests(t);

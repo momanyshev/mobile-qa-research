@@ -1,0 +1,32 @@
+#1 2026-07-27T15:43:19.254Z sim-use tap --label Русский --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 620ms selector=selector
+    | ✓ Tap at (220.0, 402.0) completed successfully
+#2 2026-07-27T15:43:22.969Z sim-use tap --label English (UK) --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 636ms selector=selector
+    | ✓ Tap at (220.0, 323.0) completed successfully
+#3 2026-07-27T15:43:27.740Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 481ms
+    | App: Speecher  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)
+#4 2026-07-27T15:43:56.067Z sim-use tap --label Settings --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=1 541ms selector=selector
+    ! Error: No accessibility element matched --label 'Settings'. Make sure the app is on the expected screen, then run `sim-use describe-ui --udid <SIMULATOR_UDID>` and prefer --id when available.
+#5 2026-07-27T15:44:00.750Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 435ms
+    | App: Speecher  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)
+#6 2026-07-27T15:44:43.139Z sim-use tap --label Настройки --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 576ms selector=selector
+    | ✓ Tap at (366.6666564941406, 893.4412231445312) completed successfully
+#7 2026-07-27T15:44:47.854Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 491ms
+    | App: Speecher  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)
+#8 2026-07-27T15:44:58.039Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 500ms
+    | App: Speecher  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)

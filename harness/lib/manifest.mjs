@@ -7,6 +7,8 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { parseYaml } from "./yaml.mjs";
+import { getAdapter, listAdapters, supportedChecks, DEFAULT_ADAPTER } from "../adapters/index.mjs";
+import { genericUiCheckNames } from "./oracle-runner.mjs";
 
 export const CASES_DIR = fileURLToPath(new URL("../cases", import.meta.url));
 
@@ -16,11 +18,8 @@ export class ManifestError extends Error {
 
 const REQUIRED = ["id", "platform", "appId", "instruction", "preconditions",
   "allowedActions", "forbiddenActions", "limits", "oracle", "evidence", "teardown"];
-const OPTIONAL = ["title", "notes", "pilot"];
-
-/** Типы проверок, которые verifier умеет выполнять автоматически. */
-export const SUPPORTED_API_CHECKS = ["count", "fields", "onlyChanged", "absent", "unchanged", "isolation"];
-export const SUPPORTED_UI_CHECKS = ["containsText", "notContainsText", "listMatchesQuery"];
+// `adapter` необязателен: манифесты этапов 10–11 писались до появления слоя.
+const OPTIONAL = ["title", "notes", "pilot", "adapter"];
 
 const VALID_PLATFORMS = ["ios", "android", "any"];
 
@@ -36,6 +35,10 @@ export function validateManifest(m, source = "manifest") {
 
   need(typeof m.id === "string" && m.id.length > 0, `${source}: id должен быть непустой строкой`);
   need(VALID_PLATFORMS.includes(m.platform), `${source}: platform должен быть один из ${VALID_PLATFORMS.join(", ")}`);
+  if (m.adapter !== undefined) {
+    need(listAdapters().includes(m.adapter),
+      `${source}: неизвестный adapter «${m.adapter}». Доступны: ${listAdapters().join(", ")}`);
+  }
   need(typeof m.instruction === "string" && m.instruction.trim().length > 0, `${source}: instruction обязателен`);
 
   need(m.preconditions && typeof m.preconditions === "object", `${source}: preconditions должен быть map`);
@@ -61,8 +64,12 @@ export function validateManifest(m, source = "manifest") {
   validateOracle(m.oracle, source);
 
   need(m.teardown && typeof m.teardown === "object", `${source}: teardown должен быть map`);
-  need(typeof m.teardown.deleteCreatedIssues === "boolean",
-    `${source}: teardown.deleteCreatedIssues должен быть true/false`);
+  // `resetState` — generic-имя; `deleteCreatedIssues` осталось от QA Lab и
+  // поддерживается как устаревший синоним ради манифестов этапов 10–11.
+  const reset = m.teardown.resetState ?? m.teardown.deleteCreatedIssues;
+  need(typeof reset === "boolean",
+    `${source}: нужен teardown.resetState (true/false)`);
+  m.teardown.resetState = reset;
 
   return m;
 }
@@ -110,14 +117,26 @@ export function listCases() {
   }
 }
 
-/** Проверки, тип которых verifier пока не реализует → повод для INCONCLUSIVE. */
+/** Adapter, выбранный манифестом (или дефолтный). */
+export function adapterFor(manifest) {
+  return getAdapter(manifest.adapter || DEFAULT_ADAPTER);
+}
+
+/**
+ * Проверки, тип которых не реализует ни выбранный adapter, ни generic-слой →
+ * повод для INCONCLUSIVE. Считается против конкретного адаптера: одна и та же
+ * проверка может существовать у одного приложения и отсутствовать у другого.
+ */
 export function unsupportedChecks(manifest) {
+  const adapter = adapterFor(manifest);
+  const supported = supportedChecks(adapter);
+  const uiKnown = [...supported.ui, ...genericUiCheckNames()];
   const out = [];
   for (const c of manifest.oracle.api?.checks || []) {
-    if (!SUPPORTED_API_CHECKS.includes(c.type)) out.push(`api.${c.type}`);
+    if (!supported.api.includes(c.type)) out.push(`api.${c.type}`);
   }
   for (const c of manifest.oracle.ui?.checks || []) {
-    if (!SUPPORTED_UI_CHECKS.includes(c.type)) out.push(`ui.${c.type}`);
+    if (!uiKnown.includes(c.type)) out.push(`ui.${c.type}`);
   }
   return out;
 }
