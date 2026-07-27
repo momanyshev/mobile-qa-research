@@ -1,4 +1,4 @@
-# Harness (gate 10.0) — минимальный воспроизводимый контур run
+# Harness (этапы 10.0 и 11) — воспроизводимый eval-контур run
 
 Закрывает обязательное условие этапа 10 плана: до серии из 36 pilot-runs нужен
 контур, в котором **каждый run одинаково структурирован** — иначе benchmark
@@ -25,6 +25,11 @@ oracle (`verify.mjs`), fixtures и захват UI. Harness не дублиру�
   fault profile сбрасывается в passthrough.
 - **Version manifest на каждый run**: commit приложения, версия sim-use, модель,
   ревизия skill, устройство и ОС — без этого метрики невоспроизводимы.
+- **Машинный журнал вызовов** (этап 11): каждый вызов sim-use через `sim.mjs`
+  пишется с timestamp, длительностью, exit code, stdout и stderr. Transcript и
+  selector mix выводятся из журнала, а не пишутся руками.
+- **Диагностика при неуспехе**: для любого verdict кроме `PASS` дополнительно
+  снимается системный журнал устройства.
 
 ## Структура
 
@@ -37,8 +42,12 @@ harness/
     oracle-runner.mjs  манифест → verdict поверх verify.mjs; INCONCLUSIVE честно
     versions.mjs    version manifest run'а
     report.mjs      отчёт по Приложению B — фиксированные 27 полей
-  harness.mjs     CLI: list | validate | new-workspace | start | arm | finish | abort | selftest
-  selftest.mjs    проверка контура (54 проверки), нужен живой backend
+    cmdlog.mjs      журнал вызовов, selector mix, transcript из журнала
+    diagnostics.mjs системный журнал устройства при неуспешном исходе
+    summary.mjs     метрики раздела 10.4 по серии runs
+  harness.mjs     CLI: list | validate | new-workspace | start | arm | finish | abort | summary | selftest
+  sim.mjs         журналирующая обёртка вокруг sim-use
+  selftest.mjs    проверка контура (67 проверок), нужен живой backend
 ```
 
 Evidence: `../evidence/stage-<N>/<platform>/runs/<runId>/` + строка в
@@ -65,16 +74,28 @@ node harness.mjs list                     # доступные case
 WS=$(node harness.mjs new-workspace)       # заранее задать этот UUID в приложении
 node harness.mjs start --case C1-create-issue --platform ios --device <UDID> \
      --workspace "$WS" --model "<модель>" --skill "sim-use-skill-v0.10.0"
-# (если seed непустой и приложение уже наведено — переснять исходное состояние)
+# (если seed непустой или приложение наведено уже после start — переснять
+#  исходное состояние, чтобы снимок отражал реальный старт агента)
 node harness.mjs arm --run <runId>
-# … агент выполняет задание, команды пишутся в transcript.txt …
-node harness.mjs finish --run <runId> --transcript transcript.txt \
-     --tool-calls N --retries N --interventions N \
+
+# … агент выполняет задание. Все вызовы — через журналирующую обёртку: …
+node sim.mjs --run <runId> -- ui --device <UDID>
+node sim.mjs --run <runId> -- tap "#create-issue-button" --device <UDID>
+
+node harness.mjs finish --run <runId> \
+     --retries N --interventions N \
      --self-report "…" --knowledge "…" --follow-up "…"
 
 # аварийное завершение (fixtures всё равно очищаются):
 node harness.mjs abort --run <runId> --reason "…" [--category environment]
+
+# сводные метрики серии (10.4); отчёты пишутся в gitignored evals/reports/
+node harness.mjs summary --stage 10
 ```
+
+Если вызовы шли через `sim.mjs`, флаг `--transcript` не нужен: transcript и
+число вызовов берутся из журнала. `--transcript` остаётся запасным путём для
+прогонов без обёртки.
 
 `start` печатает задание, разрешённые/запрещённые действия и лимиты из
 манифеста — это и есть prompt агенту.

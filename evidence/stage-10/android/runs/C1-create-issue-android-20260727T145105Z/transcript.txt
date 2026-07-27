@@ -1,0 +1,152 @@
+#1 2026-07-27T14:51:43.757Z sim-use tap --label Создать дефект --device emulator-5554
+    → exit=0 119ms selector=selector
+    | ✓ Tap at (540.0, 663.0) completed successfully
+#2 2026-07-27T14:51:46.953Z sim-use ui --device emulator-5554
+    → exit=0 94ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#3 2026-07-27T14:52:00.317Z sim-use tap @8 --device emulator-5554
+    → exit=0 76ms selector=selector
+    | ✓ Tap at (540.0, 450.0) completed successfully
+#4 2026-07-27T14:52:02.497Z sim-use android type --clear --device emulator-5554 Кнопка сохранения не реагирует
+    → exit=0 84ms
+    ! type ok (graphemes=30, clear=true)
+#5 2026-07-27T14:52:03.672Z sim-use button back --device emulator-5554
+    → exit=0 56ms selector=focus
+    | ✓ Back button press completed successfully
+#6 2026-07-27T14:52:05.843Z sim-use ui --device emulator-5554
+    → exit=0 125ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,900 940x600)
+#7 2026-07-27T14:52:15.576Z sim-use ui --device emulator-5554
+    → exit=0 87ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,900 940x600)
+#8 2026-07-27T14:52:32.452Z sim-use tap --label ПРОДОЛЖИТЬ РАБОТУ --device emulator-5554
+    → exit=0 88ms selector=selector
+    | ✓ Tap at (743.0, 1418.0) completed successfully
+#9 2026-07-27T14:52:35.614Z sim-use ui --device emulator-5554
+    → exit=0 123ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#10 2026-07-27T14:52:44.679Z sim-use tap @11 --device emulator-5554
+    → exit=0 67ms selector=selector
+    | ✓ Tap at (540.0, 908.0) completed successfully
+#11 2026-07-27T14:52:46.845Z sim-use android type --clear --device emulator-5554 Кнопка остаётся неактивной после заполнения всех обязательных полей
+    → exit=0 91ms
+    ! type ok (graphemes=67, clear=true)
+#12 2026-07-27T14:52:49.044Z sim-use ui --device emulator-5554
+    → exit=0 76ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#13 2026-07-27T14:53:00.497Z sim-use tap @15 --device emulator-5554
+    → exit=0 72ms selector=selector
+    | ✓ Tap at (540.0, 1375.0) completed successfully
+#14 2026-07-27T14:53:03.651Z sim-use ui --device emulator-5554
+    → exit=0 65ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,826 940x747)
+#15 2026-07-27T14:53:20.334Z sim-use tap --label Высокая --device emulator-5554
+    → exit=0 186ms selector=selector
+    | ✓ Tap at (540.0, 1199.0) completed successfully
+#16 2026-07-27T14:53:23.694Z sim-use ui --device emulator-5554
+    → exit=0 115ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#17 2026-07-27T14:53:38.050Z sim-use ui --device emulator-5554
+    → exit=0 100ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#18 2026-07-27T14:53:38.213Z sim-use ui --device emulator-5554
+    → exit=0 53ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#19 2026-07-27T14:53:49.395Z sim-use swipe --from 540,1800 --to 540,900 --duration 0.5 --device emulator-5554
+    → exit=0 84ms selector=coordinate
+    | ✓ Swipe (540,1800) → (540,900) completed successfully
+#20 2026-07-27T14:53:51.610Z sim-use ui --device emulator-5554
+    → exit=0 69ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#21 2026-07-27T14:53:58.579Z sim-use ui --device emulator-5554
+    → exit=0 67ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#22 2026-07-27T14:54:18.832Z sim-use ui --json --device emulator-5554
+    → exit=0 117ms
+    | {"data":{"appLabel":"ru.maksim.qalab","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"frame":{"height":137,"width":855,"x":47,"y":95},"label":"Новый дефект. Создать дефект","region":{"kind":"Top"},"role":"View","states":[]},{"aliases":{"at":2},"depth":1,"frame":{"height":42,"width":855,"x":47,"y":95},"label":"НОВЫЙ ДЕФЕКТ","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":3},"depth":1,"frame":{"height":90,"width":855,"x":47,"y":142},"label":"Создать дефект","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":4},"frame":{"height":126,"width":126,"x":933,"y":100},"label":"Закрыть","region":{"kind":"Top"},"role":"Button","states":[]},{"aliases":{"at":5},"depth":1,"frame":{"height":53,"width":20,"x":986,"y":136},"label":"×","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":6},"frame":{"height":1879,"width":1080,"x":0,"y":266},"label":"","region":{"kind":"Content"},"resource_id":"issue-form-modal-scroll","role":"ScrollView","states":[]},{"aliases":{"at":7},"frame":{"height":53,"width":986,"x":47,"y":313},"label":"Название","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":8},"frame":{"height":126,"width":986,"x":47,"y":387},"label":"Название","region":{"kind":"Content"},"resource_id":"issue-title-input","role":"TextField","states":["value=\"Кнопка сохранения не реагирует\""],"value":"Кнопка сохранения не реагирует"},{"aliases":{"at":9},"frame":{"height":48,"width":986,"x":47,"y":534},"label":"От 3 до 120 символов после trim.","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":10},"frame":{"height":53,"width":986,"x":47,"y":629},"label":"Описание","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":11},"frame":{"height":410,"width":986,"x":47,"y":703},"label":"Описание","region":{"kind":"Content"},"resource_id":"issue-description-input","role":"TextField","states":["focused","value=\"Кнопка остаётся неактивной по…\""],"value":"Кнопка остаётся неактивной после заполнения всех обязательных полей to"},{"aliases":{"at":12},"frame":{"height":48,"width":802,"x":47,"y":1134},"label":"От 10 до 2000 символов после trim.","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":13},"frame":{"height":48,"width":152,"x":880,"y":1134},"label":"70 / 2000","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":14},"frame":{"height":53,"width":986,"x":47,"y":1229},"label":"Критичность","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":15},"frame":{"height":141,"width":982,"x":49,"y":1305},"label":"Критичность","region":{"kind":"Content"},"resource_id":"issue-severity-picker","role":"Spinner","states":[]},{"aliases":{"at":16},"depth":1,"frame":{"height":141,"width":856,"x":49,"y":1305},"label":"Высокая","region":{"kind":"Content"},"resource_id":"text1","role":"TextView","states":[]},{"aliases":{"at":17},"frame":{"height":53,"width":986,"x":47,"y":1497},"label":"Статус","region":{"kind":"Content"},"role":"TextView","states":[]}],"lists":[],"outline":"App: ru.maksim.qalab  1080x2400\n\n[Top  y<280]\n  @1  View  \"Новый дефект. Создать дефект\"  (47,95 855x137)\n    @2  TextView  \"НОВЫЙ ДЕФЕКТ\"  (47,95 855x42)\n    @3  TextView  \"Создать дефект\"  (47,142 855x90)\n  @4  Button  \"Закрыть\"  (933,100 126x126)\n    @5  TextView  \"×\"  (986,136 20x53)\n\n[Content  y=280..2120]\n  @6  ScrollView  \"\"  :issue-form-modal-scroll:  (0,266 1080x1879)\n  @7  TextView  \"Название\"  (47,313 986x53)\n  @8  TextField  \"Название\"  :issue-title-input:  (47,387 986x126)  value=\"Кнопка сохранения не реагирует\"\n  @9  TextView  \"От 3 до 120 символов после trim.\"  (47,534 986x48)\n  @10  TextView  \"Описание\"  (47,629 986x53)\n  @11  TextField  \"Описание\"  :issue-description-input:  (47,703 986x410)  focused  value=\"Кнопка остаётся неактивной по…\"\n  @12  TextView  \"От 10 до 2000 символов после trim.\"  (47,1134 802x48)\n  @13  TextView  
+    | …[обрезано 19914 символов]
+#23 2026-07-27T14:54:36.963Z sim-use tap @11 --device emulator-5554
+    → exit=0 72ms selector=selector
+    | ✓ Tap at (540.0, 908.0) completed successfully
+#24 2026-07-27T14:54:39.123Z sim-use android type --clear --device emulator-5554 Кнопка остаётся неактивной после заполнения всех обязательных полей
+    → exit=0 203ms
+    ! type ok (graphemes=67, clear=true)
+#25 2026-07-27T14:54:41.403Z sim-use keyboard-state --device emulator-5554
+    → exit=0 57ms
+    | soft
+#26 2026-07-27T14:54:41.522Z sim-use ui --device emulator-5554
+    → exit=0 58ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#27 2026-07-27T14:54:55.831Z sim-use button back --device emulator-5554
+    → exit=0 68ms selector=focus
+    | ✓ Back button press completed successfully
+#28 2026-07-27T14:54:58.002Z sim-use keyboard-state --device emulator-5554
+    → exit=0 61ms
+    | hidden
+#29 2026-07-27T14:54:58.122Z sim-use ui --device emulator-5554
+    → exit=0 69ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,900 940x600)
+#30 2026-07-27T14:55:14.304Z sim-use tap --label ПРОДОЛЖИТЬ РАБОТУ --device emulator-5554
+    → exit=0 120ms selector=selector
+    | ✓ Tap at (743.0, 1418.0) completed successfully
+#31 2026-07-27T14:55:17.487Z sim-use keyboard-state --device emulator-5554
+    → exit=0 43ms
+    | hidden
+#32 2026-07-27T14:55:17.591Z sim-use swipe --from 540,1600 --to 540,800 --duration 0.5 --device emulator-5554
+    → exit=0 69ms selector=coordinate
+    | ✓ Swipe (540,1600) → (540,800) completed successfully
+#33 2026-07-27T14:55:19.749Z sim-use ui --device emulator-5554
+    → exit=0 109ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#34 2026-07-27T14:55:36.545Z sim-use ui --device emulator-5554
+    → exit=0 130ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#35 2026-07-27T14:55:45.759Z sim-use tap @23 --device emulator-5554
+    → exit=0 258ms selector=selector
+    | ✓ Tap at (791.0, 2242.0) completed successfully
+#36 2026-07-27T14:55:51.150Z sim-use ui --device emulator-5554
+    → exit=0 83ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,95 839x284)
+#37 2026-07-27T14:56:00.480Z sim-use swipe --from 540,1700 --to 540,700 --duration 0.5 --device emulator-5554
+    → exit=0 119ms selector=coordinate
+    | ✓ Swipe (540,1700) → (540,700) completed successfully
+#38 2026-07-27T14:56:02.686Z sim-use swipe --from 540,1700 --to 540,700 --duration 0.5 --device emulator-5554
+    → exit=0 105ms selector=coordinate
+    | ✓ Swipe (540,1700) → (540,700) completed successfully
+#39 2026-07-27T14:56:04.872Z sim-use ui --device emulator-5554
+    → exit=0 207ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Дефект создан."  (96,71 886x63)

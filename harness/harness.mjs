@@ -37,6 +37,9 @@ import { loadManifest, listCases, unsupportedChecks, ManifestError } from "./lib
 import { runOracle, uiText } from "./lib/oracle-runner.mjs";
 import { versionManifest } from "./lib/versions.mjs";
 import { renderReport, reportStructure } from "./lib/report.mjs";
+import { summarizeLog, renderTranscript } from "./lib/cmdlog.mjs";
+import { captureDeviceLog, needsDiagnostics } from "./lib/diagnostics.mjs";
+import { renderSummary } from "./lib/summary.mjs";
 
 const STAGE = process.env.HARNESS_STAGE || "10";
 const PROXY_CLI = fileURLToPath(new URL("../tools/proxy.mjs", import.meta.url));
@@ -219,7 +222,7 @@ async function cmdFinish(f) {
   const apiBefore = { status: 200, body: JSON.parse(readFileSync(`${dir}/api-before.json`, "utf8")) };
 
   // 3. Артефакты агента.
-  const transcript = copyArtifact(f.transcript, dir, "transcript.txt");
+  const transcript = resolveTranscript(f, dir);
 
   // 4. Oracle.
   const oracle = await runOracle(manifest, {
@@ -262,7 +265,7 @@ async function cmdAbort(f) {
   const apiBefore = existsSync(`${dir}/api-before.json`)
     ? { status: 200, body: JSON.parse(readFileSync(`${dir}/api-before.json`, "utf8")) }
     : { status: null, body: { items: [] } };
-  const transcript = copyArtifact(f.transcript, dir, "transcript.txt");
+  const transcript = resolveTranscript(f, dir);
 
   const teardown = await doTeardown(manifest, api, state, { force: true });
 
@@ -288,6 +291,19 @@ function copyArtifact(src, dir, name) {
   return `runs/${basename(dir)}/${name}`;
 }
 
+/**
+ * Transcript run'а. Если вызовы шли через sim.mjs, он выводится из машинного
+ * журнала — это запись того, что действительно произошло, а не пересказ.
+ * Переданный вручную --transcript имеет приоритет (напр. прогон без обёртки).
+ */
+function resolveTranscript(f, dir) {
+  const manual = copyArtifact(f.transcript, dir, "transcript.txt");
+  if (manual) return manual;
+  if (!existsSync(`${dir}/commands.jsonl`)) return null;
+  writeFileSync(`${dir}/transcript.txt`, renderTranscript(`${dir}/commands.jsonl`));
+  return `runs/${basename(dir)}/transcript.txt`;
+}
+
 function basename(p) { return p.split("/").filter(Boolean).pop(); }
 
 async function doTeardown(manifest, api, state, { force = false } = {}) {
@@ -310,6 +326,13 @@ async function doTeardown(manifest, api, state, { force = false } = {}) {
 function finalizeRun(o) {
   const { f, state, manifest, dir, runId, apiBefore, apiAfter, oracle, teardown, transcript, captureError } = o;
 
+  // Неуспешный run требует системного контекста, которого нет в UI-дереве.
+  let diagnostics = null;
+  if (needsDiagnostics(oracle.verdict)) {
+    diagnostics = captureDeviceLog({ platform: state.platform, device: state.device, dir });
+    if (!diagnostics.saved) console.log(`диагностика: ${diagnostics.reason}`);
+  }
+
   const artifacts = {
     versionManifest: exists(dir, "version-manifest.json"),
     initialUi: exists(dir, "initial-ui.json"),
@@ -322,6 +345,14 @@ function finalizeRun(o) {
   };
   const missing = Object.entries(artifacts).filter(([, v]) => !v).map(([k]) => k);
   const evidenceComplete = missing.length === 0;
+
+  // Необязательные артефакты: журнал вызовов и диагностика сбоя.
+  const extras = {
+    commandLog: exists(dir, "commands.jsonl"),
+    deviceLog: exists(dir, "device-log.txt"),
+    video: exists(dir, "run-video.mp4"),
+  };
+  const toolStats = extras.commandLog ? summarizeLog(`${dir}/commands.jsonl`) : null;
 
   const finishedAt = new Date().toISOString();
   const unsupported = unsupportedChecks(manifest);
@@ -344,7 +375,10 @@ function finalizeRun(o) {
     "Allowed / forbidden actions":
       `разрешено: ${manifest.allowedActions.join(", ")} | запрещено: ${manifest.forbiddenActions.join(", ")}`,
     "Started at / finished at": `${state.startedAt} → ${finishedAt}`,
-    "Tool calls": num(f["tool-calls"]),
+    // Из журнала, если вызовы шли через sim.mjs; вручную — только как запасной путь.
+    "Tool calls": toolStats
+      ? `${toolStats.totalCalls} (действий ${toolStats.actionCalls}, по координатам ${toolStats.coordinateActions}, ошибок ${toolStats.failedCalls})`
+      : num(f["tool-calls"]),
     "Retries": num(f.retries),
     "Manual interventions": num(f.interventions),
     "API before": `total=${apiBefore.body?.total ?? "?"} → runs/${runId}/api-before.json`,
@@ -357,8 +391,9 @@ function finalizeRun(o) {
       : "проверки не выполнялись",
     "Agent self-report": f["self-report"] !== true ? f["self-report"] : null,
     "Final verdict": oracle.verdict,
-    "Failure category": o.category || failureCategory(oracle),
-    "Evidence paths": Object.entries(artifacts).filter(([, v]) => v).map(([k]) => k).join(", "),
+    "Failure category": o.category || failureCategory(oracle, toolStats),
+    "Evidence paths": [...Object.entries(artifacts), ...Object.entries(extras)]
+      .filter(([, v]) => v).map(([k]) => k).join(", "),
     "Teardown result": teardown,
     "New knowledge": f.knowledge !== true ? f.knowledge : null,
     "Follow-up decision": f["follow-up"] !== true ? f["follow-up"] : null,
@@ -377,11 +412,13 @@ function finalizeRun(o) {
     oracleChecks: oracle.checks.map((c) => ({ kind: c.kind, type: c.type, status: c.status, message: c.message })),
     oracleReasons: oracle.reasons,
     unsupportedChecks: unsupported,
-    toolCalls: numOrNull(f["tool-calls"]), retries: numOrNull(f.retries),
+    toolCalls: toolStats ? toolStats.totalCalls : numOrNull(f["tool-calls"]),
+    toolStats,
+    retries: numOrNull(f.retries),
     interventions: numOrNull(f.interventions),
     selfReport: f["self-report"] !== true ? f["self-report"] || null : null,
     aborted: Boolean(o.aborted), abortReason: o.abortReason || null,
-    teardown, artifacts, evidenceComplete,
+    teardown, artifacts, extras, diagnostics, evidenceComplete,
     reportPath: `runs/${runId}/report.txt`,
   };
   appendFileSync(`${evidenceRoot(STAGE, state.platform)}/runs.jsonl`, JSON.stringify(entry) + "\n");
@@ -401,11 +438,21 @@ function exists(dir, name) { return existsSync(`${dir}/${name}`) ? `runs/${basen
 function num(v) { return v === undefined || v === true ? null : v; }
 function numOrNull(v) { const n = Number(v); return Number.isFinite(n) ? n : null; }
 
-function failureCategory(oracle) {
+/**
+ * Первичная классификация по Приложению C. Автоматически различаются только те
+ * категории, для которых есть объективный признак; `product` против `agent`
+ * машина различить не может (постусловие не достигнуто в обоих случаях),
+ * поэтому FAIL честно помечается как требующий ручного решения, а не
+ * записывается в дефекты продукта.
+ */
+function failureCategory(oracle, toolStats) {
   if (oracle.verdict === "PASS") return "—";
-  if (oracle.checks.some((c) => c.status === "error")) return "oracle";
+  if (oracle.checks.some((c) => c.status === "error")) return "oracle (проверка не смогла выполниться)";
   if (oracle.verdict === "INCONCLUSIVE") return "oracle (постусловие не автоматизировано)";
-  return "требует классификации по Приложению C";
+  if (toolStats?.failedCalls > 0) {
+    return `product | agent | sim-use — требует классификации (${toolStats.failedCalls} вызовов завершились ошибкой)`;
+  }
+  return "product | agent — требует классификации по Приложению C";
 }
 
 // ── validate / list / selftest ────────────────────────────────────────────────
@@ -441,6 +488,26 @@ function cmdList() {
   }
 }
 
+// ── summary: сводный отчёт серии ──────────────────────────────────────────────
+
+function cmdSummary(f) {
+  const stage = f.stage && f.stage !== true ? f.stage : STAGE;
+  const platforms = f.platform && f.platform !== true ? [f.platform] : ["ios", "android"];
+  const { markdown, json } = renderSummary(stage, platforms);
+
+  // Сгенерированные отчёты — вне Git (evals/reports/ уже в .gitignore).
+  const outDir = f.out && f.out !== true
+    ? f.out
+    : fileURLToPath(new URL("../evals/reports", import.meta.url));
+  mkdirSync(outDir, { recursive: true });
+  const base = `${outDir}/stage-${stage}-summary`;
+  writeFileSync(`${base}.md`, markdown);
+  writeFileSync(`${base}.json`, JSON.stringify(json, null, 2));
+
+  console.log(markdown);
+  console.log(`\nсохранено: ${base}.md и ${base}.json`);
+}
+
 async function cmdSelftest() {
   const { selftest } = await import("./selftest.mjs");
   await selftest();
@@ -460,9 +527,10 @@ try {
     case "validate": cmdValidate(flags); break;
     case "list": cmdList(); break;
     case "new-workspace": console.log(newWorkspaceId()); break;
+    case "summary": cmdSummary(flags); break;
     case "selftest": await cmdSelftest(); break;
     default:
-      console.error("Команды: list | validate [case] | new-workspace | start | arm | finish | abort | selftest");
+      console.error("Команды: list | validate [case] | new-workspace | start | arm | finish | abort | summary | selftest");
       process.exit(2);
   }
 } catch (err) {

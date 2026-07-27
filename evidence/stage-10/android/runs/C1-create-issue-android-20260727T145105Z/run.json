@@ -1,0 +1,43 @@
+{
+  "runId": "C1-create-issue-android-20260727T145105Z",
+  "caseId": "C1-create-issue",
+  "platform": "android",
+  "device": "emulator-5554",
+  "workspaceId": "088634d8-8b76-4da9-bb76-4dae7bd18187",
+  "startedAt": "2026-07-27T14:51:06.915Z",
+  "seeded": [],
+  "versions": {
+    "capturedAt": "2026-07-27T14:51:05.870Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e80c20e",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "8830481",
+      "dirty": true
+    },
+    "platform": "android",
+    "device": {
+      "deviceId": "emulator-5554",
+      "name": "sdk_gphone64_arm64",
+      "platform": "android",
+      "runtime": "Android",
+      "state": "device"
+    },
+    "agentModel": "opus-4.8 (drive-only, cmdlog)",
+    "skillRevision": "sim-use-skill-v0.10.0",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/C1-create-issue.yaml",
+  "limits": {
+    "timeoutSeconds": 300,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "armedAt": "2026-07-27T14:51:34.710Z",
+  "finishedAt": "2026-07-27T14:56:15.694Z",
+  "verdict": "PASS"
+}

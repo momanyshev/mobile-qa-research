@@ -1,0 +1,35 @@
+[2026-07-27 16:23 MSK] C1 create-issue, iOS
+Device: iPhone 17 Pro Max, iOS 26.5
+Workspace: 3b0c9a66-3cf4-41e0-afed-f051dda52018
+Initial state: API total=0; UI list total=0.
+
+1. Started screen recording: create-defect-flow.mp4.
+2. Observed the main screen and tapped #create-issue-button.
+   Verified the "Новый дефект. Создать дефект" form appeared.
+3. Focused #issue-title-input and pasted:
+   Кнопка сохранения не реагирует
+   Verified the TextField value through the accessibility tree.
+4. Focused #issue-description-input and pasted:
+   Кнопка остаётся неактивной после заполнения всех обязательных полей
+   Verified the visible text and character counter (67 / 2000).
+5. Selected severity "Высокая" by tapping the row below the centered
+   "Средняя" value in the iOS wheel picker.
+   Verified the accessibility slider value changed from 1 to 2 (high).
+6. Left status at its default value "Открыт".
+   Verified the accessibility slider value remained 0 (open).
+7. Tapped the "Создать" button.
+   Verified success feedback "Дефект создан.".
+8. Scrolled to the list.
+   Verified "1 дефект", title, description, and "Критичность: Высокая".
+9. Tapping the non-actionable title did not open the details view.
+   Scrolled to the explicit card actions; no state-changing retry was made.
+10. Tapped #issue-card-open-e51e215e-6262-4c47-9220-2c9d36a8cdf0.
+    Verified the details view:
+    - title: Кнопка сохранения не реагирует
+    - description: Кнопка остаётся неактивной после заполнения всех обязательных полей
+    - status: Открыт
+    - severity: Высокая
+11. Saved details-opened.png and stopped the screen recording.
+
+No app relaunch, crash, manual intervention, or unrelated data modification.
+Final verdict is intentionally deferred to the independent harness oracle.

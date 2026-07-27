@@ -1,0 +1,27 @@
+Run ID: C1-create-issue-ios-20260727T132233Z
+Case ID: C1-create-issue
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: GPT-5
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: 3b0c9a66-3cf4-41e0-afed-f051dda52018
+Start state: seed 0 записей, api-before total=0
+Instruction: Создай в приложении новый дефект: заголовок «Кнопка сохранения не реагирует», описание «Кнопка остаётся неактивной после заполнения всех обязательных полей», критичность high, статус open. Убедись, что дефект появился в списке.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, read-test-api | запрещено: production-access, unrelated-data-modification, silent-app-relaunch-after-crash
+Started at / finished at: 2026-07-27T13:22:35.201Z → 2026-07-27T13:26:24.454Z
+Tool calls: 26
+Retries: 0
+Manual interventions: 0
+API before: total=0 → runs/C1-create-issue-ios-20260727T132233Z/api-before.json
+API after: total=1 → runs/C1-create-issue-ios-20260727T132233Z/api-after.json
+UI postcondition: финальный outline снят (runs/C1-create-issue-ios-20260727T132233Z/final-ui.json)
+Oracle result: api.count=pass, api.fields=pass, ui.containsText=pass
+Agent self-report: Дефект создан, отображён в списке и открыт на экране просмотра; UI показывает статус Открыт и критичность Высокая.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: На iOS заголовок карточки присутствует в accessibility tree как Heading, но не открывает карточку; для просмотра нужно прокрутить до явной кнопки issue-card-open-*.
+Follow-up decision: Для открытия карточки использовать явный action ID после проверки его viewport frame.

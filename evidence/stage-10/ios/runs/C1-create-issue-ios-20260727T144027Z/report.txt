@@ -1,0 +1,27 @@
+Run ID: C1-create-issue-ios-20260727T144027Z
+Case ID: C1-create-issue
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: opus-4.8 (drive-only, cmdlog)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: b865c440-bfd1-4d91-b19e-e435aa33cba0
+Start state: seed 0 записей, api-before total=0
+Instruction: Создай в приложении новый дефект: заголовок «Кнопка сохранения не реагирует», описание «Кнопка остаётся неактивной после заполнения всех обязательных полей», критичность high, статус open. Убедись, что дефект появился в списке.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, read-test-api | запрещено: production-access, unrelated-data-modification, silent-app-relaunch-after-crash
+Started at / finished at: 2026-07-27T14:40:28.879Z → 2026-07-27T14:41:17.676Z
+Tool calls: 10 (действий 8, по координатам 2, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: total=0 → runs/C1-create-issue-ios-20260727T144027Z/api-before.json
+API after: total=1 → runs/C1-create-issue-ios-20260727T144027Z/api-after.json
+UI postcondition: финальный outline снят (runs/C1-create-issue-ios-20260727T144027Z/final-ui.json)
+Oracle result: api.count=pass, api.fields=pass, ui.containsText=pass
+Agent self-report: Дефект создан
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Пятый повтор C1 из чистого состояния
+Follow-up decision: —

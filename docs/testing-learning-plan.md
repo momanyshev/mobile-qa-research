@@ -460,13 +460,13 @@
 | 8. Агентные режимы | Дизайн готов | Промпты, charter'ы и схема измерений готовы (`stage-8-agent-modes.md`); автономные прогоны → этап 14 |
 | 9. Seeded defects | Инфраструктура готова | Fault-профили и каталог дефектов готовы; detection-прогоны и recall → этап 14 |
 | 10. Benchmark | Gate 10.0 готов | Harness воспроизводим (selftest 54 PASS + два drive-only прогона C1); метрики и решение → этап 14 |
-| 11. Eval harness | Не начат | Запуски и verdict воспроизводимы |
+| 11. Eval harness | Завершён | Запуски и verdict воспроизводимы: журнал вызовов, диагностика сбоя, сводные метрики; C1 5/5 на iOS + отдельная сессия Android |
 | 12. Второе приложение | Не начат | Подтверждена или опровергнута переносимость |
 | 13. Свод знаний | Не начат | Сформированы capability matrix и runbook |
 | 14. Собственный AI-агент | Не начат | Агент проходит evals на двух приложениях |
 | 15. Финальное решение | Не начат | Зафиксированы вывод и дальнейший roadmap |
 
-Текущий этап: `10` (gate 10.0 закрыт; pilot/benchmark → этап 14)
+Текущий этап: `11` завершён (этапы 10.1–10.3 и прогоны агента → этап 14)
 
 Дата начала: `22 июля 2026`
 
@@ -503,6 +503,8 @@
 Этап 9 инфраструктура завершена: `24 июля 2026` (7 fault-профилей + каталог; detection/recall → этап 14)
 
 Этап 10 gate 10.0 завершён: `27 июля 2026` (harness `harness/`; selftest 54 PASS; два drive-only прогона C1 с идентичной структурой отчёта; pilot/benchmark → этап 14)
+
+Этап 11 завершён: `27 июля 2026` (журнал вызовов, диагностика сбоя, сводные метрики; selftest 67 PASS; C1 5/5 iOS + отдельная сессия Android)
 
 Дата завершения: `__________`
 
@@ -3080,33 +3082,108 @@ evals/
 └── reports/               gitignored transcripts и evidence
 ```
 
+**Фактическая раскладка (27 июля 2026).** Контур не строился заново: этап 11
+достроил harness этапа 10.0. Соответствие предложенной структуре:
+
+| Предложено | Реализовано |
+| --- | --- |
+| `cases/` | `harness/cases/` — шесть case-манифестов C1…C6 |
+| `fixtures/` | `preconditions.apiSeed` манифеста + fault-профили `tools/proxy.mjs` |
+| `scripts/` | `harness/harness.mjs` (start/arm/finish/abort/summary), `harness/sim.mjs`, `tools/` |
+| `reports/` | `evals/reports/` — сводные отчёты, вне Git |
+
 ### Чек-лист реализации
 
-- [ ] Описать schema case manifest.
-- [ ] Добавить instruction без команд, IDs и координат.
-- [ ] Добавить platform и device profile.
-- [ ] Добавить API seed и ожидаемое before-state.
-- [ ] Добавить разрешённые и запрещённые действия.
-- [ ] Добавить лимит времени и retry budget.
-- [ ] Добавить точные UI/API postconditions.
-- [ ] Добавить обязательный teardown.
-- [ ] Добавить version manifest.
-- [ ] Логировать каждый вызов, timestamp, duration, exit code, stdout и stderr.
-- [ ] Сохранять начальный и финальный `ui --json`.
-- [ ] Сохранять screenshot всегда, video и device logs при сбое.
-- [ ] Выставлять verdict только verifier-скриптом.
-- [ ] Отличать `FAIL` продукта от `BLOCKED` окружения или инструмента.
-- [ ] Генерировать сводный Markdown/JSON-отчёт.
-- [ ] Исключить generated reports из Git.
-- [ ] Проверить аварийный teardown.
-- [ ] Повторить один case из чистого состояния пять раз.
+- [x] Описать schema case manifest. `harness/lib/manifest.mjs` + строгий парсер
+  `harness/lib/yaml.mjs`.
+- [x] Добавить instruction без команд, IDs и координат. Поле `instruction`
+  всех шести манифестов — только бизнес-формулировка.
+- [x] Добавить platform и device profile. `platform` в манифесте, устройство и
+  ОС — в version manifest каждого run.
+- [x] Добавить API seed и ожидаемое before-state. `preconditions.apiSeed`,
+  `api-before.json` на каждый run.
+- [x] Добавить разрешённые и запрещённые действия. `allowedActions` /
+  `forbiddenActions`, печатаются агенту при `start`.
+- [x] Добавить лимит времени и retry budget. `limits.timeoutSeconds` и
+  `limits.retryPerAction`.
+- [x] Добавить точные UI/API postconditions. `oracle.api.checks` и
+  `oracle.ui.checks` (шесть и три типа проверок).
+- [x] Добавить обязательный teardown. Выполняется при любом исходе, включая
+  `abort`; сбрасывает и fault profile.
+- [x] Добавить version manifest. `harness/lib/versions.mjs`.
+- [x] Логировать каждый вызов, timestamp, duration, exit code, stdout и stderr.
+  `harness/lib/cmdlog.mjs` + обёртка `harness/sim.mjs`; `commands.jsonl` на run.
+  Transcript больше не пишется руками — он выводится из журнала.
+- [x] Сохранять начальный и финальный `ui --json`. `initial-ui.json` /
+  `final-ui.json`; команда `arm` переснимает исходный снимок после наведения
+  приложения на Workspace run'а.
+- [x] Сохранять screenshot всегда, video и device logs при сбое.
+  Screenshot — всегда; `harness/lib/diagnostics.mjs` собирает системный журнал
+  устройства при любом verdict, кроме `PASS`. Видео пишется по необходимости
+  (`sim-use record-video`), пример — в стороннем прогоне GPT-5.
+- [x] Выставлять verdict только verifier-скриптом. `oracle-runner.mjs` поверх
+  `verify.mjs`; самоотчёт агента сохраняется, но на verdict не влияет.
+- [x] Отличать `FAIL` продукта от `BLOCKED` окружения или инструмента.
+  `BLOCKED` — только через `abort` с причиной; `INCONCLUSIVE` — отдельная
+  категория; `product | agent` честно помечается как требующий ручной
+  классификации, а не записывается в дефекты автоматически.
+- [x] Генерировать сводный Markdown/JSON-отчёт. `harness.mjs summary` —
+  метрики раздела 10.4 (`harness/lib/summary.mjs`).
+- [x] Исключить generated reports из Git. `evals/reports/` в `.gitignore`.
+- [x] Проверить аварийный teardown. Selftest: seeded run прерван, 4 fixtures
+  удалены, fault profile сброшен, verdict `BLOCKED`, evidence помечен неполным.
+- [x] Повторить один case из чистого состояния пять раз. C1 на iOS: **5/5
+  PASS**, repeatability 4/5 = 100%, evidence completeness 100%.
 
 ### Критерий завершения
 
-- [ ] Один и тот же case воспроизводимо запускается на iOS и Android как две
-  отдельные сессии.
-- [ ] Verdict не зависит от финального текста агента.
-- [ ] По отчёту можно восстановить причину любого результата.
+- [x] Один и тот же case воспроизводимо запускается на iOS и Android как две
+  отдельные сессии. C1: 5 runs на iPhone 17 Pro Max (iOS 26.5) и отдельная
+  сессия на Medium_Phone_API_36.1 — все PASS, evidence полон.
+- [x] Verdict не зависит от финального текста агента. Verdict выставляют только
+  функции `verify.mjs`; проверено selftest (неверная severity → `FAIL` при
+  положительном самоотчёте) и подтверждено сторонним прогоном другой модели.
+- [x] По отчёту можно восстановить причину любого результата. Отчёт по
+  Приложению B + машинный журнал вызовов + снимки UI/API до и после +
+  системный журнал устройства при неуспехе.
+
+### Результаты этапа 11 (27 июля 2026)
+
+Selftest harness: **67 PASS, 0 FAIL**. Серия по C1: 6 runs (5 iOS + 1 Android),
+все `PASS`, evidence completeness 100%, intervention rate 0%, неочищенных
+fixtures 0. Сводка — `harness.mjs summary --stage 10`.
+
+Отдельно отмечено: один из iOS-прогонов выполнен **другой моделью (GPT-5)** в
+самостоятельной сессии по тому же манифесту и дал полный evidence pack и
+`PASS` — независимое подтверждение, что контур не завязан на конкретного
+агента.
+
+**Coordinate-free rate = 0%** — важный отрицательный результат, вскрытый именно
+метрикой: во всех журналируемых прогонах остались координатные действия.
+Причина не в агенте, а в контролах: iOS wheel-picker критичности управляется
+только тапом по точке, прокрутка формы — свайпом. Порог 10.5 (не менее 90%
+coordinate-free) на текущем UI недостижим без изменений тестопригодности
+приложения; это вход в backlog `APP` из test asset register.
+
+**Системные наблюдения (инструмент/платформа):**
+
+- **TOOL-ANDROID-GLIDE-001.** Свайп над открытой soft-клавиатурой Gboard
+  распознаётся как glide-ввод и **дописывает текст в сфокусированное поле**
+  (описание выросло с 67 до 70 символов, добавилось « to»). Прокручивать
+  только после `keyboard-state` = `hidden`. Ошибка тихая: `ok:true`, эффект
+  виден лишь в значении поля.
+- **TOOL-ANDROID-BACK-002.** На этой сборке один `button back` одновременно
+  скрывает клавиатуру **и** открывает диалог несохранённых изменений, то есть
+  не является безопасным способом убрать клавиатуру. Уточняет прежнюю запись
+  runbook про `back`.
+- **TOOL-ANDROID-BRIDGE-003.** На свежезагруженном эмуляторе `android init`
+  падает с `Bridge transport error` до полной загрузки, а затем bridge-процесс
+  один раз аварийно перезапускается (`PROCESS DISAPPEARED` относится к самому
+  bridge, не к приложению). Лечится ожиданием `sys.boot_completed` и повтором.
+- **ENV-ANDROID-ANR-004.** Свежий эмулятор поднялся с диалогом
+  «System UI isn't responding», перекрывающим приложение; `sim-use ui` при этом
+  даёт `root_window_timeout`, а bridge-screenshot — отказ по rate limit.
+  Диагностировать через `adb exec-out screencap`, снимать через «Wait».
 
 </details>
 

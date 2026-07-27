@@ -1,0 +1,27 @@
+Run ID: C1-create-issue-android-20260727T145105Z
+Case ID: C1-create-issue
+Platform: android
+Device / OS: emulator-5554 (sdk_gphone64_arm64, Android)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: opus-4.8 (drive-only, cmdlog)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: 088634d8-8b76-4da9-bb76-4dae7bd18187
+Start state: seed 0 записей, api-before total=0
+Instruction: Создай в приложении новый дефект: заголовок «Кнопка сохранения не реагирует», описание «Кнопка остаётся неактивной после заполнения всех обязательных полей», критичность high, статус open. Убедись, что дефект появился в списке.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, read-test-api | запрещено: production-access, unrelated-data-modification, silent-app-relaunch-after-crash
+Started at / finished at: 2026-07-27T14:51:06.915Z → 2026-07-27T14:56:15.694Z
+Tool calls: 39 (действий 15, по координатам 4, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: total=0 → runs/C1-create-issue-android-20260727T145105Z/api-before.json
+API after: total=1 → runs/C1-create-issue-android-20260727T145105Z/api-after.json
+UI postcondition: финальный outline снят (runs/C1-create-issue-android-20260727T145105Z/final-ui.json)
+Oracle result: api.count=pass, api.fields=pass, ui.containsText=pass
+Agent self-report: Дефект создан на Android; критичность Высокая
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Свайп над открытой клавиатурой Gboard распознаётся как glide-ввод и дописывает текст в поле (описание 67→70). Клавиатуру надо скрывать до прокрутки; back на этой сборке одновременно скрывает клавиатуру и открывает диалог несохранённых изменений.
+Follow-up decision: Занести в runbook: проверять keyboard-state перед свайпом

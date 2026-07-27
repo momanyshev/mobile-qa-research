@@ -16,6 +16,8 @@ import { parseYaml, YamlError } from "./lib/yaml.mjs";
 import { validateManifest, loadManifest, listCases, ManifestError } from "./lib/manifest.mjs";
 import { runOracle, uiText } from "./lib/oracle-runner.mjs";
 import { renderReport, reportStructure, REPORT_FIELDS } from "./lib/report.mjs";
+import { classifyCall, runLogged, summarizeLog, renderTranscript } from "./lib/cmdlog.mjs";
+import { needsDiagnostics } from "./lib/diagnostics.mjs";
 import { IssuesClient } from "../tools/lib/client.mjs";
 import { teardownWorkspace } from "../tools/lib/fixtures.mjs";
 
@@ -183,6 +185,40 @@ async function oracleTests(t) {
     uiText(JSON.stringify({ a: { label: "Кнопка" }, b: [{ label: "Поле" }] })).includes("Кнопка"));
 }
 
+// ── 3.5. Журнал вызовов ───────────────────────────────────────────────────────
+
+async function cmdlogTests(t) {
+  console.log("\nЖурнал вызовов (этап 11):");
+  t.ok("tap по id классифицируется как selector",
+    classifyCall(["tap", "#create-issue-button", "--device", "X"]).selector === "selector");
+  t.ok("tap по координатам классифицируется как coordinate",
+    classifyCall(["tap", "--x", "10", "--y", "20", "--device", "X"]).selector === "coordinate");
+  t.ok("tap по --label — selector",
+    classifyCall(["tap", "--label", "Создать", "--device", "X"]).selector === "selector");
+  t.ok("ui — наблюдение, не действие",
+    classifyCall(["ui", "--json", "--device", "X"]).kind === "observe");
+
+  const logPath = `${EV_DIR}/cmdlog-probe/commands.jsonl`;
+  const okCall = runLogged(logPath, ["ok-line"], { bin: "echo" });
+  t.ok("успешный вызов записан с exit 0", okCall.status === 0 && okCall.entry.exitCode === 0);
+  t.ok("длительность вызова измерена", Number.isFinite(okCall.entry.durationMs));
+  t.ok("stdout сохранён в журнале", okCall.entry.stdout.includes("ok-line"));
+
+  const failCall = runLogged(logPath, ["-c", "echo boom >&2; exit 3"], { bin: "sh" });
+  t.ok("ненулевой exit code сохранён", failCall.entry.exitCode === 3, `получено ${failCall.entry.exitCode}`);
+  t.ok("stderr сохранён", failCall.entry.stderr.includes("boom"));
+
+  const stats = summarizeLog(logPath);
+  t.ok("сводка считает все вызовы", stats.totalCalls === 2, `totalCalls=${stats.totalCalls}`);
+  t.ok("сводка считает ошибочные вызовы", stats.failedCalls === 1);
+
+  const transcript = renderTranscript(logPath);
+  t.ok("transcript выводится из журнала", transcript.includes("ok-line") && transcript.includes("exit=3"));
+
+  t.ok("диагностика требуется только при неуспехе",
+    needsDiagnostics("FAIL") && needsDiagnostics("BLOCKED") && !needsDiagnostics("PASS"));
+}
+
 // ── 4. Отчёт ──────────────────────────────────────────────────────────────────
 
 async function reportTests(t) {
@@ -275,6 +311,7 @@ export async function selftest() {
   await yamlTests(t);
   await manifestTests(t);
   await oracleTests(t);
+  await cmdlogTests(t);
   await reportTests(t);
   await cycleTests(t);
   console.log(`\nИтого: ${t.pass} PASS, ${t.fail} FAIL`);
