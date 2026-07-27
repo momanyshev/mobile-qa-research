@@ -75,5 +75,27 @@ responseRequestId, durationMs`. `seq` выводится из числа стр�
 `clear-log` корректно сбрасывает нумерацию даже для работающего сервера.
 
 Pass-through не меняет контракт: статус, тело и заголовки (включая
-`X-Request-Id`) возвращаются без изменений. На этапе 9 сюда добавятся fault
-profiles.
+`X-Request-Id`) возвращаются без изменений.
+
+### Fault profiles (этап 9)
+
+Работающий сервер читает `proxy/fault.json` на каждый запрос, поэтому
+`enable`/`reset` действуют без перезапуска. Отсутствие конфига или профиль
+`passthrough` = чистый pass-through.
+
+```bash
+node proxy.mjs enable http-500                          # 500 на совпавшие запросы
+node proxy.mjs enable delay --params '{"delayMs":2000}' # задержка
+node proxy.mjs enable fail-first --params '{"status":503}'
+node proxy.mjs enable double-write --params '{"match":{"method":"POST"}}'
+node proxy.mjs status        # показывает активный профиль
+node proxy.mjs reset         # → passthrough (обязателен в teardown каждого run)
+```
+
+Профили: `passthrough`, `http-500`, `delay`, `fail-first`, `malformed-json`,
+`disconnect`, `out-of-order`, `double-write`. Фильтр совпадения —
+`params.match.method` и `params.match.pathPrefix` (по умолчанию все `/api/`).
+Конфиг versioned (`schemaVersion`); request log помечает применённый профиль
+полем `fault`. `reset` возвращает чистый pass-through и обязан вызываться в
+teardown, в том числе после аварийного run. Каталог дефектов и соответствие
+профилям — `../docs/stage-9-defect-catalog.md`.
