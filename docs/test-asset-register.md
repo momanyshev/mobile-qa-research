@@ -58,6 +58,9 @@ scope MVP).
 | C2 | iOS-дерево держит off-viewport элементы с off-screen координатами — `tap #id` мимо; Android-дерево = viewport | iOS/Android | **CH (эвристика)** | Проверять frame в viewport перед tap; постусловие обязательно |
 | C3 | Debounce поиска: чтение счётчика сразу после ввода даёт ложный 0 | iOS+Android | **CH** | Пауза ~3 с перед чтением; сверка с API |
 | C4 | `type` на iOS зависит от раскладки устройства (`x`→`ч`); детерминированный текст — через `paste`/`android type` | iOS | **CH** | Фиксировать раскладку или использовать paste |
+| C7 | `sim-use daemon` без `LANG`/`LC_ALL` (свежий shell) портит кириллицу при `paste` в mojibake (TOOL-LOCALE-001) | iOS | **CH** | Экспортировать `LANG=LC_ALL=…UTF-8` до сессии; иначе `daemon stop` + повтор |
+| C8 | RN wheel-picker критичности/статуса инерционен: свайп перелетает (TOOL-PICKER-001) | iOS | **CH (эвристика)** | Управлять тапом по строке рядом с центром (один шаг за тап), не свайпом |
+| C9 | HID `paste` на iOS Simulator требует hardware keyboard; RN `TextField` не отдаёт iOS edit-menu → `--via-menu` не работает (ENV-HWKB-001) | iOS | **CH** | Включить Connect Hardware Keyboard; путь `paste` (не via-menu) |
 | C5 | Android: поле за soft keyboard не фокусируется по tap; `button back` вне модалки выходит из приложения | Android | **CH** | Заполнять по одному полю с `button back`; не слать back вслепую |
 | C6 | Флаки blobs netlify dev (`--offline`): POST 201, но GET=0 | среда | **MAN** | Проверять персистентность seed перед seed-зависимыми run; чистый рестарт |
 

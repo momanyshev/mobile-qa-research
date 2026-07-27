@@ -1,0 +1,52 @@
+id: C5-workspace-isolation
+title: Изоляция Workspace
+pilot: true
+platform: any
+appId: ru.maksim.qalab
+instruction: >-
+  Запомни дефект «Падение при открытии деталей», который сейчас виден в списке.
+  Переключи приложение на другой, ранее не использованный Workspace и убедись,
+  что этот дефект в новом Workspace не отображается. Оставь приложение в новом
+  Workspace. Ничего не создавай и не удаляй.
+preconditions:
+  workspaceId: generated-per-run
+  apiSeed:
+    - title: Падение при открытии деталей
+      description: Приложение закрывается при переходе в детали дефекта из списка
+      severity: critical
+      status: open
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - read-test-api
+forbiddenActions:
+  - production-access
+  - unrelated-data-modification
+  - silent-app-relaunch-after-crash
+  - any-write-request
+limits:
+  timeoutSeconds: 300
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: unchanged
+      - type: count
+        expected: 1
+      - type: isolation
+        where:
+          title: Падение при открытии деталей
+  ui:
+    # Финальный экран — чужой Workspace: данные исходного не должны быть видны.
+    checks:
+      - type: notContainsText
+        text: Падение при открытии деталей
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  deleteCreatedIssues: true

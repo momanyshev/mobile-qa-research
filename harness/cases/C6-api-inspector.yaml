@@ -1,0 +1,50 @@
+id: C6-api-inspector
+title: API-инспектор отражает мутацию
+pilot: true
+platform: any
+appId: ru.maksim.qalab
+instruction: >-
+  Создай дефект с заголовком «Инспектор не показывает запрос», описанием
+  «Проверяем, отражается ли последняя мутация в панели API-инспектора»,
+  критичностью medium и статусом open. Затем открой API-инспектор и убедись,
+  что он показывает выполненный запрос создания и его статус.
+preconditions:
+  workspaceId: generated-per-run
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - read-test-api
+forbiddenActions:
+  - production-access
+  - unrelated-data-modification
+  - silent-app-relaunch-after-crash
+limits:
+  timeoutSeconds: 300
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: count
+        expected: 1
+      - type: fields
+        where:
+          title: Инспектор не показывает запрос
+        expect:
+          severity: medium
+          status: open
+  ui:
+    checks:
+      - type: containsText
+        text: POST
+      - type: containsText
+        text: "201"
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  deleteCreatedIssues: true

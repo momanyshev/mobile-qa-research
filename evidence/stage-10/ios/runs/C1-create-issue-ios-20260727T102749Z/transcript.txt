@@ -1,0 +1,4 @@
+[run2 C1] open form, fill title+desc via paste (UTF-8 locale)
+✓ Tap at (220.0, 290.0) completed successfully
+[severity] tapped row below center -> @11  Slider  "2"
+✓ Tap at (323.0, 920.0) completed successfully

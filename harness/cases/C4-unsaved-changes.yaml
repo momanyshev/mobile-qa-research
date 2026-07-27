@@ -1,0 +1,53 @@
+id: C4-unsaved-changes
+title: Несохранённые изменения формы
+pilot: true
+platform: any
+appId: ru.maksim.qalab
+instruction: >-
+  Открой форму создания дефекта, заполни заголовок «Черновик проверки выхода»
+  и описание «Проверяем поведение приложения при закрытии формы с несохранёнными
+  данными», после чего закрой форму, не сохраняя. На предупреждение о
+  несохранённых изменениях ответь отказом от сохранения. Убедись, что новый
+  дефект не создан.
+preconditions:
+  workspaceId: generated-per-run
+  apiSeed:
+    - title: Опечатка в подписи фильтра
+      description: В подписи фильтра критичности пропущена буква в слове критичность
+      severity: low
+      status: open
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - read-test-api
+forbiddenActions:
+  - production-access
+  - unrelated-data-modification
+  - silent-app-relaunch-after-crash
+limits:
+  timeoutSeconds: 300
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: unchanged
+      - type: count
+        expected: 1
+  ui:
+    checks:
+      - type: notContainsText
+        text: Черновик проверки выхода
+  # Alert живёт только во время run: в финальном outline его уже нет, поэтому
+  # факт его показа не выводится автоматически. Без явного --confirm-manual
+  # run честно завершается как INCONCLUSIVE, а не как тихий PASS.
+  manualChecks:
+    - Предупреждение о несохранённых изменениях было показано и зафиксировано в transcript
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  deleteCreatedIssues: true

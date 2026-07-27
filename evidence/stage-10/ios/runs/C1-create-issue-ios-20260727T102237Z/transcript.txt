@@ -1,0 +1,10 @@
+[run1 C1] 10:22:49 tap create-issue-button
+✓ Tap at (220.0, 290.0) completed successfully
+✓ Tap at (220.0, 147.0) completed successfully
+✓ Tap at (220.0, 321.0) completed successfully
+filled title+desc
+[fix] daemon restarted with UTF-8 locale; re-paste with --replace
+[severity] swipe wheel up one item medium->high
+[severity] stepped wheel to @11  Slider  "2" (target 2=high)
+[submit] tap Создать
+✓ Tap at (323.0, 920.0) completed successfully

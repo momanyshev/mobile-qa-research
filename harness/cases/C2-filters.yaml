@@ -1,0 +1,60 @@
+id: C2-filters
+title: Поиск и мультифильтры
+pilot: true
+platform: any
+appId: ru.maksim.qalab
+instruction: >-
+  В списке дефектов оставь видимыми только дефекты со статусом open и
+  критичностью critical. Не создавай, не меняй и не удаляй записи.
+preconditions:
+  workspaceId: generated-per-run
+  apiSeed:
+    - title: Падение при открытии деталей
+      description: Приложение закрывается при переходе в детали дефекта из списка
+      severity: critical
+      status: open
+    - title: Опечатка в подписи фильтра
+      description: В подписи фильтра критичности пропущена буква в слове критичность
+      severity: low
+      status: open
+    - title: Долгая загрузка списка
+      description: Список дефектов загружается дольше пяти секунд на холодном старте
+      severity: critical
+      status: testing
+    - title: Не сохраняется черновик
+      description: Черновик формы теряется после сворачивания приложения в фон
+      severity: medium
+      status: in_progress
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - read-test-api
+forbiddenActions:
+  - production-access
+  - unrelated-data-modification
+  - silent-app-relaunch-after-crash
+  - any-write-request
+limits:
+  timeoutSeconds: 300
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: unchanged
+      - type: count
+        expected: 4
+  ui:
+    checks:
+      - type: listMatchesQuery
+        query:
+          status: open
+          severity: critical
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  deleteCreatedIssues: true

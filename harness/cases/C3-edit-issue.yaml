@@ -1,0 +1,52 @@
+id: C3-edit-issue
+title: Редактирование дефекта
+pilot: true
+platform: any
+appId: ru.maksim.qalab
+instruction: >-
+  Открой дефект «Долгая загрузка списка» и измени его критичность на blocker.
+  Остальные поля дефекта оставь без изменений.
+preconditions:
+  workspaceId: generated-per-run
+  apiSeed:
+    - title: Долгая загрузка списка
+      description: Список дефектов загружается дольше пяти секунд на холодном старте
+      severity: medium
+      status: open
+    - title: Опечатка в подписи фильтра
+      description: В подписи фильтра критичности пропущена буква в слове критичность
+      severity: low
+      status: open
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - read-test-api
+forbiddenActions:
+  - production-access
+  - unrelated-data-modification
+  - silent-app-relaunch-after-crash
+limits:
+  timeoutSeconds: 300
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: onlyChanged
+        seedIndex: 0
+        changed:
+          severity: blocker
+      - type: count
+        expected: 2
+  ui:
+    checks:
+      - type: containsText
+        text: Долгая загрузка списка
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  deleteCreatedIssues: true

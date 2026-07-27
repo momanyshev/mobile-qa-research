@@ -1,0 +1,48 @@
+id: C1-create-issue
+title: Создание дефекта
+pilot: true
+platform: any
+appId: ru.maksim.qalab
+instruction: >-
+  Создай в приложении новый дефект: заголовок «Кнопка сохранения не реагирует»,
+  описание «Кнопка остаётся неактивной после заполнения всех обязательных полей»,
+  критичность high, статус open. Убедись, что дефект появился в списке.
+preconditions:
+  workspaceId: generated-per-run
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - read-test-api
+forbiddenActions:
+  - production-access
+  - unrelated-data-modification
+  - silent-app-relaunch-after-crash
+limits:
+  timeoutSeconds: 300
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: count
+        expected: 1
+      - type: fields
+        where:
+          title: Кнопка сохранения не реагирует
+        expect:
+          severity: high
+          status: open
+          description: Кнопка остаётся неактивной после заполнения всех обязательных полей
+  ui:
+    checks:
+      - type: containsText
+        text: Кнопка сохранения не реагирует
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  deleteCreatedIssues: true

@@ -17,16 +17,13 @@
 // Легаси (этап 7): node runlog.mjs <platform> <id> <verdict> [json]
 //        → пишет в evidence/stage-7/<platform>/runs.jsonl
 
-import { appendFileSync, mkdirSync, existsSync, copyFileSync, writeFileSync } from "node:fs";
-import { execFileSync } from "node:child_process";
-import { fileURLToPath } from "node:url";
+import { appendFileSync, mkdirSync, existsSync, copyFileSync } from "node:fs";
+import { captureSnapshot, evidenceRoot } from "./lib/capture.mjs";
 
 const argv = process.argv.slice(2);
 const SUB = ["snapshot", "record"];
 
-function evRoot(stage, platform) {
-  return fileURLToPath(new URL(`../evidence/stage-${stage}/${platform}`, import.meta.url));
-}
+const evRoot = evidenceRoot;
 
 // ── парсинг флагов ────────────────────────────────────────────────────────────
 function flags(args) {
@@ -41,13 +38,9 @@ function flags(args) {
 function snapshot(f) {
   for (const k of ["stage", "platform", "run", "phase", "device"])
     if (!f[k]) { console.error(`snapshot: нужен --${k}`); process.exit(2); }
-  const runDir = `${evRoot(f.stage, f.platform)}/runs/${f.run}`;
-  mkdirSync(runDir, { recursive: true });
-  const uiPath = `${runDir}/${f.phase}-ui.json`;
-  const shotPath = `${runDir}/${f.phase}-screen.png`;
-  const ui = execFileSync("sim-use", ["ui", "--json", "--device", f.device], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
-  writeFileSync(uiPath, ui);
-  execFileSync("sim-use", ["screenshot", "--device", f.device, "--output", shotPath]);
+  const { uiPath, shotPath } = captureSnapshot({
+    stage: f.stage, platform: f.platform, run: f.run, phase: f.phase, device: f.device,
+  });
   console.log(`snapshot ${f.phase}: ${uiPath} + ${shotPath}`);
 }
 

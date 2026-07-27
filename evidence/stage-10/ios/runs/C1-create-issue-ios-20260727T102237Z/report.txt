@@ -1,0 +1,27 @@
+Run ID: C1-create-issue-ios-20260727T102237Z
+Case ID: C1-create-issue
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: opus-4.8 (drive-only, harness verification)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: 0ed3d084-3c07-47b4-b928-e25b2e4e5c8b
+Start state: seed 0 записей, api-before total=0
+Instruction: Создай в приложении новый дефект: заголовок «Кнопка сохранения не реагирует», описание «Кнопка остаётся неактивной после заполнения всех обязательных полей», критичность high, статус open. Убедись, что дефект появился в списке.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, read-test-api | запрещено: production-access, unrelated-data-modification, silent-app-relaunch-after-crash
+Started at / finished at: 2026-07-27T10:22:38.961Z → 2026-07-27T10:26:40.649Z
+Tool calls: 14
+Retries: 2
+Manual interventions: 0
+API before: total=0 → runs/C1-create-issue-ios-20260727T102237Z/api-before.json
+API after: total=1 → runs/C1-create-issue-ios-20260727T102237Z/api-after.json
+UI postcondition: финальный outline снят (runs/C1-create-issue-ios-20260727T102237Z/final-ui.json)
+Oracle result: api.count=pass, api.fields=pass, ui.containsText=pass
+Agent self-report: Дефект создан, карточка видна в списке с критичностью Высокая
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Wheel-picker критичности инерционный: свайп перелетает, надёжнее пошаговый тап по строке выше центра. Daemon стартовал без LANG/LC_ALL — кириллица через paste дала mojibake; лечится перезапуском daemon c UTF-8.
+Follow-up decision: Зафиксировать в runbook: перед сессией экспортировать LANG/LC_ALL=UTF-8
