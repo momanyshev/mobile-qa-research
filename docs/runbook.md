@@ -51,6 +51,8 @@
 | `type` даёт не те буквы (`x`→`ч`) | Активный язык раскладки устройства искажает HID | Переключить раскладку устройства на English (с подтверждением) или использовать `paste` | Нет |
 | `keyboard-state` не меняется / поле не фокусируется | Tap в мёртвую зону или мимо поля | Свежий `ui`, tap по актуальному алиасу/ID, пауза | Нет |
 | Управление Simulator (клавиатура, поворот) не работает | Нужен macOS Accessibility для хост-приложения | Выдать доступ в System Settings → Privacy → Accessibility, либо ручной шаг оператора | Да, если доступ не выдан |
+| `simctl io … screenshot` → `Device does not have a 'default' display port`; `sim-use ui` → `No translation object returned`; запуск приложения падает с `FBSOpenApplicationServiceErrorDomain code=5` | Симулятор загружен **без запущенного Simulator.app** — headless-состояние без дисплея | `open -a Simulator`, затем `simctl shutdown` + `simctl boot` этого же устройства; одного лишь запуска Simulator.app поверх уже загруженного устройства недостаточно | Нет |
+| `PROCESS DISAPPEARED` про **чужое** приложение при работе с целевым | Crash-baseline остался от приложения предыдущего прогона | Игнорировать для своего приложения, но не сбрасывать чужой baseline своей волей; чистить между прогонами, иначе реальный crash будет замаскирован | Нет |
 
 ## Android Emulator / устройство
 

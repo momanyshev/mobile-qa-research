@@ -1,0 +1,39 @@
+{
+  "rooms": [
+    {
+      "roomId": "!SuicvSaIqTKJlkMUKx:10.0.2.2:8008",
+      "name": "Release Checklist",
+      "topic": "Проверки перед выпуском мобильного клиента",
+      "encrypted": true,
+      "messageEvents": 0
+    },
+    {
+      "roomId": "!TfkmpebMkdVurCzhlM:10.0.2.2:8008",
+      "name": "Golden 3d155a",
+      "topic": "Проверка агента",
+      "encrypted": true,
+      "messageEvents": 0
+    },
+    {
+      "roomId": "!UVaROlsdsOsNaNanfU:10.0.2.2:8008",
+      "name": "QA Probe Room",
+      "topic": null,
+      "encrypted": true,
+      "messageEvents": 1
+    }
+  ],
+  "eventCounts": {
+    "m.room.create": 3,
+    "m.room.encrypted": 1,
+    "m.room.encryption": 3,
+    "m.room.guest_access": 3,
+    "m.room.history_visibility": 3,
+    "m.room.join_rules": 3,
+    "m.room.member": 3,
+    "m.room.name": 3,
+    "m.room.power_levels": 3,
+    "m.room.topic": 2
+  },
+  "totalEvents": 27,
+  "users": 1
+}

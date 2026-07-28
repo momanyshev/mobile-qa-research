@@ -1,0 +1,71 @@
+#1 2026-07-28T14:34:43.028Z sim-use ui --device emulator-5554
+    → exit=0 105ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,95 839x284)
+#2 2026-07-28T14:34:51.689Z sim-use tap #create-issue-button --device emulator-5554
+    → exit=0 82ms selector=selector
+    | ✓ Tap at (540.0, 663.0) completed successfully
+#3 2026-07-28T14:34:57.922Z sim-use ui --device emulator-5554
+    → exit=0 75ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#4 2026-07-28T14:35:06.974Z sim-use tap #issue-title-input --device emulator-5554
+    → exit=0 54ms selector=selector
+    | ✓ Tap at (540.0, 450.0) completed successfully
+#5 2026-07-28T14:35:12.529Z sim-use android type Кнопка сохранения не реагирует --device emulator-5554
+    → exit=0 86ms
+    ! type ok (graphemes=30, clear=false)
+#6 2026-07-28T14:35:23.630Z sim-use ui --device emulator-5554
+    → exit=0 64ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#7 2026-07-28T14:35:31.694Z sim-use tap #issue-description-input --device emulator-5554
+    → exit=0 92ms selector=selector
+    | ✓ Tap at (540.0, 908.0) completed successfully
+#8 2026-07-28T14:35:38.228Z sim-use android type Кнопка остаётся неактивной после заполнения всех обязательных полей --device emulator-5554
+    → exit=0 75ms
+    ! type ok (graphemes=67, clear=false)
+#9 2026-07-28T14:35:46.882Z sim-use ui --device emulator-5554
+    → exit=0 107ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#10 2026-07-28T14:35:55.432Z sim-use tap #issue-severity-picker --device emulator-5554
+    → exit=0 63ms selector=selector
+    | ✓ Tap at (540.0, 1375.0) completed successfully
+#11 2026-07-28T14:36:05.121Z sim-use ui --device emulator-5554
+    → exit=0 72ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,826 940x747)
+#12 2026-07-28T14:36:12.112Z sim-use tap --label Высокая --device emulator-5554
+    → exit=0 59ms selector=selector
+    | ✓ Tap at (540.0, 1199.0) completed successfully
+#13 2026-07-28T14:36:18.861Z sim-use ui --device emulator-5554
+    → exit=0 61ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новый дефект. Создать дефект"  (47,95 855x137)
+#14 2026-07-28T14:36:28.599Z sim-use tap --label Создать --element-type Button --device emulator-5554
+    → exit=0 74ms selector=selector
+    | ✓ Tap at (791.0, 2242.0) completed successfully
+#15 2026-07-28T14:36:33.977Z sim-use ui --device emulator-5554
+    → exit=0 70ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,95 839x284)
+#16 2026-07-28T14:36:42.228Z sim-use swipe --from 540,1900 --to 540,700 --duration 0.4 --device emulator-5554
+    → exit=0 58ms selector=coordinate
+    | ✓ Swipe (540,1900) → (540,700) completed successfully
+#17 2026-07-28T14:36:47.443Z sim-use ui --device emulator-5554
+    → exit=0 110ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Дефект создан."  (96,71 886x63)
+#18 2026-07-28T14:37:14.814Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/c1-list-verified.png
+    → exit=0 167ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/c1-list-verified.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/c1-list-verified.png

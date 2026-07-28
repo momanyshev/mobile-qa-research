@@ -1,0 +1,27 @@
+Run ID: S1-speecher-navigation-ios-20260728T140954Z
+Case ID: S1-speecher-navigation
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent@0.1.0
+Workspace / test namespace: speecher: контейнер app.speecher.mobile на A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+Start state: seed 0 записей, состояние «до» = 1
+Instruction: Пройди по всем трём разделам приложения: главный экран, «Драфты» и «Настройки». Убедись, что раздел «Драфты» открывается и показывает своё состояние списка, а в «Настройках» видна секция с языком приложения. Ничего не меняй и не создавай — это только осмотр.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction | запрещено: production-access, settings-modification, silent-app-relaunch-after-crash
+Started at / finished at: 2026-07-28T14:09:56.272Z → 2026-07-28T14:13:54.119Z
+Tool calls: 14 (действий 4, по координатам 0, ошибок 0)
+Retries: —
+Manual interventions: 0
+API before: 1 → runs/S1-speecher-navigation-ios-20260728T140954Z/api-before.json
+API after: 1 → runs/S1-speecher-navigation-ios-20260728T140954Z/api-after.json
+UI postcondition: финальный outline снят (runs/S1-speecher-navigation-ios-20260728T140954Z/final-ui.json)
+Oracle result: api.unchanged=pass, ui.containsText=pass, ui.containsText=fail
+Agent self-report: Три раздела пройдены; Драфты показывают пустой список, в Настройках видна секция ЯЗЫК; завершил на главном экране
+Final verdict: FAIL
+Failure category: product | agent — требует классификации по Приложению C
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: сброс состояния отключён манифестом
+New knowledge: Системный диалог микрофона перекрыл старт; агент отказал в доступе как требует контракт
+Follow-up decision: —

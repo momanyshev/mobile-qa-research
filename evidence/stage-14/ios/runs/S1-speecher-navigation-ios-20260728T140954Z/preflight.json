@@ -1,0 +1,54 @@
+{
+  "checks": [
+    {
+      "name": "sim-use доступен",
+      "level": "fail",
+      "ok": true,
+      "detail": "версия 0.10.0"
+    },
+    {
+      "name": "локаль UTF-8",
+      "level": "fail",
+      "ok": true,
+      "detail": "LANG/LC_ALL = en_US.UTF-8"
+    },
+    {
+      "name": "целевое устройство доступно",
+      "level": "fail",
+      "ok": true,
+      "detail": "iPhone 17 Pro Max (iOS 26.5, Booted)"
+    },
+    {
+      "name": "платформа совпадает",
+      "level": "fail",
+      "ok": true,
+      "detail": "устройство ios, запрошено ios"
+    },
+    {
+      "name": "нет лишних устройств платформы",
+      "level": "fail",
+      "ok": true,
+      "detail": "запущено ровно одно"
+    },
+    {
+      "name": "устройства другой платформы",
+      "level": "warn",
+      "ok": true,
+      "detail": "запущены и не мешают: sdk_gphone64_arm64"
+    },
+    {
+      "name": "Speecher установлен",
+      "level": "fail",
+      "ok": true,
+      "detail": "контейнер найден"
+    },
+    {
+      "name": "hardware keyboard подключена",
+      "level": "warn",
+      "ok": true,
+      "detail": "включена"
+    }
+  ],
+  "ok": true,
+  "failed": []
+}

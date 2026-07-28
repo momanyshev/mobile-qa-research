@@ -77,6 +77,16 @@ if (state.status !== "started") {
   process.exit(2);
 }
 
+// screenshot/record-video без явного --output пишут файл в текущий каталог и
+// засоряют рабочее дерево (замечание чистого прогона 14.C). Подставляем путь
+// внутрь каталога run: снимок агента — тоже evidence и должен лежать с ним.
+const OUTPUT_COMMANDS = { screenshot: "png", "record-video": "mp4" };
+const simCommand = simArgs.find((a) => !a.startsWith("-"));
+if (OUTPUT_COMMANDS[simCommand] && !simArgs.includes("--output") && !simArgs.includes("-o")) {
+  const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+Z$/, "Z");
+  simArgs.push("--output", `${dir}/agent-${simCommand}-${stamp}.${OUTPUT_COMMANDS[simCommand]}`);
+}
+
 const { status, stdout, stderr } = runLogged(`${dir}/commands.jsonl`, simArgs);
 if (stdout) process.stdout.write(stdout);
 if (stderr) process.stderr.write(stderr);

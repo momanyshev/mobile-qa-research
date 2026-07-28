@@ -1,0 +1,27 @@
+Run ID: C1-create-issue-ios-20260728T142525Z
+Case ID: C1-create-issue
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent@0.1.0
+Workspace / test namespace: qalab: Workspace 2ab6c95e-5b5a-4ea7-a535-f7018162f962
+Start state: seed 0 записей, состояние «до» = 0
+Instruction: Создай в приложении новый дефект: заголовок «Кнопка сохранения не реагирует», описание «Кнопка остаётся неактивной после заполнения всех обязательных полей», критичность high, статус open. Убедись, что дефект появился в списке.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, read-test-api | запрещено: production-access, unrelated-data-modification, silent-app-relaunch-after-crash
+Started at / finished at: 2026-07-28T14:25:26.258Z → 2026-07-28T14:32:00.925Z
+Tool calls: 23 (действий 9, по координатам 2, ошибок 1)
+Retries: —
+Manual interventions: 0
+API before: 0 → runs/C1-create-issue-ios-20260728T142525Z/api-before.json
+API after: 1 → runs/C1-create-issue-ios-20260728T142525Z/api-after.json
+UI postcondition: финальный outline снят (runs/C1-create-issue-ios-20260728T142525Z/final-ui.json)
+Oracle result: api.count=pass, api.fields=pass, ui.containsText=pass
+Agent self-report: Дефект создан, подтверждён и в UI, и независимым чтением API; критичность high, статус open
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Агент нашёл два новых дефекта тестопригодности: рамки picker перекрываются и уходят за экран (990>956); поле поиска отдаёт placeholder как value. Wheel-picker вынудил единственный координатный тап, классифицирован как accessibility
+Follow-up decision: —

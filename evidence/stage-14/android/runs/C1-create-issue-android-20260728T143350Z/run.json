@@ -1,0 +1,48 @@
+{
+  "runId": "C1-create-issue-android-20260728T143350Z",
+  "caseId": "C1-create-issue",
+  "platform": "android",
+  "device": "emulator-5554",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "40288b33-06ef-4965-b7ed-2b60534bdfc7",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "6c0949",
+  "startedAt": "2026-07-28T14:33:51.248Z",
+  "seeded": [],
+  "versions": {
+    "capturedAt": "2026-07-28T14:33:50.760Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e80c20e",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "8a72feb",
+      "dirty": true
+    },
+    "platform": "android",
+    "device": {
+      "deviceId": "emulator-5554",
+      "name": "sdk_gphone64_arm64",
+      "platform": "android",
+      "runtime": "Android",
+      "state": "device"
+    },
+    "agentModel": "subagent (clean context)",
+    "skillRevision": "mobile-qa-agent@0.1.0",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/C1-create-issue.yaml",
+  "limits": {
+    "timeoutSeconds": 300,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "finishedAt": "2026-07-28T14:38:21.813Z",
+  "verdict": "PASS"
+}

@@ -1,0 +1,27 @@
+Run ID: A1-elementx-navigation-android-20260728T135204Z
+Case ID: A1-elementx-navigation
+Platform: android
+Device / OS: emulator-5554 (sdk_gphone64_arm64, Android)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent@0.1.0
+Workspace / test namespace: elementx: io.element.android.x на emulator-5554, состояние из homeserver.db
+Start state: seed 0 записей, состояние «до» = 4
+Instruction: Осмотри приложение: открой список чатов, зайди в существующую комнату «QA Probe Room», пролистай её ленту и вернись обратно в список. Ничего не создавай, не отправляй и не удаляй — это только осмотр.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction | запрещено: production-access, data-creation, message-sending
+Started at / finished at: 2026-07-28T13:52:05.372Z → 2026-07-28T13:55:54.627Z
+Tool calls: 15 (действий 5, по координатам 2, ошибок 0)
+Retries: —
+Manual interventions: 0
+API before: 4 → runs/A1-elementx-navigation-android-20260728T135204Z/api-before.json
+API after: 4 → runs/A1-elementx-navigation-android-20260728T135204Z/api-after.json
+UI postcondition: финальный outline снят (runs/A1-elementx-navigation-android-20260728T135204Z/final-ui.json)
+Oracle result: api.unchanged=pass, api.roomExists=pass, ui.containsText=pass
+Agent self-report: Список, комната и возврат подтверждены снимками ui; лента короче вьюпорта, поэтому прокрутка не меняет контент
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: сброс состояния отключён манифестом
+New knowledge: sim-use screenshot без --output пишет PNG в текущий каталог — засоряет рабочее дерево
+Follow-up decision: —

@@ -1,0 +1,49 @@
+{
+  "runId": "S2-speecher-language-persist-ios-20260728T141829Z",
+  "caseId": "S2-speecher-language-persist",
+  "platform": "ios",
+  "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+  "adapter": "speecher",
+  "context": {
+    "kind": "container",
+    "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+    "bundleId": "app.speecher.mobile",
+    "container": "/Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/Containers/Data/Application/A8BDCCA0-5310-41F1-BD74-30AE662425F9"
+  },
+  "runToken": "22ec35",
+  "startedAt": "2026-07-28T14:18:31.202Z",
+  "seeded": [],
+  "versions": {
+    "capturedAt": "2026-07-28T14:18:30.427Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e80c20e",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "8a72feb",
+      "dirty": true
+    },
+    "platform": "ios",
+    "device": {
+      "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+      "name": "iPhone 17 Pro Max",
+      "platform": "ios",
+      "runtime": "iOS 26.5",
+      "state": "Booted"
+    },
+    "agentModel": "subagent (clean context)",
+    "skillRevision": "mobile-qa-agent@0.1.0",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/S2-speecher-language-persist.yaml",
+  "limits": {
+    "timeoutSeconds": 420,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "finishedAt": "2026-07-28T14:23:26.741Z",
+  "verdict": "FAIL"
+}

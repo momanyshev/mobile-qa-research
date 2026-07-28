@@ -1,0 +1,64 @@
+#1 2026-07-28T13:52:56.793Z sim-use ui --device emulator-5554
+    → exit=0 40ms
+    | App: io.element.android.x  1080x2400
+    | [Content  y=280..2120]
+    |   @1  TextView  "Error"  (183,829 113x66)
+#2 2026-07-28T13:53:07.485Z sim-use tap --device emulator-5554 --label OK
+    → exit=0 83ms selector=selector
+    | ✓ Tap at (805.0, 1507.0) completed successfully
+#3 2026-07-28T13:53:12.668Z sim-use ui --device emulator-5554
+    → exit=0 66ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Settings, action required"  :home_screen-settings:  (23,85 126x126)
+#4 2026-07-28T13:53:20.486Z sim-use tap --device emulator-5554 --label QA Probe Room
+    → exit=0 64ms selector=selector
+    | ✓ Tap at (546.0, 1445.0) completed successfully
+#5 2026-07-28T13:53:29.416Z sim-use ui --device emulator-5554
+    → exit=0 52ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "QA Probe Room"  (148,84 415x126)
+#6 2026-07-28T13:53:43.349Z sim-use --help
+    → exit=0 11ms
+    | OVERVIEW: A utility to interact with iOS Simulators and Android
+    | emulators/devices and extract accessibility information.
+    | USAGE: sim-use <subcommand>
+#7 2026-07-28T13:53:51.341Z sim-use help swipe
+    → exit=0 12ms
+    | OVERVIEW: Perform a swipe gesture from one point to another on the screen.
+    | USAGE: sim-use swipe [<options>] [<x,y> ...]
+    | ARGUMENTS:
+#8 2026-07-28T13:54:01.799Z sim-use swipe --device emulator-5554 --from 540,800 --to 540,1800 --duration 0.4
+    → exit=0 37ms selector=coordinate
+    | ✓ Swipe (540,800) → (540,1800) completed successfully
+#9 2026-07-28T13:54:08.415Z sim-use ui --device emulator-5554
+    → exit=0 62ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "QA Probe Room"  (148,84 415x126)
+#10 2026-07-28T13:54:17.414Z sim-use swipe --device emulator-5554 --from 540,1800 --to 540,800 --duration 0.4
+    → exit=0 44ms selector=coordinate
+    | ✓ Swipe (540,1800) → (540,800) completed successfully
+#11 2026-07-28T13:54:17.521Z sim-use ui --device emulator-5554
+    → exit=0 43ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "QA Probe Room"  (148,84 415x126)
+#12 2026-07-28T13:54:24.681Z sim-use screenshot --device emulator-5554
+    → exit=0 114ms
+    | /Users/maksim/Documents/Projects/mobile-qa-research/harness/Android Screenshot - emulator-5554 - 2026-07-28 at 16.54.24.png
+    ! Screenshot saved to /Users/maksim/Documents/Projects/mobile-qa-research/harness/Android Screenshot - emulator-5554 - 2026-07-28 at 16.54.24.png
+#13 2026-07-28T13:54:38.846Z sim-use tap --device emulator-5554 --label Back
+    → exit=0 69ms selector=selector
+    | ✓ Tap at (75.0, 148.0) completed successfully
+#14 2026-07-28T13:54:46.157Z sim-use ui --device emulator-5554
+    → exit=0 44ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Settings, action required"  :home_screen-settings:  (23,85 126x126)
+#15 2026-07-28T13:54:57.565Z sim-use app-state --device emulator-5554
+    → exit=0 50ms
+    | Running apps (2):
+    |   com.linecorp.simuse.devicebridge  pid=1591
+    |   io.element.android.x  pid=11504

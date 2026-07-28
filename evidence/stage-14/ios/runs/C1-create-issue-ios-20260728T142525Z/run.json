@@ -1,0 +1,48 @@
+{
+  "runId": "C1-create-issue-ios-20260728T142525Z",
+  "caseId": "C1-create-issue",
+  "platform": "ios",
+  "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "2ab6c95e-5b5a-4ea7-a535-f7018162f962",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "51d97e",
+  "startedAt": "2026-07-28T14:25:26.258Z",
+  "seeded": [],
+  "versions": {
+    "capturedAt": "2026-07-28T14:25:25.353Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e80c20e",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "8a72feb",
+      "dirty": true
+    },
+    "platform": "ios",
+    "device": {
+      "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+      "name": "iPhone 17 Pro Max",
+      "platform": "ios",
+      "runtime": "iOS 26.5",
+      "state": "Booted"
+    },
+    "agentModel": "subagent (clean context)",
+    "skillRevision": "mobile-qa-agent@0.1.0",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/C1-create-issue.yaml",
+  "limits": {
+    "timeoutSeconds": 300,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "finishedAt": "2026-07-28T14:32:00.925Z",
+  "verdict": "PASS"
+}
