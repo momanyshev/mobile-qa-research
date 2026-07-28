@@ -1,0 +1,48 @@
+id: G1-elementx-create-room
+title: Golden — Element X, создание комнаты через форму
+adapter: elementx
+platform: android
+appId: io.element.android.x
+# Golden eval: повторяемый case для измерения агента. Имя комнаты содержит
+# {{token}} — harness подставляет уникальную строку на каждый run, поэтому
+# сценарий можно честно прогнать пять раз подряд, не сталкиваясь с уже
+# существующей комнатой.
+instruction: >-
+  Создай в приложении новую приватную комнату с названием «Golden {{token}}» и
+  описанием «Проверка агента». Приглашать никого не нужно. Убедись, что комната
+  создана и открылась.
+preconditions:
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+forbiddenActions:
+  - production-access
+  - message-sending
+  - room-deletion
+  - logout
+limits:
+  timeoutSeconds: 600
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: roomsAdded
+        expected: 1
+      - type: roomExists
+        name: Golden {{token}}
+        topic: Проверка агента
+        encrypted: true
+  ui:
+    checks:
+      - type: containsText
+        text: Golden {{token}}
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: false

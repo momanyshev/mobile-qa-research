@@ -1,0 +1,121 @@
+#1 2026-07-28T13:19:58.252Z sim-use ui --device emulator-5554
+    → exit=0 135ms
+    | App: io.element.android.x  1080x2400
+    | [Content  y=280..2120]
+    |   @1  TextView  "Error"  (183,829 113x66)
+#2 2026-07-28T13:20:05.338Z sim-use tap --device emulator-5554 --label OK
+    → exit=0 92ms selector=selector
+    | ✓ Tap at (805.0, 1507.0) completed successfully
+#3 2026-07-28T13:20:12.390Z sim-use ui --device emulator-5554
+    → exit=0 89ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Settings, action required"  :home_screen-settings:  (23,85 126x126)
+#4 2026-07-28T13:20:19.838Z sim-use tap --device emulator-5554 --label Create room
+    → exit=0 95ms selector=selector
+    | ✓ Tap at (750.0, 2189.0) completed successfully
+#5 2026-07-28T13:20:25.378Z sim-use ui --device emulator-5554
+    → exit=0 42ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Back"  (12,85 126x126)
+#6 2026-07-28T13:20:32.178Z sim-use tap --device emulator-5554 --label New room
+    → exit=0 79ms selector=selector
+    | ✓ Tap at (540.0, 493.0) completed successfully
+#7 2026-07-28T13:20:38.059Z sim-use ui --device emulator-5554
+    → exit=0 90ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Create"  (856,84 213x126)  disabled
+#8 2026-07-28T13:20:52.271Z sim-use tap --device emulator-5554 --label Name
+    → exit=0 92ms selector=selector
+    | ✓ Tap at (655.0, 339.0) completed successfully
+#9 2026-07-28T13:20:58.553Z sim-use ui --device emulator-5554
+    → exit=0 176ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Create"  (856,84 213x126)  disabled
+#10 2026-07-28T13:21:05.515Z sim-use android type Golden 3d155a --device emulator-5554
+    → exit=0 108ms
+    ! type ok (graphemes=13, clear=false)
+#11 2026-07-28T13:21:13.112Z sim-use ui --device emulator-5554
+    → exit=0 90ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Create"  (856,84 213x126)
+#12 2026-07-28T13:21:20.160Z sim-use tap --device emulator-5554 --label Topic (optional)
+    → exit=0 118ms selector=selector
+    | ✓ Tap at (540.0, 644.0) completed successfully
+#13 2026-07-28T13:21:26.898Z sim-use ui --device emulator-5554
+    → exit=0 109ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Create"  (856,84 213x126)
+#14 2026-07-28T13:21:35.954Z sim-use android type Проверка агента --device emulator-5554
+    → exit=0 104ms
+    ! type ok (graphemes=15, clear=false)
+#15 2026-07-28T13:21:42.779Z sim-use ui --device emulator-5554
+    → exit=0 87ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Create"  (856,84 213x126)
+#16 2026-07-28T13:21:53.080Z sim-use tap --device emulator-5554 --label Create
+    → exit=0 105ms selector=selector
+    | ✓ Tap at (962.0, 147.0) completed successfully
+#17 2026-07-28T13:21:58.907Z sim-use ui --device emulator-5554
+    → exit=0 120ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Skip"  (900,84 169x126)
+#18 2026-07-28T13:22:06.299Z sim-use tap --device emulator-5554 --label Skip
+    → exit=0 88ms selector=selector
+    | ✓ Tap at (984.0, 147.0) completed successfully
+#19 2026-07-28T13:22:13.711Z sim-use ui --device emulator-5554
+    → exit=0 97ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Golden 3d155a"  (148,84 401x126)
+#20 2026-07-28T13:22:21.828Z sim-use tap --device emulator-5554 --label Golden 3d155a
+    → exit=0 84ms selector=selector
+    | ✓ Tap at (348.0, 147.0) completed successfully
+#21 2026-07-28T13:22:27.686Z sim-use ui --device emulator-5554
+    → exit=0 113ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Back"  (12,85 126x126)
+#22 2026-07-28T13:22:35.928Z sim-use swipe --device emulator-5554 --from 540,1800 --to 540,900
+    → exit=0 59ms selector=coordinate
+    | ✓ Swipe (540,1800) → (540,900) completed successfully
+#23 2026-07-28T13:22:42.527Z sim-use ui --device emulator-5554
+    → exit=0 89ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Back"  (12,85 126x126)
+#24 2026-07-28T13:22:48.819Z sim-use tap --device emulator-5554 --label Security & privacy
+    → exit=0 95ms selector=selector
+    | ✓ Tap at (540.0, 1695.0) completed successfully
+#25 2026-07-28T13:22:54.971Z sim-use ui --device emulator-5554
+    → exit=0 93ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Save"  (890,84 179x126)  disabled
+#26 2026-07-28T13:23:02.959Z sim-use tap --device emulator-5554 --label Back
+    → exit=0 150ms selector=selector
+    | ✓ Tap at (75.0, 148.0) completed successfully
+#27 2026-07-28T13:23:10.193Z sim-use ui --device emulator-5554
+    → exit=0 86ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Back"  (12,85 126x126)
+#28 2026-07-28T13:23:16.376Z sim-use tap --device emulator-5554 --label Back
+    → exit=0 101ms selector=selector
+    | ✓ Tap at (75.0, 148.0) completed successfully
+#29 2026-07-28T13:23:24.153Z sim-use ui --device emulator-5554
+    → exit=0 88ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Golden 3d155a"  (148,84 401x126)
+#30 2026-07-28T13:23:32.316Z sim-use screenshot --device emulator-5554
+    → exit=0 336ms
+    | /Users/maksim/Documents/Projects/mobile-qa-research/harness/Android Screenshot - emulator-5554 - 2026-07-28 at 16.23.32.png
+    ! Screenshot saved to /Users/maksim/Documents/Projects/mobile-qa-research/harness/Android Screenshot - emulator-5554 - 2026-07-28 at 16.23.32.png

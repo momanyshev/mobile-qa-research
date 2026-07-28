@@ -31,7 +31,7 @@ import { fileURLToPath } from "node:url";
 
 import { newWorkspaceId } from "../tools/lib/workspace.mjs";
 import { captureSnapshot, evidenceRoot, runDir } from "../tools/lib/capture.mjs";
-import { loadManifest, listCases, unsupportedChecks, adapterFor, ManifestError } from "./lib/manifest.mjs";
+import { loadManifest, listCases, unsupportedChecks, adapterFor, applyToken, ManifestError } from "./lib/manifest.mjs";
 import { runOracle, uiText } from "./lib/oracle-runner.mjs";
 import { versionManifest } from "./lib/versions.mjs";
 import { renderReport, reportStructure } from "./lib/report.mjs";
@@ -93,7 +93,10 @@ function contextOf(state) {
 async function cmdStart(f) {
   const caseId = requireFlag(f, "case");
   const platform = requireFlag(f, "platform");
-  const manifest = loadManifest(caseId);
+  // Токен run'а: делает именованные сущности уникальными, чтобы один case
+  // можно было честно прогнать многократно.
+  const runToken = f.token && f.token !== true ? f.token : newWorkspaceId().slice(0, 6);
+  const manifest = applyToken(loadManifest(caseId), runToken);
 
   if (manifest.platform !== "any" && manifest.platform !== platform) {
     die(`Case ${caseId} объявлен для платформы ${manifest.platform}, запрошена ${platform}`);
@@ -159,7 +162,7 @@ async function cmdStart(f) {
 
   const state = {
     runId, caseId: manifest.id, platform, device,
-    adapter: adapter.id, context,
+    adapter: adapter.id, context, runToken,
     startedAt: new Date().toISOString(),
     seeded,
     versions, manifestPath: `cases/${manifest.id}.yaml`,
@@ -211,7 +214,7 @@ function cmdArm(f) {
 async function cmdFinish(f) {
   const runId = requireFlag(f, "run");
   const state = findRun(runId, f.platform !== true ? f.platform : null);
-  const manifest = loadManifest(state.caseId);
+  const manifest = applyToken(loadManifest(state.caseId), state.runToken || "");
   const dir = runDir(STAGE, state.platform, runId);
   const adapter = adapterFor(manifest);
   const context = contextOf(state);
@@ -255,7 +258,7 @@ async function cmdAbort(f) {
   const runId = requireFlag(f, "run");
   const reason = requireFlag(f, "reason");
   const state = findRun(runId, f.platform !== true ? f.platform : null);
-  const manifest = loadManifest(state.caseId);
+  const manifest = applyToken(loadManifest(state.caseId), state.runToken || "");
   const dir = runDir(STAGE, state.platform, runId);
   const adapter = adapterFor(manifest);
   const context = contextOf(state);

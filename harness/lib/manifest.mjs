@@ -117,6 +117,29 @@ export function listCases() {
   }
 }
 
+/**
+ * Подстановка уникального токена run'а вместо `{{token}}`.
+ *
+ * Нужна для повторяемости: сценарий, создающий именованную сущность, при втором
+ * прогоне столкнулся бы с уже существующей и провалил проверку «ровно одна
+ * запись с таким именем». Токен делает имя уникальным для каждого run, и один
+ * и тот же case можно честно прогнать пять раз подряд.
+ *
+ * Подстановка идёт и в инструкцию агента, и в значения проверок oracle —
+ * поэтому они гарантированно говорят об одном и том же объекте.
+ */
+export function applyToken(manifest, token) {
+  const walk = (v) => {
+    if (typeof v === "string") return v.replaceAll("{{token}}", token);
+    if (Array.isArray(v)) return v.map(walk);
+    if (v && typeof v === "object") {
+      return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, walk(x)]));
+    }
+    return v;
+  };
+  return walk(manifest);
+}
+
 /** Adapter, выбранный манифестом (или дефолтный). */
 export function adapterFor(manifest) {
   return getAdapter(manifest.adapter || DEFAULT_ADAPTER);

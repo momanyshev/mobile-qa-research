@@ -13,12 +13,28 @@
 // Exit code и потоки пробрасываются как есть, поэтому обёртка прозрачна для
 // любого вызывающего.
 
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { runLogged } from "./lib/cmdlog.mjs";
 import { runDir } from "../tools/lib/capture.mjs";
 
 const STAGE = process.env.HARNESS_STAGE || "10";
 const argv = process.argv.slice(2);
+
+/**
+ * Все стадии, присутствующие в evidence. Нужны, потому что runId уникален сам
+ * по себе, а требовать от агента ещё и HARNESS_STAGE — лишнее условие, о
+ * которое легко споткнуться: именно на нём споткнулся первый чистый прогон
+ * этапа 14.C. Сначала пробуем текущую стадию, затем остальные.
+ */
+function knownStages() {
+  const root = fileURLToPath(new URL("../evidence", import.meta.url));
+  if (!existsSync(root)) return [STAGE];
+  const found = readdirSync(root)
+    .filter((d) => d.startsWith("stage-"))
+    .map((d) => d.slice("stage-".length));
+  return [STAGE, ...found.filter((s) => s !== STAGE)];
+}
 
 const sepIndex = argv.indexOf("--");
 if (sepIndex === -1) {
@@ -37,15 +53,21 @@ const runId = flag("run") || process.env.HARNESS_RUN;
 if (!runId) { console.error("Нужен --run <runId> (или переменная HARNESS_RUN)"); process.exit(2); }
 if (!simArgs.length) { console.error("После -- не переданы аргументы sim-use"); process.exit(2); }
 
-// Платформу можно не указывать: run ищется по обеим.
+// Ни платформу, ни стадию указывать не нужно: runId уникален, поэтому ищем по
+// всем стадиям и обеим платформам.
 const platforms = flag("platform") ? [flag("platform")] : ["ios", "android"];
+const stages = knownStages();
 let dir = null;
-for (const p of platforms) {
-  const candidate = runDir(STAGE, p, runId);
-  if (existsSync(`${candidate}/run.json`)) { dir = candidate; break; }
+outer:
+for (const s of stages) {
+  for (const p of platforms) {
+    const candidate = runDir(s, p, runId);
+    if (existsSync(`${candidate}/run.json`)) { dir = candidate; break outer; }
+  }
 }
 if (!dir) {
-  console.error(`Не найден активный run ${runId} в evidence/stage-${STAGE}/{${platforms.join(",")}}/runs/`);
+  console.error(`Не найден активный run ${runId} ни в одной стадии `
+    + `(искал stage-{${stages.join(",")}} / {${platforms.join(",")}})`);
   process.exit(2);
 }
 

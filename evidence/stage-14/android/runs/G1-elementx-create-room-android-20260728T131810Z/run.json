@@ -1,0 +1,49 @@
+{
+  "runId": "G1-elementx-create-room-android-20260728T131810Z",
+  "caseId": "G1-elementx-create-room",
+  "platform": "android",
+  "device": "emulator-5554",
+  "adapter": "elementx",
+  "context": {
+    "kind": "matrix-db",
+    "device": "emulator-5554",
+    "bundleId": "io.element.android.x",
+    "dbPath": "/Users/maksim/Documents/Projects/matrix-test-server/homeserver.db"
+  },
+  "runToken": "3d155a",
+  "startedAt": "2026-07-28T13:18:10.916Z",
+  "seeded": [],
+  "versions": {
+    "capturedAt": "2026-07-28T13:18:10.195Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e80c20e",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "3ef30e9",
+      "dirty": true
+    },
+    "platform": "android",
+    "device": {
+      "deviceId": "emulator-5554",
+      "name": "sdk_gphone64_arm64",
+      "platform": "android",
+      "runtime": "Android",
+      "state": "device"
+    },
+    "agentModel": "subagent (clean context)",
+    "skillRevision": "mobile-qa-agent@0.1.0",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/G1-elementx-create-room.yaml",
+  "limits": {
+    "timeoutSeconds": 600,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "finishedAt": "2026-07-28T13:24:39.709Z",
+  "verdict": "PASS"
+}

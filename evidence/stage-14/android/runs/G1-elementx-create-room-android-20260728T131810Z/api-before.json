@@ -1,0 +1,32 @@
+{
+  "rooms": [
+    {
+      "roomId": "!SuicvSaIqTKJlkMUKx:10.0.2.2:8008",
+      "name": "Release Checklist",
+      "topic": "Проверки перед выпуском мобильного клиента",
+      "encrypted": true,
+      "messageEvents": 0
+    },
+    {
+      "roomId": "!UVaROlsdsOsNaNanfU:10.0.2.2:8008",
+      "name": "QA Probe Room",
+      "topic": null,
+      "encrypted": true,
+      "messageEvents": 1
+    }
+  ],
+  "eventCounts": {
+    "m.room.create": 2,
+    "m.room.encrypted": 1,
+    "m.room.encryption": 2,
+    "m.room.guest_access": 2,
+    "m.room.history_visibility": 2,
+    "m.room.join_rules": 2,
+    "m.room.member": 2,
+    "m.room.name": 2,
+    "m.room.power_levels": 2,
+    "m.room.topic": 1
+  },
+  "totalEvents": 18,
+  "users": 1
+}
