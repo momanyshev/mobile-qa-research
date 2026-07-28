@@ -1,0 +1,44 @@
+id: S3-speecher-icon-setting
+title: Speecher — выбор иконки приложения сохраняется
+adapter: speecher
+platform: ios
+appId: app.speecher.mobile
+# Аналог «формы с backend oracle» для приложения без backend: секция выбора —
+# единственный на iOS набор взаимоисключающих контролов с сохраняемым выбором.
+# Постусловие сформулировано от ожиданий пользователя: настройка, которую он
+# изменил, должна пережить перезапуск. Верен ли этот ожидаемый результат —
+# решает oracle, а не автор манифеста.
+instruction: >-
+  В настройках приложения в секции «Иконка приложения» выбери тёмную иконку.
+  Затем полностью перезапусти приложение, вернись в настройки и убедись, что
+  выбор сохранился. Язык интерфейса не меняй.
+preconditions:
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - app-relaunch
+forbiddenActions:
+  - production-access
+  - unrelated-settings-modification
+limits:
+  timeoutSeconds: 420
+  retryPerAction: 3
+oracle:
+  api:
+    # Изменённая пользователем настройка обязана где-то сохраниться.
+    checks:
+      - type: defaultsChanged
+  ui:
+    checks:
+      - type: containsText
+        text: ИКОНКА ПРИЛОЖЕНИЯ
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: false

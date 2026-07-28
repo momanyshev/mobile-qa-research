@@ -1,0 +1,46 @@
+id: S5-speecher-charter
+title: Speecher — exploratory charter по настройкам и локализации
+adapter: speecher
+platform: ios
+appId: app.speecher.mobile
+# Exploratory charter из 12.3: область и риски заданы, маршрут — нет.
+# У charter'а по определению нет заранее известного постусловия, поэтому
+# автоматического PASS здесь быть не может: результат — наблюдения, которые
+# ревьюит человек. Без --confirm-manual run честно завершается INCONCLUSIVE.
+instruction: >-
+  Область: раздел настроек и локализация интерфейса. Риск: подписи и состояния
+  элементов могут не соответствовать выбранному языку или фактическому
+  состоянию системы. Исследуй раздел настроек, меняя язык интерфейса в обе
+  стороны, и найди места, где текст, доступное имя элемента или состояние
+  контрола не соответствуют выбранному языку. Маршрут выбирай сам. Записи не
+  создавай. По итогам сформулируй найденные несоответствия со шагами
+  воспроизведения.
+preconditions:
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - app-relaunch
+forbiddenActions:
+  - production-access
+  - data-creation
+limits:
+  timeoutSeconds: 900
+  retryPerAction: 3
+oracle:
+  api:
+    # Charter — исследование, а не мутация: язык может оказаться любым, но
+    # никаких иных ключей появиться не должно.
+    checks:
+      - type: unchanged
+  manualChecks:
+    - Найденные несоответствия локализации подтверждены ручным ревью evidence и снабжены шагами воспроизведения
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: false

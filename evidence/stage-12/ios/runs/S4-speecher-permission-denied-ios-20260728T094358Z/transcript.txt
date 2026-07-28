@@ -1,0 +1,16 @@
+#1 2026-07-28T09:44:27.294Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 1813ms
+    | App: SpringBoard  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)
+#2 2026-07-28T09:44:44.445Z sim-use tap --label Не разрешать --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 463ms selector=selector
+    | ✓ Tap at (146.0, 604.6666666666667) completed successfully
+#3 2026-07-28T09:44:50.004Z sim-use tap --label Настройки --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 584ms selector=selector
+    | ✓ Tap at (366.6666564941406, 893.4412231445312) completed successfully
+#4 2026-07-28T09:44:54.682Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 495ms
+    | App: Speecher  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)

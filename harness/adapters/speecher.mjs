@@ -114,6 +114,20 @@ export default {
         : { status: FAIL, message: `ключ «${check.key}» неожиданно присутствует: ${JSON.stringify(actual)}` };
     },
 
+    /**
+     * Состояние приложения изменилось хоть чем-то. Нужна там, где проверяется
+     * сам факт сохранения настройки: если пользователь изменил настройку, а в
+     * UserDefaults ничего не появилось, значит настройка не персистится.
+     */
+    async defaultsChanged(check, { before, after }) {
+      const b = before?.defaults ?? {}, a = after?.defaults ?? {};
+      const touched = [...new Set([...Object.keys(b), ...Object.keys(a)])]
+        .filter((k) => JSON.stringify(b[k]) !== JSON.stringify(a[k]));
+      return touched.length
+        ? { status: PASS, message: `сохранённое состояние изменилось: ${touched.join(", ")}` }
+        : { status: FAIL, message: "изменение настройки не отражено в UserDefaults — настройка не сохраняется" };
+    },
+
     /** Состояние приложения не изменилось — read-only сценарий. */
     async unchanged(check, { before, after }) {
       const b = JSON.stringify(before?.defaults ?? {});

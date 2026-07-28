@@ -1,0 +1,20 @@
+#1 2026-07-28T09:42:23.515Z sim-use tap --label Тёмная иконка --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=1 525ms selector=selector
+    ! Error: No accessibility element matched --label 'Тёмная иконка'. Make sure the app is on the expected screen, then run `sim-use describe-ui --udid <SIMULATOR_UDID>` and prefer --id when available.
+#2 2026-07-28T09:42:28.131Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 550ms
+    | App: Speecher  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)
+#3 2026-07-28T09:42:41.040Z sim-use tap --label Темная иконка --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 553ms selector=selector
+    | ✓ Tap at (116.0, 539.6666870117188) completed successfully
+#4 2026-07-28T09:43:14.111Z sim-use tap --label Настройки --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 587ms selector=selector
+    | ================ PROCESS DISAPPEARED ================
+    | app.speecher.mobile (pid 31522) crashed and relaunched under a new process since the previous command.
+    | Likely crash or termination, not a backgrounding. Verify before trusting subsequent actions.
+#5 2026-07-28T09:43:18.798Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s3-after-relaunch.png
+    → exit=0 461ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s3-after-relaunch.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s3-after-relaunch.png

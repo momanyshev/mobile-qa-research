@@ -1,0 +1,48 @@
+id: S4-speecher-permission-denied
+title: Speecher — отказ в доступе к микрофону
+adapter: speecher
+platform: ios
+appId: app.speecher.mobile
+# «Обработка ошибки либо системного состояния» из 12.3. Для локального
+# приложения без сети роль сбоя играет системное разрешение: доступ к
+# микрофону — предусловие основной функции, и приложение обязано корректно
+# показать его отсутствие, а не притвориться работающим.
+instruction: >-
+  Разрешение на доступ к микрофону сброшено. Запусти приложение и, когда система
+  спросит доступ к микрофону, откажи в нём. Затем открой настройки приложения и
+  проверь, что в секции разрешений микрофон показан как недоступный, то есть
+  приложение предлагает выдать доступ, а не считает его выданным.
+preconditions:
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - app-relaunch
+  - system-dialog-interaction
+forbiddenActions:
+  - production-access
+  - settings-modification
+limits:
+  timeoutSeconds: 420
+  retryPerAction: 3
+oracle:
+  api:
+    # Отказ в разрешении не должен ничего менять в сохранённых настройках.
+    checks:
+      - type: unchanged
+  ui:
+    # «Разрешить» — предложение выдать доступ; «Разрешено» — состояние выданного.
+    checks:
+      - type: containsText
+        text: Разрешить
+      - type: notContainsText
+        text: Разрешено
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: true

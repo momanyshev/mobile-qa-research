@@ -1,0 +1,27 @@
+Run ID: S5-speecher-charter-ios-20260728T094533Z
+Case ID: S5-speecher-charter
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: opus-5 (drive-only)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: speecher: контейнер app.speecher.mobile на A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+Start state: seed 0 записей, состояние «до» = 1
+Instruction: Область: раздел настроек и локализация интерфейса. Риск: подписи и состояния элементов могут не соответствовать выбранному языку или фактическому состоянию системы. Исследуй раздел настроек, меняя язык интерфейса в обе стороны, и найди места, где текст, доступное имя элемента или состояние контрола не соответствуют выбранному языку. Маршрут выбирай сам. Записи не создавай. По итогам сформулируй найденные несоответствия со шагами воспроизведения.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, app-relaunch | запрещено: production-access, data-creation
+Started at / finished at: 2026-07-28T09:45:35.064Z → 2026-07-28T09:47:38.581Z
+Tool calls: 14 (действий 9, по координатам 0, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 1 → runs/S5-speecher-charter-ios-20260728T094533Z/api-before.json
+API after: 1 → runs/S5-speecher-charter-ios-20260728T094533Z/api-after.json
+UI postcondition: финальный outline снят (runs/S5-speecher-charter-ios-20260728T094533Z/final-ui.json)
+Oracle result: api.unchanged=pass, manual.manual=pass
+Agent self-report: Charter выполнен: язык переключён в обе стороны, осмотрены все три экрана. Найдены три несоответствия локализации
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: сброс состояния отключён манифестом
+New knowledge: Charter-режим на новом приложении работает без пошаговой инструкции: область + риск оказались достаточны. Три находки: (1) подписи таб-бара — видимый русский текст, не локализуются; (2) NSMicrophoneUsageDescription только на английском в русском системном диалоге; (3) label «Темная иконка» без «ё» — селектор по «Тёмная» не находит элемент.
+Follow-up decision: Качество находок charter-режима измеряется на этапе 14 чистым контекстом; здесь проверена переносимость самого режима

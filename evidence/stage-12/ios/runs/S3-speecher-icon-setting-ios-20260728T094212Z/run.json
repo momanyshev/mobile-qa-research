@@ -1,0 +1,48 @@
+{
+  "runId": "S3-speecher-icon-setting-ios-20260728T094212Z",
+  "caseId": "S3-speecher-icon-setting",
+  "platform": "ios",
+  "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+  "adapter": "speecher",
+  "context": {
+    "kind": "container",
+    "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+    "bundleId": "app.speecher.mobile",
+    "container": "/Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/Containers/Data/Application/A8BDCCA0-5310-41F1-BD74-30AE662425F9"
+  },
+  "startedAt": "2026-07-28T09:42:14.345Z",
+  "seeded": [],
+  "versions": {
+    "capturedAt": "2026-07-28T09:42:13.122Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e80c20e",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "8be1efd",
+      "dirty": true
+    },
+    "platform": "ios",
+    "device": {
+      "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+      "name": "iPhone 17 Pro Max",
+      "platform": "ios",
+      "runtime": "iOS 26.5",
+      "state": "Booted"
+    },
+    "agentModel": "opus-5 (drive-only)",
+    "skillRevision": "sim-use-skill-v0.10.0",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/S3-speecher-icon-setting.yaml",
+  "limits": {
+    "timeoutSeconds": 420,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "finishedAt": "2026-07-28T09:43:47.430Z",
+  "verdict": "FAIL"
+}

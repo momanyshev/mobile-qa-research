@@ -1,4 +1,4 @@
-# Harness (этапы 10.0 и 11) — воспроизводимый eval-контур run
+# Harness (этапы 10.0, 11, 12) — воспроизводимый eval-контур run
 
 Закрывает обязательное условие этапа 10 плана: до серии из 36 pilot-runs нужен
 контур, в котором **каждый run одинаково структурирован** — иначе benchmark
@@ -11,18 +11,26 @@ evidence pack и отчёт по Приложению B.
 oracle (`verify.mjs`), fixtures и захват UI. Harness не дублирует их, а
 оркестрирует.
 
+С этапа 12 знание о конкретном приложении вынесено в **project adapter**
+(`adapters/`, контракт — `adapters/README.md`). Generic-контур не содержит ни
+одного identifier, label или бизнес-шага приложения и общается с ним только
+через `createContext / seed / readState / teardown / checks`. Манифест выбирает
+адаптер полем `adapter:`; без поля используется `qalab`.
+
 ## Ключевые свойства
 
-- **Verdict выставляет только oracle** (`verify.mjs`), не формулировка агента.
-  Самоотчёт агента сохраняется рядом, но на verdict не влияет.
+- **Verdict выставляет только oracle** (`verify.mjs` или проверки адаптера), не
+  формулировка агента. Самоотчёт агента сохраняется рядом, но на verdict не
+  влияет.
 - **Честный INCONCLUSIVE вместо тихого PASS.** Неизвестный тип проверки,
   отсутствие финального UI outline или неподтверждённая ручная проверка дают
   `INCONCLUSIVE`, а не PASS.
 - **Строгий манифест.** `lib/yaml.mjs` громко падает на табах, flow-коллекциях,
   якорях, дублирующихся ключах и многодокументных файлах — с номером строки.
   Тихо неверно прочитанный манифест испортил бы данные benchmark.
-- **Teardown при любом исходе**, включая аварийный `abort`: fixtures удаляются,
-  fault profile сбрасывается в passthrough.
+- **Teardown при любом исходе**, включая аварийный `abort`. Что именно чистить,
+  знает адаптер: QA Lab удаляет fixtures и возвращает proxy в passthrough,
+  Speecher останавливает приложение и сбрасывает системные разрешения.
 - **Version manifest на каждый run**: commit приложения, версия sim-use, модель,
   ревизия skill, устройство и ОС — без этого метрики невоспроизводимы.
 - **Машинный журнал вызовов** (этап 11): каждый вызов sim-use через `sim.mjs`
@@ -35,7 +43,8 @@ oracle (`verify.mjs`), fixtures и захват UI. Harness не дублиру�
 
 ```
 harness/
-  cases/          шесть pilot case-манифестов C1…C6 (Приложение A + oracle)
+  cases/          C1…C6 — QA Lab (pilot этапа 10); S1…S5 — Speecher (этап 12)
+  adapters/       сменный слой знания о приложении: qalab, speecher
   lib/
     yaml.mjs        строгий парсер подмножества YAML (громкий отказ)
     manifest.mjs    загрузка + валидация манифеста; список неподдержанных проверок
@@ -47,7 +56,7 @@ harness/
     summary.mjs     метрики раздела 10.4 по серии runs
   harness.mjs     CLI: list | validate | new-workspace | start | arm | finish | abort | summary | selftest
   sim.mjs         журналирующая обёртка вокруг sim-use
-  selftest.mjs    проверка контура (67 проверок), нужен живой backend
+  selftest.mjs    проверка контура (87 проверок), нужен живой backend
 ```
 
 Evidence: `../evidence/stage-<N>/<platform>/runs/<runId>/` + строка в
@@ -66,7 +75,7 @@ export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 ```
 
 ```bash
-node harness.mjs selftest                 # 54 проверки контура (без устройства)
+node harness.mjs selftest                 # 87 проверок контура (без устройства)
 node harness.mjs validate                 # разбор и проверка всех манифестов
 node harness.mjs list                     # доступные case
 
@@ -104,17 +113,24 @@ node harness.mjs summary --stage 10
 
 Формат — Приложение A плана, расширенное машинно-проверяемым `oracle`:
 
-- `oracle.api.checks[]` — `count`, `fields`, `onlyChanged`, `absent`,
-  `unchanged`, `isolation` (выполняются функциями `verify.mjs`);
-- `oracle.ui.checks[]` — `containsText`, `notContainsText`, `listMatchesQuery`
-  (по финальному UI outline; `listMatchesQuery` сверяет видимое в UI с
+- `oracle.api.checks[]` — предметные проверки **выбранного адаптера**.
+  `qalab`: `count`, `fields`, `onlyChanged`, `absent`, `unchanged`,
+  `isolation` (поверх `verify.mjs`). `speecher`: `defaultsEqual`,
+  `defaultsAbsent`, `defaultsChanged`, `onlyKeyChanged`, `unchanged`
+  (поверх `UserDefaults` из контейнера симулятора);
+- `oracle.ui.checks[]` — `containsText` и `notContainsText` работают для любого
+  приложения; `listMatchesQuery` даёт адаптер `qalab` (сверяет видимое в UI с
   независимым API-запросом);
 - `oracle.manualChecks[]` — то, что нельзя проверить автоматически (например,
   показ Alert, живущего только во время run). Без `--confirm-manual` при
   `finish` run честно завершается как `INCONCLUSIVE`.
 
-Шесть pilot-case: C1 создание, C2 фильтры, C3 редактирование, C4 несохранённые
-изменения, C5 Workspace isolation, C6 API-инспектор.
+Шесть pilot-case QA Lab: C1 создание, C2 фильтры, C3 редактирование,
+C4 несохранённые изменения, C5 Workspace isolation, C6 API-инспектор.
+
+Пять case второго приложения (Speecher, iOS): S1 навигация и список,
+S2 смена языка с проверкой после перезапуска, S3 сохранение выбора иконки,
+S4 отказ в системном разрешении, S5 exploratory charter.
 
 ## Границы (scope MVP)
 

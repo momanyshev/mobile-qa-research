@@ -1,0 +1,27 @@
+Run ID: S3-speecher-icon-setting-ios-20260728T094212Z
+Case ID: S3-speecher-icon-setting
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: opus-5 (drive-only)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: speecher: контейнер app.speecher.mobile на A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+Start state: seed 0 записей, состояние «до» = 1
+Instruction: В настройках приложения в секции «Иконка приложения» выбери тёмную иконку. Затем полностью перезапусти приложение, вернись в настройки и убедись, что выбор сохранился. Язык интерфейса не меняй.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, app-relaunch | запрещено: production-access, unrelated-settings-modification
+Started at / finished at: 2026-07-28T09:42:14.345Z → 2026-07-28T09:43:47.430Z
+Tool calls: 5 (действий 3, по координатам 0, ошибок 1)
+Retries: 1
+Manual interventions: 0
+API before: 1 → runs/S3-speecher-icon-setting-ios-20260728T094212Z/api-before.json
+API after: 1 → runs/S3-speecher-icon-setting-ios-20260728T094212Z/api-after.json
+UI postcondition: финальный outline снят (runs/S3-speecher-icon-setting-ios-20260728T094212Z/final-ui.json)
+Oracle result: api.defaultsChanged=fail, ui.containsText=pass
+Agent self-report: Тёмная иконка выбрана; после перезапуска активной снова показана голубая
+Final verdict: FAIL
+Failure category: product | agent | sim-use — требует классификации (1 вызовов завершились ошибкой)
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog, deviceLog
+Teardown result: сброс состояния отключён манифестом
+New knowledge: Выбор иконки не персистится: @State без записи в UserDefaults и без setAlternateIconName. Селектор чувствителен к «е/ё»: label в приложении «Темная иконка», попытка с «Тёмная» не нашла элемент.
+Follow-up decision: Дефект приложения Speecher: настройка иконки не сохраняется

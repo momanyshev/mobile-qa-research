@@ -1,0 +1,401 @@
+# последние 400 строк системного журнала
+2026-07-28 12:51:23.833 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.833 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.833 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.833 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.833 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.833 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.833 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.834 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.834 Df launchd_sim[31386:7604c] [user/501/com.apple.xpc.launchd.oneshot.0x1000002e.log [33664]:] service state: running
+2026-07-28 12:51:23.834 Df launchd_sim[31386:7604c] [user/501/com.apple.xpc.launchd.oneshot.0x1000002e.log [33664]:] internal event: INIT, code = 0
+2026-07-28 12:51:23.834 Df launchd_sim[31386:7604c] [user/501/com.apple.xpc.launchd.oneshot.0x1000002e.log [33664]:] Successfully spawned log[33664] because one-shot
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.850 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.850 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.851 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.851 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.851 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.851 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.851 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.851 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.851 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.851 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.851 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.851 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.851 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.851 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.851 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.851 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.851 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.851 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.867 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.867 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.868 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.868 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.868 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.868 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.868 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.868 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.868 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.868 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.868 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.868 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.877 E  SpringBoard[31390:6f1e5] [com.apple.PaperBoardUI:Snapshot] [lock]	Snapshot attempt failed because preconditions failed:
+2026-07-28 12:51:23.877 E  SpringBoard[31390:6f1e5] [com.apple.PaperBoardUI:Snapshot] [lock]	--> snapshot failure reason 'Lock variant needs to be fully locked ((null)/(null))'
+2026-07-28 12:51:23.883 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.883 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.883 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.883 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.883 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.883 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.883 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.883 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.883 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.883 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.884 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.884 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.900 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.900 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.900 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.900 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.900 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.900 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.900 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.900 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.900 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.900 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.900 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.900 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.900 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.900 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.900 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.900 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.900 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.900 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.900 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.900 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.900 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.900 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.901 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.901 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.901 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.901 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.901 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.901 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.901 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.901 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.901 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.901 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.901 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.901 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.901 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.901 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.901 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.901 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.901 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.901 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.906 Df launchd_sim[31386:760c1] [pid/33664 [log]:] uncorking exec source upfront
+2026-07-28 12:51:23.906 Df launchd_sim[31386:760c1] [pid/33664 [log]:] created
+2026-07-28 12:51:23.908 Df log[33664:0] [com.apple.log:] log run noninteractively, parent: 31386 (launchd_sim), args: 'log' 'show' '--last' '10m' '--style' 'compact'
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.917 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.917 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.918 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.918 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.918 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.918 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.918 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.918 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.918 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.918 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.934 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.934 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.935 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.935 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.935 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.935 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.950 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.950 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.950 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.950 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.950 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.950 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.950 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.950 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.950 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.950 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.950 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.950 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.951 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.967 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.967 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.967 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.967 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.967 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.967 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.967 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.967 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.967 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.967 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.967 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.967 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.967 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.967 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.967 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.967 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.968 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.968 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.979 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.979 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.979 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.979 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.979 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.979 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.980 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.980 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+2026-07-28 12:51:23.981 F  backboardd[31411:6f289] (IOSurface) IOSurfaceQueryTransactionList got non-success return from kernel
+2026-07-28 12:51:23.981 A  backboardd[31411:6f289] (libsystem_trace.dylib) Activity for state dumps
+
