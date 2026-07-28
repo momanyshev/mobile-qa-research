@@ -112,6 +112,68 @@ export function summarizeLog(logPath) {
   };
 }
 
+/**
+ * Нарушения retry-бюджета (правило «не более трёх попыток одного действия»).
+ *
+ * Попытки группируются по команде и цели; наблюдения (`ui`, `screenshot`)
+ * серию не разрывают — они её часть. Координаты округляются до 50 px, поэтому
+ * повторные тапы «примерно туда же» считаются попытками одного действия.
+ *
+ * **Граница метода — она же честное ограничение.** Правило плана считает
+ * сменой попытки в том числе смену селектора: тап по `--label "Создать"` и
+ * следом по `#create-btn` — это две попытки одного действия. Из журнала
+ * вывести, что два разных селектора указывают на один элемент, невозможно, и
+ * такая серия здесь разрывается. Значит результат — **нижняя оценка**: всё
+ * найденное является нарушением, но часть нарушений с чередованием селекторов
+ * останется незамеченной. Верхняя граница требовала бы знания соответствия
+ * селекторов элементам, то есть постусловий, а не журнала вызовов.
+ */
+export function retryViolations(logPath, budget = 3) {
+  const calls = readLog(logPath).filter((c) => c.kind === "action");
+  const violations = [];
+  let current = null;
+
+  for (const c of calls) {
+    const target = actionTarget(c);
+    if (current && current.command === c.command && current.target === target) {
+      current.attempts.push(c.seq);
+    } else {
+      if (current && current.attempts.length > budget) violations.push(current);
+      current = { command: c.command, target, attempts: [c.seq] };
+    }
+  }
+  if (current && current.attempts.length > budget) violations.push(current);
+
+  return violations.map((v) => ({
+    command: v.command, target: v.target,
+    attempts: v.attempts.length, seqs: v.attempts,
+    message: `${v.command} по цели «${v.target}» — ${v.attempts.length} попыток подряд (бюджет ${budget}), вызовы #${v.attempts.join(", #")}`,
+  }));
+}
+
+/**
+ * Цель действия: селектор, если он есть, иначе — область экрана.
+ * Координаты округляются до 50 px, чтобы повторные тапы «примерно туда же»
+ * считались попытками одного действия, а не разными действиями.
+ */
+function actionTarget(call) {
+  const args = call.args || [];
+  const positional = args.find((a) => /^[@#]/.test(a));
+  if (positional) return positional;
+  for (const flag of ["--label", "--id"]) {
+    const i = args.indexOf(flag);
+    if (i >= 0 && args[i + 1]) return `${flag} ${args[i + 1]}`;
+  }
+  const xi = args.indexOf("--x"), yi = args.indexOf("--y");
+  if (xi >= 0 && yi >= 0) {
+    const round = (v) => Math.round(Number(v) / 50) * 50;
+    return `~(${round(args[xi + 1])},${round(args[yi + 1])})`;
+  }
+  const from = args.indexOf("--from");
+  if (from >= 0 && args[from + 1]) return `swipe from ${args[from + 1]}`;
+  return call.selector === "focus" ? "фокусное поле" : "не определена";
+}
+
 /** Человекочитаемый transcript из журнала — для быстрого чтения глазами. */
 export function renderTranscript(logPath) {
   const calls = readLog(logPath);

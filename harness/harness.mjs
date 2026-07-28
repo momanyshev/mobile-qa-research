@@ -35,7 +35,8 @@ import { loadManifest, listCases, unsupportedChecks, adapterFor, ManifestError }
 import { runOracle, uiText } from "./lib/oracle-runner.mjs";
 import { versionManifest } from "./lib/versions.mjs";
 import { renderReport, reportStructure } from "./lib/report.mjs";
-import { summarizeLog, renderTranscript } from "./lib/cmdlog.mjs";
+import { summarizeLog, renderTranscript, retryViolations } from "./lib/cmdlog.mjs";
+import { runPreflight, renderPreflight, observedApp } from "./lib/preflight.mjs";
 import { captureDeviceLog, needsDiagnostics } from "./lib/diagnostics.mjs";
 import { renderSummary } from "./lib/summary.mjs";
 
@@ -106,9 +107,26 @@ async function cmdStart(f) {
   const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+Z$/, "Z");
   const runId = f.run && f.run !== true ? f.run : `${manifest.id}-${platform}-${stamp}`;
   const dir = runDir(STAGE, platform, runId);
-  mkdirSync(dir, { recursive: true });
-
   const context = await adapter.createContext({ platform, device });
+
+  // Preflight до создания каталога, seed и первого действия: отделяем
+  // «run провалился» от «run не следовало начинать». Не пройден — на диске не
+  // остаётся ни каталога, ни артефактов: несостоявшийся run не должен попадать
+  // в статистику. Пропуск возможен только явным флагом.
+  let preflightResult = null;
+  if (device && !f["skip-preflight"]) {
+    preflightResult = await runPreflight(adapter, { platform, device, context });
+    console.log("preflight:");
+    console.log(renderPreflight(preflightResult));
+    if (!preflightResult.ok) {
+      die(`\nRun не начат: preflight не пройден (${preflightResult.failed.length} блокирующих).\n`
+        + "Устраните причины либо запустите с --skip-preflight, если это осознанное решение.");
+    }
+    console.log("");
+  }
+
+  mkdirSync(dir, { recursive: true });
+  if (preflightResult) writeFileSync(`${dir}/preflight.json`, JSON.stringify(preflightResult, null, 2));
   // --workspace позволяет заранее навести приложение на контекст run'а, чтобы
   // исходный снимок UI отражал реальное стартовое состояние агента.
   if (f.workspace && f.workspace !== true) {
@@ -348,6 +366,11 @@ function finalizeRun(o) {
     video: exists(dir, "run-video.mp4"),
   };
   const toolStats = extras.commandLog ? summarizeLog(`${dir}/commands.jsonl`) : null;
+  // Retry budget берётся из манифеста и проверяется по журналу, а не со слов
+  // агента: «сколько было попыток» — наблюдаемый факт.
+  const retryBudget = manifest.limits?.retryPerAction ?? 3;
+  const retryBreaches = extras.commandLog
+    ? retryViolations(`${dir}/commands.jsonl`, retryBudget) : [];
 
   const finishedAt = new Date().toISOString();
   const unsupported = unsupportedChecks(manifest);
@@ -374,7 +397,9 @@ function finalizeRun(o) {
     "Tool calls": toolStats
       ? `${toolStats.totalCalls} (действий ${toolStats.actionCalls}, по координатам ${toolStats.coordinateActions}, ошибок ${toolStats.failedCalls})`
       : num(f["tool-calls"]),
-    "Retries": num(f.retries),
+    "Retries": retryBreaches.length
+      ? `${num(f.retries) ?? "?"} | ПРЕВЫШЕН БЮДЖЕТ ${retryBudget}: ${retryBreaches.map((v) => v.message).join("; ")}`
+      : num(f.retries),
     "Manual interventions": num(f.interventions),
     "API before": `${sizeOf(before)} → runs/${runId}/api-before.json`,
     "API after": `${sizeOf(after)} → runs/${runId}/api-after.json`,
@@ -413,6 +438,7 @@ function finalizeRun(o) {
     interventions: numOrNull(f.interventions),
     selfReport: f["self-report"] !== true ? f["self-report"] || null : null,
     aborted: Boolean(o.aborted), abortReason: o.abortReason || null,
+    retryBudget, retryBreaches,
     teardown, artifacts, extras, diagnostics, evidenceComplete,
     reportPath: `runs/${runId}/report.txt`,
   };
@@ -472,6 +498,21 @@ function cmdValidate(f) {
   if (bad) process.exit(1);
 }
 
+/** Проверка среды без начала run — агент может позвать её отдельно. */
+async function cmdPreflight(f) {
+  const platform = requireFlag(f, "platform");
+  const device = requireFlag(f, "device");
+  const adapter = f.case && f.case !== true ? adapterFor(loadManifest(f.case)) : null;
+  const context = adapter ? await adapter.createContext({ platform, device }).catch(() => null) : null;
+
+  const pre = await runPreflight(adapter, { platform, device, context });
+  console.log(renderPreflight(pre));
+  const app = observedApp(device);
+  console.log(`  ${app ? "✓" : "?"} наблюдаемое приложение: ${app || "экран не читается или приложение не запущено"}`);
+  console.log(pre.ok ? "\npreflight пройден" : `\npreflight НЕ пройден: ${pre.failed.length} блокирующих`);
+  if (!pre.ok) process.exit(1);
+}
+
 function cmdList() {
   for (const id of listCases()) {
     try {
@@ -519,13 +560,14 @@ try {
     case "arm": cmdArm(flags); break;
     case "finish": await cmdFinish(flags); break;
     case "abort": await cmdAbort(flags); break;
+    case "preflight": await cmdPreflight(flags); break;
     case "validate": cmdValidate(flags); break;
     case "list": cmdList(); break;
     case "new-workspace": console.log(newWorkspaceId()); break;
     case "summary": cmdSummary(flags); break;
     case "selftest": await cmdSelftest(); break;
     default:
-      console.error("Команды: list | validate [case] | new-workspace | start | arm | finish | abort | summary | selftest");
+      console.error("Команды: list | validate [case] | preflight | new-workspace | start | arm | finish | abort | summary | selftest");
       process.exit(2);
   }
 } catch (err) {

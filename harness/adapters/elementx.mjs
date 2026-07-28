@@ -88,6 +88,39 @@ export default {
   displayName: "Element X (Matrix)",
   bundleId: { android: BUNDLE_ID },
 
+  /**
+   * Нужны база Synapse (её читает oracle) и живой сервер: при остановленном
+   * homeserver приложение уходит в offline, и большинство сценариев теряет
+   * смысл. Исключение — сценарий A4, который останавливает сервер намеренно,
+   * поэтому проверка живости мягкая.
+   */
+  async preflight({ device } = {}) {
+    const out = [];
+    const dbPath = DEFAULT_DB;
+    out.push({
+      name: "база Synapse доступна", level: "fail", ok: existsSync(dbPath),
+      detail: existsSync(dbPath) ? dbPath : `${dbPath} не найдена — oracle не сможет читать состояние`,
+    });
+    try {
+      execFileSync("adb", ["-s", device, "shell", "pm", "path", BUNDLE_ID],
+        { encoding: "utf8", timeout: 20_000, stdio: ["ignore", "pipe", "pipe"] });
+      out.push({ name: "Element X установлен", level: "fail", ok: true, detail: BUNDLE_ID });
+    } catch {
+      out.push({ name: "Element X установлен", level: "fail", ok: false, detail: `${BUNDLE_ID} не установлен на ${device}` });
+    }
+    let alive = false;
+    try {
+      execFileSync("curl", ["-s", "-o", "/dev/null", "--max-time", "5",
+        "http://127.0.0.1:8008/_matrix/client/versions"], { timeout: 15_000 });
+      alive = true;
+    } catch { /* сервер остановлен */ }
+    out.push({
+      name: "homeserver отвечает", level: "warn", ok: alive,
+      detail: alive ? "127.0.0.1:8008 доступен" : "homeserver остановлен — это нормально только для сценария offline",
+    });
+    return out;
+  },
+
   async createContext({ platform, device } = {}) {
     if (platform !== "android") throw new Error("Element X в этом исследовании используется только на Android");
     if (!device) throw new Error("Element X-адаптеру нужен --device: приложением управляют по adb");

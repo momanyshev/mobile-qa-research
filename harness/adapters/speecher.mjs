@@ -44,6 +44,28 @@ export default {
   displayName: "Speecher Mobile",
   bundleId: { ios: BUNDLE_ID },
 
+  /**
+   * Приложение должно быть установлено (oracle читает его контейнер) и на
+   * симуляторе нужна hardware keyboard — без неё `paste` молча не работает,
+   * а кириллицу иначе не ввести (ENV-HWKB-001).
+   */
+  async preflight({ device } = {}) {
+    const out = [];
+    try {
+      const path = containerPath(device);
+      out.push({ name: "Speecher установлен", level: "fail", ok: Boolean(path), detail: path ? "контейнер найден" : "контейнер не найден" });
+    } catch (err) {
+      out.push({ name: "Speecher установлен", level: "fail", ok: false, detail: `контейнер недоступен: ${err.message.split("\n")[0]}` });
+    }
+    let hwkb = null;
+    try { hwkb = sh("defaults", ["read", "com.apple.iphonesimulator", "ConnectHardwareKeyboard"]); } catch { /* ключ не задан */ }
+    out.push({
+      name: "hardware keyboard подключена", level: "warn", ok: hwkb === "1",
+      detail: hwkb === "1" ? "включена" : "выключена или не задана — HID paste не сработает, ввод не-ASCII будет невозможен",
+    });
+    return out;
+  },
+
   async createContext({ platform, device } = {}) {
     if (platform !== "ios") throw new Error("Speecher существует только для iOS");
     if (!device) throw new Error("Speecher-адаптеру нужен --device: состояние читается из контейнера симулятора");

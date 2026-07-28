@@ -53,6 +53,23 @@ export default {
   displayName: "QA Lab Mobile",
   bundleId: { ios: "ru.maksim.qalab", android: "ru.maksim.qalab" },
 
+  /** Полигону нужен живой backend: без него seed и oracle недоказуемы. */
+  async preflight({ context } = {}) {
+    const baseUrl = context?.baseUrl || process.env.ORACLE_BASE_URL || "http://127.0.0.1:8888";
+    try {
+      const res = await new IssuesClient(baseUrl, "00000000-0000-4000-8000-000000000000").list();
+      return [{
+        name: "backend QA Lab отвечает", level: "fail", ok: res.status === 200,
+        detail: res.status === 200 ? `${baseUrl} → 200` : `${baseUrl} → ${res.status}`,
+      }];
+    } catch (err) {
+      return [{
+        name: "backend QA Lab отвечает", level: "fail", ok: false,
+        detail: `${baseUrl} недоступен: ${err.message}. Запустите npm run dev в portfolio-site`,
+      }];
+    }
+  },
+
   async createContext({ baseUrl } = {}) {
     return {
       kind: "workspace",

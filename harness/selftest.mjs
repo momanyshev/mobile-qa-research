@@ -9,7 +9,7 @@
 // Запуск: node harness.mjs selftest
 
 import { execFileSync } from "node:child_process";
-import { readFileSync, existsSync, rmSync } from "node:fs";
+import { readFileSync, existsSync, rmSync, mkdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 import { parseYaml, YamlError } from "./lib/yaml.mjs";
@@ -20,7 +20,8 @@ import speecherAdapter from "./adapters/speecher.mjs";
 import elementxAdapter from "./adapters/elementx.mjs";
 import { getAdapter, listAdapters } from "./adapters/index.mjs";
 import { renderReport, reportStructure, REPORT_FIELDS } from "./lib/report.mjs";
-import { classifyCall, runLogged, summarizeLog, renderTranscript } from "./lib/cmdlog.mjs";
+import { classifyCall, runLogged, summarizeLog, renderTranscript, retryViolations } from "./lib/cmdlog.mjs";
+import { genericPreflight } from "./lib/preflight.mjs";
 import { needsDiagnostics } from "./lib/diagnostics.mjs";
 import { IssuesClient } from "../tools/lib/client.mjs";
 import { teardownWorkspace } from "../tools/lib/fixtures.mjs";
@@ -282,6 +283,47 @@ async function adapterTests(t) {
   t.ok("elementx unchanged: без изменений → pass", r.status === "pass");
 }
 
+// ── 3.45. Preflight и retry budget (этап 14.B) ────────────────────────────────
+
+async function preflightTests(t) {
+  console.log("\nPreflight и retry budget:");
+
+  // Локаль проверяется по окружению процесса — подменяем на время проверки.
+  const saveLang = process.env.LANG, saveAll = process.env.LC_ALL;
+  delete process.env.LANG; delete process.env.LC_ALL;
+  let checks = genericPreflight({ platform: "ios", device: "нет-такого" });
+  const locale = checks.find((c) => c.name === "локаль UTF-8");
+  t.ok("пустая локаль → блокирующий отказ", locale && !locale.ok && locale.level === "fail");
+  process.env.LANG = "en_US.UTF-8";
+  checks = genericPreflight({ platform: "ios", device: "нет-такого" });
+  t.ok("UTF-8 локаль принята", checks.find((c) => c.name === "локаль UTF-8")?.ok === true);
+  const dev = checks.find((c) => c.name === "целевое устройство доступно");
+  t.ok("несуществующее устройство → блокирующий отказ", dev && !dev.ok && dev.level === "fail");
+  if (saveLang === undefined) delete process.env.LANG; else process.env.LANG = saveLang;
+  if (saveAll === undefined) delete process.env.LC_ALL; else process.env.LC_ALL = saveAll;
+
+  // Retry budget на синтетическом журнале.
+  const log = `${EV_DIR}/retry-probe.jsonl`;
+  const mk = (seq, args) => JSON.stringify({ seq, command: "tap", kind: "action", selector: "selector", args });
+  const write = (lines) => {
+    mkdirSync(EV_DIR, { recursive: true });
+    writeFileSync(log, lines.join("\n") + "\n");
+  };
+  write([1, 2, 3].map((i) => mk(i, ["tap", "--label", "Сохранить"])));
+  t.ok("три попытки укладываются в бюджет", retryViolations(log, 3).length === 0);
+  write([1, 2, 3, 4].map((i) => mk(i, ["tap", "--label", "Сохранить"])));
+  const v = retryViolations(log, 3);
+  t.ok("четвёртая попытка одной цели → нарушение", v.length === 1 && v[0].attempts === 4, JSON.stringify(v));
+  write([
+    mk(1, ["tap", "--label", "А"]), mk(2, ["tap", "--label", "Б"]),
+    mk(3, ["tap", "--label", "В"]), mk(4, ["tap", "--label", "Г"]),
+  ]);
+  t.ok("разные цели подряд нарушением не считаются", retryViolations(log, 3).length === 0);
+  write([1, 2, 3, 4].map((i) => mk(i, ["tap", "--x", String(100 + i * 5), "--y", "200"])));
+  t.ok("координаты рядом трактуются как одна цель", retryViolations(log, 3).length === 1);
+  rmSync(log, { force: true });
+}
+
 // ── 3.5. Журнал вызовов ───────────────────────────────────────────────────────
 
 async function cmdlogTests(t) {
@@ -409,6 +451,7 @@ export async function selftest() {
   await manifestTests(t);
   await oracleTests(t);
   await adapterTests(t);
+  await preflightTests(t);
   await cmdlogTests(t);
   await reportTests(t);
   await cycleTests(t);

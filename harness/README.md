@@ -38,6 +38,13 @@ oracle (`verify.mjs`), fixtures и захват UI. Harness не дублиру�
   selector mix выводятся из журнала, а не пишутся руками.
 - **Диагностика при неуспехе**: для любого verdict кроме `PASS` дополнительно
   снимается системный журнал устройства.
+- **Preflight до старта** (этап 14.B): проверяются доступность инструмента,
+  UTF-8 локаль, целевое устройство, совпадение платформы, отсутствие лишних
+  устройств той же платформы плюс проектные условия адаптера. Не пройден — run
+  не начинается и не оставляет следов на диске.
+- **Retry budget по журналу**: бюджет из `limits.retryPerAction` проверяется по
+  фактическим вызовам, а не со слов агента. Даёт нижнюю оценку — серии со
+  сменой селектора между попытками из журнала неразличимы.
 
 ## Структура
 
@@ -54,9 +61,10 @@ harness/
     cmdlog.mjs      журнал вызовов, selector mix, transcript из журнала
     diagnostics.mjs системный журнал устройства при неуспешном исходе
     summary.mjs     метрики раздела 10.4 по серии runs
-  harness.mjs     CLI: list | validate | new-workspace | start | arm | finish | abort | summary | selftest
+    preflight.mjs   проверки среды до старта run (этап 14.B)
+  harness.mjs     CLI: list | validate | preflight | new-workspace | start | arm | finish | abort | summary | selftest
   sim.mjs         журналирующая обёртка вокруг sim-use
-  selftest.mjs    проверка контура (103 проверки), нужен живой backend
+  selftest.mjs    проверка контура (110 проверок), нужен живой backend
 ```
 
 Evidence: `../evidence/stage-<N>/<platform>/runs/<runId>/` + строка в
@@ -75,9 +83,12 @@ export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 ```
 
 ```bash
-node harness.mjs selftest                 # 87 проверок контура (без устройства)
+node harness.mjs selftest                 # 110 проверок контура (без устройства)
 node harness.mjs validate                 # разбор и проверка всех манифестов
 node harness.mjs list                     # доступные case
+
+# проверка среды до старта (14.B):
+node harness.mjs preflight --platform ios --device <UDID> --case <caseId>
 
 # один run с устройством:
 WS=$(node harness.mjs new-workspace)       # заранее задать этот UUID в приложении
