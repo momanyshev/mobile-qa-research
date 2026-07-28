@@ -1,0 +1,13 @@
+#1 2026-07-28T10:29:44.817Z sim-use ui --device emulator-5554
+    → exit=0 54ms
+    | ================ PROCESS DISAPPEARED ================
+    | io.element.android.x (pid 5888) crashed and relaunched under a new process since the previous command.
+    | Likely crash or termination, not a backgrounding. Verify before trusting subsequent actions.
+#2 2026-07-28T10:29:56.767Z sim-use tap #dialog-positive --device emulator-5554
+    → exit=0 44ms selector=selector
+    | ✓ Tap at (805.0, 1507.0) completed successfully
+#3 2026-07-28T10:30:06.901Z sim-use ui --device emulator-5554
+    → exit=0 42ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Offline"  (517,79 109x53)

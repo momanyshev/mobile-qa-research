@@ -17,6 +17,7 @@ import { validateManifest, loadManifest, listCases, ManifestError } from "./lib/
 import { runOracle as runOracleRaw, uiText } from "./lib/oracle-runner.mjs";
 import qalabAdapter from "./adapters/qalab.mjs";
 import speecherAdapter from "./adapters/speecher.mjs";
+import elementxAdapter from "./adapters/elementx.mjs";
 import { getAdapter, listAdapters } from "./adapters/index.mjs";
 import { renderReport, reportStructure, REPORT_FIELDS } from "./lib/report.mjs";
 import { classifyCall, runLogged, summarizeLog, renderTranscript } from "./lib/cmdlog.mjs";
@@ -209,15 +210,15 @@ async function oracleTests(t) {
 
 async function adapterTests(t) {
   console.log("\nProject adapters:");
-  t.ok("зарегистрированы qalab и speecher",
-    listAdapters().includes("qalab") && listAdapters().includes("speecher"));
+  t.ok("зарегистрированы qalab, speecher и elementx",
+    ["qalab", "speecher", "elementx"].every((id) => listAdapters().includes(id)));
   t.ok("манифест без поля adapter получает qalab", getAdapter().id === "qalab");
   await t.throws("неизвестный adapter отвергнут", () => getAdapter("нет-такого"));
   await t.throws("манифест с неизвестным adapter отвергнут",
     () => validateManifest({ ...minimal(), adapter: "нет-такого" }), ManifestError);
 
   const contract = ["createContext", "seed", "readState", "teardown", "describeContext"];
-  for (const a of [qalabAdapter, speecherAdapter]) {
+  for (const a of [qalabAdapter, speecherAdapter, elementxAdapter]) {
     t.ok(`${a.id} реализует контракт адаптера`,
       contract.every((m) => typeof a[m] === "function"));
   }
@@ -251,6 +252,34 @@ async function adapterTests(t) {
     { key: "speecher.appLanguage", expected: "en-GB" },
     { before, after: { defaults: { ...after.defaults, "speecher.icon": "dark" } } });
   t.ok("onlyKeyChanged: побочное изменение → fail", r.status === "fail");
+
+  // Element X: проверки на снимках состояния Matrix-сервера.
+  await t.throws("elementx отвергает apiSeed (нужен был бы access token)",
+    () => elementxAdapter.seed({}, [{ name: "x" }]));
+  await t.throws("elementx отвергает ios",
+    () => elementxAdapter.createContext({ platform: "ios", device: "X" }));
+
+  const mBefore = { rooms: [], eventCounts: {}, totalEvents: 0, users: 1 };
+  const mAfter = {
+    rooms: [{ roomId: "!r:s", name: "QA Room", topic: null, encrypted: true, messageEvents: 1 }],
+    eventCounts: { "m.room.encrypted": 1 }, totalEvents: 9, users: 1,
+  };
+  r = await elementxAdapter.checks.roomExists({ name: "QA Room", encrypted: true }, { after: mAfter });
+  t.ok("roomExists: комната найдена → pass", r.status === "pass", r.message);
+  r = await elementxAdapter.checks.roomExists({ name: "QA Room", topic: "нет такого" }, { after: mAfter });
+  t.ok("roomExists: несовпадение топика → fail", r.status === "fail");
+  r = await elementxAdapter.checks.roomAbsent({ name: "QA Room" }, { after: mAfter });
+  t.ok("roomAbsent: комната есть → fail", r.status === "fail");
+  r = await elementxAdapter.checks.roomsAdded({ expected: 1 }, { before: mBefore, after: mAfter });
+  t.ok("roomsAdded: ровно одна комната → pass", r.status === "pass", r.message);
+  r = await elementxAdapter.checks.eventTypeAdded({ type: "m.room.encrypted", min: 1 }, { before: mBefore, after: mAfter });
+  t.ok("eventTypeAdded: сообщение отправлено → pass", r.status === "pass", r.message);
+  r = await elementxAdapter.checks.eventTypeAdded({ type: "m.room.encrypted", min: 2 }, { before: mBefore, after: mAfter });
+  t.ok("eventTypeAdded: сообщений меньше ожидаемого → fail", r.status === "fail");
+  r = await elementxAdapter.checks.unchanged({}, { before: mBefore, after: mAfter });
+  t.ok("elementx unchanged: состояние изменилось → fail", r.status === "fail");
+  r = await elementxAdapter.checks.unchanged({}, { before: mBefore, after: mBefore });
+  t.ok("elementx unchanged: без изменений → pass", r.status === "pass");
 }
 
 // ── 3.5. Журнал вызовов ───────────────────────────────────────────────────────

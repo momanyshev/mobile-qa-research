@@ -1,0 +1,46 @@
+id: A5-elementx-charter
+title: Element X — exploratory charter по комнате и её настройкам
+adapter: elementx
+platform: android
+appId: io.element.android.x
+# Тот же бизнес-charter, что и на iOS (S5), но в терминах этого приложения:
+# область — экран сущности и её настройки, риск — расхождение показанного
+# состояния с фактическим на сервере.
+instruction: >-
+  Область: комната «Release Checklist» и её настройки. Риск: то, что показано в
+  интерфейсе, может расходиться с фактическим состоянием комнаты на сервере
+  (название, описание, участники, признак шифрования). Исследуй экран комнаты и
+  её настройки и найди места, где отображаемое состояние неполно, неоднозначно
+  или расходится с ожидаемым. Маршрут выбирай сам. Сообщения не отправляй,
+  комнату не удаляй. По итогам сформулируй наблюдения.
+preconditions:
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+forbiddenActions:
+  - production-access
+  - message-sending
+  - room-deletion
+  - logout
+limits:
+  timeoutSeconds: 900
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: unchanged
+      - type: roomExists
+        name: Release Checklist
+        encrypted: true
+  manualChecks:
+    - Наблюдения по расхождению отображаемого и фактического состояния комнаты подтверждены ручным ревью evidence
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: false

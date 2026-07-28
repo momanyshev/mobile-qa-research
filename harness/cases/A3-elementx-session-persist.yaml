@@ -1,0 +1,41 @@
+id: A3-elementx-session-persist
+title: Element X — сессия и список комнат после перезапуска
+adapter: elementx
+platform: android
+appId: io.element.android.x
+instruction: >-
+  Полностью перезапусти приложение и убедись, что после запуска не требуется
+  повторный вход, а список чатов снова содержит комнату «QA Probe Room».
+preconditions:
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - app-relaunch
+forbiddenActions:
+  - production-access
+  - data-creation
+  - logout
+limits:
+  timeoutSeconds: 420
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: sessionAlive
+      - type: unchanged
+  ui:
+    checks:
+      - type: containsText
+        text: QA Probe Room
+      - type: notContainsText
+        text: Sign in manually
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: false

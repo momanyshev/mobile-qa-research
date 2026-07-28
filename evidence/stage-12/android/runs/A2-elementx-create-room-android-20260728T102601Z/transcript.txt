@@ -1,0 +1,44 @@
+#1 2026-07-28T10:26:12.405Z sim-use tap #floating-action-button --device emulator-5554
+    → exit=0 52ms selector=selector
+    | ✓ Tap at (750.0, 2189.0) completed successfully
+#2 2026-07-28T10:26:17.553Z sim-use tap --label New room --device emulator-5554
+    → exit=0 49ms selector=selector
+    | ✓ Tap at (540.0, 493.0) completed successfully
+#3 2026-07-28T10:26:22.695Z sim-use tap --label Name --device emulator-5554
+    → exit=0 49ms selector=selector
+    | ✓ Tap at (655.0, 339.0) completed successfully
+#4 2026-07-28T10:26:25.835Z sim-use android type Release Checklist --device emulator-5554
+    → exit=0 45ms
+    ! type ok (graphemes=17, clear=false)
+#5 2026-07-28T10:26:28.969Z sim-use ui --device emulator-5554
+    → exit=0 41ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Create"  (856,84 213x126)
+#6 2026-07-28T10:26:38.854Z sim-use tap --label Topic (optional) --device emulator-5554
+    → exit=0 47ms selector=selector
+    | ✓ Tap at (540.0, 644.0) completed successfully
+#7 2026-07-28T10:26:41.978Z sim-use android type Проверки перед выпуском мобильного клиента --device emulator-5554
+    → exit=0 41ms
+    ! type ok (graphemes=42, clear=false)
+#8 2026-07-28T10:26:46.109Z sim-use ui --device emulator-5554
+    → exit=0 41ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Create"  (856,84 213x126)
+#9 2026-07-28T10:26:54.748Z sim-use tap --label Create --device emulator-5554
+    → exit=0 69ms selector=selector
+    | ✓ Tap at (962.0, 147.0) completed successfully
+#10 2026-07-28T10:27:06.909Z sim-use ui --device emulator-5554
+    → exit=0 38ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Skip"  (900,84 169x126)
+#11 2026-07-28T10:27:18.760Z sim-use tap --label Skip --device emulator-5554
+    → exit=0 41ms selector=selector
+    | ✓ Tap at (984.0, 147.0) completed successfully
+#12 2026-07-28T10:27:28.892Z sim-use ui --device emulator-5554
+    → exit=0 39ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Release Checklist"  (148,84 453x126)

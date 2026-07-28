@@ -1,0 +1,27 @@
+Run ID: A3-elementx-session-persist-android-20260728T102740Z
+Case ID: A3-elementx-session-persist
+Platform: android
+Device / OS: emulator-5554 (sdk_gphone64_arm64, Android)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: opus-5 (drive-only)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: elementx: io.element.android.x на emulator-5554, состояние из homeserver.db
+Start state: seed 0 записей, состояние «до» = 4
+Instruction: Полностью перезапусти приложение и убедись, что после запуска не требуется повторный вход, а список чатов снова содержит комнату «QA Probe Room».
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, app-relaunch | запрещено: production-access, data-creation, logout
+Started at / finished at: 2026-07-28T10:27:40.620Z → 2026-07-28T10:28:28.873Z
+Tool calls: 3 (действий 1, по координатам 0, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 4 → runs/A3-elementx-session-persist-android-20260728T102740Z/api-before.json
+API after: 4 → runs/A3-elementx-session-persist-android-20260728T102740Z/api-after.json
+UI postcondition: финальный outline снят (runs/A3-elementx-session-persist-android-20260728T102740Z/final-ui.json)
+Oracle result: api.sessionAlive=pass, api.unchanged=pass, ui.containsText=pass, ui.notContainsText=pass
+Agent self-report: После перезапуска повторный вход не потребовался, обе комнаты в списке
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: сброс состояния отключён манифестом
+New knowledge: Сессия Element X переживает холодный старт; диалог ошибки push-уведомлений воспроизводится при каждом запуске на локальном сервере без push-шлюза
+Follow-up decision: —

@@ -43,8 +43,8 @@ oracle (`verify.mjs`), fixtures и захват UI. Harness не дублиру�
 
 ```
 harness/
-  cases/          C1…C6 — QA Lab (pilot этапа 10); S1…S5 — Speecher (этап 12)
-  adapters/       сменный слой знания о приложении: qalab, speecher
+  cases/          C1…C6 — QA Lab; S1…S5 — Speecher (iOS); A1…A5 — Element X (Android)
+  adapters/       сменный слой знания о приложении: qalab, speecher, elementx
   lib/
     yaml.mjs        строгий парсер подмножества YAML (громкий отказ)
     manifest.mjs    загрузка + валидация манифеста; список неподдержанных проверок
@@ -56,7 +56,7 @@ harness/
     summary.mjs     метрики раздела 10.4 по серии runs
   harness.mjs     CLI: list | validate | new-workspace | start | arm | finish | abort | summary | selftest
   sim.mjs         журналирующая обёртка вокруг sim-use
-  selftest.mjs    проверка контура (87 проверок), нужен живой backend
+  selftest.mjs    проверка контура (103 проверки), нужен живой backend
 ```
 
 Evidence: `../evidence/stage-<N>/<platform>/runs/<runId>/` + строка в

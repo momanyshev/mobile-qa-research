@@ -1,0 +1,27 @@
+Run ID: A2-elementx-create-room-android-20260728T102601Z
+Case ID: A2-elementx-create-room
+Platform: android
+Device / OS: emulator-5554 (sdk_gphone64_arm64, Android)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: opus-5 (drive-only)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: elementx: io.element.android.x на emulator-5554, состояние из homeserver.db
+Start state: seed 0 записей, состояние «до» = 4
+Instruction: Создай новую приватную комнату с названием «Release Checklist» и описанием «Проверки перед выпуском мобильного клиента». Приглашать никого не нужно. Убедись, что комната появилась и открылась.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction | запрещено: production-access, message-sending, room-deletion
+Started at / finished at: 2026-07-28T10:26:02.373Z → 2026-07-28T10:27:29.127Z
+Tool calls: 12 (действий 6, по координатам 0, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 4 → runs/A2-elementx-create-room-android-20260728T102601Z/api-before.json
+API after: 4 → runs/A2-elementx-create-room-android-20260728T102601Z/api-after.json
+UI postcondition: финальный outline снят (runs/A2-elementx-create-room-android-20260728T102601Z/final-ui.json)
+Oracle result: api.roomsAdded=pass, api.roomExists=pass, ui.containsText=pass
+Agent self-report: Комната «Release Checklist» создана с русским описанием, открылась
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: сброс состояния отключён манифестом
+New knowledge: Кириллица через android type вводится корректно и в имя, и в топик. Имя и топик комнаты в Matrix не шифруются, поэтому читаются oracle'ом из базы Synapse напрямую.
+Follow-up decision: —

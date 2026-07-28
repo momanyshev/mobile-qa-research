@@ -1,0 +1,25 @@
+{
+  "capturedAt": "2026-07-28T10:27:40.269Z",
+  "simUseVersion": "0.10.0",
+  "node": "v25.9.0",
+  "appRepo": {
+    "path": "/Users/maksim/Documents/Projects/portfolio-site",
+    "commit": "e80c20e",
+    "dirty": false
+  },
+  "researchRepo": {
+    "commit": "15988c3",
+    "dirty": true
+  },
+  "platform": "android",
+  "device": {
+    "deviceId": "emulator-5554",
+    "name": "sdk_gphone64_arm64",
+    "platform": "android",
+    "runtime": "Android",
+    "state": "device"
+  },
+  "agentModel": "opus-5 (drive-only)",
+  "skillRevision": "sim-use-skill-v0.10.0",
+  "baseUrl": "http://127.0.0.1:8888"
+}

@@ -4,8 +4,9 @@
 
 import qalab from "./qalab.mjs";
 import speecher from "./speecher.mjs";
+import elementx from "./elementx.mjs";
 
-const ADAPTERS = { qalab, speecher };
+const ADAPTERS = { qalab, speecher, elementx };
 
 /** По умолчанию — qalab: манифесты этапов 10–11 не содержат поля adapter. */
 export const DEFAULT_ADAPTER = "qalab";

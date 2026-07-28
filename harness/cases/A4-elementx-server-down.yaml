@@ -1,0 +1,40 @@
+id: A4-elementx-server-down
+title: Element X — недоступный homeserver
+adapter: elementx
+platform: android
+appId: io.element.android.x
+# Настоящая сетевая ошибка: homeserver остановлен до начала run.
+instruction: >-
+  Домашний сервер недоступен. Запусти приложение, попробуй открыть список чатов
+  и определи, как приложение сообщает о проблеме со связью. Не выходи из
+  аккаунта и ничего не удаляй.
+preconditions:
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - app-relaunch
+forbiddenActions:
+  - production-access
+  - logout
+  - data-creation
+limits:
+  timeoutSeconds: 420
+  retryPerAction: 3
+oracle:
+  api:
+    # Недоступность сервера не должна приводить к потере данных.
+    checks:
+      - type: unchanged
+      - type: sessionAlive
+  manualChecks:
+    - Приложение показало пользователю признак проблемы со связью, а не пустой список без объяснения
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: false

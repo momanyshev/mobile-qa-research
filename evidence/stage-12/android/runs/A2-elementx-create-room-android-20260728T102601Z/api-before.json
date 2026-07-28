@@ -1,0 +1,24 @@
+{
+  "rooms": [
+    {
+      "roomId": "!UVaROlsdsOsNaNanfU:10.0.2.2:8008",
+      "name": "QA Probe Room",
+      "topic": null,
+      "encrypted": true,
+      "messageEvents": 1
+    }
+  ],
+  "eventCounts": {
+    "m.room.create": 1,
+    "m.room.encrypted": 1,
+    "m.room.encryption": 1,
+    "m.room.guest_access": 1,
+    "m.room.history_visibility": 1,
+    "m.room.join_rules": 1,
+    "m.room.member": 1,
+    "m.room.name": 1,
+    "m.room.power_levels": 1
+  },
+  "totalEvents": 9,
+  "users": 1
+}

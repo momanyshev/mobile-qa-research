@@ -1,0 +1,40 @@
+id: A1-elementx-navigation
+title: Element X — навигация, список комнат и прокрутка
+adapter: elementx
+platform: android
+appId: io.element.android.x
+instruction: >-
+  Осмотри приложение: открой список чатов, зайди в существующую комнату
+  «QA Probe Room», пролистай её ленту и вернись обратно в список. Ничего не
+  создавай, не отправляй и не удаляй — это только осмотр.
+preconditions:
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+forbiddenActions:
+  - production-access
+  - data-creation
+  - message-sending
+limits:
+  timeoutSeconds: 300
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: unchanged
+      - type: roomExists
+        name: QA Probe Room
+  ui:
+    checks:
+      - type: containsText
+        text: QA Probe Room
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: false

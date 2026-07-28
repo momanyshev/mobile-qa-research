@@ -1,0 +1,32 @@
+#1 2026-07-28T10:24:57.089Z sim-use ui --device emulator-5554
+    → exit=0 43ms
+    | App: io.element.android.x  1080x2400
+    | [Content  y=280..2120]
+    |   @1  TextView  "Error"  (183,829 113x66)
+#2 2026-07-28T10:25:06.924Z sim-use tap #dialog-positive --device emulator-5554
+    → exit=0 49ms selector=selector
+    | ✓ Tap at (805.0, 1507.0) completed successfully
+#3 2026-07-28T10:25:12.067Z sim-use ui --device emulator-5554
+    → exit=0 56ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Settings, action required"  :home_screen-settings:  (23,85 126x126)
+#4 2026-07-28T10:25:22.171Z sim-use tap --label QA Probe Room --device emulator-5554
+    → exit=0 59ms selector=selector
+    | ✓ Tap at (546.0, 995.0) completed successfully
+#5 2026-07-28T10:25:30.326Z sim-use swipe --from 540,1400 --to 540,1900 --duration 0.5 --device emulator-5554
+    → exit=0 50ms selector=coordinate
+    | ✓ Swipe (540,1400) → (540,1900) completed successfully
+#6 2026-07-28T10:25:33.469Z sim-use ui --device emulator-5554
+    → exit=0 52ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "QA Probe Room"  (148,84 415x126)
+#7 2026-07-28T10:25:46.813Z sim-use button back --device emulator-5554
+    → exit=0 45ms selector=focus
+    | ✓ Back button press completed successfully
+#8 2026-07-28T10:25:51.950Z sim-use ui --device emulator-5554
+    → exit=0 96ms
+    | App: io.element.android.x  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Settings, action required"  :home_screen-settings:  (23,85 126x126)

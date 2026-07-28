@@ -1,0 +1,27 @@
+Run ID: A4-elementx-server-down-android-20260728T102909Z
+Case ID: A4-elementx-server-down
+Platform: android
+Device / OS: emulator-5554 (sdk_gphone64_arm64, Android)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: opus-5 (drive-only)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: elementx: io.element.android.x на emulator-5554, состояние из homeserver.db
+Start state: seed 0 записей, состояние «до» = 4
+Instruction: Домашний сервер недоступен. Запусти приложение, попробуй открыть список чатов и определи, как приложение сообщает о проблеме со связью. Не выходи из аккаунта и ничего не удаляй.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, app-relaunch | запрещено: production-access, logout, data-creation
+Started at / finished at: 2026-07-28T10:29:09.859Z → 2026-07-28T10:30:19.105Z
+Tool calls: 3 (действий 1, по координатам 0, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 4 → runs/A4-elementx-server-down-android-20260728T102909Z/api-before.json
+API after: 4 → runs/A4-elementx-server-down-android-20260728T102909Z/api-after.json
+UI postcondition: финальный outline снят (runs/A4-elementx-server-down-android-20260728T102909Z/final-ui.json)
+Oracle result: api.unchanged=pass, api.sessionAlive=pass, manual.manual=pass
+Agent self-report: При остановленном homeserver приложение показало индикатор Offline в шапке и сохранило кэшированный список чатов
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: сброс состояния отключён манифестом
+New knowledge: Element X деградирует корректно: явный индикатор Offline вместо пустого списка, локальный кэш остаётся доступен, выхода из аккаунта не происходит. Остановка Synapse — детерминированный способ задать сетевой сбой, при этом SQLite-oracle продолжает работать, потому что читает файл базы, а не API.
+Follow-up decision: —

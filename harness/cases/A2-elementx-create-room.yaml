@@ -1,0 +1,45 @@
+id: A2-elementx-create-room
+title: Element X — создание комнаты через форму
+adapter: elementx
+platform: android
+appId: io.element.android.x
+# Полноценная форма с backend-oracle, которой не было у Speecher: имя и топик
+# комнаты — незашифрованные state-события, поэтому проверяются точно.
+instruction: >-
+  Создай новую приватную комнату с названием «Release Checklist» и описанием
+  «Проверки перед выпуском мобильного клиента». Приглашать никого не нужно.
+  Убедись, что комната появилась и открылась.
+preconditions:
+  apiSeed: []
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+forbiddenActions:
+  - production-access
+  - message-sending
+  - room-deletion
+limits:
+  timeoutSeconds: 600
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: roomsAdded
+        expected: 1
+      - type: roomExists
+        name: Release Checklist
+        topic: Проверки перед выпуском мобильного клиента
+        encrypted: true
+  ui:
+    checks:
+      - type: containsText
+        text: Release Checklist
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: false

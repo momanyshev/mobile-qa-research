@@ -1,0 +1,48 @@
+{
+  "runId": "A4-elementx-server-down-android-20260728T102909Z",
+  "caseId": "A4-elementx-server-down",
+  "platform": "android",
+  "device": "emulator-5554",
+  "adapter": "elementx",
+  "context": {
+    "kind": "matrix-db",
+    "device": "emulator-5554",
+    "bundleId": "io.element.android.x",
+    "dbPath": "/Users/maksim/Documents/Projects/matrix-test-server/homeserver.db"
+  },
+  "startedAt": "2026-07-28T10:29:09.859Z",
+  "seeded": [],
+  "versions": {
+    "capturedAt": "2026-07-28T10:29:09.492Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e80c20e",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "15988c3",
+      "dirty": true
+    },
+    "platform": "android",
+    "device": {
+      "deviceId": "emulator-5554",
+      "name": "sdk_gphone64_arm64",
+      "platform": "android",
+      "runtime": "Android",
+      "state": "device"
+    },
+    "agentModel": "opus-5 (drive-only)",
+    "skillRevision": "sim-use-skill-v0.10.0",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/A4-elementx-server-down.yaml",
+  "limits": {
+    "timeoutSeconds": 420,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "finishedAt": "2026-07-28T10:30:19.105Z",
+  "verdict": "PASS"
+}

@@ -1,0 +1,27 @@
+Run ID: A1-elementx-navigation-android-20260728T102447Z
+Case ID: A1-elementx-navigation
+Platform: android
+Device / OS: emulator-5554 (sdk_gphone64_arm64, Android)
+App commit: e80c20e
+sim-use version: 0.10.0
+Agent model: opus-5 (drive-only)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: elementx: io.element.android.x на emulator-5554, состояние из homeserver.db
+Start state: seed 0 записей, состояние «до» = 4
+Instruction: Осмотри приложение: открой список чатов, зайди в существующую комнату «QA Probe Room», пролистай её ленту и вернись обратно в список. Ничего не создавай, не отправляй и не удаляй — это только осмотр.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction | запрещено: production-access, data-creation, message-sending
+Started at / finished at: 2026-07-28T10:24:49.079Z → 2026-07-28T10:25:52.329Z
+Tool calls: 8 (действий 4, по координатам 1, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 4 → runs/A1-elementx-navigation-android-20260728T102447Z/api-before.json
+API after: 4 → runs/A1-elementx-navigation-android-20260728T102447Z/api-after.json
+UI postcondition: финальный outline снят (runs/A1-elementx-navigation-android-20260728T102447Z/final-ui.json)
+Oracle result: api.unchanged=pass, api.roomExists=pass, ui.containsText=pass
+Agent self-report: Список чатов, комната и лента просмотрены, возврат в список выполнен
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: сброс состояния отключён манифестом
+New knowledge: Element X имеет настоящие testID (:message_bubble:, :dialog-positive:) — в отличие от Speecher. Диалог ошибки уведомлений появляется при каждом холодном старте: у локального homeserver нет push-шлюза.
+Follow-up decision: —
