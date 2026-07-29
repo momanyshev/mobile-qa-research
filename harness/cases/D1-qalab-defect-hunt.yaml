@@ -46,7 +46,10 @@ forbiddenActions:
   - issue-deletion
   - issue-creation
 limits:
-  timeoutSeconds: 900
+  # Ужато с 900 с: первый слепой прогон утонул в 153 вызовах и был оборван.
+  # Для измерения recall важна не исчерпывающая проверка, а решение «есть
+  # расхождение или нет» в пределах разумного бюджета.
+  timeoutSeconds: 600
   retryPerAction: 3
 oracle:
   api:

@@ -1,0 +1,25 @@
+{
+  "capturedAt": "2026-07-29T14:15:50.803Z",
+  "simUseVersion": "0.10.0",
+  "node": "v25.9.0",
+  "appRepo": {
+    "path": "/Users/maksim/Documents/Projects/portfolio-site",
+    "commit": "6c7e76d",
+    "dirty": false
+  },
+  "researchRepo": {
+    "commit": "fedd8b2",
+    "dirty": true
+  },
+  "platform": "android",
+  "device": {
+    "deviceId": "emulator-5554",
+    "name": "sdk_gphone64_arm64",
+    "platform": "android",
+    "runtime": "Android",
+    "state": "device"
+  },
+  "agentModel": "subagent (clean context)",
+  "skillRevision": "mobile-qa-agent@0.1.0",
+  "baseUrl": "http://127.0.0.1:8888"
+}

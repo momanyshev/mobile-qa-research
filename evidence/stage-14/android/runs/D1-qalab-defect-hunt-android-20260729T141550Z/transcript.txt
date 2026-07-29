@@ -1,0 +1,120 @@
+#1 2026-07-29T14:16:36.499Z sim-use ui
+    → exit=0 111ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,95 839x284)
+#2 2026-07-29T14:16:47.610Z sim-use scroll --direction down --amount 900
+    → exit=64 14ms selector=unknown
+    ! Error: Unknown option '--direction'
+#3 2026-07-29T14:17:02.249Z sim-use swipe --from 540,1900 --to 540,700 --duration 0.4
+    → exit=0 111ms selector=coordinate
+    | ✓ Swipe (540,1900) → (540,700) completed successfully
+#4 2026-07-29T14:17:02.420Z sim-use ui
+    → exit=0 748ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "ДЕМО-ПРОСТРАНСТВО"  (96,65 886x42)
+#5 2026-07-29T14:17:42.879Z sim-use tap --label API-запрос
+    → exit=1 99ms selector=selector
+    ! Error: Selector matched 2 elements for --label 'API-запрос'; add --id / --element-type / --frame to disambiguate.
+#6 2026-07-29T14:17:43.040Z sim-use ui
+    → exit=0 79ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "ДЕМО-ПРОСТРАНСТВО"  (96,65 886x42)
+#7 2026-07-29T14:17:55.497Z sim-use tap @29
+    → exit=0 72ms selector=selector
+    | ✓ Tap at (810.0, 2281.0) completed successfully
+#8 2026-07-29T14:17:55.620Z sim-use ui
+    → exit=0 562ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "ДЕМО-ПРОСТРАНСТВО"  (96,65 886x42)
+#9 2026-07-29T14:18:19.987Z sim-use screenshot --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+    → exit=0 396ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+#10 2026-07-29T14:18:38.163Z sim-use tap --label cURL --element-type Button
+    → exit=1 250ms selector=selector
+    ! Error: No matching element found for selector --label 'cURL'.
+#11 2026-07-29T14:18:38.474Z sim-use ui
+    → exit=0 92ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "QA LAB / REST API"  (47,95 839x42)
+#12 2026-07-29T14:18:48.776Z sim-use tap #inspector-curl-toggle
+    → exit=0 112ms selector=selector
+    | ✓ Tap at (540.0, 1307.0) completed successfully
+#13 2026-07-29T14:18:48.939Z sim-use ui
+    → exit=0 195ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "QA LAB / REST API"  (47,95 839x42)
+#14 2026-07-29T14:19:39.349Z sim-use ui
+    → exit=0 181ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "QA LAB / REST API"  (47,95 839x42)
+#15 2026-07-29T14:20:01.068Z sim-use screenshot --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/curl.png
+    → exit=0 506ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/curl.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/curl.png
+#16 2026-07-29T14:20:32.853Z sim-use tap @24
+    → exit=0 70ms selector=selector
+    | ✓ Tap at (270.0, 2281.0) completed successfully
+#17 2026-07-29T14:20:33.990Z sim-use ui
+    → exit=0 81ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "ДЕМО-ПРОСТРАНСТВО"  (96,65 886x42)
+#18 2026-07-29T14:20:42.197Z sim-use tap @13
+    → exit=0 112ms selector=selector
+    | ✓ Tap at (311.0, 1096.0) completed successfully
+#19 2026-07-29T14:20:43.372Z sim-use ui
+    → exit=0 46ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#20 2026-07-29T14:20:56.153Z sim-use tap #filter-status-open
+    → exit=0 110ms selector=selector
+    | ✓ Tap at (540.0, 515.0) completed successfully
+#21 2026-07-29T14:20:57.344Z sim-use ui
+    → exit=0 353ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#22 2026-07-29T14:21:04.953Z sim-use tap #filter-status-testing
+    → exit=0 110ms selector=selector
+    | ✓ Tap at (540.0, 788.0) completed successfully
+#23 2026-07-29T14:21:06.143Z sim-use ui
+    → exit=0 171ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#24 2026-07-29T14:21:18.549Z sim-use tap --label Готово --element-type Button
+    → exit=0 101ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#25 2026-07-29T14:21:19.747Z sim-use ui
+    → exit=0 61ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Создать дефект"  :create-issue-button:  (47,63 986x6)
+#26 2026-07-29T14:21:30.963Z sim-use tap @16
+    → exit=0 73ms selector=selector
+    | ✓ Tap at (769.0, 1196.0) completed successfully
+#27 2026-07-29T14:21:32.122Z sim-use ui
+    → exit=0 40ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#28 2026-07-29T14:21:46.744Z sim-use tap --label Закрыть
+    → exit=0 125ms selector=selector
+    | ✓ Tap at (996.0, 161.0) completed successfully
+#29 2026-07-29T14:21:47.965Z sim-use tap --label Сбросить фильтры --frame maxY=1500
+    → exit=0 77ms selector=selector
+    | ✓ Tap at (540.0, 1343.0) completed successfully
+#30 2026-07-29T14:21:49.101Z sim-use ui
+    → exit=0 47ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Создать дефект"  :create-issue-button:  (47,63 986x6)

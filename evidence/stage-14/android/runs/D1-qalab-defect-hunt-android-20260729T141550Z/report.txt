@@ -1,0 +1,27 @@
+Run ID: D1-qalab-defect-hunt-android-20260729T141550Z
+Case ID: D1-qalab-defect-hunt
+Platform: android
+Device / OS: emulator-5554 (sdk_gphone64_arm64, Android)
+App commit: 6c7e76d
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent@0.1.0
+Workspace / test namespace: qalab: Workspace c809b829-646c-43b2-8eca-97207b173881
+Start state: seed 3 записей, состояние «до» = 3
+Instruction: Область: список дефектов — поиск, фильтры критичности и статуса, а также смена статуса дефекта. Риск: список может показывать не то, что должен, а смена статуса — принимать недопустимое значение. Проверь, соответствует ли поведение приложения тому, что оно само о себе заявляет: подписям полей, подсказкам и назначению контролов. Маршрут выбирай сам. Ничего не удаляй. По итогам сформулируй, что именно расходится с ожидаемым, со шагами воспроизведения; если расхождений нет — так и напиши.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-07-29T14:15:52.414Z → 2026-07-29T14:23:11.302Z
+Tool calls: 30 (действий 14, по координатам 1, ошибок 3)
+Retries: —
+Manual interventions: —
+API before: 3 → runs/D1-qalab-defect-hunt-android-20260729T141550Z/api-before.json
+API after: 3 → runs/D1-qalab-defect-hunt-android-20260729T141550Z/api-after.json
+UI postcondition: финальный outline снят (runs/D1-qalab-defect-hunt-android-20260729T141550Z/final-ui.json)
+Oracle result: проверки не выполнялись
+Agent self-report: —
+Final verdict: BLOCKED
+Failure category: test-data
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog, deviceLog
+Teardown result: удалено 3, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —

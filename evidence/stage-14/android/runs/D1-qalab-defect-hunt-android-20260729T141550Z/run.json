@@ -1,0 +1,68 @@
+{
+  "runId": "D1-qalab-defect-hunt-android-20260729T141550Z",
+  "caseId": "D1-qalab-defect-hunt",
+  "platform": "android",
+  "device": "emulator-5554",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "c809b829-646c-43b2-8eca-97207b173881",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "797ae5",
+  "startedAt": "2026-07-29T14:15:52.414Z",
+  "seeded": [
+    {
+      "id": "1226b213-fefb-4568-ab72-51deea28ab80",
+      "title": "Кнопка входа не отвечает",
+      "status": "open",
+      "severity": "low"
+    },
+    {
+      "id": "f3fd1f40-dcae-4a40-89d7-1af4f6437bff",
+      "title": "Список загружается медленно",
+      "status": "open",
+      "severity": "critical"
+    },
+    {
+      "id": "b6f2c4c4-4d23-4b2e-83b5-6d960d8f0d90",
+      "title": "Экспорт отчёта не открывается",
+      "status": "in_progress",
+      "severity": "critical"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-07-29T14:15:50.803Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "6c7e76d",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "fedd8b2",
+      "dirty": true
+    },
+    "platform": "android",
+    "device": {
+      "deviceId": "emulator-5554",
+      "name": "sdk_gphone64_arm64",
+      "platform": "android",
+      "runtime": "Android",
+      "state": "device"
+    },
+    "agentModel": "subagent (clean context)",
+    "skillRevision": "mobile-qa-agent@0.1.0",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/D1-qalab-defect-hunt.yaml",
+  "limits": {
+    "timeoutSeconds": 600,
+    "retryPerAction": 3
+  },
+  "status": "aborted",
+  "armedAt": "2026-07-29T14:15:52.996Z",
+  "finishedAt": "2026-07-29T14:23:11.302Z",
+  "verdict": "BLOCKED"
+}

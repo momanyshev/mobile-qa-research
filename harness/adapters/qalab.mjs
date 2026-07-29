@@ -54,20 +54,46 @@ export default {
   bundleId: { ios: "ru.maksim.qalab", android: "ru.maksim.qalab" },
 
   /** Полигону нужен живой backend: без него seed и oracle недоказуемы. */
-  async preflight({ context } = {}) {
+  async preflight({ device, context } = {}) {
+    const out = [];
     const baseUrl = context?.baseUrl || process.env.ORACLE_BASE_URL || "http://127.0.0.1:8888";
     try {
       const res = await new IssuesClient(baseUrl, "00000000-0000-4000-8000-000000000000").list();
-      return [{
+      out.push({
         name: "backend QA Lab отвечает", level: "fail", ok: res.status === 200,
         detail: res.status === 200 ? `${baseUrl} → 200` : `${baseUrl} → ${res.status}`,
-      }];
+      });
     } catch (err) {
-      return [{
+      out.push({
         name: "backend QA Lab отвечает", level: "fail", ok: false,
         detail: `${baseUrl} недоступен: ${err.message}. Запустите npm run dev в portfolio-site`,
-      }];
+      });
     }
+
+    // Приложение должно смотреть в тот же Workspace, куда пойдёт seed. Иначе
+    // агент видит чужие (или пустые) данные, а oracle — свои: расхождение
+    // тихое и выглядит как «дефектов нет». Именно это сорвало первый прогон
+    // recall, поэтому проверка живёт здесь, а не в памяти оператора.
+    if (device && context?.workspaceId) {
+      try {
+        const tree = execFileSync("sim-use", ["ui", "--device", device], {
+          encoding: "utf8", timeout: 60_000, maxBuffer: 64 * 1024 * 1024,
+        });
+        const shown = tree.includes(context.workspaceId);
+        out.push({
+          name: "приложение наведено на Workspace run'а", level: "warn", ok: shown,
+          detail: shown
+            ? `${context.workspaceId} виден на экране`
+            : `на экране НЕ найден ${context.workspaceId} — приложение смотрит в другой Workspace либо экран с ним не открыт; seed уйдёт мимо агента`,
+        });
+      } catch (err) {
+        out.push({
+          name: "приложение наведено на Workspace run'а", level: "warn", ok: false,
+          detail: `не удалось прочитать экран: ${err.message.split("\n")[0]}`,
+        });
+      }
+    }
+    return out;
   },
 
   async createContext({ baseUrl } = {}) {
