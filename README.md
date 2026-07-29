@@ -11,15 +11,21 @@ QA Lab Mobile из соседнего репозитория `../portfolio-site`
 
 ## Структура
 
+Полное оглавление репозитория — в [AGENTS.md](AGENTS.md). Коротко:
+
 - `docs/testing-learning-plan.md` — главный документ: план из 15 этапов,
   «Карта прогресса», правила запусков, глоссарий, системные наблюдения и
   accessibility-карты платформ.
-- `docs/sim-use-skill-v0.10.0.md` — зафиксированная версия bundled skill
-  `sim-use` (0.10.0).
+- `docs/knowledge/` — свод знаний: selector guide, hard limits, runbook,
+  правила фиксации результатов, предусловия окружения. Точка входа —
+  `docs/knowledge/README.md`.
+- `harness/` — воспроизводимый контур прогона: манифесты кейсов, адаптеры
+  приложений, отчёты, selftest.
+- `tools/` — oracle, fixtures и fault-профили полигона.
+- `mobile-qa-agent/` — собственный агент этапа 14: skill, контракт, evals.
 - `evidence/stage-N/<platform>/` — скриншоты и артефакты по этапам плана.
   В отличие от полигона, evidence здесь версионируется.
-- `evals/` — появится на этапе 11: cases, fixtures, scripts и reports
-  воспроизводимых оценочных запусков.
+- `evals/reports/` — отчёты оценочных прогонов.
 
 ## Текущий статус
 
