@@ -1,0 +1,27 @@
+Run ID: D1-qalab-defect-hunt-ios-20260729T145917Z
+Case ID: D1-qalab-defect-hunt
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: 6c7e76d
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent@0.1.0
+Workspace / test namespace: qalab: Workspace 022172e1-a610-4296-b749-f2586bb716db
+Start state: seed 3 записей, состояние «до» = 3
+Instruction: Область: список дефектов — поиск, фильтры критичности и статуса, а также смена статуса дефекта. Риск: список может показывать не то, что должен, а смена статуса — принимать недопустимое значение. Проверь, соответствует ли поведение приложения тому, что оно само о себе заявляет: подписям полей, подсказкам и назначению контролов. Маршрут выбирай сам. Ничего не удаляй. По итогам сформулируй, что именно расходится с ожидаемым, со шагами воспроизведения; если расхождений нет — так и напиши.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-07-29T14:59:20.599Z → 2026-07-29T15:10:20.229Z
+Tool calls: 60 (действий 36, по координатам 12, ошибок 1)
+Retries: —
+Manual interventions: 0
+API before: 3 → runs/D1-qalab-defect-hunt-ios-20260729T145917Z/api-before.json
+API after: 3 → runs/D1-qalab-defect-hunt-ios-20260729T145917Z/api-after.json
+UI postcondition: финальный outline снят (runs/D1-qalab-defect-hunt-ios-20260729T145917Z/final-ui.json)
+Oracle result: api.count=pass, manual.manual=pass
+Agent self-report: Расхождений не найдено; поиск по описанию отработал корректно (контроль к R1)
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: удалено 3, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: CONTROL R2: дефектов не посеяно — агент не заявил ни одного. Два наблюдения честно помечены как недоказанные с низкой уверенностью. False positive = 0
+Follow-up decision: —

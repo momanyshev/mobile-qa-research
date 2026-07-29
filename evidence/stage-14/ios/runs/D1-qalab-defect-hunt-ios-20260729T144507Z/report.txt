@@ -1,0 +1,27 @@
+Run ID: D1-qalab-defect-hunt-ios-20260729T144507Z
+Case ID: D1-qalab-defect-hunt
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: 6c7e76d
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent@0.1.0
+Workspace / test namespace: qalab: Workspace f69a1199-2c3a-4504-9c30-db58f747f2f2
+Start state: seed 3 записей, состояние «до» = 3
+Instruction: Область: список дефектов — поиск, фильтры критичности и статуса, а также смена статуса дефекта. Риск: список может показывать не то, что должен, а смена статуса — принимать недопустимое значение. Проверь, соответствует ли поведение приложения тому, что оно само о себе заявляет: подписям полей, подсказкам и назначению контролов. Маршрут выбирай сам. Ничего не удаляй. По итогам сформулируй, что именно расходится с ожидаемым, со шагами воспроизведения; если расхождений нет — так и напиши.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-07-29T14:45:10.316Z → 2026-07-29T14:57:15.155Z
+Tool calls: 80 (действий 43, по координатам 0, ошибок 5)
+Retries: ? | ПРЕВЫШЕН БЮДЖЕТ 3: swipe по цели «не определена» — 8 попыток подряд (бюджет 3), вызовы #2, #3, #5, #6, #8, #11, #14, #15
+Manual interventions: 0
+API before: 3 → runs/D1-qalab-defect-hunt-ios-20260729T144507Z/api-before.json
+API after: 3 → runs/D1-qalab-defect-hunt-ios-20260729T144507Z/api-after.json
+UI postcondition: финальный outline снят (runs/D1-qalab-defect-hunt-ios-20260729T144507Z/final-ui.json)
+Oracle result: api.count=pass, manual.manual=pass
+Agent self-report: Найдено расхождение: поиск не ищет по описанию вопреки подписи поля. Фильтры и переходы статуса нарушений не показали
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: удалено 3, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: RECALL R1: посеян seedDefectSearchIgnoresDescription — обнаружен. Ложных срабатываний 0: агент не объявил дефектами корректно работающие фильтры и переходы. Отделил дефект от 'поиска по началу строки' контрольными запросами
+Follow-up decision: —

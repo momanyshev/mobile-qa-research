@@ -112,6 +112,14 @@ async function cmdStart(f) {
   const dir = runDir(STAGE, platform, runId);
   const context = await adapter.createContext({ platform, device });
 
+  // --workspace применяется ДО preflight: иначе проверка «приложение наведено
+  // на Workspace run'а» сверяла бы сгенерированный UUID вместо переданного и
+  // давала ложную тревогу на каждом таком прогоне.
+  if (f.workspace && f.workspace !== true) {
+    if (context.kind !== "workspace") die(`--workspace неприменим к adapter «${adapter.id}»`);
+    context.workspaceId = f.workspace;
+  }
+
   // Preflight до создания каталога, seed и первого действия: отделяем
   // «run провалился» от «run не следовало начинать». Не пройден — на диске не
   // остаётся ни каталога, ни артефактов: несостоявшийся run не должен попадать
@@ -130,12 +138,6 @@ async function cmdStart(f) {
 
   mkdirSync(dir, { recursive: true });
   if (preflightResult) writeFileSync(`${dir}/preflight.json`, JSON.stringify(preflightResult, null, 2));
-  // --workspace позволяет заранее навести приложение на контекст run'а, чтобы
-  // исходный снимок UI отражал реальное стартовое состояние агента.
-  if (f.workspace && f.workspace !== true) {
-    if (context.kind !== "workspace") die(`--workspace неприменим к adapter «${adapter.id}»`);
-    context.workspaceId = f.workspace;
-  }
 
   const versions = versionManifest({
     deviceId: device, platform,
