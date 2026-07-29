@@ -1,0 +1,578 @@
+#1 2026-07-29T12:14:25.342Z sim-use devices --json --all
+    → exit=0 280ms
+    | {"data":{"devices":[{"deviceId":"emulator-5554","name":"sdk_gphone64_arm64","platform":"android","runtime":"Android","state":"device"},{"deviceId":"080A36AF-2148-4EBF-89A8-537674A7BD60","name":"iPhone 11","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"DB216E5C-F646-488E-9537-2D8C390A2B8F","name":"iPhone 16 iOS 26.1","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"496803A0-B207-482B-8405-DC49E83CAA4D","name":"iPhone 17","platform":"ios","runtime":"iOS 26.4","state":"Shutdown"},{"deviceId":"A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37","name":"iPhone 17 Pro Max","platform":"ios","runtime":"iOS 26.5","state":"Booted"}]},"ok":true}
+#2 2026-07-29T12:14:39.060Z sim-use app-state --device emulator-5554
+    → exit=0 275ms
+    | Running apps (3):
+    |   com.linecorp.simuse.devicebridge  pid=3888
+    |   io.element.android.x  pid=3448
+#3 2026-07-29T12:14:39.396Z sim-use ui --device emulator-5554
+    → exit=0 132ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Демо-пространство. Изменить Workspace"  (47,95 855x137)
+#4 2026-07-29T12:14:49.560Z sim-use ui --device emulator-5554
+    → exit=0 93ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Демо-пространство. Изменить Workspace"  (47,95 855x137)
+#5 2026-07-29T12:14:59.401Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/00-initial.png
+    → exit=0 1150ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/00-initial.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/00-initial.png
+#6 2026-07-29T12:15:20.577Z sim-use keyboard-state --device emulator-5554
+    → exit=0 89ms
+    | soft
+#7 2026-07-29T12:15:29.863Z sim-use button back --device emulator-5554
+    → exit=0 47ms selector=focus
+    | ✓ Back button press completed successfully
+#8 2026-07-29T12:15:29.983Z sim-use ui --device emulator-5554
+    → exit=0 296ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Демо-пространство. Изменить Workspace"  (47,95 855x137)
+#9 2026-07-29T12:15:41.531Z sim-use keyboard-state --device emulator-5554
+    → exit=0 81ms
+    | hidden
+#10 2026-07-29T12:15:41.669Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/01-after-back.png
+    → exit=0 159ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/01-after-back.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/01-after-back.png
+#11 2026-07-29T12:15:58.777Z sim-use tap --label ПРОДОЛЖИТЬ РАБОТУ --device emulator-5554
+    → exit=0 55ms selector=selector
+    | ✓ Tap at (743.0, 1403.0) completed successfully
+#12 2026-07-29T12:16:04.934Z sim-use ui --device emulator-5554
+    → exit=0 66ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Демо-пространство. Изменить Workspace"  (47,95 855x137)
+#13 2026-07-29T12:16:12.394Z sim-use tap --label Сохранить и перейти --device emulator-5554
+    → exit=0 157ms selector=selector
+    | ✓ Tap at (791.0, 2242.0) completed successfully
+#14 2026-07-29T12:16:12.616Z sim-use ui --device emulator-5554 --wait-timeout 5
+    → exit=64 15ms
+    ! Error: Unknown option '--wait-timeout'
+#15 2026-07-29T12:16:18.477Z sim-use ui --device emulator-5554
+    → exit=0 148ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,95 839x284)
+#16 2026-07-29T12:16:31.098Z sim-use swipe --from 540,1700 --to 540,700 --duration 0.4 --device emulator-5554
+    → exit=0 106ms selector=coordinate
+    | ✓ Swipe (540,1700) → (540,700) completed successfully
+#17 2026-07-29T12:16:31.266Z sim-use ui --device emulator-5554
+    → exit=0 892ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Копировать Workspace ID"  (97,63 433x87)
+#18 2026-07-29T12:16:43.655Z sim-use swipe --from 540,1900 --to 540,700 --duration 0.4 --device emulator-5554
+    → exit=0 150ms selector=coordinate
+    | ✓ Swipe (540,1900) → (540,700) completed successfully
+#19 2026-07-29T12:16:43.863Z sim-use ui --device emulator-5554
+    → exit=0 2264ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Доступный переход — «Тестирование»."  (113,63 866x10)
+#20 2026-07-29T12:17:05.529Z sim-use swipe --from 540,600 --to 540,2000 --duration 0.4 --device emulator-5554
+    → exit=0 159ms selector=coordinate
+    | ✓ Swipe (540,600) → (540,2000) completed successfully
+#21 2026-07-29T12:17:05.751Z sim-use swipe --from 540,600 --to 540,2000 --duration 0.4 --device emulator-5554
+    → exit=0 177ms selector=coordinate
+    | ✓ Swipe (540,600) → (540,2000) completed successfully
+#22 2026-07-29T12:17:05.988Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/02-top.png
+    → exit=0 2513ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/02-top.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/02-top.png
+#23 2026-07-29T12:17:21.931Z sim-use swipe --from 540,500 --to 540,2050 --duration 0.3 --device emulator-5554
+    → exit=0 102ms selector=coordinate
+    | ✓ Swipe (540,500) → (540,2050) completed successfully
+#24 2026-07-29T12:17:22.094Z sim-use swipe --from 540,500 --to 540,2050 --duration 0.3 --device emulator-5554
+    → exit=0 671ms selector=coordinate
+    | ✓ Swipe (540,500) → (540,2050) completed successfully
+#25 2026-07-29T12:17:22.858Z sim-use swipe --from 540,500 --to 540,2050 --duration 0.3 --device emulator-5554
+    → exit=0 391ms selector=coordinate
+    | ✓ Swipe (540,500) → (540,2050) completed successfully
+#26 2026-07-29T12:17:23.340Z sim-use ui --device emulator-5554
+    → exit=0 2228ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,95 839x284)
+#27 2026-07-29T12:17:38.882Z sim-use swipe --from 540,1800 --to 540,900 --duration 0.3 --device emulator-5554
+    → exit=0 96ms selector=coordinate
+    | ✓ Swipe (540,1800) → (540,900) completed successfully
+#28 2026-07-29T12:17:39.040Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/03-filters.png
+    → exit=0 1734ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/03-filters.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/03-filters.png
+#29 2026-07-29T12:18:00.238Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 416ms selector=selector
+    | ✓ Tap at (541.0, 394.0) completed successfully
+#30 2026-07-29T12:18:00.724Z sim-use android type аватар --device emulator-5554
+    → exit=0 245ms
+    ! type ok (graphemes=6, clear=false)
+#31 2026-07-29T12:18:07.240Z sim-use ui --device emulator-5554
+    → exit=0 205ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#32 2026-07-29T12:18:16.233Z sim-use swipe --from 540,1600 --to 540,800 --duration 0.3 --device emulator-5554
+    → exit=0 131ms selector=coordinate
+    | ✓ Swipe (540,1600) → (540,800) completed successfully
+#33 2026-07-29T12:18:16.425Z sim-use ui --device emulator-5554
+    → exit=0 857ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#34 2026-07-29T12:18:28.867Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/04-search-avatar.png
+    → exit=0 616ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/04-search-avatar.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/04-search-avatar.png
+#35 2026-07-29T12:18:45.975Z sim-use keyboard-state --device emulator-5554
+    → exit=0 903ms
+    | soft
+#36 2026-07-29T12:18:46.975Z sim-use swipe --from 540,1600 --to 540,700 --duration 0.3 --device emulator-5554
+    → exit=0 124ms selector=coordinate
+    | ✓ Swipe (540,1600) → (540,700) completed successfully
+#37 2026-07-29T12:18:47.161Z sim-use ui --device emulator-5554
+    → exit=0 1619ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x41)
+#38 2026-07-29T12:19:01.855Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 323ms selector=selector
+    | ✓ Tap at (541.0, 986.0) completed successfully
+#39 2026-07-29T12:19:02.246Z sim-use android type --clear Кнопка --device emulator-5554
+    → exit=0 1213ms
+    ! type ok (graphemes=6, clear=true)
+#40 2026-07-29T12:19:03.956Z sim-use ui --device emulator-5554
+    → exit=0 175ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x41)
+#41 2026-07-29T12:19:19.458Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 594ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#42 2026-07-29T12:19:20.135Z sim-use android type --clear кнопка --device emulator-5554
+    → exit=0 970ms
+    ! type ok (graphemes=6, clear=true)
+#43 2026-07-29T12:19:21.540Z sim-use ui --device emulator-5554
+    → exit=0 202ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#44 2026-07-29T12:19:36.339Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 296ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#45 2026-07-29T12:19:36.702Z sim-use android type --clear Экспорт --device emulator-5554
+    → exit=0 427ms
+    ! type ok (graphemes=7, clear=true)
+#46 2026-07-29T12:19:38.616Z sim-use ui --device emulator-5554
+    → exit=0 134ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#47 2026-07-29T12:19:38.813Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 163ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#48 2026-07-29T12:19:39.037Z sim-use android type --clear экспорт --device emulator-5554
+    → exit=0 188ms
+    ! type ok (graphemes=7, clear=true)
+#49 2026-07-29T12:19:40.761Z sim-use ui --device emulator-5554
+    → exit=0 206ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#50 2026-07-29T12:19:41.029Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 80ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#51 2026-07-29T12:19:41.164Z sim-use android type --clear перечня --device emulator-5554
+    → exit=0 202ms
+    ! type ok (graphemes=7, clear=true)
+#52 2026-07-29T12:19:42.787Z sim-use ui --device emulator-5554
+    → exit=0 305ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#53 2026-07-29T12:19:43.185Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 206ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#54 2026-07-29T12:19:43.445Z sim-use android type --clear загружается --device emulator-5554
+    → exit=0 163ms
+    ! type ok (graphemes=11, clear=true)
+#55 2026-07-29T12:19:44.976Z sim-use ui --device emulator-5554
+    → exit=0 181ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#56 2026-07-29T12:19:45.232Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 225ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#57 2026-07-29T12:19:45.540Z sim-use android type --clear Список --device emulator-5554
+    → exit=0 313ms
+    ! type ok (graphemes=6, clear=true)
+#58 2026-07-29T12:19:47.293Z sim-use ui --device emulator-5554
+    → exit=0 229ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#59 2026-07-29T12:20:05.346Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 260ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#60 2026-07-29T12:20:05.670Z sim-use android type --clear Экспорт --device emulator-5554
+    → exit=0 462ms
+    ! type ok (graphemes=7, clear=true)
+#61 2026-07-29T12:20:09.413Z sim-use ui --device emulator-5554
+    → exit=0 68ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#62 2026-07-29T12:20:25.678Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 255ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#63 2026-07-29T12:20:26.004Z sim-use android type --clear Кнопка --device emulator-5554
+    → exit=0 588ms
+    ! type ok (graphemes=6, clear=true)
+#64 2026-07-29T12:20:29.784Z sim-use ui --device emulator-5554
+    → exit=0 78ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#65 2026-07-29T12:20:29.925Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 77ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#66 2026-07-29T12:20:30.062Z sim-use android type --clear аватар --device emulator-5554
+    → exit=0 276ms
+    ! type ok (graphemes=6, clear=true)
+#67 2026-07-29T12:20:33.586Z sim-use ui --device emulator-5554
+    → exit=0 90ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#68 2026-07-29T12:20:33.740Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 67ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#69 2026-07-29T12:20:33.866Z sim-use android type --clear перечня --device emulator-5554
+    → exit=0 288ms
+    ! type ok (graphemes=7, clear=true)
+#70 2026-07-29T12:20:37.510Z sim-use ui --device emulator-5554
+    → exit=0 80ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#71 2026-07-29T12:20:37.665Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 78ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#72 2026-07-29T12:20:37.803Z sim-use android type --clear загружается --device emulator-5554
+    → exit=0 447ms
+    ! type ok (graphemes=11, clear=true)
+#73 2026-07-29T12:20:41.540Z sim-use ui --device emulator-5554
+    → exit=0 84ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#74 2026-07-29T12:20:41.686Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 75ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#75 2026-07-29T12:20:41.824Z sim-use android type --clear СПИСОК --device emulator-5554
+    → exit=0 261ms
+    ! type ok (graphemes=6, clear=true)
+#76 2026-07-29T12:20:45.423Z sim-use ui --device emulator-5554
+    → exit=0 79ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#77 2026-07-29T12:20:45.563Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 75ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#78 2026-07-29T12:20:45.701Z sim-use android type --clear спиcок --device emulator-5554
+    → exit=0 300ms
+    ! type ok (graphemes=6, clear=true)
+#79 2026-07-29T12:20:49.512Z sim-use ui --device emulator-5554
+    → exit=0 80ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#80 2026-07-29T12:21:06.109Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 253ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#81 2026-07-29T12:21:06.427Z sim-use android type --clear внешнем --device emulator-5554
+    → exit=0 656ms
+    ! type ok (graphemes=7, clear=true)
+#82 2026-07-29T12:21:10.407Z sim-use ui --device emulator-5554
+    → exit=0 74ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#83 2026-07-29T12:21:10.540Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 66ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#84 2026-07-29T12:21:10.661Z sim-use android type --clear холодном --device emulator-5554
+    → exit=0 265ms
+    ! type ok (graphemes=8, clear=true)
+#85 2026-07-29T12:21:14.106Z sim-use ui --device emulator-5554
+    → exit=0 85ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#86 2026-07-29T12:21:14.253Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 77ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#87 2026-07-29T12:21:14.392Z sim-use android type --clear падает --device emulator-5554
+    → exit=0 361ms
+    ! type ok (graphemes=6, clear=true)
+#88 2026-07-29T12:21:18.063Z sim-use ui --device emulator-5554
+    → exit=0 111ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#89 2026-07-29T12:21:18.237Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 77ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#90 2026-07-29T12:21:18.375Z sim-use android type --clear файл --device emulator-5554
+    → exit=0 255ms
+    ! type ok (graphemes=4, clear=true)
+#91 2026-07-29T12:21:21.880Z sim-use ui --device emulator-5554
+    → exit=0 116ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#92 2026-07-29T12:21:36.786Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/05-search-fail-desc.png
+    → exit=0 561ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/05-search-fail-desc.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/05-search-fail-desc.png
+#93 2026-07-29T12:21:37.428Z sim-use tap --label API-запрос --device emulator-5554
+    → exit=1 151ms selector=selector
+    ! Error: Selector matched 2 elements for --label 'API-запрос'; add --id / --element-type / --frame to disambiguate.
+#94 2026-07-29T12:21:39.683Z sim-use ui --device emulator-5554
+    → exit=0 122ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#95 2026-07-29T12:21:50.985Z sim-use tap --label API-запрос --element-type View --device emulator-5554
+    → exit=0 106ms selector=selector
+    | ✓ Tap at (810.0, 2281.0) completed successfully
+#96 2026-07-29T12:21:53.161Z sim-use ui --device emulator-5554
+    → exit=0 81ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "QA LAB / REST API"  (47,95 839x42)
+#97 2026-07-29T12:22:04.607Z sim-use tap #inspector-curl-toggle --device emulator-5554
+    → exit=0 226ms selector=selector
+    | ✓ Tap at (540.0, 1307.0) completed successfully
+#98 2026-07-29T12:22:05.926Z sim-use ui --device emulator-5554
+    → exit=0 94ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "QA LAB / REST API"  (47,95 839x42)
+#99 2026-07-29T12:22:18.935Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/06-api-curl.png
+    → exit=0 488ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/06-api-curl.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/06-api-curl.png
+#100 2026-07-29T12:22:33.078Z sim-use tap --label Дефекты --element-type View --frame minY=2200 --device emulator-5554
+    → exit=0 215ms selector=selector
+    | ✓ Tap at (270.0, 2281.0) completed successfully
+#101 2026-07-29T12:22:35.406Z sim-use ui --device emulator-5554
+    → exit=0 135ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#102 2026-07-29T12:22:45.956Z sim-use tap --label Сбросить фильтры --frame maxY=1450 --device emulator-5554
+    → exit=0 150ms selector=selector
+    | ✓ Tap at (540.0, 1343.0) completed successfully
+#103 2026-07-29T12:22:49.189Z sim-use ui --device emulator-5554
+    → exit=0 69ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#104 2026-07-29T12:22:58.861Z sim-use tap --label Все статусы --element-type Button --device emulator-5554
+    → exit=0 128ms selector=selector
+    | ✓ Tap at (311.0, 1196.0) completed successfully
+#105 2026-07-29T12:23:00.094Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/07-status-filter-open.png
+    → exit=0 159ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/07-status-filter-open.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/07-status-filter-open.png
+#106 2026-07-29T12:23:00.313Z sim-use ui --device emulator-5554
+    → exit=0 50ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#107 2026-07-29T12:23:12.332Z sim-use tap #filter-status-open --device emulator-5554
+    → exit=0 76ms selector=selector
+    | ✓ Tap at (540.0, 515.0) completed successfully
+#108 2026-07-29T12:23:13.499Z sim-use ui --device emulator-5554
+    → exit=0 324ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#109 2026-07-29T12:23:24.916Z sim-use tap --label Готово --element-type Button --device emulator-5554
+    → exit=0 123ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#110 2026-07-29T12:23:28.121Z sim-use ui --device emulator-5554
+    → exit=0 72ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#111 2026-07-29T12:23:39.471Z sim-use swipe --from 540,1800 --to 540,600 --duration 0.3 --device emulator-5554
+    → exit=0 182ms selector=coordinate
+    | ✓ Swipe (540,1800) → (540,600) completed successfully
+#112 2026-07-29T12:23:40.740Z sim-use ui --device emulator-5554
+    → exit=0 1002ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  ViewGroup  "Критичность: Критическая"  :issue-card-severity-61b47562-73b0-4ac5-9c20-e269448e3d0d:  (113,63 239x57)
+#113 2026-07-29T12:23:49.928Z sim-use tap --label Статусы: 1 --device emulator-5554
+    → exit=1 135ms selector=selector
+    ! Error: No matching element found for selector --label 'Статусы: 1'.
+#114 2026-07-29T12:23:51.155Z sim-use tap #filter-status-open --device emulator-5554
+    → exit=1 125ms selector=selector
+    ! Error: No matching element found for selector --id 'filter-status-open'.
+#115 2026-07-29T12:23:51.342Z sim-use tap #filter-status-in_progress --device emulator-5554
+    → exit=1 114ms selector=selector
+    ! Error: No matching element found for selector --id 'filter-status-in_progress'.
+#116 2026-07-29T12:23:52.542Z sim-use ui --device emulator-5554
+    → exit=0 106ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  ViewGroup  "Критичность: Критическая"  :issue-card-severity-61b47562-73b0-4ac5-9c20-e269448e3d0d:  (113,63 239x57)
+#117 2026-07-29T12:24:03.354Z sim-use swipe --from 540,600 --to 540,1900 --duration 0.3 --device emulator-5554
+    → exit=0 62ms selector=coordinate
+    | ✓ Swipe (540,600) → (540,1900) completed successfully
+#118 2026-07-29T12:24:04.509Z sim-use ui --device emulator-5554
+    → exit=0 753ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x199)
+#119 2026-07-29T12:24:14.157Z sim-use tap --label Статусы: 1 --element-type Button --device emulator-5554
+    → exit=0 124ms selector=selector
+    | ✓ Tap at (311.0, 1925.0) completed successfully
+#120 2026-07-29T12:24:15.358Z sim-use tap #filter-status-open --device emulator-5554
+    → exit=0 48ms selector=selector
+    | ✓ Tap at (540.0, 515.0) completed successfully
+#121 2026-07-29T12:24:16.506Z sim-use tap #filter-status-in_progress --device emulator-5554
+    → exit=0 83ms selector=selector
+    | ✓ Tap at (540.0, 651.0) completed successfully
+#122 2026-07-29T12:24:17.651Z sim-use ui --device emulator-5554
+    → exit=0 48ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#123 2026-07-29T12:24:26.158Z sim-use tap --label Готово --element-type Button --device emulator-5554
+    → exit=0 112ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#124 2026-07-29T12:24:29.354Z sim-use ui --device emulator-5554
+    → exit=0 69ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x199)
+#125 2026-07-29T12:24:39.490Z sim-use swipe --from 540,1700 --to 540,700 --duration 0.3 --device emulator-5554
+    → exit=0 148ms selector=coordinate
+    | ✓ Swipe (540,1700) → (540,700) completed successfully
+#126 2026-07-29T12:24:40.743Z sim-use ui --device emulator-5554
+    → exit=0 961ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace изменён."  (96,71 886x63)
+#127 2026-07-29T12:24:52.552Z sim-use tap --label Все значения --element-type Button --device emulator-5554
+    → exit=0 241ms selector=selector
+    | ✓ Tap at (769.0, 576.0) completed successfully
+#128 2026-07-29T12:24:53.864Z sim-use ui --device emulator-5554
+    → exit=0 52ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#129 2026-07-29T12:25:10.571Z sim-use tap --label Закрыть --device emulator-5554
+    → exit=0 283ms selector=selector
+    | ✓ Tap at (996.0, 161.0) completed successfully
+#130 2026-07-29T12:25:11.935Z sim-use tap --label Сбросить фильтры --element-type Button --device emulator-5554
+    → exit=0 97ms selector=selector
+    | ✓ Tap at (540.0, 723.0) completed successfully
+#131 2026-07-29T12:25:15.119Z sim-use ui --device emulator-5554
+    → exit=0 89ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#132 2026-07-29T12:25:22.501Z sim-use tap --label Все значения --element-type Button --device emulator-5554
+    → exit=0 286ms selector=selector
+    | ✓ Tap at (769.0, 1196.0) completed successfully
+#133 2026-07-29T12:25:23.874Z sim-use tap #filter-severity-critical --device emulator-5554
+    → exit=0 62ms selector=selector
+    | ✓ Tap at (540.0, 924.0) completed successfully
+#134 2026-07-29T12:25:25.030Z sim-use ui --device emulator-5554
+    → exit=0 285ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#135 2026-07-29T12:25:32.882Z sim-use tap --label Готово --element-type Button --device emulator-5554
+    → exit=0 184ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#136 2026-07-29T12:25:36.148Z sim-use ui --device emulator-5554
+    → exit=0 52ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x78)
+#137 2026-07-29T12:25:48.687Z sim-use swipe --from 540,1800 --to 540,600 --duration 0.3 --device emulator-5554
+    → exit=0 178ms selector=coordinate
+    | ✓ Swipe (540,1800) → (540,600) completed successfully
+#138 2026-07-29T12:25:49.949Z sim-use ui --device emulator-5554
+    → exit=0 508ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  ViewGroup  "Критичность: Критическая"  :issue-card-severity-49b4b236-3fb0-45df-96a1-f9f05a5252b6:  (113,63 239x57)
+#139 2026-07-29T12:26:00.609Z sim-use swipe --from 540,600 --to 540,1900 --duration 0.3 --device emulator-5554
+    → exit=0 111ms selector=coordinate
+    | ✓ Swipe (540,600) → (540,1900) completed successfully
+#140 2026-07-29T12:26:01.824Z sim-use tap --label Критичность: 1 --element-type Button --device emulator-5554
+    → exit=0 1368ms selector=selector
+    | ✓ Tap at (769.0, 1945.0) completed successfully
+#141 2026-07-29T12:26:04.260Z sim-use tap #filter-severity-critical --device emulator-5554
+    → exit=0 53ms selector=selector
+    | ✓ Tap at (540.0, 924.0) completed successfully
+#142 2026-07-29T12:26:05.427Z sim-use tap #filter-severity-low --device emulator-5554
+    → exit=0 181ms selector=selector
+    | ✓ Tap at (540.0, 515.0) completed successfully
+#143 2026-07-29T12:26:06.702Z sim-use ui --device emulator-5554
+    → exit=0 86ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#144 2026-07-29T12:26:15.209Z sim-use tap --label Готово --element-type Button --device emulator-5554
+    → exit=0 164ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#145 2026-07-29T12:26:18.481Z sim-use ui --device emulator-5554
+    → exit=0 56ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x219)
+#146 2026-07-29T12:26:25.620Z sim-use swipe --from 540,1700 --to 540,600 --duration 0.3 --device emulator-5554
+    → exit=0 106ms selector=coordinate
+    | ✓ Swipe (540,1700) → (540,600) completed successfully
+#147 2026-07-29T12:26:26.827Z sim-use ui --device emulator-5554
+    → exit=0 1312ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace изменён."  (96,71 886x63)
+#148 2026-07-29T12:26:40.137Z sim-use ui --device emulator-5554
+    → exit=0 109ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace изменён."  (96,71 886x63)
+#149 2026-07-29T12:26:53.473Z sim-use tap #issue-card-status-ecc4c341-488a-4eb2-8ed3-081adbb41058 --device emulator-5554
+    → exit=0 215ms selector=selector
+    | ✓ Tap at (545.0, 1654.0) completed successfully
+#150 2026-07-29T12:26:55.773Z sim-use ui --device emulator-5554
+    → exit=0 1055ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,1038 940x324)
+#151 2026-07-29T12:26:56.906Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/08-status-spinner.png
+    → exit=0 1090ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/08-status-spinner.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/shots/08-status-spinner.png
+#152 2026-07-29T12:27:13.683Z sim-use tap --label В работе --device emulator-5554
+    → exit=0 105ms selector=selector
+    | ✓ Tap at (540.0, 1270.0) completed successfully
+#153 2026-07-29T12:27:16.878Z sim-use ui --device emulator-5554
+    → exit=0 56ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Лимит: 50 дефектов"  (97,63 886x3)

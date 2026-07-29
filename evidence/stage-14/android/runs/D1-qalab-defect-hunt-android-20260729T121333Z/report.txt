@@ -1,0 +1,27 @@
+Run ID: D1-qalab-defect-hunt-android-20260729T121333Z
+Case ID: D1-qalab-defect-hunt
+Platform: android
+Device / OS: emulator-5554 (sdk_gphone64_arm64, Android)
+App commit: 6c7e76d
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent@0.1.0
+Workspace / test namespace: qalab: Workspace 27564319-a043-468b-b125-331dd67d668a
+Start state: seed 3 записей, состояние «до» = 3
+Instruction: Область: список дефектов — поиск, фильтры критичности и статуса, а также смена статуса дефекта. Риск: список может показывать не то, что должен, а смена статуса — принимать недопустимое значение. Проверь, соответствует ли поведение приложения тому, что оно само о себе заявляет: подписям полей, подсказкам и назначению контролов. Маршрут выбирай сам. Ничего не удаляй. По итогам сформулируй, что именно расходится с ожидаемым, со шагами воспроизведения; если расхождений нет — так и напиши.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-07-29T12:13:36.820Z → 2026-07-29T13:52:11.643Z
+Tool calls: 153 (действий 65, по координатам 16, ошибок 5)
+Retries: ? | ПРЕВЫШЕН БЮДЖЕТ 3: tap по цели «#issue-search-input» — 18 попыток подряд (бюджет 3), вызовы #38, #41, #44, #47, #50, #53, #56, #59, #62, #65, #68, #71, #74, #77, #80, #83, #86, #89
+Manual interventions: —
+API before: 3 → runs/D1-qalab-defect-hunt-android-20260729T121333Z/api-before.json
+API after: 3 → runs/D1-qalab-defect-hunt-android-20260729T121333Z/api-after.json
+UI postcondition: финальный outline снят (runs/D1-qalab-defect-hunt-android-20260729T121333Z/final-ui.json)
+Oracle result: проверки не выполнялись
+Agent self-report: —
+Final verdict: BLOCKED
+Failure category: environment
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog, deviceLog
+Teardown result: удалено 3, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —
