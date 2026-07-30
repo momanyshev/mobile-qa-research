@@ -38,6 +38,7 @@ import { renderReport, reportStructure } from "./lib/report.mjs";
 import { summarizeLog, renderTranscript, retryViolations } from "./lib/cmdlog.mjs";
 import { runPreflight, renderPreflight, observedApp } from "./lib/preflight.mjs";
 import { captureDeviceLog, needsDiagnostics } from "./lib/diagnostics.mjs";
+import { startRecording, stopRecording } from "./lib/video.mjs";
 import { renderSummary } from "./lib/summary.mjs";
 
 const STAGE = process.env.HARNESS_STAGE || "10";
@@ -178,6 +179,11 @@ async function cmdStart(f) {
     }
   }
 
+  // Запись экрана идёт от start до закрытия run: подготовка между start и arm
+  // (наведение приложения, перезапуск) — часть истории прогона и должна быть
+  // видна, если результат придётся оспаривать.
+  const video = startRecording({ device, dir });
+
   const state = {
     runId, caseId: manifest.id, platform, device,
     adapter: adapter.id, context, runToken,
@@ -186,6 +192,7 @@ async function cmdStart(f) {
     versions, manifestPath: `cases/${manifest.id}.yaml`,
     limits: manifest.limits,
     status: "started",
+    videoPid: video.pid || null,
   };
   saveState(state);
 
@@ -197,6 +204,7 @@ async function cmdStart(f) {
   console.log(`seed:       ${seeded.length} записей`);
   console.log(`evidence:   ${dir}`);
   console.log(`initial UI: ${capture ? "снят" : "НЕ снят (--no-device)"}`);
+  console.log(`видео:      ${video.started ? `пишется (pid ${video.pid})` : `НЕ пишется — ${video.reason}`}`);
   console.log(`лимиты:     ${manifest.limits.timeoutSeconds} с, ${manifest.limits.retryPerAction} попытки на действие`);
   console.log("");
   console.log("Разрешено:  " + manifest.allowedActions.join(", "));
@@ -268,7 +276,10 @@ async function cmdFinish(f) {
   // 5. Teardown — всегда, независимо от verdict.
   const teardown = await doTeardown(manifest, adapter, context);
 
-  finalizeRun({ f, state, manifest, dir, runId, before, after, oracle, teardown, transcript, captureError });
+  // Запись останавливается после финального снимка: он тоже часть прогона.
+  const video = await stopRecording({ pid: state.videoPid, path: `${dir}/run-video.mp4` });
+
+  finalizeRun({ f, state, manifest, dir, runId, before, after, oracle, teardown, transcript, captureError, video });
 }
 
 // ── abort: аварийное завершение ───────────────────────────────────────────────
@@ -310,8 +321,10 @@ async function cmdAbort(f) {
     checks: [],
     reasons: [`run прерван до завершения: ${reason}`],
   };
+  const video = await stopRecording({ pid: state.videoPid, path: `${dir}/run-video.mp4` });
+
   finalizeRun({
-    f, state, manifest, dir, runId, before, after, oracle, teardown, transcript, captureError,
+    f, state, manifest, dir, runId, before, after, oracle, teardown, transcript, captureError, video,
     aborted: true, abortReason: reason,
     category: f.category && f.category !== true ? f.category : "environment",
   });
@@ -356,7 +369,7 @@ async function doTeardown(manifest, adapter, context, { force = false } = {}) {
 }
 
 function finalizeRun(o) {
-  const { f, state, manifest, dir, runId, before, after, oracle, teardown, transcript, captureError } = o;
+  const { f, state, manifest, dir, runId, before, after, oracle, teardown, transcript, captureError, video } = o;
   const adapter = adapterFor(manifest);
   // Размер состояния приложения: у REST-адаптера это total, у контейнерного —
   // число ключей. Generic-слой не знает формы состояния, поэтому измеряет обобщённо.
@@ -379,6 +392,13 @@ function finalizeRun(o) {
     apiAfter: exists(dir, "api-after.json"),
     transcript,
   };
+  // Видео — обязательный артефакт прогона с устройством: журнал команд говорит,
+  // что было вызвано, но не что при этом происходило на экране. Прогон без
+  // устройства писать нечего, поэтому там требование не применяется.
+  if (state.device) {
+    artifacts.video = video?.saved ? exists(dir, "run-video.mp4") : null;
+    if (!video?.saved && video?.reason) console.log(`видео: ${video.reason}`);
+  }
   const missing = Object.entries(artifacts).filter(([, v]) => !v).map(([k]) => k);
   const evidenceComplete = missing.length === 0;
 
@@ -386,7 +406,6 @@ function finalizeRun(o) {
   const extras = {
     commandLog: exists(dir, "commands.jsonl"),
     deviceLog: exists(dir, "device-log.txt"),
-    video: exists(dir, "run-video.mp4"),
   };
   const toolStats = extras.commandLog ? summarizeLog(`${dir}/commands.jsonl`) : null;
   // Retry budget берётся из манифеста и проверяется по журналу, а не со слов
@@ -435,8 +454,13 @@ function finalizeRun(o) {
     "Agent self-report": f["self-report"] !== true ? f["self-report"] : null,
     "Final verdict": oracle.verdict,
     "Failure category": o.category || failureCategory(oracle, toolStats),
+    // Видео в git не версионируется (см. .gitignore), поэтому его размер
+    // выносится в отчёт: иначе по репозиторию нельзя проверить, что запись
+    // вообще велась и не была пустышкой.
     "Evidence paths": [...Object.entries(artifacts), ...Object.entries(extras)]
-      .filter(([, v]) => v).map(([k]) => k).join(", "),
+      .filter(([, v]) => v)
+      .map(([k]) => (k === "video" && video?.bytes ? `video (${(video.bytes / 1048576).toFixed(1)} МБ)` : k))
+      .join(", "),
     "Teardown result": teardown,
     "New knowledge": f.knowledge !== true ? f.knowledge : null,
     "Follow-up decision": f["follow-up"] !== true ? f["follow-up"] : null,
@@ -463,6 +487,7 @@ function finalizeRun(o) {
     aborted: Boolean(o.aborted), abortReason: o.abortReason || null,
     retryBudget, retryBreaches,
     teardown, artifacts, extras, diagnostics, evidenceComplete,
+    video: video ? { saved: Boolean(video.saved), bytes: video.bytes ?? null, reason: video.reason ?? null } : null,
     reportPath: `runs/${runId}/report.txt`,
   };
   appendFileSync(`${evidenceRoot(STAGE, state.platform)}/runs.jsonl`, JSON.stringify(entry) + "\n");

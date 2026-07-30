@@ -38,6 +38,10 @@ oracle (`verify.mjs`), fixtures и захват UI. Harness не дублиру�
   selector mix выводятся из журнала, а не пишутся руками.
 - **Диагностика при неуспехе**: для любого verdict кроме `PASS` дополнительно
   снимается системный журнал устройства.
+- **Видео на каждом прогоне с устройством** (этап 14.D): запись идёт от `start`
+  до `finish`/`abort`, отсутствие файла делает evidence-пакет неполным. Журнал
+  команд говорит, что было вызвано, но не что происходило на экране. Сам `.mp4`
+  не версионируется (`.gitignore`), его размер выносится в отчёт.
 - **Preflight до старта** (этап 14.B): проверяются доступность инструмента,
   UTF-8 локаль, целевое устройство, совпадение платформы, отсутствие лишних
   устройств той же платформы плюс проектные условия адаптера. Не пройден — run
@@ -60,11 +64,12 @@ harness/
     report.mjs      отчёт по Приложению B — фиксированные 27 полей
     cmdlog.mjs      журнал вызовов, selector mix, transcript из журнала
     diagnostics.mjs системный журнал устройства при неуспешном исходе
+    video.mjs       запись экрана на весь run, обязательный артефакт
     summary.mjs     метрики раздела 10.4 по серии runs
     preflight.mjs   проверки среды до старта run (этап 14.B)
   harness.mjs     CLI: list | validate | preflight | new-workspace | start | arm | finish | abort | summary | selftest
   sim.mjs         журналирующая обёртка вокруг sim-use
-  selftest.mjs    проверка контура (118 проверок), нужен живой backend
+  selftest.mjs    проверка контура (120 проверок), нужен живой backend
 ```
 
 Evidence: `../evidence/stage-<N>/<platform>/runs/<runId>/` + строка в
@@ -83,7 +88,7 @@ export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 ```
 
 ```bash
-node harness.mjs selftest                 # 118 проверок контура (без устройства)
+node harness.mjs selftest                 # 120 проверок контура (без устройства)
 node harness.mjs validate                 # разбор и проверка всех манифестов
 node harness.mjs list                     # доступные case
 

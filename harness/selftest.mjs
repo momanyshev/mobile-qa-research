@@ -396,6 +396,11 @@ async function cycleTests(t) {
   t.ok("api-проверки в журнале отмечены pass",
     e1.oracleChecks.filter((c) => c.kind === "api").every((c) => c.status === "pass"));
   t.ok("evidenceComplete=false без UI-артефактов", e1.evidenceComplete === false);
+  // Видео обязательно только там, где есть что записывать: run без устройства
+  // не должен требовать файла, которого физически быть не может.
+  t.ok("run без устройства не требует видео", !("video" in e1.artifacts),
+    `artifacts.video = ${e1.artifacts.video}`);
+  t.ok("видео не числится и в необязательных", !("video" in e1.extras));
   t.ok("teardown очистил Workspace", /удалено 1/.test(e1.teardown), e1.teardown);
   const after1 = await api.list({ workspaceId: ws1 });
   t.ok("после teardown Workspace пуст", after1.body.total === 0, `total=${after1.body.total}`);
