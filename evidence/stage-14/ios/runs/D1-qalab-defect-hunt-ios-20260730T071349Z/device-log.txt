@@ -1,0 +1,401 @@
+# последние 400 строк системного журнала
+2026-07-30 10:32:02.402 A  gamecontrollerd[84756:15cd9a] (GameController) Incoming Driver Connection
+2026-07-30 10:32:02.402 Df gamecontrollerd[84756:15cd9a] [com.apple.xpc:connection] [0x105da4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[80452].0x105da4180
+2026-07-30 10:32:02.402 Df gamecontrollerd[84756:15cd9a] [com.apple.xpc:connection] [0x105da4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-07-30 10:32:02.402 Df backboardd[80452:18d345] [com.apple.xpc:connection] [0x105d303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-07-30 10:32:02.402 A  gamecontrollerd[84756:1866f0] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-07-30 10:32:02.402 Df backboardd[80452:18d345] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-07-30 10:32:02.525 Df apsd[80479:18d873] [com.apple.network:connection] nw_endpoint_resolver_update [C183.1 Hostname#11c2c74c:5223 in_progress resolver (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] Adding endpoint handler for IPv4#7c1799e0:5223
+2026-07-30 10:32:02.525 Df apsd[80479:18d873] [com.apple.network:connection] nw_endpoint_resolver_update [C183.1 Hostname#11c2c74c:5223 in_progress resolver (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] Adding endpoint handler for IPv4#68108b14:5223
+2026-07-30 10:32:02.525 Df apsd[80479:18d873] [com.apple.network:connection] nw_endpoint_resolver_update [C183.1 Hostname#11c2c74c:5223 in_progress resolver (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] Adding endpoint handler for IPv4#fe8f0ec4:5223
+2026-07-30 10:32:02.525 Df apsd[80479:18d873] [com.apple.network:connection] nw_endpoint_resolver_update [C183.1 Hostname#11c2c74c:5223 in_progress resolver (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] Adding endpoint handler for IPv4#c6fbe3b6:5223
+2026-07-30 10:32:02.525 Df apsd[80479:18d873] [com.apple.network:connection] nw_endpoint_resolver_update [C183.1 Hostname#11c2c74c:5223 in_progress resolver (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] Adding endpoint handler for IPv4#98edf452:5223
+2026-07-30 10:32:02.525 Df apsd[80479:18d873] [com.apple.network:connection] nw_endpoint_resolver_update [C183.1 Hostname#11c2c74c:5223 in_progress resolver (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] Adding endpoint handler for IPv4#24401d80:5223
+2026-07-30 10:32:02.526 Df apsd[80479:18d873] [com.apple.network:connection] nw_endpoint_resolver_update [C183.1 Hostname#11c2c74c:5223 in_progress resolver (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] Adding endpoint handler for IPv4#3c49466d:5223
+2026-07-30 10:32:02.526 Df apsd[80479:18d873] [com.apple.network:connection] nw_endpoint_resolver_update [C183.1 Hostname#11c2c74c:5223 in_progress resolver (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] Adding endpoint handler for IPv4#0291fcfc:5223
+2026-07-30 10:32:02.526 Df apsd[80479:18d873] [com.apple.network:connection] [C183.1 Hostname#11c2c74c:5223 in_progress resolver (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] event: resolver:receive_dns @0.271s
+2026-07-30 10:32:02.526 Df apsd[80479:18d873] [com.apple.network:connection] [C183.1.1 IPv4#7c1799e0:5223 initial path ((null))] event: path:start @0.271s
+2026-07-30 10:32:02.526 Df apsd[80479:18d873] [com.apple.network:connection] [C183.1.1 IPv4#7c1799e0:5223 waiting path (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] event: path:satisfied @0.271s, uuid: 3ADA8263-8EC9-4812-A07B-F67D6C126B08
+2026-07-30 10:32:02.527 Df apsd[80479:18d873] [com.apple.network:connection] [C183.1.1 IPv4#7c1799e0:5223 in_progress socket-flow (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] event: flow:start_connect @0.272s
+2026-07-30 10:32:02.527 Df apsd[80479:18d873] [com.apple.network:connection] nw_socket_handle_socket_event [C183.1.1:2] Socket received CONNECTED event
+2026-07-30 10:32:02.528 Df apsd[80479:18d873] [com.apple.network:connection] nw_flow_connected [C183.1.1 IPv4#7c1799e0:5223 in_progress socket-flow (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] Transport protocol connected (socket)
+2026-07-30 10:32:02.528 Df apsd[80479:18d873] [com.apple.network:connection] [C183.1.1 IPv4#7c1799e0:5223 in_progress socket-flow (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] event: flow:finish_transport @0.273s
+2026-07-30 10:32:02.528 E  apsd[80479:18d873] [com.apple.network:boringssl] boringssl_ciphers_fillout_configuration_string(76) No supported ciphersuites from the provided selection
+2026-07-30 10:32:02.528 E  apsd[80479:18d873] [com.apple.network:boringssl] boringssl_ciphers_create_configuration_string(108) No supported ciphersuites from the provided selection
+2026-07-30 10:32:02.528 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_session_apply_protocol_options_for_transport_block_invoke_2(2367) [C183.1.1:1][0x105651e60] TLS configured [server(0) min_version(0x0304) max_version(0x0304) name(redacted) tickets(false) false_start(true) enforce_ev(false) enforce_ats(false) ats_non_pfs_ciphersuite_allowed(false) cc_mode_enforced(false) ech(false) pqtls(true), pake(false) skip_ats_trust(false)]
+2026-07-30 10:32:02.528 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_context_info_handler(2806) [C183.1.1:1][0x105651e60] Client handshake started
+2026-07-30 10:32:02.529 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS client enter_early_data
+2026-07-30 10:32:02.529 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS client read_server_hello
+2026-07-30 10:32:02.611 E  launchd_sim[80428:18d691] [fixup-mobile-tmp:] launchd has not fixed mobile/tmp (service)
+2026-07-30 10:32:02.611 Df launchd_sim[80428:18d691] [user/501/com.apple.xpc.launchd.oneshot.0x100000ee.log:] internal event: WILL_SPAWN, code = 0
+2026-07-30 10:32:02.611 Df launchd_sim[80428:18d691] [user/501/com.apple.xpc.launchd.oneshot.0x100000ee.log:] service state: spawn scheduled
+2026-07-30 10:32:02.611 Df launchd_sim[80428:18d691] [user/501/com.apple.xpc.launchd.oneshot.0x100000ee.log:] service state: spawning
+2026-07-30 10:32:02.611 Df launchd_sim[80428:18d691] [user/501/com.apple.xpc.launchd.oneshot.0x100000ee.log:] launching: one-shot
+2026-07-30 10:32:02.612 Df launchd_sim[80428:18d691] [user/501/com.apple.xpc.launchd.oneshot.0x100000ee.log [96106]:] xpcproxy_sim spawned with pid 96106
+2026-07-30 10:32:02.612 Df launchd_sim[80428:18d691] [user/501/com.apple.xpc.launchd.oneshot.0x100000ee.log [96106]:] internal event: SPAWNED, code = 0
+2026-07-30 10:32:02.612 Df launchd_sim[80428:18d691] [user/501/com.apple.xpc.launchd.oneshot.0x100000ee.log [96106]:] service state: xpcproxy
+2026-07-30 10:32:02.612 Df launchd_sim[80428:18d691] [user/501/com.apple.xpc.launchd.oneshot.0x100000ee.log [96106]:] internal event: SOURCE_ATTACH, code = 0
+2026-07-30 10:32:02.646 Df mediaanalysisd[85906:18d53e] (MediaAnalysis) [CoreAnalyticManager] Session event com.apple.mediaanalysisd.DatabaseMigrationSession not available; skip fetching
+2026-07-30 10:32:02.706 Df launchd_sim[80428:18d5ee] [user/501/com.apple.xpc.launchd.oneshot.0x100000ee.log [96106]:] service state: running
+2026-07-30 10:32:02.706 Df launchd_sim[80428:18d5ee] [user/501/com.apple.xpc.launchd.oneshot.0x100000ee.log [96106]:] internal event: INIT, code = 0
+2026-07-30 10:32:02.706 Df launchd_sim[80428:18d5ee] [user/501/com.apple.xpc.launchd.oneshot.0x100000ee.log [96106]:] Successfully spawned log[96106] because one-shot
+2026-07-30 10:32:02.776 Df launchd_sim[80428:18d691] [pid/96106 [log]:] uncorking exec source upfront
+2026-07-30 10:32:02.776 Df launchd_sim[80428:18d691] [pid/96106 [log]:] created
+2026-07-30 10:32:02.777 Df log[96106:0] [com.apple.log:] log run noninteractively, parent: 80428 (launchd_sim), args: 'log' 'show' '--last' '10m' '--style' 'compact'
+2026-07-30 10:32:02.841 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client read_hello_retry_request
+2026-07-30 10:32:02.841 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client read_server_hello
+2026-07-30 10:32:02.841 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client read_encrypted_extensions
+2026-07-30 10:32:02.841 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client read_certificate_request
+2026-07-30 10:32:02.841 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client read_server_certificate
+2026-07-30 10:32:02.841 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client read_server_certificate_verify
+2026-07-30 10:32:02.841 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_context_evaluate_trust_async(2249) [C183.1.1:1][0x105651e60] Performing external trust evaluation
+2026-07-30 10:32:02.841 A  apsd[80479:18d873] (Security) SecKeyCopyPublicBytes
+2026-07-30 10:32:02.841 A  apsd[80479:18d873] (Security) SecKeyCopyAttributes
+2026-07-30 10:32:02.841 A  apsd[80479:18d873] (Security) SecKeyCopyPublicBytes
+2026-07-30 10:32:02.841 Df apsd[80479:18d873] [com.apple.network:boringssl] boringssl_context_evaluate_trust_async_external(2234) [C183.1.1:1][0x105651e60] Asyncing for external verify block
+2026-07-30 10:32:02.841 Df apsd[80479:1500fa] [com.apple.securityd:pinningQA] could not disable pinning: not an internal release
+2026-07-30 10:32:02.841 A  apsd[80479:1500fa] (Security) SecTrustEvaluateIfNecessary
+2026-07-30 10:32:02.841 Df apsd[80479:1500fa] [com.apple.xpc:connection] [0x105734640] activating connection: mach=true listener=false peer=false name=com.apple.trustd
+2026-07-30 10:32:02.842 Df trustd[80531:18d334] [com.apple.xpc:connection] [0x109024b40] activating connection: mach=false listener=false peer=true name=com.apple.trustd.peer[80479].0x109024b40
+2026-07-30 10:32:02.843 A  trustd[80531:18d334] (Security) SecKeyVerifySignature
+2026-07-30 10:32:02.844 A  trustd[80531:18d334] (Security) SecKeyVerifySignature
+2026-07-30 10:32:02.845 Df apsd[80479:1500fa] [com.apple.xpc:connection] [0x105734640] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-07-30 10:32:02.845 Df trustd[80531:18d334] [com.apple.xpc:connection] [0x109024b40] invalidated because the client process (pid 80479) either cancelled the connection or exited
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] boringssl_context_evaluate_trust_async_external_block_invoke_3(2148) [C183.1.1:1][0x105651e60] Returning from external verify block with result: true
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] boringssl_context_certificate_verify_callback(2430) [C183.1.1:1][0x105651e60] Certificate verification result: OK
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client read_server_finished
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client send_end_of_early_data
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client send_client_encrypted_extensions
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client send_client_certificate
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client complete_second_flight
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS 1.3 client done
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS client finish_client_handshake
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] boringssl_context_info_handler(2823) [C183.1.1:1][0x105651e60] Client handshake state: TLS client done
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] boringssl_context_info_handler(2812) [C183.1.1:1][0x105651e60] Client handshake done
+2026-07-30 10:32:02.845 A  apsd[80479:18d7cb] (Security) SecKeyCopyPublicBytes
+2026-07-30 10:32:02.845 A  apsd[80479:18d7cb] (Security) SecKeyCopyAttributes
+2026-07-30 10:32:02.845 A  apsd[80479:18d7cb] (Security) SecKeyCopyPublicBytes
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:boringssl] nw_protocol_boringssl_signal_connected(895) [C183.1.1:1][0x105651e60] TLS connected [server(0) version(0x0304) ciphersuite(TLS_AES_256_GCM_SHA384) group(0x11ec) signature_alg(0x0403) alpn(apns-pack-v1:4096:4096) resumed(0) offered_ticket(0) in_early_data(0) early_data_accepted(0) false_started(0) ocsp_received(0) sct_received(0) connect_time(317ms) flight_time(312ms) rtt(312ms) write_stalls(0) read_stalls(2) pake(0x0000)]
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:connection] nw_flow_connected [C183.1.1 IPv4#7c1799e0:5223 in_progress socket-flow (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] Output protocol connected (tls)
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:connection] [C183.1.1 IPv4#7c1799e0:5223 ready socket-flow (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] event: flow:child_finish_connect @0.591s
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:connection] [C183.1 Hostname#11c2c74c:5223 ready resolver (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] event: flow:child_finish_connect @0.591s
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:connection] nw_flow_connected [C183 IPv4#7c1799e0:5223 in_progress parent-flow (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] Output protocol connected (endpoint_flow)
+2026-07-30 10:32:02.845 Df apsd[80479:18d7cb] [com.apple.network:connection] [C183 IPv4#7c1799e0:5223 ready parent-flow (satisfied (Path is satisfied), interface: utun6[802.11], uses wifi, LQM: unknown)] event: flow:finish_connect @0.591s
+2026-07-30 10:32:02.846 Df apsd[80479:18d7cb] [com.apple.network:connection] nw_connection_report_state_with_handler_on_nw_queue [C183] reporting state ready
+2026-07-30 10:32:02.846 Df apsd[80479:1500fa] [com.apple.apsd:stream] <APSNWTCPStream: 0x105691440> negotiatedProtocol: apns-pack-v1:4096:4096
+2026-07-30 10:32:02.846 Df apsd[80479:1500fa] [com.apple.apsd:stream] Negotiated protocol components: (
+    "apns-pack-v1",
+    4096,
+    4096
+)
+2026-07-30 10:32:02.846 Df apsd[80479:1500fa] [com.apple.apsd:stream] connectionStatistics: {
+    dns = 269;
+    "tcp_handshake" = 0;
+    tls = 317;
+}
+2026-07-30 10:32:02.846 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development>: Connected to courier 7-courier.sandbox.push.apple.com (17.188.143.222) connection: <APSCourierConnection: 0x105550000> usingPackedFormat YES secureHandshakeEnabled YES onInterface: NonCellular
+2026-07-30 10:32:02.846 Df apsd[80479:1500fa] [com.apple.apsd:stream] <APSNWTCPStream: 0x105691440>: Current connection is offloaded? NO
+2026-07-30 10:32:02.846 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0> begin tracking protocol connection <APSCourierConnectionProtocolConnection: 0x10570eee0; NonCellular>
+2026-07-30 10:32:02.846 Df apsd[80479:1500fa] [com.apple.apsd:courier-oversized] [STATEDUMP] <APSUserCourier 0x104f39570 development 0> protocol connections: (
+    NonCellular=(
+        <NonCellular; connectedFor: 0.0s; isConnected: NO; serverIPAddress: 17.188.143.222; serverHostname: 7-courier.sandbox.push.apple.com; linkQuality: 100>,
+        <userState: Disconnected; trackingState: NotSent; filterMode: Default>
+    )
+) filter version state: <highestSentVersion: 4; highestAckedVersion: 4; stateByInterface: [:]> proxy clients: ()
+2026-07-30 10:32:02.846 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0> Sending presence message for 0 with token [length = 80, token = <80675d3f f2276ef5 7bc08fd8 0725484e d54ad179 16b775de cec650ab fb7b70e6 4fabf02a 12ff8599 d6a46135 0309fa33 1b92f0ff 605021e5 5027a976 abfe9c42 9dc48559 0492f09e 577913f1 d5b5f27c>] on interface: <APSCourierConnectionProtocolConnection: 0x10570eee0; NonCellular> user: <APSUser: 0x104f290a0; name: 0>
+2026-07-30 10:32:02.846 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourierInterfaceState: 0x1056613e0> Setting user state from: 3 to: 2
+2026-07-30 10:32:02.846 Df apsd[80479:1500fa] Generating nonce with timestamp 1785396722000
+2026-07-30 10:32:02.846 Df apsd[80479:1500fa] [com.apple.apsd:nonce] Signature input is 17 bytes ({length = 17, bytes = 0x000000019fb1eff950f7f3b41401dd2ae8})
+2026-07-30 10:32:02.856 Df apsd[80479:1500fa] [com.apple.apsd:simulator] APSSimulatorSupport generate nonce and sig success? YES
+2026-07-30 10:32:02.856 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourierInterfaceState: 0x1056613e0> Setting user state from: 2 to: 1
+2026-07-30 10:32:02.857 Df apsd[80479:1500fa] [com.apple.apsd:stream] <APSNWTCPStream: 0x105691440>: Current connection is offloaded? NO
+2026-07-30 10:32:02.857 Df apsd[80479:1500fa] [com.apple.uaps:lib] packed command 7 in 1859 bytes (1886)
+2026-07-30 10:32:02.857 Df apsd[80479:1500fa] <APSOutgoingQueue 0x10547ce40>: Outgoing Connect Message Queue: Creating outgoing message timer with fire date Mon Jan  1 02:59:59 4001
+2026-07-30 10:32:02.857 Df apsd[80479:1500fa] [com.apple.apsd:courier] APSUserCourier <APSCourierConnectionManager: 0x104f33380; development> adjusting connection. Connected on 0 interfaces. Current link quality: wwan is good; wifi is good
+2026-07-30 10:32:02.857 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0> _hasListeningTopics YES
+2026-07-30 10:32:02.857 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development> calling _connectStream with interface preference None
+2026-07-30 10:32:02.857 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development> _connectStream has None preference and dual channel is enabled.
+2026-07-30 10:32:02.857 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development> _connectStream - kicking WWAN for dual channel
+2026-07-30 10:32:02.858 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development> attempting to _connectStream. currently onInterface None consecutiveFailures 1 preference WWAN shouldUseDualChannel YES. Connected on 0 interfaces.
+2026-07-30 10:32:02.858 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development> _connectStream - dual channel with 0 connected interfaces. isWWANUsable NO, isWiFiUsable YES. Not attempting to connect.
+2026-07-30 10:32:02.858 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0> _hasListeningTopics YES
+2026-07-30 10:32:02.858 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0> _hasListeningTopics YES
+2026-07-30 10:32:02.858 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0> is no longer in proxy mode.
+2026-07-30 10:32:02.858 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0> _hasListeningTopics YES
+2026-07-30 10:32:02.892 Df mediaanalysisd[85906:18d53e] (MediaAnalysis) [CoreAnalyticManager] Session event com.apple.mediaanalysisd.DatabaseMigrationSession not available; skip fetching
+2026-07-30 10:32:02.926 A  backboardd[80452:18d345] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-07-30 10:32:02.926 A  gamecontrollerd[84756:1866f0] Incoming Connection
+2026-07-30 10:32:02.927 A  gamecontrollerd[84756:1866f0] (GameController) Incoming Driver Connection
+2026-07-30 10:32:02.927 Df gamecontrollerd[84756:1866f0] [com.apple.xpc:connection] [0x105da4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[80452].0x105da4180
+2026-07-30 10:32:02.927 Df gamecontrollerd[84756:1866f0] [com.apple.xpc:connection] [0x105da4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-07-30 10:32:02.927 A  gamecontrollerd[84756:15cd9a] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-07-30 10:32:02.927 Df backboardd[80452:18d345] [com.apple.xpc:connection] [0x105d303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-07-30 10:32:02.927 Df backboardd[80452:18d345] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-07-30 10:32:03.066 Df locationd[80455:18b8b6] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807089534.4, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807089534.4
+2026-07-30 10:32:03.067 F  locationd[80455:181a06] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-07-30 10:32:03.067 A  locationd[80455:181a06] (libsystem_trace.dylib) Activity for state dumps
+2026-07-30 10:32:03.067 Df locationd[80455:18b8b6] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-07-30 10:32:03.067 Df locationd[80455:181a06] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807089522.960
+2026-07-30 10:32:03.068 Df locationd[80455:186509] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-07-30 10:32:03.068 Df locationd[80455:18b8b6] [com.apple.locationd.Utility:QA] os_transaction created: (0x16f5639d8) wifi1Event
+2026-07-30 10:32:03.068 Df locationd[80455:18b8b6] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-07-30 10:32:03.069 Df locationd[80455:18b8b6] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x16f5639d8) wifi1Event
+2026-07-30 10:32:03.092 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development>: Outstanding data received: {length = 46, bytes = 0x082c0180 04a11400 058c0687 08a93800 ... 04c6ff60 4b101482 } (length 46) onInterface: NonCellular. Connected on 0 interfaces.
+2026-07-30 10:32:03.093 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development>: Stream processing: complete yes, invalid no, length parsed 46, parameters {
+    APSProtocolClientIPAddress = {length = 4, bytes = 0xc6ff604b};
+    APSProtocolCommand = 8;
+    APSProtocolConnectedResponse = 0;
+    APSProtocolDualChannelSupport = 1;
+    APSProtocolExperimentIDKey = 2;
+    APSProtocolFilterOptimizationSupport = 1;
+    APSProtocolGeoRegion = US;
+    APSProtocolLargeMessageSize = 51200;
+    APSProtocolMessageSize = 5120;
+    APSProtocolReportLastReversePushRTT = 1;
+    APSProtocolServerRequestedTTR = 0;
+    APSProtocolServerTime = 1785396723142;
+}
+2026-07-30 10:32:03.093 A  apsd[80479:1500fa] (CoreTime) TMSetAuthenticatedSourceTime
+2026-07-30 10:32:03.093 Df apsd[80479:1500fa] [com.apple.xpc:connection] [0x105734640] activating connection: mach=true listener=false peer=false name=com.apple.timed.xpc
+2026-07-30 10:32:03.093 Df launchd_sim[80428:18d5ee] [user/501:] failed lookup: name = com.apple.timed.xpc, requestor = apsd[80479], error = 3: No such process
+2026-07-30 10:32:03.093 Df apsd[80479:1500fa] [com.apple.xpc:connection] [0x105734640] failed to do a bootstrap look-up: xpc_error=[3: No such process]
+2026-07-30 10:32:03.093 Df apsd[80479:1500fa] [com.apple.xpc:connection] [0x105734640] invalidated after a failed init
+2026-07-30 10:32:03.093 Df apsd[80479:1500fa] Updated stored server time {serverTime: 1785396723142000000, localTime: 254769305132000}
+2026-07-30 10:32:03.093 Df apsd[80479:18d7cb] (CoreTime) Error: Daemon connection invalidated
+2026-07-30 10:32:03.093 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development>: Received message sizes {standard: 5120, large: 51200}
+2026-07-30 10:32:03.093 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development>: Setting server keep alive stats. {Min: (null), Expected: (null), Max: (null), Interface:NonCellular}
+2026-07-30 10:32:03.093 E  apsd[80479:1500fa] [com.apple.network:] nw_parameters_create_offload_secure_tcp nw_aop2_offload_create_options failed, backtrace limit exceeded
+2026-07-30 10:32:03.094 E  apsd[80479:1500fa] [com.apple.network:] nw_parameters_set_prohibited_interface_subtypes called with null parameters, backtrace limit exceeded
+2026-07-30 10:32:03.094 E  apsd[80479:1500fa] [com.apple.network:] nw_parameters_set_prefer_no_proxy called with null parameters, backtrace limit exceeded
+2026-07-30 10:32:03.094 E  apsd[80479:1500fa] [com.apple.network:] nw_parameters_set_service_class called with null parameters, backtrace limit exceeded
+2026-07-30 10:32:03.094 Df apsd[80479:1500fa] [com.apple.apsd:stream] <APSNWTCPStream: 0x105691440>: Path evluator says AOP path is valid. Offloading.
+2026-07-30 10:32:03.094 Df apsd[80479:1500fa] [com.apple.apsd:stream] <APSNWTCPStream: 0x105691440>: Current connection is offloaded? NO
+2026-07-30 10:32:03.094 Df apsd[80479:1500fa] <APSOutgoingQueue 0x10547ce40>: Outgoing Connect Message Queue: handleResponseForPendingItem - firstSentIndex = 0
+2026-07-30 10:32:03.094 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourierInterfaceState: 0x1056613e0> Setting user state from: 1 to: 0
+2026-07-30 10:32:03.094 Df apsd[80479:1500fa] [com.apple.apsd:courier] Received connect message [development]
+2026-07-30 10:32:03.094 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0>: Connected response ok for user courier token? YES on interface: <APSCourierConnectionProtocolConnection: 0x10570eee0; NonCellular> - connected on 0 interfaces
+2026-07-30 10:32:03.094 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0>: Setting filterOptimizationSupport: YES on <APSCourierConnectionProtocolConnection: 0x10570eee0; NonCellular>
+2026-07-30 10:32:03.094 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0>: Setting reportLastReversePushRTT: YES on <APSCourierConnectionProtocolConnection: 0x10570eee0; NonCellular>
+2026-07-30 10:32:03.094 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0>: Received message size 5120
+2026-07-30 10:32:03.095 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0>: Received large message size 51200
+2026-07-30 10:32:03.095 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development> cache ip address 17.188.143.222 on interface NonCellular
+2026-07-30 10:32:03.096 Df apsd[80479:1500fa] <APSCourierConnection: 0x105550000>: Setting is connected 1 on interface NonCellular with reason 1010
+2026-07-30 10:32:03.096 Df apsd[80479:1500fa] [com.apple.apsd:stream] <APSNWTCPStream: 0x105691440> asked to change isConnected=NO to YES
+2026-07-30 10:32:03.096 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development>: Calling into AWD for PushConnectionConnected
+2026-07-30 10:32:03.096 Df apsd[80479:1500fa] [com.apple.apsd:courier] Sending filter event to CA: {
+    connectDuration = "0.8434369564056396";
+    dnsResolutionTimeMilliseconds = 269;
+    dualChannelState = 3;
+    interface = 1;
+    linkQuality = 100;
+    tlsHandshakeTimeMilliseconds = 317;
+}
+2026-07-30 10:32:03.096 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development>: AWD PushConnectionConnected finished
+2026-07-30 10:32:03.098 Df apsd[80479:1500fa] [com.apple.apsd:topicManager] <APSTopicManager: 0x1054b0640; development; 0> asked to performFilterBlock
+2026-07-30 10:32:03.099 Df apsd[80479:1500fa] [com.apple.apsd:courier-oversized] <APSUserCourier 0x104f39570 development 0>: Sending filter message for version: 4 reason Initial triggeringTopic (null) with token <80675d3f f2276ef5 7bc08fd8 0725484e d54ad179 16b775de cec650ab fb7b70e6 4fabf02a 12ff8599 d6a46135 0309fa33 1b92f0ff 605021e5 5027a976 abfe9c42 9dc48559 0492f09e 577913f1 d5b5f27c> on interface <APSCourierConnectionProtocolConnection: 0x10570eee0; NonCellular> with enabled topics = (
+    <f49bfa17 a6962bcc 55943267 54419725 b0d380a4>=com.apple.storekit,
+    <7db3b375 79917831 9ed22fd6 7ff665b4 3159a425>=com.apple.appstored,
+    <6495b7da 3efc7b36 e861651f 82e6a822 a06b4efb>=com.apple.amsaccountsd,
+    <47b96ed4 01930e08 e47e7756 b8633b44 15fabc7a>=com.apple.icloud-container.com.apple.suggestd,
+    <8a2579cd 77cd8251 e49cdc32 d8266728 6022b796>=com.apple.icloud-container.com.apple.fitcored,
+    <c229fa7b f394bd2c 1ef581c0 49587037 8c682dbf>=com.apple.ams.accountdata,
+    <aee92526 5f46ab7d 87049061 c59f8e02 6289a2b9>=com.apple.icloud-container.com.apple.amsengagementd,
+    <2ecd6691 d573e094 a4aa77c3 ba3bdb0c 44a5e25e>=com.apple.icloud-container<…>, opportunistic topics = <decode: missing data>, non-waking topics = <decode: missing data>, paused topics = <decode: missing data>, ignored topics = <decode: missing data>
+2026-07-30 10:32:03.099 Df apsd[80479:1500fa] Stopped indexing hashes at index 38 {token: {length = 80, bytes = 0x80675d3f f2276ef5 7bc08fd8 0725484e ... 577913f1 d5b5f27c }, enabledHashes.count: 35, ignoredHashes.count: 3, opportunisticHashes.count: 4, pausedHashes.count: 0}
+2026-07-30 10:32:03.099 Df apsd[80479:1500fa] [com.apple.uaps:lib] packed command 9 in 998 bytes (1129)
+2026-07-30 10:32:03.099 Df apsd[80479:1500fa] <APSOutgoingQueue 0x10547cec0>: Outgoing Filter Queue: Creating outgoing message timer with fire date Mon Jan  1 02:59:59 4001
+2026-07-30 10:32:03.099 Df apsd[80479:1500fa] [com.apple.apsd:courier-oversized] [STATEDUMP] <APSUserCourier 0x104f39570 development 0> protocol connections: (
+    NonCellular=(
+        <NonCellular; connectedFor: 0.2s; isConnected: YES; serverIPAddress: 17.188.143.222; serverHostname: 7-courier.sandbox.push.apple.com; linkQuality: 100>,
+        <userState: Connected; trackingState: NotSent; filterMode: ReceivedEnabled>
+    )
+) filter version state: <highestSentVersion: 4; highestAckedVersion: 4; stateByInterface: [NonCellular: apsd.FilterVersionStateMachine.(unknown context at $104596580).InterfaceState(sentVersion: 4, ackedVersion: 0, sentAnyVersion: true, receivedAnyAck: false)]> proxy clients: ()
+2026-07-30 10:32:03.100 Df apsd[80479:1500fa] [com.apple.apsd:courier] Sending filter event to CA: {
+    changeType = 0;
+    connectionType = 1;
+    reason = 0;
+}
+2026-07-30 10:32:03.100 Df apsd[80479:1500fa] <APSMessageStore: 0x104f33f40> Getting all pubsub subscriptions for environment development userName TokenName
+2026-07-30 10:32:03.101 Df apsd[80479:1500fa] [com.apple.apsd:courier-oversized] Sending pubsub request <APSPubsubRequest 0x105450720: 172> on interface NonCellular with subscription channels: (
+    "<PKGlobalChannel 0x10570d680>: channelID Y3VzdG9tZXIgaW9z channelTopic com.apple.mobileassetd environment development tokenName TokenName checkpoint 1746648853060409268",
+    "<PKGlobalChannel 0x10570e6a0>: channelID U0VQMTlfY01KVi1NY3F3UQ== channelTopic com.apple.triald environment development tokenName TokenName checkpoint 1738863426256411956",
+    "<PKGlobalChannel 0x10570e6d0>: channelID TUFZMjZfdUJ6Ry1hbHRHYQ== channelTopic com.apple.triald environment development tokenName TokenName checkpoint 1738815487440534894",
+    "<PKGlobalChannel 0x10570cdb0>: channelID REVDMTEtQm5ldy1MU0tQVQ== channelTopic com.apple.triald environment development tokenName TokenName checkpoint 1738864315884008816",
+    "<PKGlobalChannel 0x10570cc00>: channelID PSPAmCKGEe8AAO4oAtvaBw== channelTopic com.apple.triald environment development tokenName TokenName checkpoint 1738815307866449225",
+    "<PKGlobalChannel 0x10570d410>: channelID Y5Ek6B2SQSv7SICzBQ= unsubscription channels: <decode: missing data>
+2026-07-30 10:32:03.102 Df apsd[80479:1500fa] <APSCourierConnection: 0x105550000> Sending pubsub message on interface NonCellular
+2026-07-30 10:32:03.102 Df apsd[80479:1500fa] [com.apple.uaps:lib] packed command 29 in 642 bytes (641)
+2026-07-30 10:32:03.102 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0>: Sending presence tracking message following connect.
+2026-07-30 10:32:03.102 Df apsd[80479:1500fa] Calculated server time in nanoseconds 1785396723150691000 {currentMonotonicTimeInNanoSeconds: 254769313823000, alignedMonotonicTimeInNanoSeconds: 254769305132000, mostRecentServerTimeInNanoSeconds: 1785396723142000000, changeInSeconds: 0}
+2026-07-30 10:32:03.102 Df apsd[80479:1500fa] [com.apple.apsd:activityTracking] Sending presence tracking request with ID:163151738 and flag:0 on interface <APSCourierConnectionProtocolConnection: 0x10570eee0; NonCellular>
+2026-07-30 10:32:03.102 Df apsd[80479:1500fa] [com.apple.uaps:lib] packed command 32 in 111 bytes (119)
+2026-07-30 10:32:03.102 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0> setting isConnectedToService YES
+2026-07-30 10:32:03.102 Df apsd[80479:18d7cb] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105550640; development/com.apple.aps.amsengagementd/amsengagementd 0>
+2026-07-30 10:32:03.102 Df apsd[80479:18d7cb] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x1055508c0; development/com.apple.aps.coreidvd/coreidvd 0>
+2026-07-30 10:32:03.102 Df apsd[80479:18d7cb] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105550b40; development/com.apple.aps.seymour/fitcored 0>
+2026-07-30 10:32:03.102 Df apsd[80479:1500fa] [com.apple.apsd:daemon] <APSDaemon: 0x104f2a2f0> received courierConnectionStatusDidChange from <APSUserCourier 0x104f39570 development 0>.
+2026-07-30 10:32:03.103 Df apsd[80479:18d7cb] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105550780; development/com.apple.aps.icloud.mcc/icloudmailagent 0>
+2026-07-30 10:32:03.103 Df apsd[80479:18d7cb] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105552080; development/com.apple.aps.managedassetsd/managedassetsd 0>
+2026-07-30 10:32:03.103 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0> _hasListeningTopics YES
+2026-07-30 10:32:03.103 Df apsd[80479:18d7cb] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105551a40; development/com.apple.coreservices.appleid.aps/sharingd 0>
+2026-07-30 10:32:03.103 Df apsd[80479:1500fa] [com.apple.apsd:daemon] <APSDaemon: 0x104f2a2f0> updating network guidance isConnected? YES
+2026-07-30 10:32:03.103 Df apsd[80479:18d7cb] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105551900; development/com.apple.aps.triald/triald 0>
+2026-07-30 10:32:03.103 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0> _hasListeningTopics YES
+2026-07-30 10:32:03.103 Df apsd[80479:18d7cb] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x1057343c0; development/com.apple.dataaccess.dataaccessd.aps.demo/dataaccessd 0>
+2026-07-30 10:32:03.103 Df apsd[80479:18d873] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105553d40; development/com.apple.dataaccess.dataaccessd.aps/dataaccessd 0>
+2026-07-30 10:32:03.103 Df managedassetsd[89448:18d329] [com.apple.apsd:connection] <APSConnection: 0x104120100> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.103 Df coreidvd[91284:18d315] [com.apple.apsd:connection] <APSConnection: 0x10410c400> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.103 Df managedassetsd[89448:18d329] [com.apple.apsd:connection] <APSConnection: 0x104120100> seeing if delegate <CKAPSMachServiceConnectionDelegate: 0x104128d20> responds to status changes
+2026-07-30 10:32:03.103 Df apsd[80479:1500fa] [com.apple.apsd:daemon] <APSDaemon: 0x104f2a2f0> providing network guidance utun6
+2026-07-30 10:32:03.103 Df apsd[80479:1500fa] [com.apple.network:] network_config_set_persistent_interface Setting persistent interface to "utun6"
+2026-07-30 10:32:03.103 Df managedassetsd[89448:18d329] [com.apple.apsd:connection] <APSConnection: 0x104120100> calling <CKAPSMachServiceConnectionDelegate: 0x104128d20> didChangeConnectedStatus:
+2026-07-30 10:32:03.103 Df managedassetsd[89448:18d329] [com.apple.apsd:connection] <APSConnection: 0x104120100> returned from <CKAPSMachServiceConnectionDelegate: 0x104128d20> didChangeConnectedStatus:
+2026-07-30 10:32:03.103 Df apsd[80479:18d865] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x10569b0c0; development/(null)/identityservicesd 0>
+2026-07-30 10:32:03.103 Df apsd[80479:18d865] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x10569b5c0; development/(null)/identityservicesd 0>
+2026-07-30 10:32:03.103 Df apsd[80479:18d873] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x10569af80; development/com.apple.ind.aps/ind 0>
+2026-07-30 10:32:03.103 Df apsd[80479:1500fa] [com.apple.network:] nw_network_agent_open_control_socket Requesting netagent socket from helper
+2026-07-30 10:32:03.103 Df apsd[80479:18d865] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105552940; development/com.apple.aps.mobileassetd/mobileassetd 0>
+2026-07-30 10:32:03.103 E  apsd[80479:1500fa] [com.apple.network:] networkd_privileged_get_kernel_socket_internal received NULL response, backtrace limit exceeded
+2026-07-30 10:32:03.103 Df apsd[80479:18d873] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x1055526c0; development/com.apple.aps.aa/appleaccountd 0>
+2026-07-30 10:32:03.103 Df sharingd[80453:14ffb3] [com.apple.apsd:connection] <APSConnection: 0x106988900> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.103 Df apsd[80479:18d85d] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105552800; development/com.apple.aps.routined/routined 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d871] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105734000; development/com.apple.dataaccess.dataaccessd.aps.dev/dataaccessd 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d865] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105699400; development/com.apple.aps.ScreenTime/ScreenTimeAgent 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d872] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x10569a580; development/(null)/homed 0>
+2026-07-30 10:32:03.104 Df identityservicesd[80447:14ffab] [com.apple.apsd:connection] <APSConnection: 0x1060b4700> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.104 Df apsd[80479:18d861] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105698dc0; development/com.apple.telephonyutilities.callservicesdaemon.voip.push/callservicesd 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d860] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105552580; development/com.apple.aps.itunescloudd/itunescloudd 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d873] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105551b80; development/com.apple.securityd.aps/securityd 0>
+2026-07-30 10:32:03.104 Df identityservicesd[80447:14ffab] [com.apple.apsd:connection] <APSConnection: 0x1060b5200> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.104 Df apsd[80479:18d7ca] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105551540; development/com.apple.aps.assistantd.fmip/assistantd 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d874] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x1055512c0; development/com.apple.aps.appstored/appstored 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d868] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105699a40; development/com.apple.ak.aps.sim/akd 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d869] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105698a00; development/com.apple.telephonyutilities.callservicesdaemon.voip.push.development/callservicesd 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d877] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105553840; development/(null)/identityservicesd 0>
+2026-07-30 10:32:03.104 Df apsd[80479:1500fa] [com.apple.network:] nw_network_agent_open_control_socket Received netagent socket -1 from helper
+2026-07-30 10:32:03.104 Df apsd[80479:18d863] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105550f00; development/com.apple.findmy.push.com.apple.findmy.container/findmylocated 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d862] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105550dc0; development/com.apple.aps.suggestd/suggestd 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d85e] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105552e40; development/(null)/identityservicesd 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d872] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105552440; development/com.apple.aps.family/familycircled 0>
+2026-07-30 10:32:03.104 Df apsd[80479:18d875] [com.apple.apsd:connectionServer] Dispatching low priority message on server: <APSConnectionServer: 0x105552a80; development/(null)/identityservicesd 0>
+2026-07-30 10:32:03.104 Df securityd[80482:18d870] [com.apple.apsd:connection] <APSConnection: 0x105d2c000> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.104 Df identityservicesd[80447:14ffab] [com.apple.apsd:connection] <APSConnection: 0x1041aaa80> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.105 Df itunescloudd[90627:1783c6] [com.apple.apsd:connection] <APSConnection: 0x105914000> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.105 Df identityservicesd[80447:14ffab] [com.apple.apsd:connection] <APSConnection: 0x1060b4000> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.105 Df amsengagementd[90841:18d88a] [com.apple.apsd:connection] <APSConnection: 0x105d70300> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.105 Df triald[90840:18d320] [com.apple.apsd:connection] <APSConnection: 0x106108000> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.105 Df fitcored[90704:18d318] [com.apple.apsd:connection] <APSConnection: 0x103164400> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.105 E  apsd[80479:1500fa] [com.apple.network:] nw_network_agent_ctl_setsockopt_inner setsockopt for message type 28 failed [9: Bad file descriptor], backtrace limit exceeded
+2026-07-30 10:32:03.105 E  apsd[80479:1500fa] [com.apple.network:] nw_agent_create called with null (fd >= 0), backtrace limit exceeded
+2026-07-30 10:32:03.105 Df identityservicesd[80447:14ffab] [com.apple.apsd:connection] <APSConnection: 0x1060b4300> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.105 Df ind[91367:18d323] [com.apple.apsd:connection] <APSConnection: 0x1054d8700> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.105 Df amsengagementd[90841:18d88a] [com.apple.apsd:connection] <APSConnection: 0x105d70300> seeing if delegate <amsengagementd.PushService: 0x105d09d40> responds to status changes
+2026-07-30 10:32:03.105 E  apsd[80479:1500fa] [com.apple.network:] nw_agent_change_state called with null agent, backtrace limit exceeded
+2026-07-30 10:32:03.105 Df amsengagementd[90841:18d88a] [com.apple.apsd:connection] <APSConnection: 0x105d70300> calling <amsengagementd.PushService: 0x105d09d40> didChangeConnectedStatus:
+2026-07-30 10:32:03.106 E  apsd[80479:1500fa] [com.apple.network:] nw_agent_add_to_interface called with null agent, backtrace limit exceeded
+2026-07-30 10:32:03.106 E  apsd[80479:1500fa] [com.apple.network:] network_config_set_persistent_interface_block_invoke Failed to add persistent agent to utun6
+2026-07-30 10:32:03.106 Df apsd[80479:1500fa] [com.apple.apsd:activityTracking] Attempting to roll activity presence salt. Self:<APSUserCourier 0x104f39570 development 0>
+2026-07-30 10:32:03.106 Df homed[80506:18d88c] [com.apple.apsd:connection] <APSConnection: 0x103d08600> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.106 Df apsd[80479:1500fa] [com.apple.apsd:activityTracking] Can not roll salt while courier is connected
+2026-07-30 10:32:03.106 Df apsd[80479:1500fa] [com.apple.apsd:stream] <APSNWTCPStream: 0x105691440>: Current connection is offloaded? NO
+2026-07-30 10:32:03.106 Df apsd[80479:1500fa] [com.apple.apsd:courier] Done asserting all presences. systemToken is: {length = 80, bytes = 0x80675d3f f2276ef5 7bc08fd8 0725484e ... 577913f1 d5b5f27c }
+2026-07-30 10:32:03.106 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSUserCourier 0x104f39570 development 0> _processPendingProxyPresences - canSendPresence? YES hasConnectedConnection YES  outstandingClient (null)
+2026-07-30 10:32:03.106 Df apsd[80479:1500fa] [com.apple.apsd:courier-oversized] [STATEDUMP] <APSUserCourier 0x104f39570 development 0> protocol connections: (
+    NonCellular=(
+        <NonCellular; connectedFor: 0.2s; isConnected: YES; serverIPAddress: 17.188.143.222; serverHostname: 7-courier.sandbox.push.apple.com; linkQuality: 100>,
+        <userState: Connected; trackingState: Sent; filterMode: ReceivedEnabled>
+    )
+) filter version state: <highestSentVersion: 4; highestAckedVersion: 4; stateByInterface: [NonCellular: apsd.FilterVersionStateMachine.(unknown context at $104596580).InterfaceState(sentVersion: 4, ackedVersion: 0, sentAnyVersion: true, receivedAnyAck: false)]> proxy clients: ()
+2026-07-30 10:32:03.106 Df apsd[80479:1500fa] <APSOutgoingQueue 0x10547ce40>: Outgoing Connect Message Queue: Invalidating outgoing message timer
+2026-07-30 10:32:03.106 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development>: Setting dualChannelSupport: YES
+2026-07-30 10:32:03.106 Df apsd[80479:1500fa] Server supports dual mode YES  old value YES
+2026-07-30 10:32:03.106 Df apsd[80479:1500fa] [com.apple.apsd:courier] <APSCourierConnectionManager: 0x104f33380; development>: Stream processing: complete no, invalid no, length parsed 0, parameters (null)
+2026-07-30 10:32:03.107 Df amsengagementd[90841:18d88a] [com.apple.apsd:connection] <APSConnection: 0x105d70300> returned from <amsengagementd.PushService: 0x105d09d40> didChangeConnectedStatus:
+2026-07-30 10:32:03.107 Df assistantd[80433:18d32d] [com.apple.apsd:connection] <APSConnection: 0x105590a00> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.107 Df routined[80439:18d327] [com.apple.apsd:connection] <APSConnection: 0x105da8900> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.107 Df routined[80439:18d327] [com.apple.apsd:connection] <APSConnection: 0x105da8900> seeing if delegate <CKAPSMachServiceConnectionDelegate: 0x105fd0300> responds to status changes
+2026-07-30 10:32:03.107 Df ScreenTimeAgent[80582:18d322] [com.apple.apsd:connection] <APSConnection: 0x10555c000> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.107 Df icloudmailagent[90244:176477] [com.apple.apsd:connection] <APSConnection: 0x102144200> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.107 Df routined[80439:18d327] [com.apple.apsd:connection] <APSConnection: 0x105da8900> calling <CKAPSMachServiceConnectionDelegate: 0x105fd0300> didChangeConnectedStatus:
+2026-07-30 10:32:03.107 Df routined[80439:18d327] [com.apple.apsd:connection] <APSConnection: 0x105da8900> returned from <CKAPSMachServiceConnectionDelegate: 0x105fd0300> didChangeConnectedStatus:
+2026-07-30 10:32:03.108 Df suggestd[90711:18d888] [com.apple.apsd:connection] <APSConnection: 0x102184300> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.108 Df callservicesd[80497:18d32e] [com.apple.apsd:connection] <APSConnection: 0x1057f0500> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.108 Df findmylocated[80544:18ced2] [com.apple.apsd:connection] <APSConnection: 0x101908000> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.108 Df suggestd[90711:18d888] [com.apple.apsd:connection] <APSConnection: 0x102184300> seeing if delegate <SGDCloudKitSync: 0x101a53fa0> responds to status changes
+2026-07-30 10:32:03.108 Df suggestd[90711:18d888] [com.apple.apsd:connection] <APSConnection: 0x102184300> calling <SGDCloudKitSync: 0x101a53fa0> didChangeConnectedStatus:
+2026-07-30 10:32:03.108 Df suggestd[90711:18d888] [com.apple.apsd:connection] <APSConnection: 0x102184300> returned from <SGDCloudKitSync: 0x101a53fa0> didChangeConnectedStatus:
+2026-07-30 10:32:03.108 Df callservicesd[80497:18d32e] [com.apple.apsd:connection] <APSConnection: 0x1057f0100> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.108 Df findmylocated[80544:18ced2] [com.apple.apsd:connection] <APSConnection: 0x101908000> seeing if delegate <_TtCC19FindMyDaemonSupport11APNSManagerP33_69672C9E20C2D053F65B88CE8A65B96022PushDelegateTrampoline: 0x1013ec5e0> responds to status changes
+2026-07-30 10:32:03.108 Df appleaccountd[90246:1764a5] [com.apple.apsd:connection] <APSConnection: 0x1018f4700> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.108 Df findmylocated[80544:18ced2] [com.apple.apsd:connection] <APSConnection: 0x101908000> calling <_TtCC19FindMyDaemonSupport11APNSManagerP33_69672C9E20C2D053F65B88CE8A65B96022PushDelegateTrampoline: 0x1013ec5e0> didChangeConnectedStatus:
+2026-07-30 10:32:03.108 Df findmylocated[80544:18ced2] [com.apple.apsd:connection] <APSConnection: 0x101908000> returned from <_TtCC19FindMyDaemonSupport11APNSManagerP33_69672C9E20C2D053F65B88CE8A65B96022PushDelegateTrampoline: 0x1013ec5e0> didChangeConnectedStatus:
+2026-07-30 10:32:03.108 Df findmylocated[80544:18ced2] [com.apple.findmy.framework.FindMyCloudKit:cloudKit] APNS connected: true
+2026-07-30 10:32:03.108 Df findmylocated[80544:18ced2] [com.apple.findmy.framework.FindMyCloudKit:CloudKitStorage] TRACE: APNS connected
+2026-07-30 10:32:03.109 Df appstored[80574:18d324] [com.apple.apsd:connection] <APSConnection: 0x102578300> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.109 Df mobileassetd[80513:18d319] [com.apple.apsd:connection] <APSConnection: 0x102560400> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.109 Df dataaccessd[90561:177c9d] [com.apple.apsd:connection] <APSConnection: 0x103d04b00> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.109 Df familycircled[80533:1503a9] [com.apple.apsd:connection] <APSConnection: 0x1034e8300> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.109 Df dataaccessd[90561:177c9d] [com.apple.apsd:connection] <APSConnection: 0x103d04a00> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.109 Df akd[80599:150714] [com.apple.apsd:connection] <APSConnection: 0x10350c100> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.109 Df dataaccessd[90561:177c9d] [com.apple.apsd:connection] <APSConnection: 0x103d04500> Delivering connectionStatusChange from apsd: YES
+2026-07-30 10:32:03.109 Df appleaccountd[90246:1764a5] [com.apple.apsd:connection] <APSConnection: 0x1018f4700> seeing if delegate <appleaccountd.PushHelperService: 0x101274890> responds to status changes
+2026-07-30 10:32:03.109 Df familycircled[80533:1503a9] [com.apple.apsd:connection] <APSConnection: 0x1034e8300> seeing if delegate <FAPushHelperService: 0x1035400a0> responds to status changes
+2026-07-30 10:32:03.109 Df akd[80599:150714] [com.apple.apsd:connection] <APSConnection: 0x10350c100> seeing if delegate <AKAppleIDPushHelperService: 0x102fac580> responds to status changes
+2026-07-30 10:32:03.109 Df familycircled[80533:1503a9] [com.apple.apsd:connection] <APSConnection: 0x1034e8300> calling <FAPushHelperService: 0x1035400a0> didChangeConnectedStatus:
+2026-07-30 10:32:03.109 Df akd[80599:150714] [com.apple.apsd:connection] <APSConnection: 0x10350c100> calling <AKAppleIDPushHelperService: 0x102fac580> didChangeConnectedStatus:
+2026-07-30 10:32:03.109 Df familycircled[80533:1503a9] [com.apple.family:familycircle] APS connection status changed! isConnected: YES
+2026-07-30 10:32:03.109 Df akd[80599:150714] [com.apple.authkit:core] APNS status changed: 1
+2026-07-30 10:32:03.110 Df findmylocated[80544:18ced2] [com.apple.findmy.framework.FindMyCloudKit:cloudKit] create zone:  <CKRecordZone: 0x101908100; zoneID=Fence-DUMMY-BOOT-STRAP:__defaultOwner__, capabilities=(none), changeTag=<null>, encryptionScope=per-record, parent=<null>, share=<null>, governingShare=<null>>
+2026-07-30 10:32:03.110 Df familycircled[80533:1503a9] [com.apple.apsd:connection] <APSConnection: 0x1034e8300> returned from <FAPushHelperService: 0x1035400a0> didChangeConnectedStatus:
+2026-07-30 10:32:03.110 Df akd[80599:150714] [com.apple.apsd:connection] <APSConnection: 0x10350c100> returned from <AKAppleIDPushHelperService: 0x102fac580> didChangeConnectedStatus:
+2026-07-30 10:32:03.110 Df appleaccountd[90246:1764a5] [com.apple.apsd:connection] <APSConnection: 0x1018f4700> calling <appleaccountd.PushHelperService: 0x101274890> didChangeConnectedStatus:
+2026-07-30 10:32:03.110 Df appleaccountd[90246:1764a5] [com.apple.apsd:connection] <APSConnection: 0x1018f4700> returned from <appleaccountd.PushHelperService: 0x101274890> didChangeConnectedStatus:
+2026-07-30 10:32:03.110 A  findmylocated[80544:18ced2] (CloudKit) client/modify-record-zones
+2026-07-30 10:32:03.110 Df findmylocated[80544:18ced2] [com.apple.cloudkit.sim:OP] Starting operation <CKModifyRecordZonesOperation: 0x101b28000; operationID=E76B61E100F1AF4F, resolvedConfig={ timeoutForRequest=60, container=com.apple.findmy.container }, qos=Default, databaseScope=Private, resolvedConfig={ container=com.apple.findmy.container }, databaseScope=Private>
+2026-07-30 10:32:03.112 Df findmylocated[80544:18d340] [com.apple.xpc:connection] [0x101914f00] activating connection: mach=false listener=true peer=false name=(anonymous)
+2026-07-30 10:32:03.114 Df findmylocated[80544:18ced2] [com.apple.xpc:connection] [0x101914f00] Connection returned listener port: 0x45e7
+2026-07-30 10:32:03.114 Df findmylocated[80544:18ced2] [com.apple.xpc:connection] [0x101914f00] Connection returned listener port: 0x45e7
+2026-07-30 10:32:03.115 Df cloudd[80491:18d33c] [com.apple.cloudkit.sim:CK] Consulting TCC for access for container containerID=com.apple.findmy.container:Sandbox, applicationID=<CKDApplicationID: 0x1017699e0; applicationBundleID=com.apple.findmy.findmylocated>...
+2026-07-30 10:32:03.115 Df cloudd[80491:18d33c] [com.apple.xpc:connection] [0x10150fc00] activating connection: mach=true listener=false peer=false name=com.apple.tccd
+2026-07-30 10:32:03.116 A  cloudd[80491:18d33c] (TCC) TCCAccessCopyInformationForBundle() IPC-per-user
+2026-07-30 10:32:03.116 Df tccd[80443:18d337] [com.apple.xpc:connection] [0x101d34b40] activating connection: mach=false listener=false peer=true name=com.apple.tccd.peer[80491].0x101d34b40
+2026-07-30 10:32:03.116 Df tccd[80443:18d337] [com.apple.TCC:access] REQUEST: tccd_uid=501, sender_pid=80491, sender_uid=501, sender_auid=501, function=TCCAccessCopyInformationForBundle, msgID=80491.316
+2026-07-30 10:32:03.118 Df tccd[80443:18d337] [com.apple.TCC:access] REPLY: (501) function=TCCAccessCopyInformationForBundle, msgID=80491.316
+2026-07-30 10:32:03.119 Df cloudd[80491:18d33c] [com.apple.xpc:connection] [0x10150fc00] invalidated after the last release of the connection object
+2026-07-30 10:32:03.119 Df tccd[80443:18d337] [com.apple.xpc:connection] [0x101d34b40] invalidated because the client process (pid 80491) either cancelled the connection or exited
+2026-07-30 10:32:03.119 Df cloudd[80491:18d33c] [com.apple.cloudkit.sim:CK] TCC approved access for container containerID=com.apple.findmy.container:Sandbox, applicationID=<CKDApplicationID: 0x1017699e0; applicationBundleID=com.apple.findmy.findmylocated>
+2026-07-30 10:32:03.122 A  cloudd[80491:18d33c] (Accounts) accounts/accounts-with-types-sync
+2026-07-30 10:32:03.122 E  cloudd[80491:18d33c] [com.apple.cloudkit.sim:CK] Could not create primary backing account
+2026-07-30 10:32:03.126 Df cloudd[80491:18d33c] [com.apple.cloudkit.sim:OP] Initialized with container 0x1017c8000. Background: 0, cellular: 1, expensive: 1, QOS: 0x11
+2026-07-30 10:32:03.126 Df cloudd[80491:18d33c] [com.apple.xpc:connection] [0x10150fc00] activating connection: mach=false listener=false peer=false name=(anonymous)
+2026-07-30 10:32:03.126 Df findmylocated[80544:18ced2] [com.apple.xpc:connection] [0x101914f00] Connection returned listener port: 0x45e7
+2026-07-30 10:32:03.126 Df findmylocated[80544:18ced2] [com.apple.xpc:connection] [0x101aa8480] activating connection: mach=false listener=false peer=true name=com.apple.xpc.anonymous.0x101914f00.peer[80491].0x101aa8480
+2026-07-30 10:32:03.126 A  cloudd[80491:18d930] (CloudKitDaemon) daemon/modify-record-zones
+2026-07-30 10:32:03.127 Df cloudd[80491:18d930] [com.apple.cloudkit.sim:OP] Starting <CKDModifyRecordZonesOperation: 0x101764c80; qos=Utility, operationID=E76B61E100F1AF4F, flags=allows-cellular|allows-expensive, runningFor=0.001, currentAccountID=AnonymousAccount, containerID=com.apple.findmy.container>
+2026-07-30 10:32:03.127 Df cloudd[80491:18d33a] [com.apple.cloudkit.sim:OP] Initialized with container 0x1017c8000. Background: 0, cellular: 1, expensive: 1, QOS: 0x11
+2026-07-30 10:32:03.127 A  cloudd[80491:18d33c] (CloudKitDaemon) daemon/db-operation
+2026-07-30 10:32:03.127 Df cloudd[80491:18d33c] [com.apple.cloudkit.sim:OP] Starting <CKDPCSCacheZoneFetchOperation: 0x101766300; qos=Utility, operationID=307198B1686E2478, operationGroupID=271CC07073F11715, operationGroupName=EphemeralGroup, flags=allows-cellular|allows-expensive, runningFor=0, currentAccountID=AnonymousAccount, containerID=com.apple.findmy.container>
+2026-07-30 10:32:03.136 A  cloudd[80491:18d33a] (CloudKitDaemon) daemon/queued-fetch
+2026-07-30 10:32:03.147 Df cloudd[80491:18d33c] [com.apple.cloudkit.sim:OP] Initialized with container 0x1017c8000. Background: 0, cellular: 1, expensive: 1, QOS: 0x11
+2026-07-30 10:32:03.147 A  cloudd[80491:18d33a] (CloudKitDaemon) daemon/fetch-record-zones
+2026-07-30 10:32:03.148 Df cloudd[80491:18d33a] [com.apple.cloudkit.sim:OP] Starting <CKDFetchRecordZonesOperation: 0x101765680; qos=Utility, operationID=00ADE84235D82B77, operationGroupID=271CC07073F11715, operationGroupName=EphemeralGroup, flags=allows-cellular|allows-expensive, runningFor=0, currentAccountID=AnonymousAccount, containerID=com.apple.findmy.container>
+2026-07-30 10:32:03.148 Df cloudd[80491:18d930] [com.apple.cloudkit.sim:OP] Operation <CKDFetchRecordZonesOperation: 0x101765680; 00ADE84235D82B77 (RCE)  State: Fetching Zones, QoS: Utility>, setting current request from (null) to <CKDFetchRecordZonesURLRequest: 0x10162a000 FDFA4D03-8B3F-47D4-B11C-DEAD9110621F>
+2026-07-30 10:32:03.148 A  cloudd[80491:18d33a] (CloudKitDaemon) url-request
+2026-07-30 10:32:03.148 Df cloudd[80491:18d33a] [com.apple.cloudkit.sim:Request] req: FDFA4D03-8B3F-47D4-B11C-DEAD9110621F, "<CKDFetchRecordZonesURLRequest: 0x10162a000 FDFA4D03-8B3F-47D4-B11C-DEAD9110621F> Performing"
+2026-07-30 10:32:03.148 Df cloudd[80491:18d33a] [com.apple.cloudkit.sim:Request] req: FDFA4D03-8B3F-47D4-B11C-DEAD9110621F, "This request requires an authenticated account"
+2026-07-30 10:32:03.148 Df cloudd[80491:18d33a] [com.apple.cloudkit.sim:Request] req: FDFA4D03-8B3F-47D4-B11C-DEAD9110621F, "Finishing with error <CKUnderlyingError 0x102f0be70: "NoAccountExists" (1002); "This request requires an authenticated account">"
+2026-07-30 10:32:03.148 Df cloudd[80491:18d33c] [com.apple.cloudkit.sim:OP] Operation is finishing on callback queue with an error
+2026-07-30 10:32:03.149 Df cloudd[80491:18d33c] [com.apple.cloudkit.sim:OP] Finished operation <CKDFetchRecordZonesOperation: 0x101765680; qos=Utility, operationID=00ADE84235D82B77, requestIDs=[FDFA4D03-8B3F-47D4-B11C-DEAD9110621F], operationGroupID=271CC07073F11715, operationGroupName=EphemeralGroup, stateFlags=executing, flags=allows-cellular|allows-expensive, state=Complete, runningFor=0.001, currentAccountID=AnonymousAccount, request=<CKDFetchRecordZonesURLRequest: 0x10162a000; UUID=FDFA4D03-8B3F-47D4-B11C-DEAD9110621F, stateFlags=finished, flags=foreground|allows-cellular|allows-expensive, error=<CKUnderlyingError 0x102f0be70: "NoAccountExists" (1002); "This request requires an authenticated account">>, containerID=com.apple.findmy.container> metrics=<CKOperationMetrics: 0x1015bd6c0; cloudKitMetrics=<CKMetric: 0x10150d900; startDate=2026-07-30 07:32:03 +0000, duration=0.001, queueing=0.000, executing=0.001, bytesUploaded=0, bytesDownloaded=0, connections=0, connectionsCreated=0, totalBytesByChunkProfile={  }, chunkCountByChunkProfile={  }, fileCountByChunkProfile={  }>> with err<…><decode: missing data>
+2026-07-30 10:32:03.149 Df cloudd[80491:18d930] [com.apple.cloudkit.sim:OP] Finished operation <CKDPCSCacheZoneFetchOperation: 0x101766300; qos=Utility, operationID=307198B1686E2478, operationGroupID=271CC07073F11715, operationGroupName=EphemeralGroup, stateFlags=executing, flags=allows-cellular|allows-expensive, state=Complete, runningFor=0.022, currentAccountID=AnonymousAccount, containerID=com.apple.findmy.container> metrics=<CKOperationMetrics: 0x1015bf1a0; cloudKitMetrics=<CKMetric: 0x10150d900; startDate=2026-07-30 07:32:03 +0000, duration=0.021, queueing=0.000, executing=0.021, bytesUploaded=0, bytesDownloaded=0, connections=0, connectionsCreated=0, totalBytesByChunkProfile={  }, chunkCountByChunkProfile={  }, fileCountByChunkProfile={  }>>
+2026-07-30 10:32:03.149 Df cloudd[80491:18d33a] [com.apple.cloudkit.sim:OP] Finished operation <CKDModifyRecordZonesOperation: 0x101764c80; qos=Utility, operationID=E76B61E100F1AF4F, finishedChildOpIDs=[307198B1686E2478], requestIDs=[FDFA4D03-8B3F-47D4-B11C-DEAD9110621F], operationGroupID=271CC07073F11715, operationGroupName=EphemeralGroup, stateFlags=executing, flags=allows-cellular|allows-expensive, state=Complete, runningFor=0.024, currentAccountID=AnonymousAccount, containerID=com.apple.findmy.container> metrics=<CKOperationMetrics: 0x1015bf1a0; cloudKitMetrics=<CKMetric: 0x10150f840; startDate=2026-07-30 07:32:03 +0000, duration=0.023, queueing=0.001, executing=0.023, bytesUploaded=0, bytesDownloaded=0, connections=0, connectionsCreated=0, totalBytesByChunkProfile={  }, chunkCountByChunkProfile={  }, fileCountByChunkProfile={  }>>
+2026-07-30 10:32:03.149 Df cloudd[80491:18d930] [com.apple.xpc:connection] [0x10150fc00] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-07-30 10:32:03.150 E  findmylocated[80544:18d340] [com.apple.findmy.framework.FindMyCloudKit:cloudKit] CloudKit error: <CKError 0x101848c90: "Not Authenticated" (9/1002); "This request requires an authenticated account">
+2026-07-30 10:32:03.150 Df findmylocated[80544:18ced2] [com.apple.cloudkit.sim:OP] Finished operation <CKModifyRecordZonesOperation: 0x101b28000; databaseScope=Private, operationID=E76B61E100F1AF4F, resolvedConfig={ timeoutForRequest=60, container=com.apple.findmy.container }, qos=Default, stateFlags=executing, resolvedConfig={ container=com.apple.findmy.container }, metrics=<CKOperationMetrics: 0x10193d460; cloudKitMetrics=<CKMetric: 0x101915400; startDate=2026-07-30 07:32:03 +0000, duration=0.023, queueing=0.001, executing=0.023, bytesUploaded=0, bytesDownloaded=0, connections=0, connectionsCreated=0, totalBytesByChunkProfile={  }, chunkCountByChunkProfile={  }, fileCountByChunkProfile={  }>>, databaseScope=Private>
+2026-07-30 10:32:03.150 Df findmylocated[80544:18ced2] [com.apple.xpc:connection] [0x101914f00] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-07-30 10:32:03.150 Df findmylocated[80544:18ced2] [com.apple.xpc:connection] [0x101aa8480] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-07-30 10:32:03.150 A  findmylocated[80544:18ced2] (CloudKit) client/submit-event-metric
+2026-07-30 10:32:03.150 E  findmylocated[80544:18d340] [com.apple.findmy.framework.FindMyCloudKit:CloudKitStorage] Error creating zones from monitorAPNSState: <CKError 0x101848c90: "Not Authenticated" (9/1002); "This request requires an authenticated account">
+2026-07-30 10:32:03.150 Df cloudd[80491:18d930] [com.apple.cloudkit.sim:OP] Initialized with container 0x1017c8000. Background: 1, cellular: 1, expensive: 1, QOS: 0x9
+2026-07-30 10:32:03.150 E  cloudd[80491:18d931] [com.apple.cloudkit.sim:CK] Couldn't pull url from backing account <CKDAccount 0x10176ba20> ("(null)" Account ID: AnonymousAccount) or container <CKDContainer: 0x1017c8000; containerID=<CKContainerID: 0x101768cf0; containerIdentifier=com.apple.findmy.container, environment=Sandbox>, applicationID=<CKDApplicationID: 0x1017699e0; applicationBundleID=com.apple.findmy.findmylocated>, personaID=(null), flags=clientBundleIsAppleExecutable>
+2026-07-30 10:32:03.150 E  cloudd[80491:18d931] [com.apple.cloudkit.sim:CK] Couldn't pull url from backing account <CKDAccount 0x10176ba20> ("(null)" Account ID: AnonymousAccount) or container <CKDContainer: 0x1017c8000; containerID=<CKContainerID: 0x101768cf0; containerIdentifier=com.apple.findmy.container, environment=Sandbox>, applicationID=<CKDApplicationID: 0x1017699e0; applicationBundleID=com.apple.findmy.findmylocated>, personaID=(null), flags=clientBundleIsAppleExecutable>
+

@@ -77,6 +77,22 @@ function findRun(runId, platform) {
   die(`Не найден run ${runId} (искал в evidence/stage-${STAGE}/{${platforms.join(",")}}/runs/)`);
 }
 
+/**
+ * Закрытый run повторно не завершается. Teardown уже удалил fixtures, поэтому
+ * второй прогон oracle читает пустое состояние, получает заведомо ложный FAIL и
+ * затирает корректный отчёт — верные данные измерения теряются без следа.
+ * Забытый флаг (`--confirm-manual`) не повод переигрывать run: manual-проверку
+ * фиксируют в плане, а сам run остаётся с тем verdict, который получил.
+ */
+function assertNotClosed(state, command) {
+  if (state.status !== "finished" && state.status !== "aborted") return;
+  die(
+    `run ${state.runId} уже закрыт (status=${state.status}, verdict=${state.verdict}, `
+    + `завершён ${state.finishedAt}). Команда ${command} прогнала бы oracle после teardown `
+    + "и затёрла отчёт заведомо ложным результатом. Нужен другой verdict — выполните новый run.",
+  );
+}
+
 function saveState(state) {
   const dir = runDir(STAGE, state.platform, state.runId);
   mkdirSync(dir, { recursive: true });
@@ -216,6 +232,7 @@ function cmdArm(f) {
 async function cmdFinish(f) {
   const runId = requireFlag(f, "run");
   const state = findRun(runId, f.platform !== true ? f.platform : null);
+  assertNotClosed(state, "finish");
   const manifest = applyToken(loadManifest(state.caseId), state.runToken || "");
   const dir = runDir(STAGE, state.platform, runId);
   const adapter = adapterFor(manifest);
@@ -260,6 +277,7 @@ async function cmdAbort(f) {
   const runId = requireFlag(f, "run");
   const reason = requireFlag(f, "reason");
   const state = findRun(runId, f.platform !== true ? f.platform : null);
+  assertNotClosed(state, "abort");
   const manifest = applyToken(loadManifest(state.caseId), state.runToken || "");
   const dir = runDir(STAGE, state.platform, runId);
   const adapter = adapterFor(manifest);

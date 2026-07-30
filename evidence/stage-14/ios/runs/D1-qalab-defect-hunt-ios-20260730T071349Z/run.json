@@ -1,0 +1,68 @@
+{
+  "runId": "D1-qalab-defect-hunt-ios-20260730T071349Z",
+  "caseId": "D1-qalab-defect-hunt",
+  "platform": "ios",
+  "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "d8808df1-ea53-430a-8884-b1435a0ac6ba",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "04ff10",
+  "startedAt": "2026-07-30T07:13:52.120Z",
+  "seeded": [
+    {
+      "id": "b760cb6f-fc12-4c5f-b521-bdf4a7bbd431",
+      "title": "Кнопка входа не отвечает",
+      "status": "open",
+      "severity": "low"
+    },
+    {
+      "id": "3e11aa51-f706-4fdc-827d-e6f354817460",
+      "title": "Список загружается медленно",
+      "status": "open",
+      "severity": "critical"
+    },
+    {
+      "id": "7d64ca6f-8349-454d-bd74-e912904e238b",
+      "title": "Экспорт отчёта не открывается",
+      "status": "in_progress",
+      "severity": "critical"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-07-30T07:13:50.489Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e64f33c",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "8ea7fa0",
+      "dirty": true
+    },
+    "platform": "ios",
+    "device": {
+      "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+      "name": "iPhone 17 Pro Max",
+      "platform": "ios",
+      "runtime": "iOS 26.5",
+      "state": "Booted"
+    },
+    "agentModel": "subagent (clean context)",
+    "skillRevision": "sim-use-skill-v0.10.0",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/D1-qalab-defect-hunt.yaml",
+  "limits": {
+    "timeoutSeconds": 600,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "armedAt": "2026-07-30T07:18:28.917Z",
+  "finishedAt": "2026-07-30T07:31:24.382Z",
+  "verdict": "INCONCLUSIVE"
+}

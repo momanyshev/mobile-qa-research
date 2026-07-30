@@ -1,0 +1,37 @@
+Run ID: D1-qalab-defect-hunt-ios-20260730T071349Z
+Case ID: D1-qalab-defect-hunt
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: qalab: Workspace d8808df1-ea53-430a-8884-b1435a0ac6ba
+Start state: seed 3 записей, состояние «до» = 3
+Instruction: Область: список дефектов — поиск, фильтры критичности и статуса, а также смена статуса дефекта. Риск: список может показывать не то, что должен, а смена статуса — принимать недопустимое значение. Проверь, соответствует ли поведение приложения тому, что оно само о себе заявляет: подписям полей, подсказкам и назначению контролов. Маршрут выбирай сам. Ничего не удаляй. По итогам сформулируй, что именно расходится с ожидаемым, со шагами воспроизведения; если расхождений нет — так и напиши.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-07-30T07:13:52.120Z → 2026-07-30T07:31:24.382Z
+Tool calls: 67 (действий 38, по координатам 0, ошибок 2)
+Retries: 3 | ПРЕВЫШЕН БЮДЖЕТ 3: swipe по цели «не определена» — 8 попыток подряд (бюджет 3), вызовы #3, #5, #8, #10, #12, #13, #14, #15
+Manual interventions: 0
+API before: 3 → runs/D1-qalab-defect-hunt-ios-20260730T071349Z/api-before.json
+API after: 3 → runs/D1-qalab-defect-hunt-ios-20260730T071349Z/api-after.json (АРТЕФАКТ УТРАЧЕН, см. ниже)
+UI postcondition: финальный outline снят (runs/D1-qalab-defect-hunt-ios-20260730T071349Z/final-ui.json)
+Oracle result: api.count=pass, manual.manual=unsupported
+Agent self-report: Заявил один дефект: инлайн-колесо «Статус» перехватывает жест прокрутки списка и молча коммитит смену статуса без подтверждения и без обратного перехода. Подтверждено оракулом. Посеянный дефект (фильтр критичности игнорируется в сочетании с фильтром статуса) НЕ обнаружен: комбинация фильтров не проверялась, агент сам отнёс её к незавершённому по исчерпанию бюджета 600 с. Фильтры по отдельности проверил и корректно признал исправными.
+Final verdict: INCONCLUSIVE
+Failure category: product | agent | sim-use — требует классификации (2 вызовов завершились ошибкой)
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog, deviceLog
+Teardown result: удалено 3, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —
+
+
+ПРОВЕНАНС ЗАПИСИ. Оператор вызвал finish повторно, забыв --confirm-manual.
+Harness не запрещал повтор: oracle прогнался уже после teardown, получил count=0
+и затёр корректный отчёт результатом FAIL. Поля выше восстановлены из строки
+runs.jsonl первого (корректного) завершения. Утрачены безвозвратно и НЕ
+восстанавливались: api-after.json, final-ui.json, final-screen.png — все три
+пересняты после teardown и отражают пустое состояние, а не финал прогона.
+Фактическое финальное состояние зафиксировано в плане (раздел 9.3-R).
+Запрет повторного закрытия run добавлен в harness (assertNotClosed).

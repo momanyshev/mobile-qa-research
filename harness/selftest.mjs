@@ -438,6 +438,23 @@ async function cycleTests(t) {
   t.ok("аварийный teardown удалил все fixtures", after3.body.total === 0, `осталось ${after3.body.total}`);
   t.ok("аварийный teardown сбросил fault profile", /passthrough/.test(e3.teardown), e3.teardown);
 
+  // 5.5. Закрытый run не переигрывается. Второй finish прогнал бы oracle уже
+  // после teardown: fixtures удалены, count вернул бы 0, и заведомо ложный FAIL
+  // затёр бы корректный verdict. Проверяется на обоих закрывающих командах.
+  for (const [cmd, extra] of [["finish", []], ["abort", ["--reason", "повтор"]]]) {
+    let refused = false, message = "";
+    try {
+      harness([cmd, "--run", run3, ...extra]);
+    } catch (err) {
+      refused = true;
+      message = String(err.stderr || err.stdout || err.message);
+    }
+    t.ok(`повторный ${cmd} закрытого run отклонён`, refused, "команда выполнилась вместо отказа");
+    t.ok(`отказ ${cmd} объясняет причину`, /уже закрыт/.test(message), message.split("\n")[0]);
+  }
+  const after3b = await api.list({ workspaceId: ws3 });
+  t.ok("отклонённый повтор не тронул состояние", after3b.body.total === 0, `total=${after3b.body.total}`);
+
   // Подчистка за самим selftest.
   for (const ws of [ws1, ws2, ws3]) {
     try { await teardownWorkspace(api, { workspaceId: ws }); } catch {}
