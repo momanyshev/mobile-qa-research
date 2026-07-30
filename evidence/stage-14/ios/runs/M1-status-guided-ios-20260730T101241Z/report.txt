@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-ios-20260730T101241Z
+Case ID: M1-status-guided
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: qalab: Workspace e6df75a1-2b0d-4c39-b850-b9b58fb95d3d
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается 347db4». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-07-30T10:12:43.229Z → 2026-07-30T10:18:58.315Z
+Tool calls: 14 (действий 4, по координатам 0, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 1 → runs/M1-status-guided-ios-20260730T101241Z/api-before.json
+API after: 1 → runs/M1-status-guided-ios-20260730T101241Z/api-after.json
+UI postcondition: финальный outline снят (runs/M1-status-guided-ios-20260730T101241Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: Guided: цель достигнута с первой попытки тапа. Маршрут был задан (карточка в списке, форму редактирования не открывать), поэтому вся сложность свелась к разведке контрола, а не к выбору пути. Постусловие подтвердил тремя независимыми признаками: пересчитанная подпись «Доступный переход», сдвиг метки «Обновлено» 13:12→13:16 и live-region анонс о смене статуса; проверил устойчивость после форс-перерисовки прокруткой. Сверку с API честно отнёс к непроверенному.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (9.2 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Инлайн wheel-picker статуса отдаётся в дерево одним AXSlider с меткой «0», без детей, без AXUniqueId и без custom_actions — селектора для отдельной строки не существует вовсе, приоритетная цепочка #id → --label → @N здесь неприменима, нужен координатный тап по строке, вычисленной со скриншота. Важнее: AXValue остаётся «0» и ПОСЛЕ смены статуса, потому что список опций пересобирается под текущее значение и индекс 0 всегда указывает на него. Проверка постусловия по AXValue дала бы ложный вывод «ничего не изменилось».
+Follow-up decision: Парный прогон M2 (goal-based) на том же сценарии и том же oracle.

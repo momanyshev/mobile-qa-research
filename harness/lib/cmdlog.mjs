@@ -22,15 +22,33 @@ const ACTION_COMMANDS = ["tap", "swipe", "type", "paste", "button", "scroll", "l
  */
 const FOCUS_COMMANDS = ["type", "paste", "button", "key"];
 
-/** Признак координатного действия — явные --x/--y/--from/--to. */
-const COORDINATE_FLAGS = ["--x", "--y", "--from", "--to", "--target-x", "--target-y"];
+/**
+ * Все формы координатной адресации, которые принимает sim-use 0.10.0.
+ *
+ * Список был неполон до 30 июля 2026 и содержал только `--x/--y/--from/--to`.
+ * `sim-use` при этом принимает и короткие `-x/-y`, и `--point x,y`, и
+ * покомпонентные `--start-x/--start-y/--end-x/--end-y` у swipe. По журналам
+ * всех прогонов исследования: `--from/--to` встречались 78 раз (считались),
+ * `--start-*`/`--end-*` — 55 раз, `-x/-y` — 12, `--point` — 2 (не считались).
+ * То есть метрика coordinate-free систематически занижала координатные
+ * действия и объявляла coordinate-free прогоны, которые таковыми не были.
+ */
+const COORDINATE_FLAGS = [
+  "--x", "-x", "--y", "-y",
+  "--from", "--to", "--point",
+  "--start-x", "--start-y", "--end-x", "--end-y",
+  "--target-x", "--target-y",
+];
+
+/** Позиционная пара координат: `swipe 100,200 100,600`. */
+const COORDINATE_PAIR = /^-?\d+(\.\d+)?,-?\d+(\.\d+)?$/;
 
 export function classifyCall(args) {
   const command = args.find((a) => !a.startsWith("-")) || args[0] || "";
   const isAction = ACTION_COMMANDS.includes(command);
   if (!isAction) return { command, kind: "observe", selector: null };
 
-  const hasCoords = args.some((a) => COORDINATE_FLAGS.includes(a));
+  const hasCoords = args.some((a) => COORDINATE_FLAGS.includes(a) || COORDINATE_PAIR.test(a));
   // Позиционный alias (@N, #id) или --label/--id — это селекторный путь.
   const hasSelector = args.some((a) => /^[@#]/.test(a)) || args.includes("--label") || args.includes("--id");
 

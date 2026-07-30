@@ -1,0 +1,48 @@
+id: M2-status-goal
+title: Режимы — S2 переход статуса, goal-based
+adapter: qalab
+platform: any
+appId: ru.maksim.qalab
+# Парный к M1. Отличие ровно одно — инструкция ниже. Комментарий к замыслу и
+# обоснование выбора сценария см. в M1-status-guided.yaml.
+#
+# goal-based: задано только целевое состояние. Ни маршрута, ни запрета на
+# конкретный экран — агент сам решает, где и как менять статус.
+instruction: >-
+  Дефект «Фильтр статуса сбрасывается {{token}}» должен получить статус
+  «В работе». Ничего больше не меняй.
+preconditions:
+  apiSeed:
+    - title: Фильтр статуса сбрасывается {{token}}
+      description: После возврата из карточки выбранный фильтр статуса теряется
+      severity: medium
+      status: open
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - status-change
+forbiddenActions:
+  - production-access
+  - issue-deletion
+  - issue-creation
+limits:
+  timeoutSeconds: 900
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      - type: onlyChanged
+        seedIndex: 0
+        changed:
+          status: in_progress
+      - type: count
+        expected: 1
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: true

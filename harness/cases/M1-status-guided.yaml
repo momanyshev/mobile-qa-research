@@ -1,0 +1,58 @@
+id: M1-status-guided
+title: Режимы — S2 переход статуса, guided
+adapter: qalab
+platform: any
+appId: ru.maksim.qalab
+# Сравнение режимов (этап 8.1/8.2, прогоны в 14.D). Пара M1/M2 отличается
+# ровно одним — текстом инструкции. Всё остальное совпадает побуквенно: seed,
+# разрешения, лимиты, oracle, платформа. Иначе разница в результате не будет
+# относиться к режиму.
+#
+# Сценарий S2 выбран самим дизайном этапа 8 как «самый чувствительный к
+# взаимодействию»: смена статуса идёт через инерционный wheel-picker, а
+# гипотеза этапа звучит так — goal-based на iOS уязвим к off-viewport
+# адресации и колесу, guided сглаживает это явными шагами.
+#
+# guided: маршрут задан. Сказано, где менять (карточка в списке) и чем не
+# пользоваться (форма редактирования).
+instruction: >-
+  Найди дефект «Фильтр статуса сбрасывается {{token}}». Прямо в его карточке в
+  списке измени статус с «Открыт» на «В работе». Не открывай форму
+  редактирования.
+preconditions:
+  apiSeed:
+    - title: Фильтр статуса сбрасывается {{token}}
+      description: После возврата из карточки выбранный фильтр статуса теряется
+      severity: medium
+      status: open
+allowedActions:
+  - read-ui
+  - mobile-ui-interaction
+  - status-change
+forbiddenActions:
+  - production-access
+  - issue-deletion
+  - issue-creation
+limits:
+  timeoutSeconds: 900
+  retryPerAction: 3
+oracle:
+  api:
+    checks:
+      # Изменился ровно статус: onlyChanged поймает и недостижение цели, и
+      # попутную порчу соседних полей.
+      - type: onlyChanged
+        seedIndex: 0
+        changed:
+          status: in_progress
+      - type: count
+        expected: 1
+evidence:
+  - transcript
+  - initial-ui-json
+  - final-ui-json
+  - final-screenshot
+  - api-before
+  - api-after
+teardown:
+  resetState: true

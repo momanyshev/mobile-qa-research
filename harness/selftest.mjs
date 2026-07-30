@@ -337,6 +337,24 @@ async function cmdlogTests(t) {
   t.ok("ui — наблюдение, не действие",
     classifyCall(["ui", "--json", "--device", "X"]).kind === "observe");
 
+  // Каждая форма координатной адресации, которую принимает sim-use. Неполный
+  // список молча занижал метрику coordinate-free: до 30 июля 2026 сюда не
+  // попадали `-x/-y`, `--point` и покомпонентные флаги swipe, и прогоны с
+  // координатными тапами объявлялись coordinate-free.
+  const coordForms = [
+    ["короткие -x/-y", ["tap", "-x", "221", "-y", "624", "--device", "X"]],
+    ["--point x,y", ["tap", "--point", "220,625", "--device", "X"]],
+    ["покомпонентный swipe", ["swipe", "--start-x", "428", "--start-y", "800", "--end-x", "428", "--end-y", "300", "--device", "X"]],
+    ["--from/--to", ["swipe", "--from", "428,800", "--to", "428,300", "--device", "X"]],
+    ["позиционная пара", ["swipe", "100,200", "100,600", "--device", "X"]],
+  ];
+  for (const [name, args] of coordForms) {
+    t.ok(`координатная форма распознана: ${name}`,
+      classifyCall(args).selector === "coordinate", classifyCall(args).selector);
+  }
+  t.ok("селектор рядом с координатами даёт mixed, а не coordinate",
+    classifyCall(["tap", "--id", "btn", "-x", "10", "-y", "20", "--device", "X"]).selector === "mixed");
+
   const logPath = `${EV_DIR}/cmdlog-probe/commands.jsonl`;
   const okCall = runLogged(logPath, ["ok-line"], { bin: "echo" });
   t.ok("успешный вызов записан с exit 0", okCall.status === 0 && okCall.entry.exitCode === 0);

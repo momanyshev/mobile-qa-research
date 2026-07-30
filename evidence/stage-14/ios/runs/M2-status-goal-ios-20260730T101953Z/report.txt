@@ -1,0 +1,27 @@
+Run ID: M2-status-goal-ios-20260730T101953Z
+Case ID: M2-status-goal
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: qalab: Workspace caaf6383-89f2-4c15-831a-7b87e586191d
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Дефект «Фильтр статуса сбрасывается 423d24» должен получить статус «В работе». Ничего больше не меняй.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-07-30T10:19:54.879Z → 2026-07-30T10:25:27.071Z
+Tool calls: 16 (действий 6, по координатам 0, ошибок 0)
+Retries: 1
+Manual interventions: 0
+API before: 1 → runs/M2-status-goal-ios-20260730T101953Z/api-before.json
+API after: 1 → runs/M2-status-goal-ios-20260730T101953Z/api-after.json
+UI postcondition: финальный outline снят (runs/M2-status-goal-ios-20260730T101953Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: Goal-based: цель достигнута. Целевое действие (смена статуса) — 1 попытка, тот же обходной путь, что и в guided: координатный тап по строке колеса, вычисленный со скриншота. Не имея запрета на маршрут, дополнительно открыл карточку дефекта и получил более сильное подтверждение — элемент #issue-badge-status-in_progress, идентификатор которого содержит сам статус. На этом шаге потратил лишнюю попытку: центр кнопки открытия карточки пришёлся на таб-бар, tap вернул ok:true без эффекта. Побочные изменения проверил по дереву; сверку с API отнёс к непроверенному.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (7.7 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Кнопки в нижней части карточки списка могут иметь центр, накрытый таб-баром: tap по #identifier возвращает ok:true и не срабатывает. Лечится прокруткой контрола выше в viewport перед тапом — тот же класс, что и off-viewport адресация, но проявляется внутри видимой области.
+Follow-up decision: Свод сравнения режимов в план: гипотеза этапа 8 о преимуществе guided на wheel-picker не подтвердилась.

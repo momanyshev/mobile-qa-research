@@ -1,0 +1,58 @@
+#1 2026-07-30T10:14:23.076Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 614ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#2 2026-07-30T10:14:44.474Z sim-use --help
+    → exit=0 13ms
+    | OVERVIEW: A utility to interact with iOS Simulators and Android
+    | emulators/devices and extract accessibility information.
+    | USAGE: sim-use <subcommand>
+#3 2026-07-30T10:14:59.140Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --start-x 428 --start-y 800 --end-x 428 --end-y 300
+    → exit=0 1477ms selector=unknown
+    | ✓ Swipe (428,800) → (428,300) completed successfully
+#4 2026-07-30T10:15:11.856Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 376ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#5 2026-07-30T10:15:30.557Z sim-use help ui
+    → exit=0 13ms
+    | OVERVIEW: Describes the UI hierarchy of a booted simulator using accessibility
+    | information.
+    | USAGE: sim-use describe-ui [--device <device>] [--udid <udid>] [--point <x,y>] [--max-probes <n>] [--min-cell-size <pt>] [--seed-cell-width <pt>] [--seed-cell-height <pt>] [--json] [--include-offscreen]
+#6 2026-07-30T10:15:38.893Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --point 222,500 --json
+    → exit=0 355ms
+    | {"advisory":{"kind":"orientation_calibration_fallback","message":"Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates."},"data":{"appLabel":"ru.maksim.qalab","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"frame":{"height":291,"width":338,"x":53,"y":437},"label":"0","region":{"kind":"Content"},"role":"Slider","states":[],"value":"0"}],"lists":[],"orientation":"portrait","outline":"Subtree: ru.maksim.qalab\n\n[Content]\n  @1  Slider  \"0\"  (53,437 338x291)\n","platform":"ios","raw":{"AXFrame":"{{53, 436.5}, {338, 291}}","AXLabel":null,"AXUniqueId":null,"AXValue":0,"children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":291,"width":338,"x":53,"y":436.5},"help":null,"pid":12869,"role":"AXSlider","role_description":"slider","subrole":null,"title":null,"type":"Slider"},"screen":{"height":0,"width":0,"x":0,"y":0}},"ok":true}
+#7 2026-07-30T10:15:48.856Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+    → exit=0 177ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+#8 2026-07-30T10:16:20.365Z sim-use help tap
+    → exit=0 13ms
+    | OVERVIEW: Tap on a specific point on the screen, or locate an element by
+    | accessibility and tap its center.
+    | Workflow: run `sim-use describe-ui` first to capture an
+#9 2026-07-30T10:16:28.561Z sim-use tap --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --point 220,625
+    → exit=0 410ms selector=unknown
+    | ✓ Tap at (220.0, 625.0) completed successfully
+#10 2026-07-30T10:16:47.295Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 375ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#11 2026-07-30T10:16:59.831Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s2.png
+    → exit=0 171ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s2.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s2.png
+#12 2026-07-30T10:17:30.606Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --start-x 428 --start-y 300 --end-x 428 --end-y 800
+    → exit=0 1354ms selector=unknown
+    | ✓ Swipe (428,300) → (428,800) completed successfully
+#13 2026-07-30T10:17:46.079Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --start-x 428 --start-y 800 --end-x 428 --end-y 300
+    → exit=0 1493ms selector=unknown
+    | ✓ Swipe (428,800) → (428,300) completed successfully
+#14 2026-07-30T10:17:47.635Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 405ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
