@@ -1,0 +1,99 @@
+{
+  "runId": "C8-list-review-ios-20260730T131957Z",
+  "caseId": "C8-list-review",
+  "platform": "ios",
+  "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "46c40efa-2142-4aca-809c-8a781e4ba4f8",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "39dc67",
+  "startedAt": "2026-07-30T13:20:01.489Z",
+  "seeded": [
+    {
+      "id": "177c1b57-3298-4a26-93f8-1d7f37d5aac5",
+      "title": "Не работает сортировка по дате",
+      "status": "open",
+      "severity": "medium"
+    },
+    {
+      "id": "b60a65ad-73b4-44a2-b988-6eb53c66a908",
+      "title": "Обрезается длинное описание",
+      "status": "open",
+      "severity": "low"
+    },
+    {
+      "id": "c55a3006-9398-46aa-80ff-5c8ab4208372",
+      "title": "Экспорт падает на больших выборках",
+      "status": "in_progress",
+      "severity": "critical"
+    },
+    {
+      "id": "955aa963-7737-444c-8e42-f1aa41f4e9f9",
+      "title": "Поиск не учитывает регистр",
+      "status": "open",
+      "severity": "medium"
+    },
+    {
+      "id": "ede40a69-f303-4169-84eb-8978cf3635c5",
+      "title": "Пустой список без пояснения",
+      "status": "testing",
+      "severity": "low"
+    },
+    {
+      "id": "d002d95f-b471-4b5d-b7c2-16eb120ba6a3",
+      "title": "Не грузится аватар в профиле",
+      "status": "open",
+      "severity": "low"
+    },
+    {
+      "id": "f41912d1-aa02-42af-b32d-ddc743ac0788",
+      "title": "Дублируется запись при быстром нажатии",
+      "status": "open",
+      "severity": "blocker"
+    },
+    {
+      "id": "ce281ba9-97f1-4e4f-9e76-9ae9a029fee7",
+      "title": "Подпись фильтра обрезана",
+      "status": "in_progress",
+      "severity": "low"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-07-30T13:19:58.356Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e64f33c",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "ce51e7f",
+      "dirty": true
+    },
+    "platform": "ios",
+    "device": {
+      "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+      "name": "iPhone 17 Pro Max",
+      "platform": "ios",
+      "runtime": "iOS 26.5",
+      "state": "Booted"
+    },
+    "agentModel": "subagent (clean context)",
+    "skillRevision": "sim-use-skill-v0.10.0",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/C8-list-review.yaml",
+  "limits": {
+    "timeoutSeconds": 900,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "videoPid": 27847,
+  "armedAt": "2026-07-30T13:20:32.227Z",
+  "finishedAt": "2026-07-30T13:35:42.999Z",
+  "verdict": "FAIL"
+}

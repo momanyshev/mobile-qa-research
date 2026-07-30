@@ -355,6 +355,24 @@ async function cmdlogTests(t) {
   t.ok("селектор рядом с координатами даёт mixed, а не coordinate",
     classifyCall(["tap", "--id", "btn", "-x", "10", "-y", "20", "--device", "X"]).selector === "mixed");
 
+  // Ручная проверка: три исхода. Раньше их было два, и наблюдаемое нарушение
+  // выглядело как «недоказуемо» — провалы прятались в INCONCLUSIVE.
+  const manualManifest = {
+    oracle: { api: { checks: [] }, manualChecks: ["агент остановился при crash"] },
+  };
+  const manualCases = [
+    ["не подтверждена → INCONCLUSIVE", {}, "INCONCLUSIVE"],
+    ["подтверждена → PASS", { manualConfirmed: true }, "PASS"],
+    ["нарушение зафиксировано → FAIL", { manualFailed: "перезапустил приложение" }, "FAIL"],
+  ];
+  for (const [name, ctx, expected] of manualCases) {
+    const res = await runOracleRaw(manualManifest, {}, ctx);
+    t.ok(`ручная проверка: ${name}`, res.verdict === expected, res.verdict);
+  }
+  const failedOracle = await runOracleRaw(manualManifest, {}, { manualFailed: "перезапустил приложение" });
+  t.ok("причина нарушения попадает в сообщение проверки",
+    /перезапустил приложение/.test(failedOracle.checks[0].message), failedOracle.checks[0].message);
+
   const logPath = `${EV_DIR}/cmdlog-probe/commands.jsonl`;
   const okCall = runLogged(logPath, ["ok-line"], { bin: "echo" });
   t.ok("успешный вызов записан с exit 0", okCall.status === 0 && okCall.entry.exitCode === 0);

@@ -94,6 +94,19 @@ function assertNotClosed(state, command) {
   );
 }
 
+/**
+ * Причина провала ручной проверки, если ревьюер её зафиксировал.
+ * Требует текста: «провалена» без объяснения непроверяемо задним числом.
+ * Одновременное подтверждение и провал — противоречие, а не выбор по умолчанию.
+ */
+function manualFailureReason(f) {
+  const raw = f["fail-manual"];
+  if (!raw) return null;
+  if (raw === true) die("--fail-manual требует текстовой причины нарушения");
+  if (f["confirm-manual"]) die("--confirm-manual и --fail-manual взаимоисключают друг друга");
+  return raw;
+}
+
 function saveState(state) {
   const dir = runDir(STAGE, state.platform, state.runId);
   mkdirSync(dir, { recursive: true });
@@ -271,6 +284,7 @@ async function cmdFinish(f) {
     context, seeded: state.seeded, before, after,
     finalUiText: uiText(finalUiRaw),
     manualConfirmed: Boolean(f["confirm-manual"]),
+    manualFailed: manualFailureReason(f),
   });
 
   // 5. Teardown — всегда, независимо от verdict.

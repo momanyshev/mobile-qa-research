@@ -1,0 +1,63 @@
+{
+  "runId": "C7-new-defect-entry-ios-20260730T130356Z",
+  "caseId": "C7-new-defect-entry",
+  "platform": "ios",
+  "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "ad804cc1-3da2-446d-8d79-54041fce0663",
+    "baseUrl": "http://127.0.0.1:8890"
+  },
+  "runToken": "75cf87",
+  "startedAt": "2026-07-30T13:03:58.355Z",
+  "seeded": [
+    {
+      "id": "bd08c79c-78fe-43df-9168-2bf5d65049e2",
+      "title": "Не работает сортировка по дате",
+      "status": "open",
+      "severity": "medium"
+    },
+    {
+      "id": "39e91164-1c72-4fff-8c7f-5d4ba2f4ade1",
+      "title": "Обрезается длинное описание",
+      "status": "open",
+      "severity": "low"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-07-30T13:03:56.881Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e64f33c",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "ce51e7f",
+      "dirty": true
+    },
+    "platform": "ios",
+    "device": {
+      "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+      "name": "iPhone 17 Pro Max",
+      "platform": "ios",
+      "runtime": "iOS 26.5",
+      "state": "Booted"
+    },
+    "agentModel": "subagent (clean context)",
+    "skillRevision": "sim-use-skill-v0.10.0",
+    "baseUrl": "http://127.0.0.1:8890"
+  },
+  "manifestPath": "cases/C7-new-defect-entry.yaml",
+  "limits": {
+    "timeoutSeconds": 900,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "videoPid": 25501,
+  "armedAt": "2026-07-30T13:04:30.315Z",
+  "finishedAt": "2026-07-30T13:15:18.547Z",
+  "verdict": "PASS"
+}

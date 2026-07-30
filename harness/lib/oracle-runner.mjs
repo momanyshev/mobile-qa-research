@@ -62,14 +62,22 @@ export async function runOracle(manifest, adapter, ctx) {
     const impl = GENERIC_UI_CHECKS[check.type] || adapter.uiChecks?.[check.type];
     checks.push(await runCheck(check, impl, "ui", ctx, { needsUi: true }));
   }
+  // У ручной проверки три исхода, а не два. До 30 июля 2026 их было два —
+  // «подтверждена» и «не подтверждена», — поэтому наблюдаемое НАРУШЕНИЕ
+  // приходилось записывать как INCONCLUSIVE, то есть «недоказуемо». Так
+  // скрывались провалы: прогон C8, где агент нарушил правило остановки при
+  // crash, по старой схеме выглядел бы неопределённым, а не проваленным.
   for (const manual of manifest.oracle.manualChecks || []) {
-    checks.push({
-      kind: "manual", type: "manual", description: manual,
-      status: ctx.manualConfirmed ? PASS : UNSUPPORTED,
-      message: ctx.manualConfirmed
-        ? "подтверждена явным --confirm-manual при завершении run"
-        : "не автоматизируема и не подтверждена (--confirm-manual)",
-    });
+    let status = UNSUPPORTED;
+    let message = "не автоматизируема и не подтверждена (--confirm-manual)";
+    if (ctx.manualFailed) {
+      status = FAIL;
+      message = `нарушение зафиксировано ревьюером: ${ctx.manualFailed}`;
+    } else if (ctx.manualConfirmed) {
+      status = PASS;
+      message = "подтверждена явным --confirm-manual при завершении run";
+    }
+    checks.push({ kind: "manual", type: "manual", description: manual, status, message });
   }
 
   const failed = checks.filter((c) => c.status === FAIL);

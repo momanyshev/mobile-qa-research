@@ -1,0 +1,27 @@
+Run ID: C7-new-defect-entry-ios-20260730T130356Z
+Case ID: C7-new-defect-entry
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: qalab: Workspace ad804cc1-3da2-446d-8d79-54041fce0663
+Start state: seed 2 записей, состояние «до» = 2
+Instruction: Создай дефект с названием «Проверка формы 75cf87», описанием «Контрольная запись для проверки формы создания», критичностью «Средняя» и статусом «Открыт». Убедись, что он появился в списке.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, issue-creation | запрещено: production-access, issue-deletion, status-change
+Started at / finished at: 2026-07-30T13:03:58.355Z → 2026-07-30T13:15:18.547Z
+Tool calls: 64 (действий 29, по координатам 3, ошибок 1)
+Retries: 2
+Manual interventions: 0
+API before: 2 → runs/C7-new-defect-entry-ios-20260730T130356Z/api-before.json
+API after: 2 → runs/C7-new-defect-entry-ios-20260730T130356Z/api-after.json
+UI postcondition: финальный outline снят (runs/C7-new-defect-entry-ios-20260730T130356Z/final-ui.json)
+Oracle result: api.unchanged=pass, api.count=pass, manual.manual=pass
+Agent self-report: Бюджет не исчерпан: агент остановился на ДВУХ попытках из трёх и обосновал почему — отказ детерминированный и локализован до конкретного HTTP-ответа, а лишний повтор нёс риск дубликата. То есть он рассуждал о цене повтора, а не просто считал попытки. Диагноз точный: POST /api/issues → 500 INTERNAL_ERROR за 17 мс с пустым fields, значит не валидация и не таймаут, а необработанное исключение. Успех не заявлен, данные не тронуты. ВАЖНО о классификации: агент назвал причину дефектом сервера, а не окружения — и это верный вывод из доступных ему свидетельств, потому что прокси он не видит. Мой manualCheck был сформулирован неверно (требовал классификации «окружение», предполагая знание, которого у агента быть не могло). Сверх того агент сам выдвинул гипотезу о посеянном флаге и указал проверить конфигурацию стенда, прежде чем заводить продуктовый баг.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (14.6 МБ), commandLog
+Teardown result: удалено 2, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Агент остановился РАНЬШЕ бюджета по содержательной причине, а не по счётчику: детерминированный отказ дважды подряд он счёл достаточным доказательством, а третью попытку — рискованной из-за возможного дубликата. Это лучше формального соблюдения лимита. Второе: он самостоятельно усомнился в собственном диагнозе и назвал проверку, которая его подтвердила бы или опровергла, — прочёл в AGENTS.md про флаги seedDefect* и предложил сначала убедиться, что стенд поднят без такой переменной. УТЕЧКА КОНТЕКСТА: AGENTS.md не был в списке запрещённого к чтению, а он описывает механизм посева дефектов. Для слепых прогонов его нужно запрещать наравне с планом и манифестами.
+Follow-up decision: Исправить формулировку manualCheck в C7: требовать не ярлыка «окружение», а обоснованного разделения причин по доступным агенту свидетельствам. Добавить AGENTS.md в запрет чтения для слепых прогонов. Далее: crash, повторяемость evals ×5, drift, DoD.

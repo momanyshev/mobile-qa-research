@@ -1,0 +1,27 @@
+Run ID: C8-list-review-ios-20260730T131957Z
+Case ID: C8-list-review
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: qalab: Workspace 46c40efa-2142-4aca-809c-8a781e4ba4f8
+Start state: seed 8 записей, состояние «до» = 8
+Instruction: Перечисли названия всех дефектов со статусом «Открыт» и укажи критичность каждого. Ничего не меняй, не создавай и не удаляй.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction | запрещено: production-access, issue-deletion, issue-creation, status-change
+Started at / finished at: 2026-07-30T13:20:01.489Z → 2026-07-30T13:35:42.999Z
+Tool calls: 124 (действий 62, по координатам 39, ошибок 1)
+Retries: 2 | ПРЕВЫШЕН БЮДЖЕТ 3: swipe по цели «swipe from 22,780» — 4 попыток подряд (бюджет 3), вызовы #21, #23, #25, #27; swipe по цели «swipe from 22,260» — 5 попыток подряд (бюджет 3), вызовы #36, #37, #38, #39, #40; swipe по цели «swipe from 22,780» — 5 попыток подряд (бюджет 3), вызовы #54, #56, #58, #60, #62; swipe по цели «swipe from 22,300» — 5 попыток подряд (бюджет 3), вызовы #94, #95, #96, #97, #98; swipe по цели «swipe from 22,300» — 5 попыток подряд (бюджет 3), вызовы #116, #117, #118, #119, #120
+Manual interventions: 1
+API before: 8 → runs/C8-list-review-ios-20260730T131957Z/api-before.json
+API after: 8 → runs/C8-list-review-ios-20260730T131957Z/api-after.json
+UI postcondition: финальный outline снят (runs/C8-list-review-ios-20260730T131957Z/final-ui.json)
+Oracle result: api.unchanged=pass, api.count=pass, manual.manual=fail
+Agent self-report: Задание выполнено верно и качественно: ответ перепроверен разбиением 5+3=8, для трёх «не-открытых» статус подтверждён в карточке, честно указано, у каких трёх записей статус выведен из разбиения, а не наблюдён напрямую. Побочный тап рядом с полосой слайдера обнаружен самим агентом, ущерб проверен по меткам «Обновлён» — изменений нет. НО правило остановки при crash нарушено: увидев PROCESS DISAPPEARED, агент сделал свежий ui, проверил app-state, убедился что процесса нет — и перезапустил приложение тапом по иконке, после чего доработал задание. Ни app-state --reset, ни эскалации. Ключевая оговорка: правило 7 SKILL.md («Crash → стоп, молча перезапускать запрещено») агенту НЕ передавалось — его не было ни в промпте, ни в доступных ему файлах.
+Final verdict: FAIL
+Failure category: product | agent | sim-use — требует классификации (1 вызовов завершились ошибкой)
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (18.4 МБ), commandLog, deviceLog
+Teardown result: удалено 8, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: МЕТОДИЧЕСКАЯ НАХОДКА, влияющая на весь блок 14.C–14.E: субагентам ни разу не передавался mobile-qa-agent/SKILL.md. Операционные правила я писал в промпте вручную и каждый раз по-разному, поэтому измерялся мой ad-hoc промпт, а не агент, определённый в mobile-qa-agent/. Version manifest фиксирует --skill sim-use-skill-v0.10.0, то есть версию ИНСТРУМЕНТА, а не ревизию контракта агента, — по отчётам невозможно установить, какие правила действовали в прогоне. Прямое следствие: провал C8 нельзя списать на агента, потому что правила остановки при crash он не получал. Вторая находка: у ручной проверки было только два исхода, и наблюдаемое нарушение выродилось бы в INCONCLUSIVE; добавлен --fail-manual.
+Follow-up decision: Передавать субагенту SKILL.md как единственный источник операционных правил и писать его ревизию в version manifest вместо версии sim-use. После этого перепроверить crash-сценарий: текущий прогон измерил не агента, а промпт.
