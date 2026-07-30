@@ -1,0 +1,27 @@
+Run ID: D3-qalab-network-hunt-ios-20260730T090920Z
+Case ID: D3-qalab-network-hunt
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: qalab: Workspace af4a9f54-96f5-47bb-856f-f002fd6389a3
+Start state: seed 2 записей, состояние «до» = 2
+Instruction: Область: создание дефекта и его отображение в списке. Риск: список может показывать не то, что должен показывать после твоего действия. Создай один дефект с названием «Сетевая проверка 5d51d0» и убедись, что итоговое состояние списка соответствует тому, что ты сделал. Ничего не удаляй и не меняй статусы. По итогам сформулируй, что именно расходится с ожидаемым, со шагами воспроизведения; если расхождений нет — так и напиши.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, issue-creation | запрещено: production-access, issue-deletion, status-change
+Started at / finished at: 2026-07-30T09:09:22.158Z → 2026-07-30T09:21:40.378Z
+Tool calls: 55 (действий 32, по координатам 19, ошибок 0)
+Retries: 1 | ПРЕВЫШЕН БЮДЖЕТ 3: swipe по цели «swipe from 428,800» — 5 попыток подряд (бюджет 3), вызовы #46, #48, #50, #52, #54
+Manual interventions: 0
+API before: 2 → runs/D3-qalab-network-hunt-ios-20260730T090920Z/api-before.json
+API after: 4 → runs/D3-qalab-network-hunt-ios-20260730T090920Z/api-after.json
+UI postcondition: финальный outline снят (runs/D3-qalab-network-hunt-ios-20260730T090920Z/final-ui.json)
+Oracle result: api.count=fail, manual.manual=pass
+Agent self-report: Повтор сетевого класса: посеянный дефект НАЙДЕН вторично. Один тап «Создать» дал две записи с идентичным содержимым и разными ID (594b7334, e0170946), счётчик 2→4, шаги воспроизведения приведены. Основанием назвал собственное действие (один вызов tap в журнале), назначение контрола и формулировку подтверждения в единственном числе; совпадение метки времени 12:13 у обеих записей использовал, чтобы исключить версию отдельного второго действия. Дополнительно выдвинул гипотезу общей первопричины (запрос ушёл дважды, клиент дорисовал одну) и честно отнёс её к недоказанному — трафика не было. Нестабильность типа элемента в дереве (Button против GenericElement) корректно НЕ заявил дефектом приложения.
+Final verdict: FAIL
+Failure category: product | agent — требует классификации по Приложению C
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (19.0 МБ), commandLog, deviceLog
+Teardown result: удалено 4, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Повторяемость сетевого класса: 2 из 2. Между прогонами разошлось поведение обновления списка — в первом переключение вкладок перезапросило данные, во втором нет, и актуальное состояние показал только сброс фильтров. Значит обновление списка недетерминировано (согласуется с R-30), и агент, проверяющий постусловие, обязан принудительно перезапрашивать, а не полагаться на навигацию.
+Follow-up decision: Остались: сравнение режимов (этап 8), редуцированный pilot, Android (блокирован R-25).

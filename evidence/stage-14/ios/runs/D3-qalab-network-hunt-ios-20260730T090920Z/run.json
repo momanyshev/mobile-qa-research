@@ -1,0 +1,63 @@
+{
+  "runId": "D3-qalab-network-hunt-ios-20260730T090920Z",
+  "caseId": "D3-qalab-network-hunt",
+  "platform": "ios",
+  "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "af4a9f54-96f5-47bb-856f-f002fd6389a3",
+    "baseUrl": "http://127.0.0.1:8890"
+  },
+  "runToken": "5d51d0",
+  "startedAt": "2026-07-30T09:09:22.158Z",
+  "seeded": [
+    {
+      "id": "da0b6d7d-256b-4fc9-a8db-208185234a3f",
+      "title": "Кнопка входа не отвечает",
+      "status": "open",
+      "severity": "low"
+    },
+    {
+      "id": "c6830766-bf09-47a9-9c84-e46d87302dd9",
+      "title": "Список загружается медленно",
+      "status": "open",
+      "severity": "critical"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-07-30T09:09:20.885Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e64f33c",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "7bc5d97",
+      "dirty": true
+    },
+    "platform": "ios",
+    "device": {
+      "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+      "name": "iPhone 17 Pro Max",
+      "platform": "ios",
+      "runtime": "iOS 26.5",
+      "state": "Booted"
+    },
+    "agentModel": "subagent (clean context)",
+    "skillRevision": "sim-use-skill-v0.10.0",
+    "baseUrl": "http://127.0.0.1:8890"
+  },
+  "manifestPath": "cases/D3-qalab-network-hunt.yaml",
+  "limits": {
+    "timeoutSeconds": 900,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "videoPid": 7462,
+  "armedAt": "2026-07-30T09:09:57.636Z",
+  "finishedAt": "2026-07-30T09:21:40.378Z",
+  "verdict": "FAIL"
+}
