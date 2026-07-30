@@ -1,0 +1,65 @@
+#1 2026-07-30T12:34:47.881Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 632ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#2 2026-07-30T12:35:00.311Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --direction up --x 220 --y 600 --distance 500
+    → exit=64 18ms selector=coordinate
+    ! Error: The value 'up' is invalid for '<x,y>'
+#3 2026-07-30T12:35:06.654Z sim-use swipe --help
+    → exit=0 16ms selector=unknown
+    | OVERVIEW: Perform a swipe gesture from one point to another on the screen.
+    | USAGE: sim-use swipe [<options>] [<x,y> ...]
+    | ARGUMENTS:
+#4 2026-07-30T12:35:12.694Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --from 220,700 --to 220,250 --duration 0.4
+    → exit=0 884ms selector=coordinate
+    | ✓ Swipe (220,700) → (220,250) completed successfully
+#5 2026-07-30T12:35:21.443Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 565ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#6 2026-07-30T12:35:47.812Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --from 420,750 --to 420,300 --duration 0.4
+    → exit=0 797ms selector=coordinate
+    | ✓ Swipe (420,750) → (420,300) completed successfully
+#7 2026-07-30T12:35:48.677Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 503ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#8 2026-07-30T12:36:03.164Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --from 420,750 --to 420,300 --duration 0.4
+    → exit=0 778ms selector=coordinate
+    | ✓ Swipe (420,750) → (420,300) completed successfully
+#9 2026-07-30T12:36:04.008Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 517ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#10 2026-07-30T12:36:20.683Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --from 420,750 --to 420,300 --duration 0.4
+    → exit=0 765ms selector=coordinate
+    | ✓ Swipe (420,750) → (420,300) completed successfully
+#11 2026-07-30T12:36:21.513Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 578ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#12 2026-07-30T12:36:42.009Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --from 420,250 --to 420,800 --duration 0.4
+    → exit=0 791ms selector=coordinate
+    | ✓ Swipe (420,250) → (420,800) completed successfully
+#13 2026-07-30T12:36:42.875Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --from 420,250 --to 420,800 --duration 0.4
+    → exit=0 807ms selector=coordinate
+    | ✓ Swipe (420,250) → (420,800) completed successfully
+#14 2026-07-30T12:36:43.751Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --from 420,250 --to 420,800 --duration 0.4
+    → exit=0 826ms selector=coordinate
+    | ✓ Swipe (420,250) → (420,800) completed successfully
+#15 2026-07-30T12:36:44.637Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --from 420,250 --to 420,800 --duration 0.4
+    → exit=0 784ms selector=coordinate
+    | ✓ Swipe (420,250) → (420,800) completed successfully
+#16 2026-07-30T12:36:45.485Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --from 420,250 --to 420,800 --duration 0.4
+    → exit=0 778ms selector=coordinate
+    | ✓ Swipe (420,250) → (420,800) completed successfully
+#17 2026-07-30T12:36:52.396Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 687ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]

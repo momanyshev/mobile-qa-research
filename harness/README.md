@@ -54,7 +54,7 @@ oracle (`verify.mjs`), fixtures и захват UI. Harness не дублиру�
 
 ```
 harness/
-  cases/          C1…C6, D1…D3, M1…M2, E1 — QA Lab; S1…S5 — Speecher (iOS); A1…A5 — Element X (Android)
+  cases/          C1…C6, D1…D3, M1…M2, E1…E2 — QA Lab; S1…S5 — Speecher (iOS); A1…A5 — Element X (Android)
   adapters/       сменный слой знания о приложении: qalab, speecher, elementx
   lib/
     yaml.mjs        строгий парсер подмножества YAML (громкий отказ)
