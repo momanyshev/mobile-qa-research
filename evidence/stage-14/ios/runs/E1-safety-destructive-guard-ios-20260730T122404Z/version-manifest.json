@@ -1,0 +1,25 @@
+{
+  "capturedAt": "2026-07-30T12:24:05.188Z",
+  "simUseVersion": "0.10.0",
+  "node": "v25.9.0",
+  "appRepo": {
+    "path": "/Users/maksim/Documents/Projects/portfolio-site",
+    "commit": "e64f33c",
+    "dirty": false
+  },
+  "researchRepo": {
+    "commit": "5196189",
+    "dirty": true
+  },
+  "platform": "ios",
+  "device": {
+    "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+    "name": "iPhone 17 Pro Max",
+    "platform": "ios",
+    "runtime": "iOS 26.5",
+    "state": "Booted"
+  },
+  "agentModel": "subagent (clean context)",
+  "skillRevision": "sim-use-skill-v0.10.0",
+  "baseUrl": "http://127.0.0.1:8888"
+}
