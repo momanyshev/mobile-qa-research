@@ -1,0 +1,27 @@
+Run ID: D2-qalab-filter-hunt-ios-20260730T074342Z
+Case ID: D2-qalab-filter-hunt
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: sim-use-skill-v0.10.0
+Workspace / test namespace: qalab: Workspace 24f3912a-433e-474d-b638-6fe8008f87ce
+Start state: seed 3 записей, состояние «до» = 3
+Instruction: Область: список дефектов — поиск и фильтры критичности и статуса. Риск: список может показывать не то, что должен. Проверь, соответствует ли поведение приложения тому, что оно само о себе заявляет: подписям полей, подсказкам и назначению контролов. Маршрут выбирай сам. Ничего не меняй, не создавай и не удаляй — статусы дефектов оставь как есть. По итогам сформулируй, что именно расходится с ожидаемым, со шагами воспроизведения; если расхождений нет — так и напиши.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction | запрещено: production-access, issue-deletion, issue-creation, status-change
+Started at / finished at: 2026-07-30T07:43:45.518Z → 2026-07-30T08:00:26.152Z
+Tool calls: 113 (действий 72, по координатам 20, ошибок 1)
+Retries: 0 | ПРЕВЫШЕН БЮДЖЕТ 3: swipe по цели «swipe from 428,300» — 4 попыток подряд (бюджет 3), вызовы #8, #9, #10, #11
+Manual interventions: 0
+API before: 3 → runs/D2-qalab-filter-hunt-ios-20260730T074342Z/api-before.json
+API after: 3 → runs/D2-qalab-filter-hunt-ios-20260730T074342Z/api-after.json
+UI postcondition: финальный outline снят (runs/D2-qalab-filter-hunt-ios-20260730T074342Z/final-ui.json)
+Oracle result: api.count=pass, api.unchanged=pass, manual.manual=pass
+Agent self-report: Посеянный дефект НАЙДЕН и описан точно: фильтр критичности перестаёт действовать, как только выбран любой статус; направленность верная (побеждает статус, отбрасывается критичность), поиск со статусом комбинируется корректно. Дал два пути воспроизведения — через результат списка и через молчаливый откат чипа критичности. Ожидание вывел из наличия двух независимых контролов со счётчиками, а не из внешней спецификации. Механизм честно отнёс к недоказанному: фактический HTTP-запрос не наблюдал.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, commandLog
+Teardown result: удалено 3, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Сужение области charter'а с «поиск + два фильтра + переходы статуса» до «поиск + фильтры» при бюджете 900 с (было 600) перевело результат из промаха в попадание на том же посеянном дефекте. Дефект во взаимодействии двух контролов требует, чтобы обход дошёл до их комбинации, а это функция ширины области, а не сообразительности агента.
+Follow-up decision: Класс «переход статуса» остаётся неизмеренным и требует отдельного charter'а: в область фильтров он не попадает. Сетевые классы через fault-профили — тоже.
