@@ -1,0 +1,29 @@
+#1 2026-07-30T12:46:17.110Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 633ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#2 2026-07-30T12:46:33.562Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --direction up --x 220 --y 600
+    → exit=64 19ms selector=coordinate
+    ! Error: The value 'up' is invalid for '<x,y>'
+#3 2026-07-30T12:46:57.351Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 220,620 220,300
+    → exit=0 1511ms selector=coordinate
+    | ✓ Swipe (220,620) → (220,300) completed successfully
+#4 2026-07-30T12:47:05.187Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 436ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#5 2026-07-30T12:47:17.388Z sim-use swipe --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 420,700 420,320
+    → exit=0 1413ms selector=coordinate
+    | ✓ Swipe (420,700) → (420,320) completed successfully
+#6 2026-07-30T12:47:26.270Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 417ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#7 2026-07-30T12:48:23.461Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 590ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
