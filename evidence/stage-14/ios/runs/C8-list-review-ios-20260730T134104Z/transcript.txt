@@ -1,0 +1,42 @@
+#1 2026-07-30T13:42:22.757Z sim-use devices --json --all
+    → exit=0 288ms
+    | {"data":{"devices":[{"deviceId":"080A36AF-2148-4EBF-89A8-537674A7BD60","name":"iPhone 11","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"DB216E5C-F646-488E-9537-2D8C390A2B8F","name":"iPhone 16 iOS 26.1","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"496803A0-B207-482B-8405-DC49E83CAA4D","name":"iPhone 17","platform":"ios","runtime":"iOS 26.4","state":"Shutdown"},{"deviceId":"A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37","name":"iPhone 17 Pro Max","platform":"ios","runtime":"iOS 26.5","state":"Booted"}]},"ok":true}
+#2 2026-07-30T13:42:30.308Z sim-use app-state --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 299ms
+    | Running apps (4):
+    |   com.apple.Spotlight  pid=80543
+    |   com.apple.chrono.WidgetRenderer-Default  pid=80536
+#3 2026-07-30T13:42:36.699Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 717ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#4 2026-07-30T13:42:53.939Z sim-use swipe --from 425,800 --to 425,300 --duration 0.6 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 1099ms selector=coordinate
+    | ✓ Swipe (425,800) → (425,300) completed successfully
+#5 2026-07-30T13:43:01.319Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 538ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#6 2026-07-30T13:43:18.027Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+    → exit=0 200ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+#7 2026-07-30T13:43:47.940Z sim-use swipe --from 425,250 --to 425,850 --duration 0.5 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 1071ms selector=coordinate
+    | ✓ Swipe (425,250) → (425,850) completed successfully
+#8 2026-07-30T13:43:55.548Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 739ms
+    | ================ PROCESS DISAPPEARED ================
+    | ru.maksim.qalab (pid 31699) was alive at the previous command and is GONE now.
+    | Likely crash or termination, not a backgrounding. Verify before trusting subsequent actions.
+#9 2026-07-30T13:44:08.886Z sim-use app-state --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 292ms
+    | Running apps (3):
+    |   com.apple.Spotlight  pid=80543
+    |   com.apple.chrono.WidgetRenderer-Default  pid=80536
+#10 2026-07-30T13:44:09.237Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/crash-state.png
+    → exit=0 250ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/crash-state.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/crash-state.png

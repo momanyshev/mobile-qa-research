@@ -5,6 +5,8 @@
 
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 
 const APP_REPO = process.env.APP_REPO
   || fileURLToPath(new URL("../../../portfolio-site", import.meta.url));
@@ -39,6 +41,30 @@ export function deviceInfo(deviceId) {
   }
 }
 
+/**
+ * Ревизия операционного контракта агента — хеш содержимого `SKILL.md`.
+ *
+ * Раньше здесь стояла только строка из `--skill`, и оператор писал в неё
+ * версию **инструмента** (`sim-use-skill-v0.10.0`). По отчётам поэтому
+ * невозможно было установить, какие правила действовали в прогоне — это и
+ * вскрыл провал `C8`, где агент нарушил правило 7, которого ему не давали.
+ * Хеш содержимого не подделывается по невнимательности и меняется ровно тогда,
+ * когда меняется контракт.
+ */
+export function agentContract() {
+  const path = fileURLToPath(new URL("../../mobile-qa-agent/SKILL.md", import.meta.url));
+  try {
+    const body = readFileSync(path);
+    return {
+      path: "mobile-qa-agent/SKILL.md",
+      sha256: createHash("sha256").update(body).digest("hex").slice(0, 12),
+      bytes: body.length,
+    };
+  } catch (err) {
+    return { path: "mobile-qa-agent/SKILL.md", sha256: null, bytes: null, error: err.message };
+  }
+}
+
 export function versionManifest({ deviceId, platform, agentModel, skillRevision } = {}) {
   const app = repoState(APP_REPO);
   const research = repoState(RESEARCH_REPO);
@@ -51,6 +77,9 @@ export function versionManifest({ deviceId, platform, agentModel, skillRevision 
     platform: platform || null,
     device: deviceId ? deviceInfo(deviceId) : null,
     agentModel: agentModel || process.env.AGENT_MODEL || null,
+    // Что за контракт действовал — считается из файла, а не со слов оператора.
+    agentContract: agentContract(),
+    // Свободная метка оператора: чем прогон отличался, если контракт тот же.
     skillRevision: skillRevision || process.env.AGENT_SKILL_REVISION || null,
     baseUrl: process.env.ORACLE_BASE_URL || "http://127.0.0.1:8888",
   };

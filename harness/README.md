@@ -69,7 +69,7 @@ harness/
     preflight.mjs   проверки среды до старта run (этап 14.B)
   harness.mjs     CLI: list | validate | preflight | new-workspace | start | arm | finish | abort | summary | selftest
   sim.mjs         журналирующая обёртка вокруг sim-use
-  selftest.mjs    проверка контура (138 проверок), нужен живой backend
+  selftest.mjs    проверка контура (142 проверок), нужен живой backend
 ```
 
 Evidence: `../evidence/stage-<N>/<platform>/runs/<runId>/` + строка в
@@ -88,7 +88,7 @@ export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 ```
 
 ```bash
-node harness.mjs selftest                 # 138 проверок контура (без устройства)
+node harness.mjs selftest                 # 142 проверок контура (без устройства)
 node harness.mjs validate                 # разбор и проверка всех манифестов
 node harness.mjs list                     # доступные case
 

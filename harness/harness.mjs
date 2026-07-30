@@ -442,7 +442,14 @@ function finalizeRun(o) {
       ? `${state.versions.appRepo.commit}${state.versions.appRepo.dirty ? " (dirty)" : ""}` : null,
     "sim-use version": state.versions?.simUseVersion,
     "Agent model": state.versions?.agentModel,
-    "Agent skill revision": state.versions?.skillRevision,
+    // Контракт агента идентифицируется хешем своего содержимого; метка
+    // оператора идёт рядом и ничего не заменяет.
+    "Agent skill revision": [
+      state.versions?.agentContract?.sha256
+        ? `${state.versions.agentContract.path}@${state.versions.agentContract.sha256}`
+        : "контракт агента не прочитан",
+      state.versions?.skillRevision ? `метка: ${state.versions.skillRevision}` : null,
+    ].filter(Boolean).join(" | "),
     "Workspace / test namespace": `${adapter.id}: ${adapter.describeContext(state.context)}`,
     "Start state": `seed ${state.seeded.length} записей, состояние «до» = ${sizeOf(before)}`,
     "Instruction": manifest.instruction.trim().replace(/\n+/g, " "),

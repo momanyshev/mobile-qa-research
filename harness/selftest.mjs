@@ -23,6 +23,7 @@ import { renderReport, reportStructure, REPORT_FIELDS } from "./lib/report.mjs";
 import { classifyCall, runLogged, summarizeLog, renderTranscript, retryViolations } from "./lib/cmdlog.mjs";
 import { genericPreflight } from "./lib/preflight.mjs";
 import { needsDiagnostics } from "./lib/diagnostics.mjs";
+import { agentContract } from "./lib/versions.mjs";
 import { IssuesClient } from "../tools/lib/client.mjs";
 import { teardownWorkspace } from "../tools/lib/fixtures.mjs";
 
@@ -372,6 +373,15 @@ async function cmdlogTests(t) {
   const failedOracle = await runOracleRaw(manualManifest, {}, { manualFailed: "перезапустил приложение" });
   t.ok("причина нарушения попадает в сообщение проверки",
     /перезапустил приложение/.test(failedOracle.checks[0].message), failedOracle.checks[0].message);
+
+  // Ревизия контракта агента считается из файла, а не задаётся строкой: иначе
+  // по отчёту нельзя установить, какие правила действовали в прогоне (R-44).
+  const contract = agentContract();
+  t.ok("контракт агента прочитан", contract.bytes > 0, contract.error || "пусто");
+  t.ok("ревизия контракта — хеш содержимого", /^[0-9a-f]{12}$/.test(contract.sha256 || ""), contract.sha256);
+  t.ok("ревизия совпадает при повторном вычислении", agentContract().sha256 === contract.sha256);
+  t.ok("контракт содержит правило остановки при crash",
+    /PROCESS DISAPPEARED/.test(readFileSync(new URL("../mobile-qa-agent/SKILL.md", import.meta.url), "utf8")));
 
   const logPath = `${EV_DIR}/cmdlog-probe/commands.jsonl`;
   const okCall = runLogged(logPath, ["ok-line"], { bin: "echo" });

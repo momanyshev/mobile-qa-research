@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-07-30T13:41:05.362Z",
+  "simUseVersion": "0.10.0",
+  "node": "v25.9.0",
+  "appRepo": {
+    "path": "/Users/maksim/Documents/Projects/portfolio-site",
+    "commit": "e64f33c",
+    "dirty": false
+  },
+  "researchRepo": {
+    "commit": "ba2ac79",
+    "dirty": true
+  },
+  "platform": "ios",
+  "device": {
+    "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+    "name": "iPhone 17 Pro Max",
+    "platform": "ios",
+    "runtime": "iOS 26.5",
+    "state": "Booted"
+  },
+  "agentModel": "subagent (clean context)",
+  "agentContract": {
+    "path": "mobile-qa-agent/SKILL.md",
+    "sha256": "e26f17f0a664",
+    "bytes": 11267
+  },
+  "skillRevision": "контракт передан агенту целиком",
+  "baseUrl": "http://127.0.0.1:8888"
+}
