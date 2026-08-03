@@ -1,0 +1,1026 @@
+#1 2026-08-03T15:17:00.591Z sim-use devices --json --all
+    → exit=0 271ms
+    | {"data":{"devices":[{"deviceId":"emulator-5554","name":"sdk_gphone64_arm64","platform":"android","runtime":"Android","state":"device"},{"deviceId":"080A36AF-2148-4EBF-89A8-537674A7BD60","name":"iPhone 11","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"DB216E5C-F646-488E-9537-2D8C390A2B8F","name":"iPhone 16 iOS 26.1","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"496803A0-B207-482B-8405-DC49E83CAA4D","name":"iPhone 17","platform":"ios","runtime":"iOS 26.4","state":"Shutdown"},{"deviceId":"A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37","name":"iPhone 17 Pro Max","platform":"ios","runtime":"iOS 26.5","state":"Booted"}]},"ok":true}
+#2 2026-08-03T15:17:16.272Z sim-use app-state --device emulator-5554
+    → exit=0 58ms
+    | Running apps (3):
+    |   com.linecorp.simuse.devicebridge  pid=1775
+    |   io.element.android.x  pid=3606
+#3 2026-08-03T15:17:23.046Z sim-use ui --device emulator-5554
+    → exit=0 87ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,95 839x284)
+#4 2026-08-03T15:17:36.085Z sim-use swipe --from 60,1900 --to 60,700 --duration 0.5 --device emulator-5554
+    → exit=0 38ms selector=coordinate
+    | ✓ Swipe (60,1900) → (60,700) completed successfully
+#5 2026-08-03T15:17:48.532Z sim-use ui --device emulator-5554
+    → exit=0 88ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextField  "Поиск"  :issue-search-input:  (92,63 898x93)
+#6 2026-08-03T15:17:59.173Z sim-use swipe --from 60,1900 --to 60,700 --duration 0.5 --device emulator-5554
+    → exit=0 48ms selector=coordinate
+    | ✓ Swipe (60,1900) → (60,700) completed successfully
+#7 2026-08-03T15:17:59.278Z sim-use ui --device emulator-5554
+    → exit=0 339ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Image  "Tools"  (937,140 68x68)
+#8 2026-08-03T15:18:07.817Z sim-use ui --device emulator-5554
+    → exit=0 94ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Открыть дефект «Экспорт отчёта не открывается»"  :issue-card-open-c98dcc2a-d8a2-4386-a849-6d2846ea46d1:  (113,63 274x108)
+#9 2026-08-03T15:18:28.969Z sim-use ui --json --device emulator-5554
+    → exit=0 104ms
+    | {"data":{"appLabel":"ru.maksim.qalab","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"frame":{"height":108,"width":274,"x":113,"y":63},"label":"Открыть дефект «Экспорт отчёта не открывается»","region":{"kind":"Top"},"resource_id":"issue-card-open-c98dcc2a-d8a2-4386-a849-6d2846ea46d1","role":"Button","states":[]},{"aliases":{"at":2},"depth":1,"frame":{"height":50,"width":158,"x":171,"y":63},"label":"Открыть","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":3},"frame":{"height":108,"width":274,"x":408,"y":63},"label":"Редактировать дефект «Экспорт отчёта не открывается»","region":{"kind":"Top"},"resource_id":"issue-card-edit-c98dcc2a-d8a2-4386-a849-6d2846ea46d1","role":"Button","states":[]},{"aliases":{"at":4},"depth":1,"frame":{"height":76,"width":185,"x":452,"y":63},"label":"Редактировать","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":5},"frame":{"height":108,"width":275,"x":704,"y":63},"label":"Удалить дефект «Экспорт отчёта не открывается»","region":{"kind":"Top"},"resource_id":"issue-card-delete-c98dcc2a-d8a2-4386-a849-6d2846ea46d1","role":"Button","states":[]},{"aliases":{"at":6},"depth":1,"frame":{"height":50,"width":147,"x":767,"y":63},"label":"Удалить","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":7},"frame":{"height":68,"width":68,"x":937,"y":140},"label":"Tools","region":{"kind":"Top"},"role":"Image","states":[]},{"aliases":{"at":8},"frame":{"height":73,"width":239,"x":113,"y":312},"label":"Критичность: Критическая","region":{"kind":"Content"},"resource_id":"issue-card-severity-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"ViewGroup","states":[]},{"aliases":{"at":9},"depth":1,"frame":{"height":48,"width":197,"x":134,"y":324},"label":"Критическая","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":10},"frame":{"height":48,"width":282,"x":695,"y":312},"label":"Обновлено: 03.08.2026, 18:15","region":{"kind":"Content"},"resource_id":"issue-card-updated-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"TextView","states":[],"value":"03.08.2026, 18:15"},{"aliases":{"at":11},"frame":{"height":69,"width":866,"x":112,"y":432},"label":"Список загружается медленно","region":{"kind":"Content"},"resource_id":"issue-card-title-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"View","states":[]},{"aliases":{"at":12},"frame":{"height":132,"width":866,"x":112,"y":522},"label":"Долгая загрузка перечня на холодном старте приложения","region":{"kind":"Content"},"resource_id":"issue-card-description-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"TextView","states":[]},{"aliases":{"at":13},"frame":{"height":48,"width":866,"x":113,"y":702},"label":"Статус","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":14},"frame":{"height":141,"width":860,"x":115,"y":773},"label":"Изменить статус дефекта «Список загружается медленно». Текущий статус: Открыт","region":{"kind":"Content"},"resource_id":"issue-card-status-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"Spinner","states":[]},{"aliases":{"at":15},"depth":1,"frame":{"height":141,"width":734,"x":115,"y":773},"label":"Открыт","region":{"kind":"Content"},"resource_id":"text1","role":"TextView","states":[]},{"aliases":{"at":16},"frame":{"height":48,"width":866,"x":113,"y":938},"label":"Доступный переход — «В работе».","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":17},"frame":{"height":169,"width":274,"x":113,"y":1079},"label":"Открыть дефект «Список загружается медленно»","region":{"kind":"Content"},"resource_id":"issue-card-open-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"Button","states":[]},{"aliases":{"at":18},"depth":1,"frame":{"height":53,"width":158,"x":171,"y":1137},"label":"Открыть","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":19},"frame":{"height":169,"width":274,"x":408,"y":1079},"label":"Редактировать дефект «Список загружается медленно»","region":{"kind":"Content"},"resource_id":"issue-card-edit
+    | …[обрезано 52115 символов]
+#10 2026-08-03T15:18:36.932Z sim-use ui --json --device emulator-5554
+    → exit=0 85ms
+    | {"data":{"appLabel":"ru.maksim.qalab","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"frame":{"height":108,"width":274,"x":113,"y":63},"label":"Открыть дефект «Экспорт отчёта не открывается»","region":{"kind":"Top"},"resource_id":"issue-card-open-c98dcc2a-d8a2-4386-a849-6d2846ea46d1","role":"Button","states":[]},{"aliases":{"at":2},"depth":1,"frame":{"height":50,"width":158,"x":171,"y":63},"label":"Открыть","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":3},"frame":{"height":108,"width":274,"x":408,"y":63},"label":"Редактировать дефект «Экспорт отчёта не открывается»","region":{"kind":"Top"},"resource_id":"issue-card-edit-c98dcc2a-d8a2-4386-a849-6d2846ea46d1","role":"Button","states":[]},{"aliases":{"at":4},"depth":1,"frame":{"height":76,"width":185,"x":452,"y":63},"label":"Редактировать","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":5},"frame":{"height":108,"width":275,"x":704,"y":63},"label":"Удалить дефект «Экспорт отчёта не открывается»","region":{"kind":"Top"},"resource_id":"issue-card-delete-c98dcc2a-d8a2-4386-a849-6d2846ea46d1","role":"Button","states":[]},{"aliases":{"at":6},"depth":1,"frame":{"height":50,"width":147,"x":767,"y":63},"label":"Удалить","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":7},"frame":{"height":68,"width":68,"x":937,"y":140},"label":"Tools","region":{"kind":"Top"},"role":"Image","states":[]},{"aliases":{"at":8},"frame":{"height":73,"width":239,"x":113,"y":312},"label":"Критичность: Критическая","region":{"kind":"Content"},"resource_id":"issue-card-severity-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"ViewGroup","states":[]},{"aliases":{"at":9},"depth":1,"frame":{"height":48,"width":197,"x":134,"y":324},"label":"Критическая","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":10},"frame":{"height":48,"width":282,"x":695,"y":312},"label":"Обновлено: 03.08.2026, 18:15","region":{"kind":"Content"},"resource_id":"issue-card-updated-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"TextView","states":[],"value":"03.08.2026, 18:15"},{"aliases":{"at":11},"frame":{"height":69,"width":866,"x":112,"y":432},"label":"Список загружается медленно","region":{"kind":"Content"},"resource_id":"issue-card-title-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"View","states":[]},{"aliases":{"at":12},"frame":{"height":132,"width":866,"x":112,"y":522},"label":"Долгая загрузка перечня на холодном старте приложения","region":{"kind":"Content"},"resource_id":"issue-card-description-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"TextView","states":[]},{"aliases":{"at":13},"frame":{"height":48,"width":866,"x":113,"y":702},"label":"Статус","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":14},"frame":{"height":141,"width":860,"x":115,"y":773},"label":"Изменить статус дефекта «Список загружается медленно». Текущий статус: Открыт","region":{"kind":"Content"},"resource_id":"issue-card-status-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"Spinner","states":[]},{"aliases":{"at":15},"depth":1,"frame":{"height":141,"width":734,"x":115,"y":773},"label":"Открыт","region":{"kind":"Content"},"resource_id":"text1","role":"TextView","states":[]},{"aliases":{"at":16},"frame":{"height":48,"width":866,"x":113,"y":938},"label":"Доступный переход — «В работе».","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":17},"frame":{"height":169,"width":274,"x":113,"y":1079},"label":"Открыть дефект «Список загружается медленно»","region":{"kind":"Content"},"resource_id":"issue-card-open-f744703e-445d-4a44-8c2d-82e9cb1fb2f7","role":"Button","states":[]},{"aliases":{"at":18},"depth":1,"frame":{"height":53,"width":158,"x":171,"y":1137},"label":"Открыть","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":19},"frame":{"height":169,"width":274,"x":408,"y":1079},"label":"Редактировать дефект «Список загружается медленно»","region":{"kind":"Content"},"resource_id":"issue-card-edit
+    | …[обрезано 52115 символов]
+#11 2026-08-03T15:18:51.104Z sim-use tap #issue-card-status-be806e66-bb7b-402e-acb7-0b9a20c67fa6 --device emulator-5554
+    → exit=0 88ms selector=selector
+    | ✓ Tap at (545.0, 1920.0) completed successfully
+#12 2026-08-03T15:18:56.476Z sim-use ui --device emulator-5554
+    → exit=0 42ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,1038 940x324)
+#13 2026-08-03T15:19:05.815Z sim-use button back --device emulator-5554
+    → exit=0 47ms selector=focus
+    | ✓ Back button press completed successfully
+#14 2026-08-03T15:19:12.458Z sim-use tap #issue-card-status-c98dcc2a-d8a2-4386-a849-6d2846ea46d1 --device emulator-5554
+    → exit=1 113ms selector=selector
+    ! Error: No matching element found for selector --id 'issue-card-status-c98dcc2a-d8a2-4386-a849-6d2846ea46d1'.
+#15 2026-08-03T15:19:19.543Z sim-use swipe --from 60,700 --to 60,1900 --duration 0.5 --device emulator-5554
+    → exit=0 49ms selector=coordinate
+    | ✓ Swipe (60,700) → (60,1900) completed successfully
+#16 2026-08-03T15:19:19.648Z sim-use ui --device emulator-5554
+    → exit=0 189ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Spinner  "Изменить статус дефекта «Экспорт отчёта не открывается». Те…"  :issue-card-status-c98dcc2a-d8a2-4386-a849-6d2846ea46d1:  (115,63 860x95)
+#17 2026-08-03T15:19:27.611Z sim-use tap #issue-card-status-c98dcc2a-d8a2-4386-a849-6d2846ea46d1 --device emulator-5554
+    → exit=0 99ms selector=selector
+    | ✓ Tap at (545.0, 1355.0) completed successfully
+#18 2026-08-03T15:19:27.768Z sim-use ui --device emulator-5554
+    → exit=0 330ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1 #1  Toggle  "В работе"  :text1:  (126,147 940x141)  selected
+#19 2026-08-03T15:19:41.187Z sim-use tap --label Тестирование --device emulator-5554
+    → exit=0 82ms selector=selector
+    | ✓ Tap at (540.0, 1270.0) completed successfully
+#20 2026-08-03T15:19:41.324Z sim-use ui --device emulator-5554
+    → exit=0 269ms
+    | App: com.android.systemui  1080x2400
+    | [Top  y<280]
+    |   @1  Image  "Ad Privacy notification:"  (126,0 58x63)
+#21 2026-08-03T15:19:59.861Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+    → exit=0 196ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s1.png
+#22 2026-08-03T15:20:19.753Z sim-use ui --device emulator-5554
+    → exit=0 123ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус дефекта «Экспорт отчёта не открывается» изменён."  (96,63 886x24)
+#23 2026-08-03T15:20:29.505Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 66ms selector=selector
+    | ✓ Tap at (541.0, 356.0) completed successfully
+#24 2026-08-03T15:20:29.635Z sim-use android type --clear аватар --device emulator-5554
+    → exit=0 167ms
+    ! type ok (graphemes=6, clear=true)
+#25 2026-08-03T15:20:36.431Z sim-use ui --device emulator-5554
+    → exit=0 91ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#26 2026-08-03T15:20:45.378Z sim-use ui --device emulator-5554
+    → exit=0 81ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#27 2026-08-03T15:20:54.688Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s2.png
+    → exit=0 208ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s2.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/s2.png
+#28 2026-08-03T15:21:08.709Z sim-use button back --device emulator-5554
+    → exit=0 41ms selector=focus
+    | ✓ Back button press completed successfully
+#29 2026-08-03T15:21:08.811Z sim-use swipe --from 60,1900 --to 60,900 --duration 0.5 --device emulator-5554
+    → exit=0 86ms selector=coordinate
+    | ✓ Swipe (60,1900) → (60,900) completed successfully
+#30 2026-08-03T15:21:08.959Z sim-use ui --device emulator-5554
+    → exit=0 472ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#31 2026-08-03T15:21:28.801Z sim-use android type --clear ЭКСПОРТ --device emulator-5554
+    → exit=0 365ms
+    ! type ok (graphemes=7, clear=true)
+#32 2026-08-03T15:21:29.232Z sim-use ui --device emulator-5554
+    → exit=0 692ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#33 2026-08-03T15:21:41.188Z sim-use ui --device emulator-5554
+    → exit=0 404ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#34 2026-08-03T15:21:51.855Z sim-use tap --label Сбросить фильтры --device emulator-5554
+    → exit=0 389ms selector=selector
+    | ✓ Tap at (540.0, 1343.0) completed successfully
+#35 2026-08-03T15:21:52.308Z sim-use ui --device emulator-5554
+    → exit=0 474ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#36 2026-08-03T15:21:59.108Z sim-use ui --device emulator-5554
+    → exit=0 2401ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#37 2026-08-03T15:22:08.130Z sim-use tap --label Все значения --device emulator-5554
+    → exit=0 384ms selector=selector
+    | ✓ Tap at (769.0, 1196.0) completed successfully
+#38 2026-08-03T15:22:08.574Z sim-use ui --device emulator-5554
+    → exit=0 222ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#39 2026-08-03T15:22:15.891Z sim-use ui --device emulator-5554
+    → exit=0 138ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#40 2026-08-03T15:22:30.011Z sim-use ui --json --device emulator-5554
+    → exit=0 59ms
+    | {"data":{"appLabel":"ru.maksim.qalab","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"frame":{"height":126,"width":126,"x":933,"y":98},"label":"Закрыть","region":{"kind":"Top"},"role":"Button","states":[]},{"aliases":{"at":2},"depth":1,"frame":{"height":53,"width":20,"x":986,"y":134},"label":"×","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":3},"frame":{"height":90,"width":855,"x":47,"y":116},"label":"Фильтр по критичности","region":{"kind":"Top"},"role":"View","states":[]},{"aliases":{"at":4},"frame":{"height":90,"width":855,"x":47,"y":116},"label":"Фильтр по критичности","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":5},"frame":{"height":1882,"width":1080,"x":0,"y":263},"label":"","region":{"kind":"Content"},"resource_id":"filter-modal-severity-scroll","role":"ScrollView","states":[]},{"aliases":{"at":6},"frame":{"height":136,"width":986,"x":47,"y":310},"label":"Все значения","region":{"kind":"Content"},"resource_id":"filter-severity-all","role":"Checkbox","states":["selected"]},{"aliases":{"at":7},"depth":1,"frame":{"height":63,"width":891,"x":141,"y":345},"label":"Все значения","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":8},"depth":1,"frame":{"height":53,"width":35,"x":61,"y":350},"label":"✓","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":9},"frame":{"height":137,"width":986,"x":47,"y":447},"label":"Низкая","region":{"kind":"Content"},"resource_id":"filter-severity-low","role":"Checkbox","states":["unchecked"]},{"aliases":{"at":10},"depth":1,"frame":{"height":63,"width":891,"x":141,"y":482},"label":"Низкая","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":11},"frame":{"height":136,"width":986,"x":47,"y":583},"label":"Средняя","region":{"kind":"Content"},"resource_id":"filter-severity-medium","role":"Checkbox","states":["unchecked"]},{"aliases":{"at":12},"depth":1,"frame":{"height":63,"width":891,"x":141,"y":618},"label":"Средняя","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":13},"frame":{"height":137,"width":986,"x":47,"y":720},"label":"Высокая","region":{"kind":"Content"},"resource_id":"filter-severity-high","role":"Checkbox","states":["unchecked"]},{"aliases":{"at":14},"depth":1,"frame":{"height":63,"width":891,"x":141,"y":755},"label":"Высокая","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":15},"frame":{"height":136,"width":986,"x":47,"y":856},"label":"Критическая","region":{"kind":"Content"},"resource_id":"filter-severity-critical","role":"Checkbox","states":["unchecked"]},{"aliases":{"at":16},"depth":1,"frame":{"height":63,"width":891,"x":141,"y":891},"label":"Критическая","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":17},"frame":{"height":137,"width":986,"x":47,"y":993},"label":"Блокер","region":{"kind":"Content"},"resource_id":"filter-severity-blocker","role":"Checkbox","states":["unchecked"]},{"aliases":{"at":18},"depth":1,"frame":{"height":63,"width":891,"x":141,"y":1028},"label":"Блокер","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":19},"frame":{"height":96,"width":986,"x":47,"y":1220},"label":"Можно выбрать несколько значений. Полный набор автоматически превращается в «Все».","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":20},"frame":{"height":126,"width":986,"x":47,"y":2179},"label":"Готово","region":{"kind":"Bottom"},"role":"Button","states":[]},{"aliases":{"at":21},"depth":1,"frame":{"height":53,"width":120,"x":479,"y":2215},"label":"Готово","region":{"kind":"Bottom"},"role":"TextView","states":[]}],"lists":[],"outline":"App: ru.maksim.qalab  1080x2400\n\n[Top  y<280]\n  @1  Button  \"Закрыть\"  (933,98 126x126)\n    @2  TextView  \"×\"  (986,134 20x53)\n  @3  View  \"Фильтр по критичности\"  (47,116 855x90)\n  @4  TextView  \"Фильтр по критичности\"  (47,116 855x90)\n\n[Content  y=280..2120]\n  @5  ScrollView  \"
+    | …[обрезано 21573 символов]
+#41 2026-08-03T15:22:38.591Z sim-use tap #filter-severity-critical --device emulator-5554
+    → exit=0 62ms selector=selector
+    | ✓ Tap at (540.0, 924.0) completed successfully
+#42 2026-08-03T15:22:38.716Z sim-use ui --device emulator-5554
+    → exit=0 63ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#43 2026-08-03T15:22:45.792Z sim-use ui --device emulator-5554
+    → exit=0 44ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#44 2026-08-03T15:22:53.321Z sim-use tap --label Готово --device emulator-5554
+    → exit=0 85ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#45 2026-08-03T15:22:53.457Z sim-use ui --device emulator-5554
+    → exit=0 56ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#46 2026-08-03T15:22:59.964Z sim-use ui --device emulator-5554
+    → exit=0 100ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#47 2026-08-03T15:23:14.047Z sim-use swipe --from 60,1900 --to 60,600 --duration 0.5 --device emulator-5554
+    → exit=0 67ms selector=coordinate
+    | ✓ Swipe (60,1900) → (60,600) completed successfully
+#48 2026-08-03T15:23:14.172Z sim-use ui --device emulator-5554
+    → exit=0 275ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Хранение: 30 дней после изменения"  (97,63 886x31)
+#49 2026-08-03T15:23:21.001Z sim-use swipe --from 60,1900 --to 60,600 --duration 0.5 --device emulator-5554
+    → exit=0 50ms selector=coordinate
+    | ✓ Swipe (60,1900) → (60,600) completed successfully
+#50 2026-08-03T15:23:21.106Z sim-use ui --device emulator-5554
+    → exit=0 231ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  ViewGroup  "Критичность: Критическая"  :issue-card-severity-c98dcc2a-d8a2-4386-a849-6d2846ea46d1:  (113,63 239x57)
+#51 2026-08-03T15:23:38.951Z sim-use swipe --from 60,600 --to 60,2000 --duration 0.5 --device emulator-5554
+    → exit=0 44ms selector=coordinate
+    | ✓ Swipe (60,600) → (60,2000) completed successfully
+#52 2026-08-03T15:23:39.055Z sim-use swipe --from 60,600 --to 60,2000 --duration 0.5 --device emulator-5554
+    → exit=0 90ms selector=coordinate
+    | ✓ Swipe (60,600) → (60,2000) completed successfully
+#53 2026-08-03T15:23:39.211Z sim-use ui --device emulator-5554
+    → exit=0 1148ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Image  "Tools"  (937,140 68x68)
+#54 2026-08-03T15:23:49.679Z sim-use ui --device emulator-5554
+    → exit=0 76ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#55 2026-08-03T15:24:00.245Z sim-use tap --label Все статусы --device emulator-5554
+    → exit=0 111ms selector=selector
+    | ✓ Tap at (311.0, 1619.0) completed successfully
+#56 2026-08-03T15:24:00.413Z sim-use ui --device emulator-5554
+    → exit=0 93ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#57 2026-08-03T15:24:00.563Z sim-use ui --json --device emulator-5554
+    → exit=0 197ms
+    | {"data":{"appLabel":"ru.maksim.qalab","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"frame":{"height":3,"width":986,"x":47,"y":63},"label":"Создавайте, просматривайте, редактируйте и удаляйте дефекты через реальный HTTP API.","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":2},"frame":{"height":126,"width":986,"x":47,"y":114},"label":"Создать дефект","region":{"kind":"Top"},"resource_id":"create-issue-button","role":"Button","states":[]},{"aliases":{"at":3},"depth":1,"frame":{"height":68,"width":68,"x":937,"y":140},"label":"Tools","region":{"kind":"Top"},"role":"Image","states":[]},{"aliases":{"at":4},"depth":1,"frame":{"height":53,"width":288,"x":395,"y":150},"label":"Создать дефект","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":5},"frame":{"height":42,"width":886,"x":96,"y":336},"label":"ДЕМО-ПРОСТРАНСТВО","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":6},"frame":{"height":96,"width":886,"x":96,"y":405},"label":"Workspace ID разделяет данные, но не является авторизацией.","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":7},"frame":{"height":48,"width":886,"x":96,"y":537},"label":"c1602267-3fdf-4ef9-990a-a598dfb5ca19","region":{"kind":"Content"},"resource_id":"workspace-id","role":"TextView","states":[]},{"aliases":{"at":8},"frame":{"height":126,"width":433,"x":97,"y":623},"label":"Копировать Workspace ID","region":{"kind":"Content"},"role":"Button","states":[]},{"aliases":{"at":9},"depth":1,"frame":{"height":53,"width":208,"x":209,"y":659},"label":"Копировать","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":10},"frame":{"height":126,"width":432,"x":550,"y":623},"label":"Изменить Workspace ID","region":{"kind":"Content"},"role":"Button","states":[]},{"aliases":{"at":11},"depth":1,"frame":{"height":53,"width":175,"x":678,"y":659},"label":"Изменить","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":12},"frame":{"height":48,"width":886,"x":97,"y":809},"label":"Лимит: 50 дефектов","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":13},"frame":{"height":48,"width":886,"x":97,"y":867},"label":"Хранение: 30 дней после изменения","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":14},"frame":{"height":126,"width":886,"x":96,"y":1051},"label":"Статус дефекта «Экспорт отчёта не открывается» изменён.","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":15},"frame":{"height":53,"width":898,"x":92,"y":1309},"label":"Поиск","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":16},"frame":{"height":126,"width":898,"x":92,"y":1383},"hint":"Название или описание","label":"Поиск","region":{"kind":"Content"},"resource_id":"issue-search-input","role":"TextField","states":[]},{"aliases":{"at":17},"frame":{"height":126,"width":438,"x":92,"y":1556},"label":"Все статусы","region":{"kind":"Content"},"role":"Button","states":[]},{"aliases":{"at":18},"depth":1,"frame":{"height":53,"width":219,"x":201,"y":1592},"label":"Все статусы","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":19},"frame":{"height":126,"width":437,"x":551,"y":1556},"label":"Критичность: 1","region":{"kind":"Content"},"role":"Button","states":[]},{"aliases":{"at":20},"depth":1,"frame":{"height":53,"width":269,"x":635,"y":1592},"label":"Критичность: 1","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":21},"frame":{"height":126,"width":896,"x":92,"y":1703},"label":"Сбросить фильтры","region":{"kind":"Content"},"role":"Button","states":[]},{"aliases":{"at":22},"depth":1,"frame":{"height":53,"width":335,"x":372,"y":1739},"label":"Сбросить фильтры","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":23},"frame":{"height":42,"width":333,"x":47,"y":1932},"label":"СПИСОК","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":24
+    | …[обрезано 44058 символов]
+#58 2026-08-03T15:24:08.948Z sim-use ui --device emulator-5554
+    → exit=0 50ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#59 2026-08-03T15:24:25.524Z sim-use tap #filter-status-open --device emulator-5554
+    → exit=0 112ms selector=selector
+    | ✓ Tap at (540.0, 515.0) completed successfully
+#60 2026-08-03T15:24:25.709Z sim-use ui --device emulator-5554
+    → exit=0 117ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#61 2026-08-03T15:24:25.890Z sim-use ui --device emulator-5554
+    → exit=0 63ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#62 2026-08-03T15:24:39.543Z sim-use tap --label Открыт --element-type Checkbox --device emulator-5554
+    → exit=0 73ms selector=selector
+    | ✓ Tap at (540.0, 515.0) completed successfully
+#63 2026-08-03T15:24:39.685Z sim-use ui --device emulator-5554
+    → exit=0 71ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#64 2026-08-03T15:24:53.349Z sim-use tap --label Готово --device emulator-5554
+    → exit=0 74ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#65 2026-08-03T15:24:53.493Z sim-use ui --device emulator-5554
+    → exit=0 74ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#66 2026-08-03T15:24:53.625Z sim-use ui --device emulator-5554
+    → exit=0 404ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#67 2026-08-03T15:25:01.564Z sim-use ui --device emulator-5554
+    → exit=0 84ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#68 2026-08-03T15:25:18.156Z sim-use tap --label Все статусы --element-type Button --device emulator-5554
+    → exit=0 119ms selector=selector
+    | ✓ Tap at (311.0, 1619.0) completed successfully
+#69 2026-08-03T15:25:18.346Z sim-use ui --device emulator-5554
+    → exit=0 93ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#70 2026-08-03T15:25:18.500Z sim-use ui --device emulator-5554
+    → exit=0 594ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#71 2026-08-03T15:25:24.561Z sim-use ui --device emulator-5554
+    → exit=0 44ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#72 2026-08-03T15:25:36.221Z sim-use tap #filter-status-testing --device emulator-5554
+    → exit=0 67ms selector=selector
+    | ✓ Tap at (540.0, 788.0) completed successfully
+#73 2026-08-03T15:25:36.362Z sim-use ui --device emulator-5554
+    → exit=0 69ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#74 2026-08-03T15:25:41.621Z sim-use ui --device emulator-5554
+    → exit=0 79ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#75 2026-08-03T15:25:51.130Z sim-use tap --label Готово --device emulator-5554
+    → exit=0 61ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#76 2026-08-03T15:25:51.261Z sim-use ui --device emulator-5554
+    → exit=0 70ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#77 2026-08-03T15:25:51.395Z sim-use ui --device emulator-5554
+    → exit=0 285ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#78 2026-08-03T15:25:51.735Z sim-use ui --device emulator-5554
+    → exit=0 60ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#79 2026-08-03T15:26:09.662Z sim-use ui --device emulator-5554
+    → exit=0 61ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#80 2026-08-03T15:26:18.774Z sim-use tap --label Сбросить фильтры --device emulator-5554
+    → exit=0 74ms selector=selector
+    | ✓ Tap at (540.0, 1766.0) completed successfully
+#81 2026-08-03T15:26:18.906Z sim-use ui --device emulator-5554
+    → exit=0 90ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#82 2026-08-03T15:26:19.051Z sim-use tap --label Все статусы --element-type Button --device emulator-5554
+    → exit=1 214ms selector=selector
+    ! Error: No matching element found for selector --label 'Все статусы'.
+#83 2026-08-03T15:26:19.329Z sim-use ui --device emulator-5554
+    → exit=0 267ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#84 2026-08-03T15:26:19.663Z sim-use ui --device emulator-5554
+    → exit=0 135ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#85 2026-08-03T15:26:24.920Z sim-use ui --device emulator-5554
+    → exit=0 100ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#86 2026-08-03T15:26:34.407Z sim-use tap --label Все статусы --element-type Button --device emulator-5554
+    → exit=0 63ms selector=selector
+    | ✓ Tap at (311.0, 1619.0) completed successfully
+#87 2026-08-03T15:26:34.536Z sim-use ui --device emulator-5554
+    → exit=0 82ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#88 2026-08-03T15:26:34.674Z sim-use tap #filter-status-open --device emulator-5554
+    → exit=1 162ms selector=selector
+    ! Error: No matching element found for selector --id 'filter-status-open'.
+#89 2026-08-03T15:26:34.898Z sim-use ui --device emulator-5554
+    → exit=0 326ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  Button  "Закрыть"  (933,1000 126x126)
+#90 2026-08-03T15:26:35.281Z sim-use ui --device emulator-5554
+    → exit=0 60ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#91 2026-08-03T15:26:42.950Z sim-use tap #filter-status-open --device emulator-5554
+    → exit=0 55ms selector=selector
+    | ✓ Tap at (540.0, 515.0) completed successfully
+#92 2026-08-03T15:26:43.064Z sim-use ui --device emulator-5554
+    → exit=0 61ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#93 2026-08-03T15:26:43.196Z sim-use ui --device emulator-5554
+    → exit=0 70ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#94 2026-08-03T15:26:51.344Z sim-use ui --device emulator-5554
+    → exit=0 81ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#95 2026-08-03T15:26:51.483Z sim-use ui --device emulator-5554
+    → exit=0 48ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#96 2026-08-03T15:26:58.400Z sim-use tap --label Готово --device emulator-5554
+    → exit=0 60ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#97 2026-08-03T15:26:58.533Z sim-use ui --device emulator-5554
+    → exit=0 73ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#98 2026-08-03T15:26:58.660Z sim-use ui --device emulator-5554
+    → exit=0 354ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#99 2026-08-03T15:27:25.225Z sim-use tap --label Сбросить фильтры --device emulator-5554
+    → exit=0 131ms selector=selector
+    | ✓ Tap at (540.0, 1766.0) completed successfully
+#100 2026-08-03T15:27:25.416Z sim-use ui --device emulator-5554
+    → exit=0 125ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#101 2026-08-03T15:27:25.597Z sim-use tap --label Все значения --element-type Button --device emulator-5554
+    → exit=0 180ms selector=selector
+    | ✓ Tap at (769.0, 1619.0) completed successfully
+#102 2026-08-03T15:27:25.841Z sim-use ui --device emulator-5554
+    → exit=0 206ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#103 2026-08-03T15:27:26.121Z sim-use ui --device emulator-5554
+    → exit=0 144ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#104 2026-08-03T15:27:32.910Z sim-use ui --device emulator-5554
+    → exit=0 59ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#105 2026-08-03T15:27:41.244Z sim-use tap #filter-severity-high --device emulator-5554
+    → exit=0 60ms selector=selector
+    | ✓ Tap at (540.0, 788.0) completed successfully
+#106 2026-08-03T15:27:41.375Z sim-use ui --device emulator-5554
+    → exit=0 68ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#107 2026-08-03T15:27:41.523Z sim-use ui --device emulator-5554
+    → exit=0 106ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#108 2026-08-03T15:27:50.628Z sim-use ui --device emulator-5554
+    → exit=0 45ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#109 2026-08-03T15:27:56.435Z sim-use tap --label Готово --device emulator-5554
+    → exit=0 61ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#110 2026-08-03T15:27:56.564Z sim-use ui --device emulator-5554
+    → exit=0 76ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#111 2026-08-03T15:27:56.711Z sim-use ui --device emulator-5554
+    → exit=0 292ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#112 2026-08-03T15:28:12.328Z sim-use tap --label Критичность: 1 --element-type Button --device emulator-5554
+    → exit=0 73ms selector=selector
+    | ✓ Tap at (769.0, 1619.0) completed successfully
+#113 2026-08-03T15:28:12.464Z sim-use ui --device emulator-5554
+    → exit=0 72ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#114 2026-08-03T15:28:12.592Z sim-use ui --device emulator-5554
+    → exit=0 569ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#115 2026-08-03T15:28:13.218Z sim-use tap #filter-severity-low --device emulator-5554
+    → exit=0 83ms selector=selector
+    | ✓ Tap at (540.0, 515.0) completed successfully
+#116 2026-08-03T15:28:13.368Z sim-use ui --device emulator-5554
+    → exit=0 53ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#117 2026-08-03T15:28:13.479Z sim-use tap #filter-severity-medium --device emulator-5554
+    → exit=0 269ms selector=selector
+    | ✓ Tap at (540.0, 651.0) completed successfully
+#118 2026-08-03T15:28:13.834Z sim-use ui --device emulator-5554
+    → exit=0 271ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#119 2026-08-03T15:28:14.181Z sim-use tap #filter-severity-critical --device emulator-5554
+    → exit=0 318ms selector=selector
+    | ✓ Tap at (540.0, 924.0) completed successfully
+#120 2026-08-03T15:28:14.584Z sim-use ui --device emulator-5554
+    → exit=0 213ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#121 2026-08-03T15:28:14.906Z sim-use tap #filter-severity-blocker --device emulator-5554
+    → exit=0 230ms selector=selector
+    | ✓ Tap at (540.0, 1061.0) completed successfully
+#122 2026-08-03T15:28:15.205Z sim-use ui --device emulator-5554
+    → exit=0 143ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#123 2026-08-03T15:28:15.424Z sim-use ui --device emulator-5554
+    → exit=0 169ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#124 2026-08-03T15:28:27.425Z sim-use ui --device emulator-5554
+    → exit=0 90ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#125 2026-08-03T15:28:27.573Z sim-use ui --device emulator-5554
+    → exit=0 50ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#126 2026-08-03T15:28:42.137Z sim-use tap #filter-severity-critical --device emulator-5554
+    → exit=0 59ms selector=selector
+    | ✓ Tap at (540.0, 924.0) completed successfully
+#127 2026-08-03T15:28:42.275Z sim-use ui --device emulator-5554
+    → exit=0 74ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#128 2026-08-03T15:28:42.410Z sim-use ui --device emulator-5554
+    → exit=0 238ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#129 2026-08-03T15:28:42.726Z sim-use ui --device emulator-5554
+    → exit=0 251ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#130 2026-08-03T15:29:03.843Z sim-use tap --label Готово --device emulator-5554
+    → exit=0 82ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#131 2026-08-03T15:29:03.997Z sim-use ui --device emulator-5554
+    → exit=0 58ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#132 2026-08-03T15:29:04.112Z sim-use ui --device emulator-5554
+    → exit=0 329ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Создавайте, просматривайте, редактируйте и удаляйте дефекты…"  (47,63 986x3)
+#133 2026-08-03T15:29:12.472Z sim-use swipe --from 60,1900 --to 60,700 --duration 0.5 --device emulator-5554
+    → exit=0 65ms selector=coordinate
+    | ✓ Swipe (60,1900) → (60,700) completed successfully
+#134 2026-08-03T15:29:12.607Z sim-use ui --device emulator-5554
+    → exit=0 265ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Копировать Workspace ID"  (97,98 433x126)
+#135 2026-08-03T15:29:12.931Z sim-use ui --device emulator-5554
+    → exit=0 733ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Все статусы"  (92,63 438x43)
+#136 2026-08-03T15:29:20.274Z sim-use tap #issue-card-status-c98dcc2a-d8a2-4386-a849-6d2846ea46d1 --device emulator-5554
+    → exit=0 104ms selector=selector
+    | ✓ Tap at (545.0, 1121.0) completed successfully
+#137 2026-08-03T15:29:20.434Z sim-use ui --device emulator-5554
+    → exit=0 322ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,967 940x465)
+#138 2026-08-03T15:29:20.841Z sim-use ui --device emulator-5554
+    → exit=0 202ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,967 940x465)
+#139 2026-08-03T15:29:32.864Z sim-use tap --label Решён --device emulator-5554
+    → exit=0 92ms selector=selector
+    | ✓ Tap at (540.0, 1340.0) completed successfully
+#140 2026-08-03T15:29:33.015Z sim-use ui --device emulator-5554
+    → exit=0 238ms
+    | App: com.android.systemui  1080x2400
+    | [Top  y<280]
+    |   @1  Image  "Ad Privacy notification:"  (126,0 58x63)
+#141 2026-08-03T15:29:33.333Z sim-use ui --device emulator-5554
+    → exit=0 183ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Все статусы"  (92,63 438x43)
+#142 2026-08-03T15:29:41.110Z sim-use ui --device emulator-5554
+    → exit=0 103ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Все статусы"  (92,63 438x43)
+#143 2026-08-03T15:29:41.269Z sim-use ui --device emulator-5554
+    → exit=0 60ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Все статусы"  (92,63 438x43)
+#144 2026-08-03T15:30:00.334Z sim-use tap #issue-card-status-c98dcc2a-d8a2-4386-a849-6d2846ea46d1 --device emulator-5554
+    → exit=0 90ms selector=selector
+    | ✓ Tap at (545.0, 1121.0) completed successfully
+#145 2026-08-03T15:30:00.487Z sim-use ui --device emulator-5554
+    → exit=0 609ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,1038 940x324)
+#146 2026-08-03T15:30:01.170Z sim-use ui --device emulator-5554
+    → exit=0 174ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,1038 940x324)
+#147 2026-08-03T15:30:16.662Z sim-use button back --device emulator-5554
+    → exit=0 48ms selector=focus
+    | ✓ Back button press completed successfully
+#148 2026-08-03T15:30:16.816Z sim-use swipe --from 60,700 --to 60,2000 --duration 0.5 --device emulator-5554
+    → exit=0 95ms selector=coordinate
+    | ✓ Swipe (60,700) → (60,2000) completed successfully
+#149 2026-08-03T15:30:16.978Z sim-use ui --device emulator-5554
+    → exit=0 124ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Все статусы"  (92,63 438x43)
+#150 2026-08-03T15:30:17.158Z sim-use ui --device emulator-5554
+    → exit=0 80ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Все статусы"  (92,63 438x43)
+#151 2026-08-03T15:30:23.412Z sim-use swipe --from 60,700 --to 60,2000 --duration 0.5 --device emulator-5554
+    → exit=0 44ms selector=coordinate
+    | ✓ Swipe (60,700) → (60,2000) completed successfully
+#152 2026-08-03T15:30:23.512Z sim-use ui --device emulator-5554
+    → exit=0 443ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус дефекта «Экспорт отчёта не открывается» изменён."  (96,82 886x126)
+#153 2026-08-03T15:30:24.033Z sim-use ui --device emulator-5554
+    → exit=0 657ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#154 2026-08-03T15:30:33.040Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 163ms selector=selector
+    | ✓ Tap at (541.0, 1618.0) completed successfully
+#155 2026-08-03T15:30:33.265Z sim-use android type --clear Открыт --device emulator-5554
+    → exit=0 207ms
+    ! type ok (graphemes=6, clear=true)
+#156 2026-08-03T15:30:33.539Z sim-use button back --device emulator-5554
+    → exit=0 114ms selector=focus
+    | ✓ Back button press completed successfully
+#157 2026-08-03T15:30:33.728Z sim-use ui --device emulator-5554
+    → exit=0 176ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#158 2026-08-03T15:30:33.988Z sim-use ui --device emulator-5554
+    → exit=0 115ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#159 2026-08-03T15:30:43.901Z sim-use ui --device emulator-5554
+    → exit=0 71ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#160 2026-08-03T15:30:44.030Z sim-use ui --device emulator-5554
+    → exit=0 54ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#161 2026-08-03T15:31:00.733Z sim-use ui --device emulator-5554
+    → exit=0 82ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#162 2026-08-03T15:31:17.275Z sim-use tap --label Все значения --element-type Button --device emulator-5554
+    → exit=0 61ms selector=selector
+    | ✓ Tap at (769.0, 1791.0) completed successfully
+#163 2026-08-03T15:31:17.399Z sim-use ui --device emulator-5554
+    → exit=0 97ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#164 2026-08-03T15:31:17.553Z sim-use ui --device emulator-5554
+    → exit=0 580ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#165 2026-08-03T15:31:18.224Z sim-use tap #filter-severity-low --device emulator-5554
+    → exit=0 91ms selector=selector
+    | ✓ Tap at (540.0, 515.0) completed successfully
+#166 2026-08-03T15:31:18.409Z sim-use ui --device emulator-5554
+    → exit=0 89ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#167 2026-08-03T15:31:18.587Z sim-use ui --device emulator-5554
+    → exit=0 234ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#168 2026-08-03T15:31:26.364Z sim-use tap --label Готово --device emulator-5554
+    → exit=0 88ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#169 2026-08-03T15:31:26.515Z sim-use ui --device emulator-5554
+    → exit=0 51ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#170 2026-08-03T15:31:26.630Z sim-use ui --device emulator-5554
+    → exit=0 339ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#171 2026-08-03T15:31:36.680Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 123ms selector=selector
+    | ✓ Tap at (541.0, 1618.0) completed successfully
+#172 2026-08-03T15:31:36.875Z sim-use android type --clear  --device emulator-5554
+    → exit=0 153ms
+    ! type ok (graphemes=0, clear=true)
+#173 2026-08-03T15:31:37.115Z sim-use button back --device emulator-5554
+    → exit=0 307ms selector=focus
+    | ✓ Back button press completed successfully
+#174 2026-08-03T15:31:37.524Z sim-use ui --device emulator-5554
+    → exit=0 376ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#175 2026-08-03T15:31:37.996Z sim-use ui --device emulator-5554
+    → exit=0 713ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#176 2026-08-03T15:31:46.073Z sim-use ui --device emulator-5554
+    → exit=0 81ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#177 2026-08-03T15:31:46.214Z sim-use ui --device emulator-5554
+    → exit=0 64ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер дефектов"  (47,63 839x2)
+#178 2026-08-03T15:31:55.587Z sim-use swipe --from 60,1900 --to 60,900 --duration 0.5 --device emulator-5554
+    → exit=0 60ms selector=coordinate
+    | ✓ Swipe (60,1900) → (60,900) completed successfully
+#179 2026-08-03T15:31:55.721Z sim-use ui --device emulator-5554
+    → exit=0 230ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Создать дефект"  :create-issue-button:  (47,63 986x16)
+#180 2026-08-03T15:31:56.054Z sim-use ui --device emulator-5554
+    → exit=0 1175ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус дефекта «Экспорт отчёта не открывается» изменён."  (96,63 886x71)
+#181 2026-08-03T15:32:18.921Z sim-use tap --label Сбросить фильтры --device emulator-5554
+    → exit=0 105ms selector=selector
+    | ✓ Tap at (540.0, 723.0) completed successfully
+#182 2026-08-03T15:32:19.090Z sim-use ui --device emulator-5554
+    → exit=0 86ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус дефекта «Экспорт отчёта не открывается» изменён."  (96,63 886x71)
+#183 2026-08-03T15:32:19.261Z sim-use ui --device emulator-5554
+    → exit=0 291ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#184 2026-08-03T15:32:26.886Z sim-use tap --label Все статусы --element-type Button --device emulator-5554
+    → exit=0 128ms selector=selector
+    | ✓ Tap at (311.0, 1196.0) completed successfully
+#185 2026-08-03T15:32:27.077Z sim-use ui --device emulator-5554
+    → exit=0 53ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#186 2026-08-03T15:32:27.187Z sim-use ui --device emulator-5554
+    → exit=0 290ms
+    | App: ru.maksim.qalab  1080x2400
+#187 2026-08-03T15:32:27.550Z sim-use tap #filter-status-open --device emulator-5554
+    → exit=0 340ms selector=selector
+    | ✓ Tap at (540.0, 515.0) completed successfully
+#188 2026-08-03T15:32:27.973Z sim-use ui --device emulator-5554
+    → exit=0 90ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#189 2026-08-03T15:32:28.136Z sim-use ui --device emulator-5554
+    → exit=0 251ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#190 2026-08-03T15:32:36.635Z sim-use ui --device emulator-5554
+    → exit=0 72ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#191 2026-08-03T15:32:36.765Z sim-use ui --device emulator-5554
+    → exit=0 82ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#192 2026-08-03T15:32:43.187Z sim-use tap --label Готово --device emulator-5554
+    → exit=0 55ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#193 2026-08-03T15:32:43.306Z sim-use ui --device emulator-5554
+    → exit=0 60ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#194 2026-08-03T15:32:43.429Z sim-use ui --device emulator-5554
+    → exit=0 306ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Workspace ID разделяет данные, но не является авторизацией."  (96,63 886x15)
+#195 2026-08-03T15:32:55.097Z sim-use swipe --from 60,1900 --to 60,1000 --duration 0.5 --device emulator-5554
+    → exit=0 45ms selector=coordinate
+    | ✓ Swipe (60,1900) → (60,1000) completed successfully
+#196 2026-08-03T15:32:55.206Z sim-use ui --device emulator-5554
+    → exit=0 391ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Лимит: 50 дефектов"  (97,86 886x48)
+#197 2026-08-03T15:32:55.662Z sim-use ui --device emulator-5554
+    → exit=0 473ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Статусы: 1"  (92,63 438x72)
+#198 2026-08-03T15:33:03.341Z sim-use tap #issue-card-status-f744703e-445d-4a44-8c2d-82e9cb1fb2f7 --device emulator-5554
+    → exit=0 106ms selector=selector
+    | ✓ Tap at (545.0, 1150.0) completed successfully
+#199 2026-08-03T15:33:03.501Z sim-use ui --device emulator-5554
+    → exit=0 494ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (126,126 940x324)
+#200 2026-08-03T15:33:04.068Z sim-use ui --device emulator-5554
+    → exit=0 229ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,1038 940x324)
+#201 2026-08-03T15:33:11.552Z sim-use tap --label В работе --device emulator-5554
+    → exit=0 49ms selector=selector
+    | ✓ Tap at (540.0, 1270.0) completed successfully
+#202 2026-08-03T15:33:11.659Z sim-use ui --device emulator-5554
+    → exit=0 399ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Статусы: 1"  (92,63 438x72)
+#203 2026-08-03T15:33:12.119Z sim-use ui --device emulator-5554
+    → exit=0 209ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "СПИСОК"  (47,133 333x42)
+#204 2026-08-03T15:33:12.386Z sim-use ui --device emulator-5554
+    → exit=0 76ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "СПИСОК"  (47,133 333x42)
+#205 2026-08-03T15:33:19.566Z sim-use ui --device emulator-5554
+    → exit=0 103ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус дефекта «Список загружается медленно» изменён. Карто…"  (96,63 886x71)
+#206 2026-08-03T15:33:19.727Z sim-use ui --device emulator-5554
+    → exit=0 57ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус дефекта «Список загружается медленно» изменён. Карто…"  (96,63 886x71)
+#207 2026-08-03T15:33:34.468Z sim-use ui --json --device emulator-5554
+    → exit=0 99ms
+    | {"data":{"appLabel":"ru.maksim.qalab","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"frame":{"height":71,"width":886,"x":96,"y":63},"label":"Статус дефекта «Список загружается медленно» изменён. Карточка скрыта текущим фильтром.","region":{"kind":"Top"},"role":"TextView","states":[]},{"aliases":{"at":2},"frame":{"height":68,"width":68,"x":937,"y":140},"label":"Tools","region":{"kind":"Top"},"role":"Image","states":[]},{"aliases":{"at":3},"frame":{"height":53,"width":898,"x":92,"y":266},"label":"Поиск","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":4},"frame":{"height":126,"width":898,"x":92,"y":340},"hint":"Название или описание","label":"Поиск","region":{"kind":"Content"},"resource_id":"issue-search-input","role":"TextField","states":[]},{"aliases":{"at":5},"frame":{"height":126,"width":438,"x":92,"y":513},"label":"Статусы: 1","region":{"kind":"Content"},"role":"Button","states":[]},{"aliases":{"at":6},"depth":1,"frame":{"height":53,"width":193,"x":214,"y":549},"label":"Статусы: 1","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":7},"frame":{"height":126,"width":437,"x":551,"y":513},"label":"Все значения","region":{"kind":"Content"},"role":"Button","states":[]},{"aliases":{"at":8},"depth":1,"frame":{"height":53,"width":236,"x":651,"y":549},"label":"Все значения","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":9},"frame":{"height":126,"width":896,"x":92,"y":660},"label":"Сбросить фильтры","region":{"kind":"Content"},"role":"Button","states":[]},{"aliases":{"at":10},"depth":1,"frame":{"height":53,"width":335,"x":372,"y":696},"label":"Сбросить фильтры","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":11},"frame":{"height":42,"width":333,"x":47,"y":889},"label":"СПИСОК","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":12},"frame":{"height":63,"width":153,"x":853,"y":924},"label":"1 дефект","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":13},"frame":{"height":90,"width":333,"x":47,"y":931},"label":"Дефекты","region":{"kind":"Content"},"role":"View","states":[]},{"aliases":{"at":14},"frame":{"height":73,"width":153,"x":113,"y":1123},"label":"Критичность: Низкая","region":{"kind":"Content"},"resource_id":"issue-card-severity-be806e66-bb7b-402e-acb7-0b9a20c67fa6","role":"ViewGroup","states":[]},{"aliases":{"at":15},"depth":1,"frame":{"height":48,"width":111,"x":134,"y":1135},"label":"Низкая","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":16},"frame":{"height":48,"width":282,"x":695,"y":1123},"label":"Обновлено: 03.08.2026, 18:15","region":{"kind":"Content"},"resource_id":"issue-card-updated-be806e66-bb7b-402e-acb7-0b9a20c67fa6","role":"TextView","states":[],"value":"03.08.2026, 18:15"},{"aliases":{"at":17},"frame":{"height":69,"width":866,"x":112,"y":1243},"label":"Кнопка входа не отвечает","region":{"kind":"Content"},"resource_id":"issue-card-title-be806e66-bb7b-402e-acb7-0b9a20c67fa6","role":"View","states":[]},{"aliases":{"at":18},"frame":{"height":132,"width":866,"x":112,"y":1333},"label":"Приложение падает при нажатии на аватар пользователя","region":{"kind":"Content"},"resource_id":"issue-card-description-be806e66-bb7b-402e-acb7-0b9a20c67fa6","role":"TextView","states":[]},{"aliases":{"at":19},"frame":{"height":48,"width":866,"x":113,"y":1513},"label":"Статус","region":{"kind":"Content"},"role":"TextView","states":[]},{"aliases":{"at":20},"frame":{"height":141,"width":860,"x":115,"y":1584},"label":"Изменить статус дефекта «Кнопка входа не отвечает». Текущий статус: Открыт","region":{"kind":"Content"},"resource_id":"issue-card-status-be806e66-bb7b-402e-acb7-0b9a20c67fa6","role":"Spinner","states":[]},{"aliases":{"at":21},"depth":1,"frame":{"height":141,"width":734,"x":115,"y":1584},"label":"Открыт","region":{"kind":"Content"},"resource_id":"text1","role":"TextView","states":[]},{"aliases":{"at":22},"frame":{"height":48,"w
+    | …[обрезано 52487 символов]
+#208 2026-08-03T15:33:46.908Z sim-use ui --device emulator-5554
+    → exit=0 103ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус дефекта «Список загружается медленно» изменён. Карто…"  (96,63 886x71)
+#209 2026-08-03T15:33:59.809Z sim-use tap --label Статусы: 1 --element-type Button --device emulator-5554
+    → exit=0 92ms selector=selector
+    | ✓ Tap at (311.0, 576.0) completed successfully
+#210 2026-08-03T15:33:59.967Z sim-use ui --device emulator-5554
+    → exit=0 119ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус дефекта «Список загружается медленно» изменён. Карто…"  (96,63 886x71)
+#211 2026-08-03T15:34:00.147Z sim-use ui --device emulator-5554
+    → exit=0 240ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус дефекта «Список загружается медленно» изменён. Карто…"  (96,63 886x71)
+#212 2026-08-03T15:34:00.454Z sim-use tap #filter-status-in_progress --device emulator-5554
+    → exit=0 478ms selector=selector
+    | ✓ Tap at (540.0, 651.0) completed successfully
+#213 2026-08-03T15:34:01.026Z sim-use ui --device emulator-5554
+    → exit=0 138ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#214 2026-08-03T15:34:01.225Z sim-use ui --device emulator-5554
+    → exit=0 188ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#215 2026-08-03T15:34:08.432Z sim-use tap --label Готово --device emulator-5554
+    → exit=0 56ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#216 2026-08-03T15:34:08.551Z sim-use ui --device emulator-5554
+    → exit=0 82ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#217 2026-08-03T15:34:08.707Z sim-use ui --device emulator-5554
+    → exit=0 367ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#218 2026-08-03T15:34:09.160Z sim-use ui --device emulator-5554
+    → exit=0 87ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#219 2026-08-03T15:34:22.300Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 102ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#220 2026-08-03T15:34:22.469Z sim-use android type --clear Экспорт --device emulator-5554
+    → exit=0 136ms
+    ! type ok (graphemes=7, clear=true)
+#221 2026-08-03T15:34:22.680Z sim-use button back --device emulator-5554
+    → exit=0 140ms selector=focus
+    | ✓ Back button press completed successfully
+#222 2026-08-03T15:34:22.910Z sim-use ui --device emulator-5554
+    → exit=0 170ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#223 2026-08-03T15:34:23.168Z sim-use ui --device emulator-5554
+    → exit=0 118ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#224 2026-08-03T15:34:23.374Z sim-use ui --device emulator-5554
+    → exit=0 299ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#225 2026-08-03T15:34:30.150Z sim-use ui --device emulator-5554
+    → exit=0 91ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#226 2026-08-03T15:34:30.306Z sim-use ui --device emulator-5554
+    → exit=0 70ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#227 2026-08-03T15:34:48.236Z sim-use tap #issue-search-input --device emulator-5554
+    → exit=0 128ms selector=selector
+    | ✓ Tap at (541.0, 1023.0) completed successfully
+#228 2026-08-03T15:34:48.450Z sim-use android type --clear холодном --device emulator-5554
+    → exit=0 156ms
+    ! type ok (graphemes=8, clear=true)
+#229 2026-08-03T15:34:48.688Z sim-use button back --device emulator-5554
+    → exit=0 79ms selector=focus
+    | ✓ Back button press completed successfully
+#230 2026-08-03T15:34:48.847Z sim-use ui --device emulator-5554
+    → exit=0 107ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#231 2026-08-03T15:34:49.034Z sim-use ui --device emulator-5554
+    → exit=0 131ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#232 2026-08-03T15:34:49.270Z sim-use ui --device emulator-5554
+    → exit=0 214ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#233 2026-08-03T15:35:03.268Z sim-use ui --device emulator-5554
+    → exit=0 147ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#234 2026-08-03T15:35:03.489Z sim-use ui --device emulator-5554
+    → exit=0 111ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#235 2026-08-03T15:35:03.691Z sim-use ui --device emulator-5554
+    → exit=0 64ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#236 2026-08-03T15:35:21.776Z sim-use tap --label Сбросить фильтры --device emulator-5554
+    → exit=0 118ms selector=selector
+    | ✓ Tap at (540.0, 1343.0) completed successfully
+#237 2026-08-03T15:35:22.001Z sim-use ui --device emulator-5554
+    → exit=0 151ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#238 2026-08-03T15:35:22.244Z sim-use ui --device emulator-5554
+    → exit=0 197ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)
+#239 2026-08-03T15:35:22.674Z sim-use ui --device emulator-5554
+    → exit=0 671ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "c1602267-3fdf-4ef9-990a-a598dfb5ca19"  :workspace-id:  (96,63 886x36)

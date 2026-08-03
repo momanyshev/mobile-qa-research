@@ -1,0 +1,74 @@
+{
+  "runId": "D1-qalab-defect-hunt-android-20260803T123143Z",
+  "caseId": "D1-qalab-defect-hunt",
+  "platform": "android",
+  "device": "emulator-5554",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "ffe6473f-362e-4cd7-a2a2-2f240a2a05ab",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "79f52c",
+  "startedAt": "2026-08-03T12:31:45.893Z",
+  "seeded": [
+    {
+      "id": "ff7fb72b-add7-4295-a54d-b55440a84b41",
+      "title": "Кнопка входа не отвечает",
+      "status": "open",
+      "severity": "low"
+    },
+    {
+      "id": "91828fee-26b8-4577-bf4b-22935804e828",
+      "title": "Список загружается медленно",
+      "status": "open",
+      "severity": "critical"
+    },
+    {
+      "id": "af8e06fb-7f87-47e0-8d56-3d7f073c6787",
+      "title": "Экспорт отчёта не открывается",
+      "status": "in_progress",
+      "severity": "critical"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-08-03T12:31:44.511Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "b3955d9",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "986e559",
+      "dirty": true
+    },
+    "platform": "android",
+    "device": {
+      "deviceId": "emulator-5554",
+      "name": "sdk_gphone64_arm64",
+      "platform": "android",
+      "runtime": "Android",
+      "state": "device"
+    },
+    "agentModel": "subagent (clean context)",
+    "agentContract": {
+      "path": "mobile-qa-agent/SKILL.md",
+      "sha256": "917fc921b0b2",
+      "bytes": 12849
+    },
+    "skillRevision": "Android-gate этапа 14",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/D1-qalab-defect-hunt.yaml",
+  "limits": {
+    "timeoutSeconds": 600,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "videoPid": 54366,
+  "armedAt": "2026-08-03T12:32:22.261Z",
+  "finishedAt": "2026-08-03T15:13:50.654Z",
+  "verdict": "PASS"
+}

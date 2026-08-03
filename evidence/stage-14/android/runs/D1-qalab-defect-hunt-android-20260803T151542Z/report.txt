@@ -1,0 +1,27 @@
+Run ID: D1-qalab-defect-hunt-android-20260803T151542Z
+Case ID: D1-qalab-defect-hunt
+Platform: android
+Device / OS: emulator-5554 (sdk_gphone64_arm64, Android)
+App commit: b3955d9
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@917fc921b0b2 | метка: Android-gate: чистый контроль
+Workspace / test namespace: qalab: Workspace c1602267-3fdf-4ef9-990a-a598dfb5ca19
+Start state: seed 3 записей, состояние «до» = 3
+Instruction: Область: список дефектов — поиск, фильтры критичности и статуса, а также смена статуса дефекта. Риск: список может показывать не то, что должен, а смена статуса — принимать недопустимое значение. Проверь, соответствует ли поведение приложения тому, что оно само о себе заявляет: подписям полей, подсказкам и назначению контролов. Маршрут выбирай сам. Ничего не удаляй. По итогам сформулируй, что именно расходится с ожидаемым, со шагами воспроизведения; если расхождений нет — так и напиши.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-08-03T15:15:44.629Z → 2026-08-03T15:36:50.957Z
+Tool calls: 239 (действий 73, по координатам 13, ошибок 3)
+Retries: 1
+Manual interventions: 0
+API before: 3 → runs/D1-qalab-defect-hunt-android-20260803T151542Z/api-before.json
+API after: 3 → runs/D1-qalab-defect-hunt-android-20260803T151542Z/api-after.json
+UI postcondition: финальный outline снят (runs/D1-qalab-defect-hunt-android-20260803T151542Z/final-ui.json)
+Oracle result: api.count=pass, manual.manual=pass
+Agent self-report: Android-gate, чистый контроль: расхождений НЕ найдено — корректный true negative. Симметрия с дефектным прогоном прямая: агент проверил именно поиск по описанию (запрос «аватар» → 1 дефект, «холодном» → 1 дефект), то есть тот класс, который на посеянной сборке давал 0. Также проверил оба фильтра, их комбинацию с поиском, правило «полный набор → Все», полный граф переходов статуса и поведение при смене статуса под активным фильтром. Отдельно поймал собственный ложный след: решил было, что выбор «Открыт» не применяется, но установил, что сам тапнул чекбокс дважды из-за отставания дерева, и снял обвинение с приложения. Данные к исходным статусам не вернул и объяснил почему: откат потребовал бы пяти дополнительных мутаций по графу переходов, и он счёл явную фиксацию конечного состояния меньшим злом.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (25.6 МБ), commandLog
+Teardown result: удалено 3, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Android-gate этапа 14 закрыт полностью: дефектная сборка — detected, чистая — true negative, обе на том же charter'е и том же классе, что на iOS. Платформа исхода не изменила. Уточнение к R-46: на Android отставание дерева регулярно составляет ДВА снимка, а не один, и у поля поиска добавляется собственный debounce — список догоняет только к третьему чтению ui. Практика «два совпадающих подряд снимка перед действием» на этой платформе обязательна, а не желательна. Ценное поведение: агент отличил собственную ошибку (двойной тап из-за отставания дерева) от дефекта приложения и снял обвинение, вместо того чтобы записать наблюдение в находки.
+Follow-up decision: Обновить план: 9.3 Android закрыт, вывод о неравенстве покрытия iOS/Android снимается. Уточнить R-46 про два снимка на Android.

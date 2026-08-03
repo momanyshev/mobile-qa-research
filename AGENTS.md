@@ -29,6 +29,12 @@
 5. **Teardown обязателен при любом verdict**, включая `BLOCKED` и прерванный
    прогон.
 
+## Методология изменений
+
+Будущие нетривиальные изменения собственного кода, контрактов и рабочих правил
+ведутся по SDD. До реализации открой и выполни канонический регламент
+`docs/knowledge/development-workflow.md`.
+
 ## Оглавление
 
 ### Ведение исследования
@@ -37,6 +43,7 @@
 | --- | --- |
 | [docs/testing-learning-plan.md](docs/testing-learning-plan.md) | Главный документ: 15 этапов, «Карта прогресса», обязательные правила запуска, глоссарий, системные наблюдения, accessibility-карты |
 | [docs/knowledge/README.md](docs/knowledge/README.md) | Точка входа в свод знаний: 12 обязательных документов и порядок чтения для нового участника |
+| [docs/knowledge/development-workflow.md](docs/knowledge/development-workflow.md) | Принятая методология SDD для будущих изменений собственного кода, контрактов и рабочих правил |
 | [docs/knowledge/recording-rules.md](docs/knowledge/recording-rules.md) | Как результат попадает в документы: verdict, системные наблюдения против дефектов полигона, галочки, evidence, git |
 | [docs/decision-log.md](docs/decision-log.md) | Принятые решения с обоснованием и альтернативами |
 | [docs/test-asset-register.md](docs/test-asset-register.md) | Реестр проверок `R-NN`: что автоматизировано, что отложено и почему |

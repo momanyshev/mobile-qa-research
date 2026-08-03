@@ -1,0 +1,74 @@
+{
+  "runId": "D1-qalab-defect-hunt-android-20260803T151542Z",
+  "caseId": "D1-qalab-defect-hunt",
+  "platform": "android",
+  "device": "emulator-5554",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "c1602267-3fdf-4ef9-990a-a598dfb5ca19",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "4a3989",
+  "startedAt": "2026-08-03T15:15:44.629Z",
+  "seeded": [
+    {
+      "id": "be806e66-bb7b-402e-acb7-0b9a20c67fa6",
+      "title": "Кнопка входа не отвечает",
+      "status": "open",
+      "severity": "low"
+    },
+    {
+      "id": "f744703e-445d-4a44-8c2d-82e9cb1fb2f7",
+      "title": "Список загружается медленно",
+      "status": "open",
+      "severity": "critical"
+    },
+    {
+      "id": "c98dcc2a-d8a2-4386-a849-6d2846ea46d1",
+      "title": "Экспорт отчёта не открывается",
+      "status": "in_progress",
+      "severity": "critical"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-08-03T15:15:43.369Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "b3955d9",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "986e559",
+      "dirty": true
+    },
+    "platform": "android",
+    "device": {
+      "deviceId": "emulator-5554",
+      "name": "sdk_gphone64_arm64",
+      "platform": "android",
+      "runtime": "Android",
+      "state": "device"
+    },
+    "agentModel": "subagent (clean context)",
+    "agentContract": {
+      "path": "mobile-qa-agent/SKILL.md",
+      "sha256": "917fc921b0b2",
+      "bytes": 12849
+    },
+    "skillRevision": "Android-gate: чистый контроль",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/D1-qalab-defect-hunt.yaml",
+  "limits": {
+    "timeoutSeconds": 600,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "videoPid": 89289,
+  "armedAt": "2026-08-03T15:16:19.354Z",
+  "finishedAt": "2026-08-03T15:36:50.957Z",
+  "verdict": "PASS"
+}

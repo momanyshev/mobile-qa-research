@@ -26,6 +26,7 @@
 
 | Документ | О чём |
 | --- | --- |
+| [development-workflow.md](development-workflow.md) | Принятая методология SDD: область применения, change lifecycle, источники истины и verification gates |
 | [recording-rules.md](recording-rules.md) | Как результат попадает в документы: verdict, системные наблюдения против дефектов полигона, галочки, evidence, git |
 | [environment.md](environment.md) | Предусловия до первой команды прогона: Metro на платформу, пути Android, локаль, изоляция, relaunch |
 
