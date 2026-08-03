@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "id": "3adce6cc-18f5-4519-b44c-c16fa25ea28f",
+      "title": "Фильтр статуса сбрасывается f37dbe",
+      "description": "После возврата из карточки выбранный фильтр статуса теряется",
+      "severity": "medium",
+      "status": "in_progress",
+      "createdAt": "2026-08-03T10:55:02.033Z",
+      "updatedAt": "2026-08-03T10:57:55.334Z"
+    }
+  ],
+  "total": 1
+}

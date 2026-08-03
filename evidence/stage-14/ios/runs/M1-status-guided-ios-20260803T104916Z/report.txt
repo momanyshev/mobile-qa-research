@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-ios-20260803T104916Z
+Case ID: M1-status-guided
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@917fc921b0b2 | метка: серия повторяемости 14.E
+Workspace / test namespace: qalab: Workspace cedcca0d-f68c-4357-8e03-ec692d6af125
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается 30b757». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-08-03T10:49:18.032Z → 2026-08-03T10:54:35.459Z
+Tool calls: 11 (действий 2, по координатам 2, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 1 → runs/M1-status-guided-ios-20260803T104916Z/api-before.json
+API after: 1 → runs/M1-status-guided-ios-20260803T104916Z/api-after.json
+UI postcondition: финальный outline снят (runs/M1-status-guided-ios-20260803T104916Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: Drift-серия, прогон 2/3 на контракте 917fc921b0b2. Оба новых правила применены: два совпадающих ui подряд перед координатным действием (сделал их сразу на шаге 3), свайп от x=10 — вне габаритов всех интерактивных элементов. По одной попытке на действие. Сформулировал полезное обобщение: соседний StaticText «Доступный переход — …» годится как наблюдаемый прокси там, где сам picker нем.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (4.9 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —

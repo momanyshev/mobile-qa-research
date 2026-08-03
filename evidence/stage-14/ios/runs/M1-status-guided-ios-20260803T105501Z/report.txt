@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-ios-20260803T105501Z
+Case ID: M1-status-guided
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@917fc921b0b2 | метка: серия повторяемости 14.E
+Workspace / test namespace: qalab: Workspace 4c3a3475-1ba1-4172-b1cb-6f3c330dbe19
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается f37dbe». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-08-03T10:55:02.976Z → 2026-08-03T10:59:48.573Z
+Tool calls: 11 (действий 2, по координатам 2, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 1 → runs/M1-status-guided-ios-20260803T105501Z/api-before.json
+API after: 1 → runs/M1-status-guided-ios-20260803T105501Z/api-after.json
+UI postcondition: финальный outline снят (runs/M1-status-guided-ios-20260803T105501Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: Drift-серия, прогон 3/3 на контракте 917fc921b0b2. Оба новых правила применены. Новый ход, которого не было ни в одном из пяти базовых прогонов: агент выполнил прокрутку ПОКА колесо было за пределами экрана — то есть устранил риск мутации вместо того, чтобы его обходить выбором координаты. По одной попытке на действие.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (6.5 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —
