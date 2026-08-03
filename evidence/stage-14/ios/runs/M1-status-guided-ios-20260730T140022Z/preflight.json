@@ -1,0 +1,48 @@
+{
+  "checks": [
+    {
+      "name": "sim-use доступен",
+      "level": "fail",
+      "ok": true,
+      "detail": "версия 0.10.0"
+    },
+    {
+      "name": "локаль UTF-8",
+      "level": "fail",
+      "ok": true,
+      "detail": "LANG/LC_ALL = en_US.UTF-8"
+    },
+    {
+      "name": "целевое устройство доступно",
+      "level": "fail",
+      "ok": true,
+      "detail": "iPhone 17 Pro Max (iOS 26.5, Booted)"
+    },
+    {
+      "name": "платформа совпадает",
+      "level": "fail",
+      "ok": true,
+      "detail": "устройство ios, запрошено ios"
+    },
+    {
+      "name": "нет лишних устройств платформы",
+      "level": "fail",
+      "ok": true,
+      "detail": "запущено ровно одно"
+    },
+    {
+      "name": "backend QA Lab отвечает",
+      "level": "fail",
+      "ok": true,
+      "detail": "http://127.0.0.1:8888 → 200"
+    },
+    {
+      "name": "приложение наведено на Workspace run'а",
+      "level": "warn",
+      "ok": true,
+      "detail": "8a6a73aa-3efd-437f-868f-42b089a37d2b виден на экране"
+    }
+  ],
+  "ok": true,
+  "failed": []
+}

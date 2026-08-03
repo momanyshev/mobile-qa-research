@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-ios-20260803T102129Z
+Case ID: M1-status-guided
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@e26f17f0a664 | метка: серия повторяемости 14.E
+Workspace / test namespace: qalab: Workspace c37b363b-7a4e-41c2-b904-48597f313087
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается cb948a». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-08-03T10:21:31.880Z → 2026-08-03T10:26:14.464Z
+Tool calls: 9 (действий 2, по координатам 2, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 1 → runs/M1-status-guided-ios-20260803T102129Z/api-before.json
+API after: 1 → runs/M1-status-guided-ios-20260803T102129Z/api-after.json
+UI postcondition: финальный outline снят (runs/M1-status-guided-ios-20260803T102129Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: Серия повторяемости, прогон 5/5 (замена оборванного лимитом). Цель достигнута, по одной попытке на действие. Прокрутку вёл у ЛЕВОГО края (x=25) — в отличие от прогонов 1-4, где выбирали правый; сработало. Отдельно доказал, что свайп не задел колесо: в ui сразу после прокрутки подпись ещё показывала «Доступный переход — В работе», то есть статус оставался «Открыт».
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (4.4 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —

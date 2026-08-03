@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-ios-20260730T141839Z
+Case ID: M1-status-guided
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@e26f17f0a664 | метка: серия повторяемости 14.E
+Workspace / test namespace: qalab: Workspace 6de7f193-7717-4ef4-a305-7761f4ca2541
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается 224895». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-07-30T14:18:41.331Z → 2026-07-30T14:25:13.190Z
+Tool calls: 10 (действий 2, по координатам 2, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 1 → runs/M1-status-guided-ios-20260730T141839Z/api-before.json
+API after: 1 → runs/M1-status-guided-ios-20260730T141839Z/api-after.json
+UI postcondition: финальный outline снят (runs/M1-status-guided-ios-20260730T141839Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: Серия повторяемости, прогон 4/5. Цель достигнута, по одной попытке на действие. Backend сверил самостоятельно и назвал именно его решающим доказательством: состояние пикера само по себе не подтверждает, что значение закоммичено. Честно оговорил, что сравнение с исходным состоянием строил по собственным наблюдениям, а не по baseline harness — evidence в слепом прогоне закрыт.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (7.7 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —

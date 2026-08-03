@@ -1,0 +1,37 @@
+#1 2026-08-03T10:22:36.289Z sim-use devices --json --all
+    → exit=0 274ms
+    | {"data":{"devices":[{"deviceId":"080A36AF-2148-4EBF-89A8-537674A7BD60","name":"iPhone 11","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"DB216E5C-F646-488E-9537-2D8C390A2B8F","name":"iPhone 16 iOS 26.1","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"496803A0-B207-482B-8405-DC49E83CAA4D","name":"iPhone 17","platform":"ios","runtime":"iOS 26.4","state":"Shutdown"},{"deviceId":"A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37","name":"iPhone 17 Pro Max","platform":"ios","runtime":"iOS 26.5","state":"Booted"}]},"ok":true}
+#2 2026-08-03T10:22:42.450Z sim-use app-state --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 299ms
+    | Running apps (4):
+    |   com.apple.Spotlight  pid=44763
+    |   com.apple.chrono.WidgetRenderer-Default  pid=44750
+#3 2026-08-03T10:22:51.942Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 571ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#4 2026-08-03T10:23:09.559Z sim-use swipe --from 25,800 --to 25,300 --duration 0.6 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 1055ms selector=coordinate
+    | ✓ Swipe (25,800) → (25,300) completed successfully
+#5 2026-08-03T10:23:16.615Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 410ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#6 2026-08-03T10:23:34.065Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card-01.png
+    → exit=0 195ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card-01.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card-01.png
+#7 2026-08-03T10:23:57.793Z sim-use tap --x 221 --y 626 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 473ms selector=coordinate
+    | ✓ Tap at (221.0, 626.0) completed successfully
+#8 2026-08-03T10:24:04.553Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 392ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#9 2026-08-03T10:24:16.793Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card-02.png
+    → exit=0 196ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card-02.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card-02.png

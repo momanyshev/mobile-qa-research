@@ -1,0 +1,62 @@
+{
+  "runId": "M1-status-guided-ios-20260730T141839Z",
+  "caseId": "M1-status-guided",
+  "platform": "ios",
+  "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "6de7f193-7717-4ef4-a305-7761f4ca2541",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "224895",
+  "startedAt": "2026-07-30T14:18:41.331Z",
+  "seeded": [
+    {
+      "id": "9fec4a89-b920-4d6a-92bb-3d4595aa9071",
+      "title": "Фильтр статуса сбрасывается 224895",
+      "status": "open",
+      "severity": "medium"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-07-30T14:18:40.199Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "e64f33c",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "8deabe3",
+      "dirty": true
+    },
+    "platform": "ios",
+    "device": {
+      "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+      "name": "iPhone 17 Pro Max",
+      "platform": "ios",
+      "runtime": "iOS 26.5",
+      "state": "Booted"
+    },
+    "agentModel": "subagent (clean context)",
+    "agentContract": {
+      "path": "mobile-qa-agent/SKILL.md",
+      "sha256": "e26f17f0a664",
+      "bytes": 11267
+    },
+    "skillRevision": "серия повторяемости 14.E",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/M1-status-guided.yaml",
+  "limits": {
+    "timeoutSeconds": 900,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "videoPid": 35850,
+  "armedAt": "2026-07-30T14:19:04.067Z",
+  "finishedAt": "2026-07-30T14:25:13.190Z",
+  "verdict": "PASS"
+}

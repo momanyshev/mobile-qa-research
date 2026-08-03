@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-ios-20260730T142538Z
+Case ID: M1-status-guided
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@e26f17f0a664 | метка: серия повторяемости 14.E
+Workspace / test namespace: qalab: Workspace 4e15338e-d228-43b1-9d5f-dc9427c8ecfe
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается 117a8c». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-07-30T14:25:40.241Z → 2026-08-03T10:18:18.372Z
+Tool calls: —
+Retries: —
+Manual interventions: —
+API before: 1 → runs/M1-status-guided-ios-20260730T142538Z/api-before.json
+API after: 1 → runs/M1-status-guided-ios-20260730T142538Z/api-after.json
+UI postcondition: финальный outline отсутствует: Command failed: sim-use ui --json --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+Oracle result: проверки не выполнялись
+Agent self-report: —
+Final verdict: BLOCKED
+Failure category: environment
+Evidence paths: versionManifest, initialUi, initialScreen, apiBefore, apiAfter, video (103.0 МБ)
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —

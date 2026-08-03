@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-ios-20260730T140510Z
+Case ID: M1-status-guided
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@e26f17f0a664 | метка: серия повторяемости 14.E
+Workspace / test namespace: qalab: Workspace 606f64b7-eae1-40e0-a2de-848f4a3056f0
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается 93667f». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-07-30T14:05:11.940Z → 2026-07-30T14:11:58.459Z
+Tool calls: 13 (действий 3, по координатам 3, ошибок 0)
+Retries: 1
+Manual interventions: 0
+API before: 1 → runs/M1-status-guided-ios-20260730T140510Z/api-before.json
+API after: 1 → runs/M1-status-guided-ios-20260730T140510Z/api-after.json
+UI postcondition: финальный outline снят (runs/M1-status-guided-ios-20260730T140510Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: Серия повторяемости, прогон 2/5. Цель достигнута, тап с первой попытки. Прокрутка потребовала двух попыток: свайп от x=20 вернул ok:true без эффекта — точка внутри визуального поля карточки, но вне хит-зоны скролл-вью; сработал x=415. Агент сам сверил результат с backend через GET /api/issues (контракт это разрешает) и подтвердил, что изменились только status и updatedAt.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (5.7 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Новое наблюдение: дерево доступности отставало от экрана на ~51pt сразу после свайпа, БЕЗ признака устаревания — два подряд ui без единого действия между ними дали разные координаты одного элемента. Тап по координатам из первого снимка ушёл бы мимо. Агент вывел практику: требовать двух совпадающих подряд ui перед координатным действием. Второе: безопасный коридор для вертикального жеста в этом списке узок с обеих сторон — колесо занимает x=53..391, а левое поле (x=20) не принадлежит скролл-вью и жест там не работает вовсе; остаётся полоса примерно x=406..436.
+Follow-up decision: —

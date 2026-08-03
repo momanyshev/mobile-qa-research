@@ -1,0 +1,41 @@
+#1 2026-07-30T14:19:33.279Z sim-use devices --json --all
+    → exit=0 95ms
+    | {"data":{"devices":[{"deviceId":"080A36AF-2148-4EBF-89A8-537674A7BD60","name":"iPhone 11","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"DB216E5C-F646-488E-9537-2D8C390A2B8F","name":"iPhone 16 iOS 26.1","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"496803A0-B207-482B-8405-DC49E83CAA4D","name":"iPhone 17","platform":"ios","runtime":"iOS 26.4","state":"Shutdown"},{"deviceId":"A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37","name":"iPhone 17 Pro Max","platform":"ios","runtime":"iOS 26.5","state":"Booted"}]},"ok":true}
+#2 2026-07-30T14:19:41.272Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 469ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#3 2026-07-30T14:20:37.720Z sim-use swipe --from 425,780 --to 425,300 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 927ms selector=coordinate
+    | ✓ Swipe (425,780) → (425,300) completed successfully
+#4 2026-07-30T14:20:45.606Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 401ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#5 2026-07-30T14:21:08.925Z sim-use ui --json --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 441ms
+    | {"advisory":{"kind":"orientation_calibration_fallback","message":"Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates."},"data":{"appLabel":"QA Lab — Трекер дефектов","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"depth":1,"frame":{"height":46,"width":368,"x":36,"y":-24},"label":"Поиск","region":{"kind":"Top"},"role":"TextField","states":["value=\"Название или описание\""],"uniqueId":"issue-search-input","value":"Название или описание"},{"aliases":{"at":2},"depth":1,"frame":{"height":48,"width":181,"x":35,"y":41},"label":"Все статусы","region":{"kind":"Top"},"role":"Button","states":[]},{"aliases":{"at":3},"depth":1,"frame":{"height":48,"width":181,"x":224,"y":41},"label":"Все значения","region":{"kind":"Top"},"role":"Button","states":[]},{"aliases":{"at":4,"list":{"index":2,"scope":3}},"depth":1,"frame":{"height":48,"width":370,"x":35,"y":97},"label":"Сбросить фильтры","region":{"kind":"Content"},"role":"Button","states":["disabled"]},{"aliases":{"at":5},"depth":1,"frame":{"height":16,"width":134,"x":18,"y":184},"label":"СПИСОК","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":6},"depth":1,"frame":{"height":24,"width":61,"x":351,"y":197},"label":"1 дефект","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":7},"depth":1,"frame":{"height":34,"width":134,"x":18,"y":200},"label":"Дефекты","region":{"kind":"Content"},"role":"Heading","states":[]},{"aliases":{"at":8},"depth":1,"frame":{"height":26,"width":26,"x":28,"y":221},"label":"gearshape.fill","region":{"kind":"Content"},"role":"Image","states":[],"uniqueId":"gearshape.fill"},{"aliases":{"at":9},"depth":1,"frame":{"height":18,"width":106,"x":295,"y":273},"label":"Обновлено: 30.07.2026, 17:18","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":10},"depth":1,"frame":{"height":28,"width":72,"x":43,"y":273},"label":"Критичность: Средняя","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"issue-card-severity-9fec4a89-b920-4d6a-92bb-3d4595aa9071"},{"aliases":{"at":11},"depth":1,"frame":{"height":52,"width":358,"x":43,"y":319},"label":"Фильтр статуса сбрасывается 224895","region":{"kind":"Content"},"role":"Heading","states":[]},{"aliases":{"at":12},"depth":1,"frame":{"height":50,"width":358,"x":43,"y":379},"label":"После возврата из карточки выбранный фильтр статуса теряется","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":13},"depth":1,"frame":{"height":18,"width":358,"x":43,"y":447},"label":"Статус","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":14},"depth":1,"frame":{"height":291,"width":338,"x":53,"y":437},"label":"0","region":{"kind":"Content"},"role":"Slider","states":[],"value":"0"},{"aliases":{"at":15},"depth":1,"frame":{"height":18,"width":358,"x":43,"y":699},"label":"Доступный переход — «В работе».","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":16},"depth":1,"frame":{"height":64,"width":114,"x":43,"y":752},"label":"Открыть дефект «Фильтр статуса сбрасывается 224895»","region":{"kind":"Content"},"role":"Button","states":[],"uniqueId":"issue-card-open-9fec4a89-b920-4d6a-92bb-3d4595aa9071"},{"aliases":{"at":17},"depth":1,"frame":{"height":64,"width":114,"x":165,"y":752},"label":"Редактировать дефект «Фильтр статуса сбрасывается 224895»","region":{"kind":"Content"},"role":"Button","states":[],"uniqueId":"issue-card-edit-9fec4a89-b920-4d6a-92bb-3d4595aa9071"},{"aliases":{"at":18},"depth":1,"frame":{"height":64,"width":114,"x":287,"y":752},"label":"Удалить дефект «Фильтр статуса сбрасывается 224895»","region":{"kind":"Content"},"role":"Button","states":[],"uniqueId":"issue-card-delete-9fec4a89-b920-4d6a-92bb-3d4595aa9071"},{"aliases":{"at":19},"depth":1,"frame":{"height":43,"width":220,"x":0,"y":879},"label":"Дефекты","region":{"kind":"Bottom"},"
+    | …[обрезано 14567 символов]
+#6 2026-07-30T14:21:33.085Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card1.png
+    → exit=0 224ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card1.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card1.png
+#7 2026-07-30T14:21:58.124Z sim-use --help
+    → exit=0 12ms
+    | OVERVIEW: A utility to interact with iOS Simulators and Android
+    | emulators/devices and extract accessibility information.
+    | USAGE: sim-use <subcommand>
+#8 2026-07-30T14:22:13.064Z sim-use tap --x 222 --y 626 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 396ms selector=coordinate
+    | ✓ Tap at (222.0, 626.0) completed successfully
+#9 2026-07-30T14:22:22.536Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 431ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#10 2026-07-30T14:22:23.018Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card2.png
+    → exit=0 158ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card2.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/card2.png

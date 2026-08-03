@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-ios-20260730T141230Z
+Case ID: M1-status-guided
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: e64f33c
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@e26f17f0a664 | метка: серия повторяемости 14.E
+Workspace / test namespace: qalab: Workspace eae860df-0ee3-458a-a073-16f0e518d3a0
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается d885a8». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-07-30T14:12:32.108Z → 2026-07-30T14:18:13.144Z
+Tool calls: 9 (действий 2, по координатам 2, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 1 → runs/M1-status-guided-ios-20260730T141230Z/api-before.json
+API after: 1 → runs/M1-status-guided-ios-20260730T141230Z/api-after.json
+UI postcondition: финальный outline снят (runs/M1-status-guided-ios-20260730T141230Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: Серия повторяемости, прогон 3/5. Цель достигнута, свайп и тап — по одной попытке. Сверился с backend самостоятельно. Честно оговорил границу собственной проверки: снимок API «до» делает harness у оператора, поэтому вывод «изменился только статус» опирается на сверку с дотапным экраном, а не на диффы двух API-снимков; косвенно подкрепил тем, что updatedAt до действия был равен createdAt. Отдельно отметил, что габариты колеса (338 из 358pt, ~94%) выше заявленных в контракте ~77%.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (6.9 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —
