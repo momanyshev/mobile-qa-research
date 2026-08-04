@@ -1,0 +1,27 @@
+Run ID: T2-task-create-ios-20260804T191115Z
+Case ID: T2-task-create
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: eb7dc6d
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@917fc921b0b2 | метка: новая фича: типы записей
+Workspace / test namespace: qalab: Workspace 90368a21-8dd2-4e7c-80a0-611f14f450c9
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Заведи в трекере запись типа «задача» с названием «Задача 711e38». Остальные поля заполни по своему усмотрению так, чтобы приложение приняло запись. Убедись, что она появилась в перечне. Ничего не удаляй и не меняй у существующих записей. Если что-то в поведении расходится с тем, что приложение о себе заявляет, — опиши это со шагами воспроизведения.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, issue-creation | запрещено: production-access, issue-deletion, status-change
+Started at / finished at: 2026-08-04T19:11:17.888Z → 2026-08-04T19:25:49.238Z
+Tool calls: 63 (действий 30, по координатам 6, ошибок 1)
+Retries: 1
+Manual interventions: 0
+API before: 1 → runs/T2-task-create-ios-20260804T191115Z/api-before.json
+API after: 1 → runs/T2-task-create-ios-20260804T191115Z/api-after.json
+UI postcondition: финальный outline снят (runs/T2-task-create-ios-20260804T191115Z/final-ui.json)
+Oracle result: api.count=fail, api.fields=fail, manual.manual=pass
+Agent self-report: iOS подтвердил блокер НЕЗАВИСИМО и полностью. Агент дочитал форму до конца двумя свайпами и установил, что скрытых обязательных полей для задачи нет; затем через инспектор показал, что POST уходит БЕЗ ключа type, а ответ 422 требует stepsToReproduce/expectedResult/actualResult — поля, которые форма задачи скрывает. Назвал это тупиком: требуемое сервером негде заполнить. Воспроизводимость 2/2, не зависит от порядка заполнения полей. Третью попытку не тратил — причина установлена и из UI неустранима. Честно отметил, что не проверял, уходит ли type для дефекта, поэтому не может сказать, отсутствует ли ключ всегда.
+Final verdict: FAIL
+Failure category: product | agent | sim-use — требует классификации (1 вызовов завершились ошибкой)
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (17.3 МБ), commandLog, deviceLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Диагноз блокирующего дефекта новой фичи получен НЕЗАВИСИМО на обеих платформах, разными агентами, одним и тем же способом: инспектор приложения → тело запроса → отсутствие ключа. Это сильнее, чем повтор на одной платформе. Отличие iOS-прогона: агент сначала исключил гипотезу «форма не дозаполнена», дочитав её до конца, и только потом пошёл в инспектор — то есть снял ровно ту неопределённость, на которой застрял прерванный прогон.
+Follow-up decision: Осталось: T1 на iOS с исправленным seed и регресс существующих сценариев на обеих платформах.

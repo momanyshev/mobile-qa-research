@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-ios-20260804T194733Z
+Case ID: M1-status-guided
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: eb7dc6d
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@917fc921b0b2 | метка: регресс после фичи типов
+Workspace / test namespace: qalab: Workspace b840eb36-7fcf-4ce9-a95e-9b65c34073bc
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается 6df071». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-08-04T19:47:35.637Z → 2026-08-04T19:53:18.488Z
+Tool calls: 14 (действий 3, по координатам 3, ошибок 0)
+Retries: 1
+Manual interventions: 0
+API before: 1 → runs/M1-status-guided-ios-20260804T194733Z/api-before.json
+API after: 1 → runs/M1-status-guided-ios-20260804T194733Z/api-after.json
+UI postcondition: финальный outline снят (runs/M1-status-guided-ios-20260804T194733Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: РЕГРЕСС iOS: смена статуса в карточке списка работает после введения типов записей. Цель достигнута, тап с первой попытки, тем же способом, что в базовой серии — координата строки колеса со скриншота после двух совпадающих ui. Прокрутка потребовала двух попыток: свайп от x=25 вернул ok:true без эффекта (точка вне скролл-вью), сработал x=414 — то есть коридор R-47 сместился после перевёрстки экрана под новую фичу, и его границы снова пришлось нащупывать. Побочных изменений в UI нет: тип, критичность, заголовок, описание, счётчик и фильтры не тронуты.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (7.6 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Регресс подтвердил, что базовый сценарий смены статуса переживает добавление типов записей: oracle onlyChanged дал ровно status. Но безопасный коридор для прокрутки СМЕСТИЛСЯ — в базовой серии работал левый край x=25, теперь он вне скролл-вью и работает правый x=414. Это цена перевёрстки: правило «прокручивай по краю» остаётся верным, а конкретные координаты живут ровно до следующего изменения экрана и в контракт их зашивать нельзя.
+Follow-up decision: Регресс на Android: требует переключения Metro обратно на android:local.

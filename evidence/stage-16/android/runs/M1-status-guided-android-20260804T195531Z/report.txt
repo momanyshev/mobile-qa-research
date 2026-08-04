@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-android-20260804T195531Z
+Case ID: M1-status-guided
+Platform: android
+Device / OS: emulator-5554 (sdk_gphone64_arm64, Android)
+App commit: eb7dc6d
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@917fc921b0b2 | метка: регресс после фичи типов
+Workspace / test namespace: qalab: Workspace 643d5da1-96ad-4b75-8499-602f255f7771
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается d29225». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-08-04T19:55:32.901Z → 2026-08-04T20:00:02.931Z
+Tool calls: 13 (действий 3, по координатам 1, ошибок 0)
+Retries: 0
+Manual interventions: 0
+API before: 1 → runs/M1-status-guided-android-20260804T195531Z/api-before.json
+API after: 1 → runs/M1-status-guided-android-20260804T195531Z/api-after.json
+UI postcondition: финальный outline снят (runs/M1-status-guided-android-20260804T195531Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: РЕГРЕСС Android: смена статуса в карточке работает после введения типов записей. По одной попытке на каждое действие, ретраев ноль. Существенное отличие от iOS: на Android контрол статуса — Spinner со СТАБИЛЬНЫМ id, поэтому агент открыл его селектором и выбрал значение по точному label; координаты не понадобились вовсе. Побочных изменений нет: тип, критичность, заголовок, описание, счётчик и фильтры не тронуты. Отдельно заявил наблюдение: после смены статуса в дереве появляется контейнер карточки с accessibility-именем busy, и оно НЕ сбрасывается — держится в трёх чтениях подряд, растянутых на минуты, при визуально обычной карточке. Классифицировал как accessibility, не product, потому что мутация функционально прошла.
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (6.2 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Регресс подтверждён на обеих платформах: onlyChanged дал ровно status и там, и там. Но цена различается качественно. На Android контрол статуса — Spinner со стабильным id и опциями-элементами: селекторный путь, ноль координат, 16 вызовов. На iOS тот же контрол — непрозрачное колесо, отдаваемое одним Slider: обязателен скриншот и координатный тап, 19 вызовов плюс промах прокрутки. Это то же различие, что фиксировалось в hard-limits (ограничение 4), и после перевёрстки под типы записей оно не исчезло. Второе: застрявшее accessibility-имя busy заявлено независимо на Android дважды — в T2 у кнопки отправки и здесь у контейнера карточки. Похоже на один системный дефект, а не на два разных.
+Follow-up decision: Свести сравнение с ручным прогоном, когда пользователь предоставит свою фактуру.

@@ -1,0 +1,401 @@
+# последние 400 строк системного журнала
+2026-08-04 22:25:40.152 A  gamecontrollerd[59612:381286] (GameController) Incoming Driver Connection
+2026-08-04 22:25:40.152 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:40.153 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:40.153 A  gamecontrollerd[59612:384430] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:40.153 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:40.153 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:40.225 Df locationd[52445:38414d] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807564359.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807564359.0
+2026-08-04 22:25:40.226 F  locationd[52445:38414d] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 22:25:40.226 A  locationd[52445:38414d] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 22:25:40.226 Df locationd[52445:383cb5] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 22:25:40.227 Df locationd[52445:38414d] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807564340.142
+2026-08-04 22:25:40.227 Df locationd[52445:3886fb] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 22:25:40.228 Df locationd[52445:38667d] [com.apple.locationd.Utility:QA] os_transaction created: (0x1702df9d8) wifi1Event
+2026-08-04 22:25:40.228 Df locationd[52445:38667d] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 22:25:40.228 Df locationd[52445:38667d] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x1702df9d8) wifi1Event
+2026-08-04 22:25:40.589 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored:] service state: spawning
+2026-08-04 22:25:40.589 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored:] launching: xpc event
+2026-08-04 22:25:40.591 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored [65775]:] xpcproxy_sim spawned with pid 65775
+2026-08-04 22:25:40.591 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored [65775]:] internal event: SPAWNED, code = 0
+2026-08-04 22:25:40.591 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored [65775]:] service state: xpcproxy
+2026-08-04 22:25:40.591 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored [65775]:] deferred event: domain spawn response: 0
+2026-08-04 22:25:40.591 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored [65775]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 22:25:40.676 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:40.676 A  gamecontrollerd[59612:384430] Incoming Connection
+2026-08-04 22:25:40.676 A  gamecontrollerd[59612:384430] (GameController) Incoming Driver Connection
+2026-08-04 22:25:40.677 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:40.677 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:40.677 A  gamecontrollerd[59612:384430] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:40.677 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:40.677 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:40.688 Df launchd_sim[52416:386315] [user/501/com.apple.facetimemessagestored [65775]:] service state: running
+2026-08-04 22:25:40.688 Df launchd_sim[52416:386315] [user/501/com.apple.facetimemessagestored [65775]:] internal event: INIT, code = 0
+2026-08-04 22:25:40.688 Df launchd_sim[52416:386315] [user/501/com.apple.facetimemessagestored [65775]:] Successfully spawned facetimemessagestored[65775] because xpc event
+2026-08-04 22:25:40.762 Df launchd_sim[52416:386315] [pid/65775 [facetimemessage]:] uncorking exec source upfront
+2026-08-04 22:25:40.762 Df launchd_sim[52416:386315] [pid/65775 [facetimemessage]:] created
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored [65775]:] exited due to exit(0), ran for 175ms
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored [65775]:] service state: exited
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored [65775]:] internal event: EXITED, code = 0
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [user/501:] service inactive: com.apple.facetimemessagestored
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored [65775]:] service state: not running
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored:] Service only ran for 0 seconds. Pushing respawn out by 10 seconds.
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored:] internal event: WILL_SPAWN, code = 0
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored:] service state: spawn scheduled
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [user/501/com.apple.facetimemessagestored:] service spawn deferred by 10 seconds due to throttle
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [pid/65775 [facetimemessage]:] shutting down
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [pid/65775 [facetimemessage]:] cleaning up
+2026-08-04 22:25:40.767 Df launchd_sim[52416:38634d] [system:] removing child: pid/65775
+2026-08-04 22:25:41.201 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:41.201 A  gamecontrollerd[59612:384430] Incoming Connection
+2026-08-04 22:25:41.202 A  gamecontrollerd[59612:384430] (GameController) Incoming Driver Connection
+2026-08-04 22:25:41.202 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:41.203 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:41.203 A  gamecontrollerd[59612:381286] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:41.203 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:41.203 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:41.231 Df locationd[52445:38667d] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807564360.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807564360.0
+2026-08-04 22:25:41.232 F  locationd[52445:38667d] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 22:25:41.232 A  locationd[52445:38667d] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 22:25:41.232 Df locationd[52445:383cb5] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 22:25:41.232 Df locationd[52445:38667d] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807564341.148
+2026-08-04 22:25:41.232 Df locationd[52445:383cb5] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 22:25:41.233 Df locationd[52445:38667d] [com.apple.locationd.Utility:QA] os_transaction created: (0x1702df9d8) wifi1Event
+2026-08-04 22:25:41.233 Df locationd[52445:38667d] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 22:25:41.233 Df locationd[52445:38667d] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x1702df9d8) wifi1Event
+2026-08-04 22:25:41.726 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:41.727 A  gamecontrollerd[59612:384430] Incoming Connection
+2026-08-04 22:25:41.728 A  gamecontrollerd[59612:384430] (GameController) Incoming Driver Connection
+2026-08-04 22:25:41.728 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:41.729 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:41.729 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:41.729 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:41.729 A  gamecontrollerd[59612:381286] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:42.241 Df locationd[52445:38667d] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807564361.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807564361.0
+2026-08-04 22:25:42.242 F  locationd[52445:38667d] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 22:25:42.242 A  locationd[52445:38667d] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 22:25:42.242 Df locationd[52445:3886fb] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 22:25:42.243 Df locationd[52445:38667d] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807564342.158
+2026-08-04 22:25:42.243 Df locationd[52445:38667d] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 22:25:42.244 Df locationd[52445:383cb5] [com.apple.locationd.Utility:QA] os_transaction created: (0x16ff979d8) wifi1Event
+2026-08-04 22:25:42.244 Df locationd[52445:383cb5] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 22:25:42.244 Df locationd[52445:383cb5] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x16ff979d8) wifi1Event
+2026-08-04 22:25:42.251 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:42.252 A  gamecontrollerd[59612:384430] Incoming Connection
+2026-08-04 22:25:42.252 A  gamecontrollerd[59612:384430] (GameController) Incoming Driver Connection
+2026-08-04 22:25:42.252 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:42.253 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:42.253 A  gamecontrollerd[59612:384430] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:42.253 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:42.253 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:42.776 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:42.777 A  gamecontrollerd[59612:381286] Incoming Connection
+2026-08-04 22:25:42.777 A  gamecontrollerd[59612:381286] (GameController) Incoming Driver Connection
+2026-08-04 22:25:42.777 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:42.778 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:42.778 A  gamecontrollerd[59612:384430] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:42.778 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:42.778 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:42.909 Df launchd_sim[52416:386315] [user/501/com.apple.mlhostd:] service state: spawning
+2026-08-04 22:25:42.909 Df launchd_sim[52416:386315] [user/501/com.apple.mlhostd:] launching: xpc event
+2026-08-04 22:25:42.910 Df launchd_sim[52416:386315] [user/501/com.apple.mlhostd [65776]:] xpcproxy_sim spawned with pid 65776
+2026-08-04 22:25:42.910 Df launchd_sim[52416:386315] [user/501/com.apple.mlhostd [65776]:] internal event: SPAWNED, code = 0
+2026-08-04 22:25:42.910 Df launchd_sim[52416:386315] [user/501/com.apple.mlhostd [65776]:] service state: xpcproxy
+2026-08-04 22:25:42.910 Df launchd_sim[52416:386315] [user/501/com.apple.mlhostd [65776]:] deferred event: domain spawn response: 0
+2026-08-04 22:25:42.910 Df launchd_sim[52416:386315] [user/501/com.apple.mlhostd [65776]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 22:25:42.910 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond:] service state: spawning
+2026-08-04 22:25:42.910 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond:] launching: xpc event
+2026-08-04 22:25:42.912 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond [65777]:] xpcproxy_sim spawned with pid 65777
+2026-08-04 22:25:42.912 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond [65777]:] internal event: SPAWNED, code = 0
+2026-08-04 22:25:42.912 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond [65777]:] service state: xpcproxy
+2026-08-04 22:25:42.912 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond [65777]:] deferred event: domain spawn response: 0
+2026-08-04 22:25:42.912 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond [65777]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 22:25:43.000 Df launchd_sim[52416:38634d] [user/501/com.apple.mlhostd [65776]:] service state: running
+2026-08-04 22:25:43.000 Df launchd_sim[52416:38634d] [user/501/com.apple.mlhostd [65776]:] internal event: INIT, code = 0
+2026-08-04 22:25:43.000 Df launchd_sim[52416:38634d] [user/501/com.apple.mlhostd [65776]:] Successfully spawned mlhostd[65776] because xpc event
+2026-08-04 22:25:43.000 Df launchd_sim[52416:38634d] [user/501/com.apple.managedappdistributiond [65777]:] service state: running
+2026-08-04 22:25:43.000 Df launchd_sim[52416:38634d] [user/501/com.apple.managedappdistributiond [65777]:] internal event: INIT, code = 0
+2026-08-04 22:25:43.000 Df launchd_sim[52416:38634d] [user/501/com.apple.managedappdistributiond [65777]:] Successfully spawned managedappdistributiond[65777] because xpc event
+2026-08-04 22:25:43.066 Df launchd_sim[52416:386315] [pid/65776 [mlhostd]:] uncorking exec source upfront
+2026-08-04 22:25:43.066 Df launchd_sim[52416:386315] [pid/65776 [mlhostd]:] created
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [user/501/com.apple.mlhostd [65776]:] exited due to exit(0), ran for 159ms
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [user/501/com.apple.mlhostd [65776]:] service state: exited
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [user/501/com.apple.mlhostd [65776]:] internal event: EXITED, code = 0
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [user/501:] service inactive: com.apple.mlhostd
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [user/501/com.apple.mlhostd [65776]:] service state: not running
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [pid/65776 [mlhostd]:] shutting down
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [pid/65776 [mlhostd]:] cleaning up
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [user/501/com.apple.mlhostd:] Service only ran for 0 seconds. Pushing respawn out by 10 seconds.
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [user/501/com.apple.mlhostd:] internal event: WILL_SPAWN, code = 0
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [user/501/com.apple.mlhostd:] service state: spawn scheduled
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [user/501/com.apple.mlhostd:] service spawn deferred by 10 seconds due to throttle
+2026-08-04 22:25:43.071 Df launchd_sim[52416:38634d] [system:] removing child: pid/65776
+2026-08-04 22:25:43.075 Df launchd_sim[52416:38631b] [pid/65777 [managedappdistr]:] uncorking exec source upfront
+2026-08-04 22:25:43.075 Df launchd_sim[52416:38631b] [pid/65777 [managedappdistr]:] created
+2026-08-04 22:25:43.079 E  managedappdistributiond[65777:38b55c] [com.apple.ManagedAppDistribution:Daemon] Simulator is not supported
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond [65777]:] exited due to exit(0), ran for 169ms
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond [65777]:] service state: exited
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond [65777]:] internal event: EXITED, code = 0
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [user/501:] service inactive: com.apple.managedappdistributiond
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond [65777]:] service state: not running
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [pid/65777 [managedappdistr]:] shutting down
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [pid/65777 [managedappdistr]:] cleaning up
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond:] Service only ran for 0 seconds. Pushing respawn out by 10 seconds.
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond:] internal event: WILL_SPAWN, code = 0
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond:] service state: spawn scheduled
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [user/501/com.apple.managedappdistributiond:] service spawn deferred by 10 seconds due to throttle
+2026-08-04 22:25:43.082 Df launchd_sim[52416:386315] [system:] removing child: pid/65777
+2026-08-04 22:25:43.244 Df locationd[52445:3886fb] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807564362.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807564362.0
+2026-08-04 22:25:43.245 F  locationd[52445:3886fb] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 22:25:43.245 A  locationd[52445:3886fb] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 22:25:43.245 Df locationd[52445:38667d] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 22:25:43.245 Df locationd[52445:3886fb] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807564343.161
+2026-08-04 22:25:43.245 Df locationd[52445:3886fb] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 22:25:43.246 Df locationd[52445:383cb5] [com.apple.locationd.Utility:QA] os_transaction created: (0x16ff979d8) wifi1Event
+2026-08-04 22:25:43.246 Df locationd[52445:383cb5] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 22:25:43.246 Df locationd[52445:383cb5] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x16ff979d8) wifi1Event
+2026-08-04 22:25:43.301 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:43.302 A  gamecontrollerd[59612:384430] Incoming Connection
+2026-08-04 22:25:43.302 A  gamecontrollerd[59612:384430] (GameController) Incoming Driver Connection
+2026-08-04 22:25:43.303 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:43.303 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:43.304 A  gamecontrollerd[59612:381286] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:43.304 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:43.304 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:43.826 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:43.827 A  gamecontrollerd[59612:381286] Incoming Connection
+2026-08-04 22:25:43.828 A  gamecontrollerd[59612:381286] (GameController) Incoming Driver Connection
+2026-08-04 22:25:43.828 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:43.828 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:43.828 A  gamecontrollerd[59612:384430] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:43.828 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:43.829 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:44.247 Df locationd[52445:383cb5] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807564363.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807564363.0
+2026-08-04 22:25:44.247 F  locationd[52445:38667d] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 22:25:44.247 A  locationd[52445:38667d] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 22:25:44.247 Df locationd[52445:383cb5] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 22:25:44.247 Df locationd[52445:38667d] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807564344.163
+2026-08-04 22:25:44.247 Df locationd[52445:3886fb] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 22:25:44.248 Df locationd[52445:3886fb] [com.apple.locationd.Utility:QA] os_transaction created: (0x1701c79d8) wifi1Event
+2026-08-04 22:25:44.248 Df locationd[52445:3886fb] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 22:25:44.248 Df locationd[52445:3886fb] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x1701c79d8) wifi1Event
+2026-08-04 22:25:44.353 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:44.353 A  gamecontrollerd[59612:384430] Incoming Connection
+2026-08-04 22:25:44.354 A  gamecontrollerd[59612:384430] (GameController) Incoming Driver Connection
+2026-08-04 22:25:44.354 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:44.355 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:44.355 A  gamecontrollerd[59612:381286] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:44.355 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:44.355 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:44.594 Df mediaanalysisd[52851:38b4ee] (MediaAnalysis) [CoreAnalyticManager] Session event com.apple.mediaanalysisd.DatabaseMigrationSession not available; skip fetching
+2026-08-04 22:25:44.878 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:44.878 A  gamecontrollerd[59612:384430] Incoming Connection
+2026-08-04 22:25:44.879 A  gamecontrollerd[59612:384430] (GameController) Incoming Driver Connection
+2026-08-04 22:25:44.879 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:44.879 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:44.879 A  gamecontrollerd[59612:381286] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:44.880 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:44.880 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:45.253 Df locationd[52445:383cb5] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807564364.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807564364.0
+2026-08-04 22:25:45.253 F  locationd[52445:383cb5] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 22:25:45.253 A  locationd[52445:383cb5] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 22:25:45.253 Df locationd[52445:3886fb] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 22:25:45.253 Df locationd[52445:383cb5] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807564345.169
+2026-08-04 22:25:45.253 Df locationd[52445:38667d] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 22:25:45.254 Df locationd[52445:38414d] [com.apple.locationd.Utility:QA] os_transaction created: (0x17013b9d8) wifi1Event
+2026-08-04 22:25:45.254 Df locationd[52445:38414d] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 22:25:45.254 Df locationd[52445:38414d] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x17013b9d8) wifi1Event
+2026-08-04 22:25:45.330 E  launchd_sim[52416:38634d] [fixup-mobile-tmp:] launchd has not fixed mobile/tmp (service)
+2026-08-04 22:25:45.330 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl:] internal event: WILL_SPAWN, code = 0
+2026-08-04 22:25:45.330 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl:] service state: spawn scheduled
+2026-08-04 22:25:45.330 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl:] service state: spawning
+2026-08-04 22:25:45.330 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl:] launching: one-shot
+2026-08-04 22:25:45.330 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl [65787]:] xpcproxy_sim spawned with pid 65787
+2026-08-04 22:25:45.330 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl [65787]:] internal event: SPAWNED, code = 0
+2026-08-04 22:25:45.330 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl [65787]:] service state: xpcproxy
+2026-08-04 22:25:45.330 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl [65787]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 22:25:45.404 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:45.404 A  gamecontrollerd[59612:384430] Incoming Connection
+2026-08-04 22:25:45.404 Df mediaanalysisd[52851:38b57d] (MediaAnalysis) [CoreAnalyticManager] Session event com.apple.mediaanalysisd.DatabaseMigrationSession not available; skip fetching
+2026-08-04 22:25:45.404 A  gamecontrollerd[59612:384430] (GameController) Incoming Driver Connection
+2026-08-04 22:25:45.404 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:45.405 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:45.405 A  gamecontrollerd[59612:381286] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:45.405 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:45.405 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:45.432 Df launchd_sim[52416:386315] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl [65787]:] service state: running
+2026-08-04 22:25:45.432 Df launchd_sim[52416:386315] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl [65787]:] internal event: INIT, code = 0
+2026-08-04 22:25:45.432 Df launchd_sim[52416:386315] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl [65787]:] Successfully spawned launchctl[65787] because one-shot
+2026-08-04 22:25:45.497 Df launchctl[65787:38b5b7] [com.apple.xpc.launchctl:All] launchctl list: launchctl list
+2026-08-04 22:25:45.499 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl [65787]:] exited due to exit(0), ran for 167ms
+2026-08-04 22:25:45.499 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl [65787]:] service state: exited
+2026-08-04 22:25:45.499 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl [65787]:] internal event: EXITED, code = 0
+2026-08-04 22:25:45.499 Df launchd_sim[52416:386315] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl [65787]:] service state: not running
+2026-08-04 22:25:45.499 Df launchd_sim[52416:386315] [user/501:] service inactive: com.apple.xpc.launchd.oneshot.0x100000d2.launchctl
+2026-08-04 22:25:45.499 Df launchd_sim[52416:386315] [user/501:] removing service: com.apple.xpc.launchd.oneshot.0x100000d2.launchctl
+2026-08-04 22:25:45.499 Df launchd_sim[52416:386315] [user/501/com.apple.xpc.launchd.oneshot.0x100000d2.launchctl:] internal event: PETRIFIED, code = 0
+2026-08-04 22:25:45.887 Df apsd[52464:38b1ca] [com.apple.PersistentConnection:timer] SimpleTimer <PCSimpleTimer: 0x1018b2260> has fired
+2026-08-04 22:25:45.888 Df apsd[52464:38b1ca] [com.apple.PersistentConnection:timer] Invalidating simple timer <PCSimpleTimer: 0x1018b2260>
+2026-08-04 22:25:45.888 Df apsd[52464:38b5d3] [com.apple.PersistentConnection:timer] Disabling power monitoring for <PCSimpleTimer: 0x1018b2260> - 2 timers
+2026-08-04 22:25:45.926 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:45.926 A  gamecontrollerd[59612:381286] Incoming Connection
+2026-08-04 22:25:45.927 A  gamecontrollerd[59612:381286] (GameController) Incoming Driver Connection
+2026-08-04 22:25:45.927 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:45.928 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:45.928 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:45.928 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:45.928 A  gamecontrollerd[59612:384430] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:46.126 Df launchd_sim[52416:386315] [user/501/com.apple.proactiveeventtrackerd:] service state: spawning
+2026-08-04 22:25:46.126 Df launchd_sim[52416:386315] [user/501/com.apple.proactiveeventtrackerd:] launching: xpc event
+2026-08-04 22:25:46.127 Df launchd_sim[52416:386315] [user/501/com.apple.proactiveeventtrackerd [65795]:] xpcproxy_sim spawned with pid 65795
+2026-08-04 22:25:46.127 Df launchd_sim[52416:386315] [user/501/com.apple.proactiveeventtrackerd [65795]:] internal event: SPAWNED, code = 0
+2026-08-04 22:25:46.127 Df launchd_sim[52416:386315] [user/501/com.apple.proactiveeventtrackerd [65795]:] service state: xpcproxy
+2026-08-04 22:25:46.127 Df launchd_sim[52416:386315] [user/501/com.apple.proactiveeventtrackerd [65795]:] deferred event: domain spawn response: 0
+2026-08-04 22:25:46.127 Df launchd_sim[52416:386315] [user/501/com.apple.proactiveeventtrackerd [65795]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 22:25:46.223 Df launchd_sim[52416:38634d] [user/501/com.apple.proactiveeventtrackerd [65795]:] service state: running
+2026-08-04 22:25:46.223 Df launchd_sim[52416:38634d] [user/501/com.apple.proactiveeventtrackerd [65795]:] internal event: INIT, code = 0
+2026-08-04 22:25:46.223 Df launchd_sim[52416:38634d] [user/501/com.apple.proactiveeventtrackerd [65795]:] Successfully spawned proactiveeventtrackerd[65795] because xpc event
+2026-08-04 22:25:46.257 Df locationd[52445:38414d] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807564365.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807564365.0
+2026-08-04 22:25:46.257 F  locationd[52445:38414d] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 22:25:46.257 A  locationd[52445:38414d] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 22:25:46.257 Df locationd[52445:3886fb] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 22:25:46.257 Df locationd[52445:38414d] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807564346.174
+2026-08-04 22:25:46.257 Df locationd[52445:383cb5] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 22:25:46.258 Df locationd[52445:3886fb] [com.apple.locationd.Utility:QA] os_transaction created: (0x1701c79d8) wifi1Event
+2026-08-04 22:25:46.258 Df locationd[52445:3886fb] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 22:25:46.258 Df locationd[52445:3886fb] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x1701c79d8) wifi1Event
+2026-08-04 22:25:46.295 Df launchd_sim[52416:386315] [pid/65795 [proactiveeventt]:] uncorking exec source upfront
+2026-08-04 22:25:46.295 Df launchd_sim[52416:386315] [pid/65795 [proactiveeventt]:] created
+2026-08-04 22:25:46.298 Df proactiveeventtrackerd[65795:38b5d8] PET daemon has launched
+2026-08-04 22:25:46.299 Df proactiveeventtrackerd[65795:38b5d8] [com.apple.libcoreservices:] _dirhelper_update_tmpdir: old=/Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/tmp/, new=/Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/tmp/com.apple.proactiveeventtrackerd/
+2026-08-04 22:25:46.305 Df proactiveeventtrackerd[65795:38b5d8] [com.apple.xpc:connection] [0x1055d84c0] activating connection: mach=true listener=false peer=false name=com.apple.cfprefsd.daemon
+2026-08-04 22:25:46.305 Df cfprefsd[52462:38b516] [com.apple.xpc:connection] [0x101360180] activating connection: mach=false listener=false peer=true name=com.apple.cfprefsd.daemon.peer[65795].0x101360180
+2026-08-04 22:25:46.314 E  proactiveeventtrackerd[65795:38b5d8] (ProactiveEventTracker) User passwd entry or home directory is not found
+2026-08-04 22:25:46.314 Df proactiveeventtrackerd[65795:38b5d8] [com.apple.CoreAnalytics:client] No XPC connection in Simulator
+2026-08-04 22:25:46.314 E  proactiveeventtrackerd[65795:38b5d8] (ProactiveEventTracker) Failed to initialize PETEventTracker2.
+2026-08-04 22:25:46.314 F  proactiveeventtrackerd[65795:38b5d8] Failed to initialize the tracker
+2026-08-04 22:25:46.314 A  proactiveeventtrackerd[65795:38b5d8] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 22:25:46.314 E  proactiveeventtrackerd[65795:38b5d8] Failed to initialize PET service. Exiting...
+2026-08-04 22:25:46.314 Df proactiveeventtrackerd[65795:38b5d8] [com.apple.CoreAnalytics:client] Entering exit handler.
+2026-08-04 22:25:46.314 Df proactiveeventtrackerd[65795:38b5d8] [com.apple.CoreAnalytics:client] Exiting exit handler.
+2026-08-04 22:25:46.314 Df cfprefsd[52462:38b516] [com.apple.xpc:connection] [0x101360180] invalidated because the client process (pid 65795) either cancelled the connection or exited
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [user/501/com.apple.proactiveeventtrackerd [65795]:] exited due to exit(1), ran for 187ms
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [user/501/com.apple.proactiveeventtrackerd [65795]:] service state: exited
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [user/501/com.apple.proactiveeventtrackerd [65795]:] internal event: EXITED, code = 0
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [user/501:] service inactive: com.apple.proactiveeventtrackerd
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [user/501/com.apple.proactiveeventtrackerd [65795]:] service state: not running
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [pid/65795 [proactiveeventt]:] shutting down
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [pid/65795 [proactiveeventt]:] cleaning up
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [user/501/com.apple.proactiveeventtrackerd:] Service only ran for 0 seconds. Pushing respawn out by 10 seconds.
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [user/501/com.apple.proactiveeventtrackerd:] internal event: WILL_SPAWN, code = 0
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [user/501/com.apple.proactiveeventtrackerd:] service state: spawn scheduled
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [user/501/com.apple.proactiveeventtrackerd:] service spawn deferred by 10 seconds due to throttle
+2026-08-04 22:25:46.316 Df launchd_sim[52416:38634d] [system:] removing child: pid/65795
+2026-08-04 22:25:46.451 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:46.451 A  gamecontrollerd[59612:381286] Incoming Connection
+2026-08-04 22:25:46.451 A  gamecontrollerd[59612:381286] (GameController) Incoming Driver Connection
+2026-08-04 22:25:46.452 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:46.452 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:46.452 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:46.452 A  gamecontrollerd[59612:384430] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:46.452 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:46.976 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:46.976 A  gamecontrollerd[59612:381286] Incoming Connection
+2026-08-04 22:25:46.977 A  gamecontrollerd[59612:381286] (GameController) Incoming Driver Connection
+2026-08-04 22:25:46.977 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:46.977 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:46.978 A  gamecontrollerd[59612:384430] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:46.978 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:46.978 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:47.006 Df launchd_sim[52416:38631b] [user/501/com.apple.pairedsyncd:] service state: spawning
+2026-08-04 22:25:47.006 Df launchd_sim[52416:38631b] [user/501/com.apple.pairedsyncd:] launching: ipc (mach)
+2026-08-04 22:25:47.007 Df launchd_sim[52416:38631b] [user/501/com.apple.pairedsyncd [65813]:] xpcproxy_sim spawned with pid 65813
+2026-08-04 22:25:47.007 Df launchd_sim[52416:38631b] [user/501/com.apple.pairedsyncd [65813]:] internal event: SPAWNED, code = 0
+2026-08-04 22:25:47.007 Df launchd_sim[52416:38631b] [user/501/com.apple.pairedsyncd [65813]:] service state: xpcproxy
+2026-08-04 22:25:47.007 Df launchd_sim[52416:38631b] [user/501/com.apple.pairedsyncd [65813]:] deferred event: domain spawn response: 0
+2026-08-04 22:25:47.007 Df launchd_sim[52416:38631b] [user/501/com.apple.pairedsyncd [65813]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 22:25:47.267 Df locationd[52445:3886fb] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807564366.1, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807564366.1
+2026-08-04 22:25:47.268 F  locationd[52445:383cb5] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 22:25:47.268 A  locationd[52445:383cb5] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 22:25:47.268 Df locationd[52445:3886fb] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 22:25:47.268 Df locationd[52445:383cb5] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807564347.184
+2026-08-04 22:25:47.268 Df locationd[52445:38414d] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 22:25:47.269 Df locationd[52445:38667d] [com.apple.locationd.Utility:QA] os_transaction created: (0x1702df9d8) wifi1Event
+2026-08-04 22:25:47.269 Df locationd[52445:38667d] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 22:25:47.269 Df locationd[52445:38667d] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x1702df9d8) wifi1Event
+2026-08-04 22:25:47.386 Df launchd_sim[52416:38634d] [user/501/com.apple.pairedsyncd [65813]:] service state: running
+2026-08-04 22:25:47.386 Df launchd_sim[52416:38634d] [user/501/com.apple.pairedsyncd [65813]:] internal event: INIT, code = 0
+2026-08-04 22:25:47.386 Df launchd_sim[52416:38634d] [user/501/com.apple.pairedsyncd [65813]:] Successfully spawned pairedsyncd[65813] because ipc (mach)
+2026-08-04 22:25:47.501 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:47.501 A  gamecontrollerd[59612:381286] Incoming Connection
+2026-08-04 22:25:47.502 A  gamecontrollerd[59612:381286] (GameController) Incoming Driver Connection
+2026-08-04 22:25:47.502 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:47.503 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:47.503 A  gamecontrollerd[59612:384430] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:47.503 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:47.503 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:47.684 Df launchd_sim[52416:38631b] [pid/65813 [pairedsyncd]:] uncorking exec source upfront
+2026-08-04 22:25:47.684 Df launchd_sim[52416:38631b] [pid/65813 [pairedsyncd]:] created
+2026-08-04 22:25:47.695 Df pairedsyncd[65813:38b638] [com.apple.pairedsync:daemon] Initializing PSDSyncInitiator
+2026-08-04 22:25:47.696 Df pairedsyncd[65813:38b638] (libMobileGestalt.dylib) No persisted cache on this platform.
+2026-08-04 22:25:47.699 Df pairedsyncd[65813:38b638] [com.apple.paireddeviceregistry:framework] #refresh_4045 Starting bootstrap sync refresh
+2026-08-04 22:25:47.700 Df pairedsyncd[65813:38b638] [com.apple.paireddeviceregistry:framework] #refresh_4045 0.285125ms Daemon is idle, creating empty collection
+2026-08-04 22:25:47.700 A  pairedsyncd[65813:38b638] (PairedDeviceRegistry) assignNewState
+2026-08-04 22:25:47.700 Df pairedsyncd[65813:38b638] [com.apple.paireddeviceregistry:framework] #refresh_4045 0.389125ms New collection swapped in
+2026-08-04 22:25:47.700 Df pairedsyncd[65813:38b638] [com.apple.paireddeviceregistry:framework] #refresh_4045 history 3fffffffffffffff -> 0000000000000001
+2026-08-04 22:25:47.700 Df pairedsyncd[65813:38b638] [com.apple.paireddeviceregistry:framework] assignNewState complete
+2026-08-04 22:25:47.700 Df pairedsyncd[65813:38b638] [com.apple.paireddeviceregistry:framework] RegistryCrux fully initialized and synced
+2026-08-04 22:25:47.700 E  pairedsyncd[65813:38b638] [com.apple.pairedsync:daemon] Fatal error: pairing store path was nil for PSDFileManager.
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [user/501/com.apple.pairedsyncd [65813]:] exited due to exit(0), ran for 693ms
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [user/501/com.apple.pairedsyncd [65813]:] service state: exited
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [user/501/com.apple.pairedsyncd [65813]:] internal event: EXITED, code = 0
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [user/501:] service inactive: com.apple.pairedsyncd
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [user/501/com.apple.pairedsyncd [65813]:] service state: not running
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [pid/65813 [pairedsyncd]:] shutting down
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [pid/65813 [pairedsyncd]:] cleaning up
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [user/501/com.apple.pairedsyncd:] Service only ran for 0 seconds. Pushing respawn out by 10 seconds.
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [user/501/com.apple.pairedsyncd:] internal event: WILL_SPAWN, code = 0
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [user/501/com.apple.pairedsyncd:] service state: spawn scheduled
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [user/501/com.apple.pairedsyncd:] service spawn deferred by 10 seconds due to throttle
+2026-08-04 22:25:47.706 Df launchd_sim[52416:38634d] [system:] removing child: pid/65813
+2026-08-04 22:25:47.908 E  launchd_sim[52416:38631b] [fixup-mobile-tmp:] launchd has not fixed mobile/tmp (service)
+2026-08-04 22:25:47.909 Df launchd_sim[52416:38631b] [user/501/com.apple.xpc.launchd.oneshot.0x100000d3.log:] internal event: WILL_SPAWN, code = 0
+2026-08-04 22:25:47.909 Df launchd_sim[52416:38631b] [user/501/com.apple.xpc.launchd.oneshot.0x100000d3.log:] service state: spawn scheduled
+2026-08-04 22:25:47.909 Df launchd_sim[52416:38631b] [user/501/com.apple.xpc.launchd.oneshot.0x100000d3.log:] service state: spawning
+2026-08-04 22:25:47.909 Df launchd_sim[52416:38631b] [user/501/com.apple.xpc.launchd.oneshot.0x100000d3.log:] launching: one-shot
+2026-08-04 22:25:47.909 Df launchd_sim[52416:38631b] [user/501/com.apple.xpc.launchd.oneshot.0x100000d3.log [65834]:] xpcproxy_sim spawned with pid 65834
+2026-08-04 22:25:47.909 Df launchd_sim[52416:38631b] [user/501/com.apple.xpc.launchd.oneshot.0x100000d3.log [65834]:] internal event: SPAWNED, code = 0
+2026-08-04 22:25:47.909 Df launchd_sim[52416:38631b] [user/501/com.apple.xpc.launchd.oneshot.0x100000d3.log [65834]:] service state: xpcproxy
+2026-08-04 22:25:47.909 Df launchd_sim[52416:38631b] [user/501/com.apple.xpc.launchd.oneshot.0x100000d3.log [65834]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 22:25:48.007 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d3.log [65834]:] service state: running
+2026-08-04 22:25:48.007 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d3.log [65834]:] internal event: INIT, code = 0
+2026-08-04 22:25:48.007 Df launchd_sim[52416:38634d] [user/501/com.apple.xpc.launchd.oneshot.0x100000d3.log [65834]:] Successfully spawned log[65834] because one-shot
+2026-08-04 22:25:48.026 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:48.026 A  gamecontrollerd[59612:381286] Incoming Connection
+2026-08-04 22:25:48.026 A  gamecontrollerd[59612:381286] (GameController) Incoming Driver Connection
+2026-08-04 22:25:48.027 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:48.027 Df gamecontrollerd[59612:381286] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:48.027 A  gamecontrollerd[59612:384430] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:48.027 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:48.027 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+2026-08-04 22:25:48.074 Df launchd_sim[52416:38631b] [pid/65834 [log]:] uncorking exec source upfront
+2026-08-04 22:25:48.074 Df launchd_sim[52416:38631b] [pid/65834 [log]:] created
+2026-08-04 22:25:48.076 Df log[65834:0] [com.apple.log:] log run noninteractively, parent: 52416 (launchd_sim), args: 'log' 'show' '--last' '10m' '--style' 'compact'
+2026-08-04 22:25:48.277 Df locationd[52445:38667d] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807564367.1, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807564367.1
+2026-08-04 22:25:48.278 F  locationd[52445:38667d] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 22:25:48.278 A  locationd[52445:38667d] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 22:25:48.279 Df locationd[52445:3886fb] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 22:25:48.279 Df locationd[52445:38667d] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807564348.194
+2026-08-04 22:25:48.280 Df locationd[52445:38667d] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 22:25:48.281 Df locationd[52445:383cb5] [com.apple.locationd.Utility:QA] os_transaction created: (0x16ff979d8) wifi1Event
+2026-08-04 22:25:48.281 Df locationd[52445:383cb5] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 22:25:48.281 Df locationd[52445:383cb5] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x16ff979d8) wifi1Event
+2026-08-04 22:25:48.551 A  backboardd[52442:38ae33] (GamepadHIDServiceFilter) Resume Connection To Game Controller Daemon
+2026-08-04 22:25:48.551 A  gamecontrollerd[59612:384430] Incoming Connection
+2026-08-04 22:25:48.552 A  gamecontrollerd[59612:384430] (GameController) Incoming Driver Connection
+2026-08-04 22:25:48.552 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] activating connection: mach=false listener=false peer=true name=com.apple.GameController.gamecontrollerd.driver.peer[52442].0x1031a4180
+2026-08-04 22:25:48.553 Df gamecontrollerd[59612:384430] [com.apple.xpc:connection] [0x1031a4180] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 22:25:48.553 A  gamecontrollerd[59612:384430] (GameControllerFoundation) [IPC] Connection Invalidated
+2026-08-04 22:25:48.553 Df backboardd[52442:38ae33] [com.apple.xpc:connection] [0x1019303c0] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 22:25:48.554 Df backboardd[52442:38ae33] [com.apple.GameController.HID:GamepadHIDServiceFilter] Connection to com.apple.GameController.gamecontrollerd.driver interrupted.  Attempting to re-establish.
+

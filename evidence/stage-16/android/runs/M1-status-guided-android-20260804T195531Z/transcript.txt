@@ -1,0 +1,56 @@
+#1 2026-08-04T19:56:46.931Z sim-use devices --json --all
+    → exit=0 302ms
+    | {"data":{"devices":[{"deviceId":"emulator-5554","name":"sdk_gphone64_arm64","platform":"android","runtime":"Android","state":"device"},{"deviceId":"080A36AF-2148-4EBF-89A8-537674A7BD60","name":"iPhone 11","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"DB216E5C-F646-488E-9537-2D8C390A2B8F","name":"iPhone 16 iOS 26.1","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"496803A0-B207-482B-8405-DC49E83CAA4D","name":"iPhone 17","platform":"ios","runtime":"iOS 26.4","state":"Shutdown"},{"deviceId":"A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37","name":"iPhone 17 Pro Max","platform":"ios","runtime":"iOS 26.5","state":"Booted"}]},"ok":true}
+#2 2026-08-04T19:56:54.818Z sim-use app-state --device emulator-5554
+    → exit=0 91ms
+    | Running apps (2):
+    |   com.linecorp.simuse.devicebridge  pid=1775
+    |   ru.maksim.qalab  pid=22265
+#3 2026-08-04T19:57:00.415Z sim-use ui --device emulator-5554
+    → exit=0 83ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер записей"  (47,95 839x168)
+#4 2026-08-04T19:57:22.659Z sim-use ui --device emulator-5554
+    → exit=0 90ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер записей"  (47,95 839x168)
+#5 2026-08-04T19:57:31.722Z sim-use swipe --from 60,1900 --to 60,700 --duration 0.4 --device emulator-5554
+    → exit=0 60ms selector=coordinate
+    | ✓ Swipe (60,1900) → (60,700) completed successfully
+#6 2026-08-04T19:57:40.275Z sim-use ui --device emulator-5554
+    → exit=0 122ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Поиск"  (92,154 898x53)
+#7 2026-08-04T19:57:54.024Z sim-use tap #issue-card-status-d17c61a5-153c-4f62-adba-93000e31e2ec --device emulator-5554
+    → exit=0 75ms selector=selector
+    | ✓ Tap at (545.0, 1654.0) completed successfully
+#8 2026-08-04T19:58:01.083Z sim-use ui --device emulator-5554
+    → exit=0 88ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,1038 940x324)
+#9 2026-08-04T19:58:09.193Z sim-use tap --label В работе --device emulator-5554
+    → exit=0 53ms selector=selector
+    | ✓ Tap at (540.0, 1270.0) completed successfully
+#10 2026-08-04T19:58:16.667Z sim-use ui --device emulator-5554
+    → exit=0 75ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус записи «Фильтр статуса сбрасывается d29225» изменён."  (96,148 886x126)
+#11 2026-08-04T19:58:26.359Z sim-use ui --device emulator-5554
+    → exit=0 122ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус записи «Фильтр статуса сбрасывается d29225» изменён."  (96,148 886x126)
+#12 2026-08-04T19:58:37.700Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/after-status-change.png
+    → exit=0 215ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/after-status-change.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/after-status-change.png
+#13 2026-08-04T19:58:54.512Z sim-use ui --device emulator-5554
+    → exit=0 84ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "Статус записи «Фильтр статуса сбрасывается d29225» изменён."  (96,148 886x126)

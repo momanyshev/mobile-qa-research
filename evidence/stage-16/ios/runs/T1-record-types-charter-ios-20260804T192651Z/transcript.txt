@@ -1,0 +1,385 @@
+#1 2026-08-04T19:28:24.826Z sim-use devices --json --all
+    → exit=0 248ms
+    | {"data":{"devices":[{"deviceId":"emulator-5554","name":"sdk_gphone64_arm64","platform":"android","runtime":"Android","state":"device"},{"deviceId":"080A36AF-2148-4EBF-89A8-537674A7BD60","name":"iPhone 11","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"DB216E5C-F646-488E-9537-2D8C390A2B8F","name":"iPhone 16 iOS 26.1","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"496803A0-B207-482B-8405-DC49E83CAA4D","name":"iPhone 17","platform":"ios","runtime":"iOS 26.4","state":"Shutdown"},{"deviceId":"A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37","name":"iPhone 17 Pro Max","platform":"ios","runtime":"iOS 26.5","state":"Booted"}]},"ok":true}
+#2 2026-08-04T19:28:34.950Z sim-use app-state --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 280ms
+    | Running apps (4):
+    |   com.apple.Spotlight  pid=52582
+    |   com.apple.chrono.WidgetRenderer-Default  pid=52561
+#3 2026-08-04T19:28:45.875Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 752ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#4 2026-08-04T19:29:00.704Z sim-use tap --label Все типы --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 685ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (94.0, 706.0) completed successfully
+#5 2026-08-04T19:29:11.284Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 341ms
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+    |   @1  Heading  "Фильтр по типу"  (18,21 354x34)
+#6 2026-08-04T19:29:23.681Z sim-use ui --json --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 436ms
+    | {"data":{"appLabel":"QA Lab — Трекер дефектов","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"depth":1,"frame":{"height":34,"width":354,"x":18,"y":21},"label":"Фильтр по типу","region":{"kind":"Top"},"role":"Heading","states":[]},{"aliases":{"at":2},"depth":1,"frame":{"height":48,"width":48,"x":384,"y":14},"label":"Закрыть","region":{"kind":"Top"},"role":"Button","states":[]},{"aliases":{"at":3,"list":{"index":1,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":94},"label":"Все типы","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-all","value":"checkbox, checked"},{"aliases":{"at":4,"list":{"index":2,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":146},"label":"Дефект","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-defect","value":"checkbox, unchecked"},{"aliases":{"at":5,"list":{"index":3,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":198},"label":"Задача","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-task","value":"checkbox, unchecked"},{"aliases":{"at":6},"depth":1,"frame":{"height":26,"width":26,"x":28,"y":221},"label":"gearshape.fill","region":{"kind":"Content"},"role":"Image","states":[],"uniqueId":"gearshape.fill"},{"aliases":{"at":7},"depth":1,"frame":{"height":36,"width":404,"x":18,"y":285},"label":"Можно выбрать несколько значений. Полный набор автоматически превращается в «Все».","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":8},"depth":1,"frame":{"height":48,"width":404,"x":18,"y":896},"label":"Готово","region":{"kind":"Bottom"},"role":"Button","states":[]}],"lists":[{"bbox":{"height":156,"width":404,"x":18,"y":94},"cellCount":3,"cellHeight":52,"containerLabel":"QA Lab — Трекер дефектов","containerRole":"Application","scope":1,"score":5.8500000000000005}],"orientation":"portrait","outline":"App: QA Lab — Трекер дефектов  440x956\n\n[Top  y<120]\n  @1  Heading  \"Фильтр по типу\"  (18,21 354x34)\n  @2  Button  \"Закрыть\"  (384,14 48x48)\n\n[Content  y=120..836]\n  @3 #1  GenericElement  \"Все типы\"  #filter-type-all  (18,94 404x52)\n  @4 #2  GenericElement  \"Дефект\"  #filter-type-defect  (18,146 404x52)\n  @5 #3  GenericElement  \"Задача\"  #filter-type-task  (18,198 404x52)\n  @6  Image  \"gearshape.fill\"  #gearshape.fill  (28,221 26x26)\n  @7  StaticText  \"Можно выбрать несколько значений. Полный набор автоматическ…\"  (18,285 404x36)\n\n[Bottom  y>=836]\n  @8  Button  \"Готово\"  (18,896 404x48)\n","platform":"ios","raw":[{"AXFrame":"{{0, 0}, {440, 956}}","AXLabel":"QA Lab — Трекер дефектов","AXUniqueId":null,"AXValue":null,"children":[{"AXFrame":"{{18, 20.666666030883789}, {354, 34}}","AXLabel":"Фильтр по типу","AXUniqueId":null,"AXValue":null,"children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":34,"width":354,"x":18,"y":20.66666603088379},"help":null,"pid":66145,"role":"AXHeading","role_description":"heading","subrole":null,"title":null,"type":"Heading"},{"AXFrame":"{{384, 13.666666984558105}, {48, 48}}","AXLabel":"Закрыть","AXUniqueId":null,"AXValue":null,"children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":48,"width":48,"x":384,"y":13.666666984558105},"help":null,"pid":66145,"role":"AXButton","role_description":"button","subrole":null,"title":null,"type":"Button"},{"AXFrame":"{{18, 94}, {404, 52}}","AXLabel":"Все типы","AXUniqueId":"filter-type-all","AXValue":"checkbox, checked","children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":52,"width":404,"x":18,"y":94},"help":null,"pid":66145,"role":"AXGenericElement","role_description":"","subrole":null,"title":null,"type":"GenericElement"},{"AXFrame":"{{18, 146}, {404, 52}}","AXLabel":"Дефект","AXUniqueId":"filter-type-defect","AXValue":"checkbox, unchecked","children":[],"content_required":false,"custom_actions":[],"enabled":
+    | …[обрезано 1950 символов]
+#7 2026-08-04T19:29:30.101Z sim-use ui --json --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 347ms
+    | {"data":{"appLabel":"QA Lab — Трекер дефектов","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"depth":1,"frame":{"height":34,"width":354,"x":18,"y":21},"label":"Фильтр по типу","region":{"kind":"Top"},"role":"Heading","states":[]},{"aliases":{"at":2},"depth":1,"frame":{"height":48,"width":48,"x":384,"y":14},"label":"Закрыть","region":{"kind":"Top"},"role":"Button","states":[]},{"aliases":{"at":3,"list":{"index":1,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":94},"label":"Все типы","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-all","value":"checkbox, checked"},{"aliases":{"at":4,"list":{"index":2,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":146},"label":"Дефект","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-defect","value":"checkbox, unchecked"},{"aliases":{"at":5,"list":{"index":3,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":198},"label":"Задача","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-task","value":"checkbox, unchecked"},{"aliases":{"at":6},"depth":1,"frame":{"height":26,"width":26,"x":28,"y":221},"label":"gearshape.fill","region":{"kind":"Content"},"role":"Image","states":[],"uniqueId":"gearshape.fill"},{"aliases":{"at":7},"depth":1,"frame":{"height":36,"width":404,"x":18,"y":285},"label":"Можно выбрать несколько значений. Полный набор автоматически превращается в «Все».","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":8},"depth":1,"frame":{"height":48,"width":404,"x":18,"y":896},"label":"Готово","region":{"kind":"Bottom"},"role":"Button","states":[]}],"lists":[{"bbox":{"height":156,"width":404,"x":18,"y":94},"cellCount":3,"cellHeight":52,"containerLabel":"QA Lab — Трекер дефектов","containerRole":"Application","scope":1,"score":5.8500000000000005}],"orientation":"portrait","outline":"App: QA Lab — Трекер дефектов  440x956\n\n[Top  y<120]\n  @1  Heading  \"Фильтр по типу\"  (18,21 354x34)\n  @2  Button  \"Закрыть\"  (384,14 48x48)\n\n[Content  y=120..836]\n  @3 #1  GenericElement  \"Все типы\"  #filter-type-all  (18,94 404x52)\n  @4 #2  GenericElement  \"Дефект\"  #filter-type-defect  (18,146 404x52)\n  @5 #3  GenericElement  \"Задача\"  #filter-type-task  (18,198 404x52)\n  @6  Image  \"gearshape.fill\"  #gearshape.fill  (28,221 26x26)\n  @7  StaticText  \"Можно выбрать несколько значений. Полный набор автоматическ…\"  (18,285 404x36)\n\n[Bottom  y>=836]\n  @8  Button  \"Готово\"  (18,896 404x48)\n","platform":"ios","raw":[{"AXFrame":"{{0, 0}, {440, 956}}","AXLabel":"QA Lab — Трекер дефектов","AXUniqueId":null,"AXValue":null,"children":[{"AXFrame":"{{18, 20.666666030883789}, {354, 34}}","AXLabel":"Фильтр по типу","AXUniqueId":null,"AXValue":null,"children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":34,"width":354,"x":18,"y":20.66666603088379},"help":null,"pid":66145,"role":"AXHeading","role_description":"heading","subrole":null,"title":null,"type":"Heading"},{"AXFrame":"{{384, 13.666666984558105}, {48, 48}}","AXLabel":"Закрыть","AXUniqueId":null,"AXValue":null,"children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":48,"width":48,"x":384,"y":13.666666984558105},"help":null,"pid":66145,"role":"AXButton","role_description":"button","subrole":null,"title":null,"type":"Button"},{"AXFrame":"{{18, 94}, {404, 52}}","AXLabel":"Все типы","AXUniqueId":"filter-type-all","AXValue":"checkbox, checked","children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":52,"width":404,"x":18,"y":94},"help":null,"pid":66145,"role":"AXGenericElement","role_description":"","subrole":null,"title":null,"type":"GenericElement"},{"AXFrame":"{{18, 146}, {404, 52}}","AXLabel":"Дефект","AXUniqueId":"filter-type-defect","AXValue":"checkbox, unchecked","children":[],"content_required":false,"custom_actions":[],"enabled":
+    | …[обрезано 1950 символов]
+#8 2026-08-04T19:29:48.060Z sim-use tap #filter-type-defect --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 473ms selector=selector
+    | ✓ Tap at (220.0, 172.0) completed successfully
+#9 2026-08-04T19:29:57.620Z sim-use ui --json --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 345ms
+    | {"data":{"appLabel":"QA Lab — Трекер дефектов","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"depth":1,"frame":{"height":34,"width":354,"x":18,"y":21},"label":"Фильтр по типу","region":{"kind":"Top"},"role":"Heading","states":[]},{"aliases":{"at":2},"depth":1,"frame":{"height":48,"width":48,"x":384,"y":14},"label":"Закрыть","region":{"kind":"Top"},"role":"Button","states":[]},{"aliases":{"at":3,"list":{"index":1,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":94},"label":"Все типы","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-all","value":"checkbox, unchecked"},{"aliases":{"at":4,"list":{"index":2,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":146},"label":"Дефект","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-defect","value":"checkbox, checked"},{"aliases":{"at":5,"list":{"index":3,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":198},"label":"Задача","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-task","value":"checkbox, unchecked"},{"aliases":{"at":6},"depth":1,"frame":{"height":26,"width":26,"x":28,"y":221},"label":"gearshape.fill","region":{"kind":"Content"},"role":"Image","states":[],"uniqueId":"gearshape.fill"},{"aliases":{"at":7},"depth":1,"frame":{"height":36,"width":404,"x":18,"y":285},"label":"Можно выбрать несколько значений. Полный набор автоматически превращается в «Все».","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":8},"depth":1,"frame":{"height":48,"width":404,"x":18,"y":896},"label":"Готово","region":{"kind":"Bottom"},"role":"Button","states":[]}],"lists":[{"bbox":{"height":156,"width":404,"x":18,"y":94},"cellCount":3,"cellHeight":52,"containerLabel":"QA Lab — Трекер дефектов","containerRole":"Application","scope":1,"score":5.8500000000000005}],"orientation":"portrait","outline":"App: QA Lab — Трекер дефектов  440x956\n\n[Top  y<120]\n  @1  Heading  \"Фильтр по типу\"  (18,21 354x34)\n  @2  Button  \"Закрыть\"  (384,14 48x48)\n\n[Content  y=120..836]\n  @3 #1  GenericElement  \"Все типы\"  #filter-type-all  (18,94 404x52)\n  @4 #2  GenericElement  \"Дефект\"  #filter-type-defect  (18,146 404x52)\n  @5 #3  GenericElement  \"Задача\"  #filter-type-task  (18,198 404x52)\n  @6  Image  \"gearshape.fill\"  #gearshape.fill  (28,221 26x26)\n  @7  StaticText  \"Можно выбрать несколько значений. Полный набор автоматическ…\"  (18,285 404x36)\n\n[Bottom  y>=836]\n  @8  Button  \"Готово\"  (18,896 404x48)\n","platform":"ios","raw":[{"AXFrame":"{{0, 0}, {440, 956}}","AXLabel":"QA Lab — Трекер дефектов","AXUniqueId":null,"AXValue":null,"children":[{"AXFrame":"{{18, 20.666666030883789}, {354, 34}}","AXLabel":"Фильтр по типу","AXUniqueId":null,"AXValue":null,"children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":34,"width":354,"x":18,"y":20.66666603088379},"help":null,"pid":66145,"role":"AXHeading","role_description":"heading","subrole":null,"title":null,"type":"Heading"},{"AXFrame":"{{384, 13.666666984558105}, {48, 48}}","AXLabel":"Закрыть","AXUniqueId":null,"AXValue":null,"children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":48,"width":48,"x":384,"y":13.666666984558105},"help":null,"pid":66145,"role":"AXButton","role_description":"button","subrole":null,"title":null,"type":"Button"},{"AXFrame":"{{18, 94}, {404, 52}}","AXLabel":"Все типы","AXUniqueId":"filter-type-all","AXValue":"checkbox, unchecked","children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":52,"width":404,"x":18,"y":94},"help":null,"pid":66145,"role":"AXGenericElement","role_description":"","subrole":null,"title":null,"type":"GenericElement"},{"AXFrame":"{{18, 146}, {404, 52}}","AXLabel":"Дефект","AXUniqueId":"filter-type-defect","AXValue":"checkbox, checked","children":[],"content_required":false,"custom_actions":[],"enabled":
+    | …[обрезано 1950 символов]
+#10 2026-08-04T19:30:05.865Z sim-use tap #filter-type-task --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 402ms selector=selector
+    | ✓ Tap at (220.0, 224.0) completed successfully
+#11 2026-08-04T19:30:14.433Z sim-use ui --json --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 369ms
+    | {"data":{"appLabel":"QA Lab — Трекер дефектов","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"depth":1,"frame":{"height":34,"width":354,"x":18,"y":21},"label":"Фильтр по типу","region":{"kind":"Top"},"role":"Heading","states":[]},{"aliases":{"at":2},"depth":1,"frame":{"height":48,"width":48,"x":384,"y":14},"label":"Закрыть","region":{"kind":"Top"},"role":"Button","states":[]},{"aliases":{"at":3,"list":{"index":1,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":94},"label":"Все типы","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-all","value":"checkbox, checked"},{"aliases":{"at":4,"list":{"index":2,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":146},"label":"Дефект","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-defect","value":"checkbox, unchecked"},{"aliases":{"at":5,"list":{"index":3,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":198},"label":"Задача","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-task","value":"checkbox, unchecked"},{"aliases":{"at":6},"depth":1,"frame":{"height":26,"width":26,"x":28,"y":221},"label":"gearshape.fill","region":{"kind":"Content"},"role":"Image","states":[],"uniqueId":"gearshape.fill"},{"aliases":{"at":7},"depth":1,"frame":{"height":36,"width":404,"x":18,"y":285},"label":"Можно выбрать несколько значений. Полный набор автоматически превращается в «Все».","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":8},"depth":1,"frame":{"height":48,"width":404,"x":18,"y":896},"label":"Готово","region":{"kind":"Bottom"},"role":"Button","states":[]}],"lists":[{"bbox":{"height":156,"width":404,"x":18,"y":94},"cellCount":3,"cellHeight":52,"containerLabel":"QA Lab — Трекер дефектов","containerRole":"Application","scope":1,"score":5.8500000000000005}],"orientation":"portrait","outline":"App: QA Lab — Трекер дефектов  440x956\n\n[Top  y<120]\n  @1  Heading  \"Фильтр по типу\"  (18,21 354x34)\n  @2  Button  \"Закрыть\"  (384,14 48x48)\n\n[Content  y=120..836]\n  @3 #1  GenericElement  \"Все типы\"  #filter-type-all  (18,94 404x52)\n  @4 #2  GenericElement  \"Дефект\"  #filter-type-defect  (18,146 404x52)\n  @5 #3  GenericElement  \"Задача\"  #filter-type-task  (18,198 404x52)\n  @6  Image  \"gearshape.fill\"  #gearshape.fill  (28,221 26x26)\n  @7  StaticText  \"Можно выбрать несколько значений. Полный набор автоматическ…\"  (18,285 404x36)\n\n[Bottom  y>=836]\n  @8  Button  \"Готово\"  (18,896 404x48)\n","platform":"ios","raw":[{"AXFrame":"{{0, 0}, {440, 956}}","AXLabel":"QA Lab — Трекер дефектов","AXUniqueId":null,"AXValue":null,"children":[{"AXFrame":"{{18, 20.666666030883789}, {354, 34}}","AXLabel":"Фильтр по типу","AXUniqueId":null,"AXValue":null,"children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":34,"width":354,"x":18,"y":20.66666603088379},"help":null,"pid":66145,"role":"AXHeading","role_description":"heading","subrole":null,"title":null,"type":"Heading"},{"AXFrame":"{{384, 13.666666984558105}, {48, 48}}","AXLabel":"Закрыть","AXUniqueId":null,"AXValue":null,"children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":48,"width":48,"x":384,"y":13.666666984558105},"help":null,"pid":66145,"role":"AXButton","role_description":"button","subrole":null,"title":null,"type":"Button"},{"AXFrame":"{{18, 94}, {404, 52}}","AXLabel":"Все типы","AXUniqueId":"filter-type-all","AXValue":"checkbox, checked","children":[],"content_required":false,"custom_actions":[],"enabled":true,"frame":{"height":52,"width":404,"x":18,"y":94},"help":null,"pid":66145,"role":"AXGenericElement","role_description":"","subrole":null,"title":null,"type":"GenericElement"},{"AXFrame":"{{18, 146}, {404, 52}}","AXLabel":"Дефект","AXUniqueId":"filter-type-defect","AXValue":"checkbox, unchecked","children":[],"content_required":false,"custom_actions":[],"enabled":
+    | …[обрезано 1950 символов]
+#12 2026-08-04T19:30:28.983Z sim-use tap --label Готово --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 515ms selector=selector
+    | ✓ Tap at (220.0, 920.0) completed successfully
+#13 2026-08-04T19:30:43.183Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 638ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#14 2026-08-04T19:31:01.627Z sim-use swipe --from 220,560 --to 220,180 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 842ms selector=coordinate
+    | ✓ Swipe (220,560) → (220,180) completed successfully
+#15 2026-08-04T19:31:10.786Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 435ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#16 2026-08-04T19:31:29.743Z sim-use swipe --from 30,700 --to 30,300 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 859ms selector=coordinate
+    | ✓ Swipe (30,700) → (30,300) completed successfully
+#17 2026-08-04T19:31:39.166Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 568ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#18 2026-08-04T19:31:57.216Z sim-use tap #issue-card-open-777f3a42-9048-4043-943f-04012758f158 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 597ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (100.0, 784.0) completed successfully
+#19 2026-08-04T19:32:11.477Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 486ms
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)
+#20 2026-08-04T19:32:24.814Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/task-detail.png
+    → exit=0 276ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/task-detail.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/task-detail.png
+#21 2026-08-04T19:32:46.407Z sim-use tap --label Закрыть --element-type Button --frame minY=850 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 676ms selector=selector
+    | ✓ Tap at (220.0, 886.0) completed successfully
+#22 2026-08-04T19:32:54.447Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 550ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#23 2026-08-04T19:33:11.285Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/list-task-card.png
+    → exit=0 259ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/list-task-card.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/list-task-card.png
+#24 2026-08-04T19:33:35.048Z sim-use swipe --from 30,250 --to 30,780 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 836ms selector=coordinate
+    | ✓ Swipe (30,250) → (30,780) completed successfully
+#25 2026-08-04T19:33:35.962Z sim-use swipe --from 30,250 --to 30,780 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 765ms selector=coordinate
+    | ✓ Swipe (30,250) → (30,780) completed successfully
+#26 2026-08-04T19:33:45.068Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 430ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#27 2026-08-04T19:33:57.350Z sim-use swipe --from 30,250 --to 30,800 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 781ms selector=coordinate
+    | ✓ Swipe (30,250) → (30,800) completed successfully
+#28 2026-08-04T19:33:59.215Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 548ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#29 2026-08-04T19:34:10.680Z sim-use tap #create-issue-button --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 660ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (220.0, 246.0) completed successfully
+#30 2026-08-04T19:34:12.413Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 458ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#31 2026-08-04T19:34:30.638Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/create-defect.png
+    → exit=0 265ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/create-defect.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/create-defect.png
+#32 2026-08-04T19:35:03.076Z sim-use swipe --from 220,555 --to 220,180 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 970ms selector=coordinate
+    | ✓ Swipe (220,555) → (220,180) completed successfully
+#33 2026-08-04T19:35:05.121Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 389ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#34 2026-08-04T19:35:22.048Z sim-use swipe --from 220,200 --to 220,700 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 796ms selector=coordinate
+    | ✓ Swipe (220,200) → (220,700) completed successfully
+#35 2026-08-04T19:35:23.924Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 476ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#36 2026-08-04T19:35:42.064Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 549ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#37 2026-08-04T19:35:53.811Z sim-use tap --x 220 --y 338 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 350ms selector=coordinate
+    | ✓ Tap at (220.0, 338.0) completed successfully
+#38 2026-08-04T19:35:55.233Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 425ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#39 2026-08-04T19:36:12.612Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/create-task.png
+    → exit=0 185ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/create-task.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/create-task.png
+#40 2026-08-04T19:36:31.694Z sim-use swipe --from 220,555 --to 220,180 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 889ms selector=coordinate
+    | ✓ Swipe (220,555) → (220,180) completed successfully
+#41 2026-08-04T19:36:33.659Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 379ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#42 2026-08-04T19:36:59.386Z sim-use tap --label Отмена --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 461ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (117.0, 886.0) completed successfully
+#43 2026-08-04T19:37:00.918Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 390ms
+    | [i] Screen orientation could not be confirmed (0 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#44 2026-08-04T19:37:14.966Z sim-use tap --label Закрыть без сохранения --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 450ms selector=selector
+    | [i] Screen orientation could not be confirmed (0 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (220.0, 520.0) completed successfully
+#45 2026-08-04T19:37:16.492Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 551ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#46 2026-08-04T19:37:30.572Z sim-use swipe --from 30,700 --to 30,300 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 865ms selector=coordinate
+    | ✓ Swipe (30,700) → (30,300) completed successfully
+#47 2026-08-04T19:37:32.523Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 444ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#48 2026-08-04T19:37:48.658Z sim-use tap #issue-card-open-b5804aab-65b4-45a9-ba20-384b818dc88a --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 470ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (100.0, 502.0) completed successfully
+#49 2026-08-04T19:37:50.211Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 469ms
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)
+#50 2026-08-04T19:38:09.399Z sim-use tap --label Закрыть --element-type Button --frame minY=850 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 577ms selector=selector
+    | ✓ Tap at (220.0, 886.0) completed successfully
+#51 2026-08-04T19:38:11.063Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 463ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#52 2026-08-04T19:38:23.618Z sim-use swipe --from 30,250 --to 30,780 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 839ms selector=coordinate
+    | ✓ Swipe (30,250) → (30,780) completed successfully
+#53 2026-08-04T19:38:25.538Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 563ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#54 2026-08-04T19:38:38.850Z sim-use tap --label Все типы --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 660ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (94.0, 706.0) completed successfully
+#55 2026-08-04T19:38:40.594Z sim-use tap #filter-type-task --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 438ms selector=selector
+    | ✓ Tap at (220.0, 286.0) completed successfully
+#56 2026-08-04T19:38:42.107Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 416ms
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+    |   @1  GenericElement  "Dynamic Island, пусто"  (157,14 125x37)
+#57 2026-08-04T19:38:55.542Z sim-use ui --json --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 399ms
+    | {"data":{"appLabel":"QA Lab — Трекер дефектов","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"depth":1,"frame":{"height":37,"width":125,"x":157,"y":14},"label":"Dynamic Island, пусто","region":{"kind":"Top"},"role":"GenericElement","states":[]},{"aliases":{"at":2},"depth":1,"frame":{"height":14,"width":22,"x":312,"y":25},"label":"Сотовая связь","region":{"kind":"Top"},"role":"GenericElement","states":[],"value":"Нет сигнала"},{"aliases":{"at":3},"depth":1,"frame":{"height":14,"width":20,"x":341,"y":25},"label":"SSID, 3 из 3 полосы Wi-Fi","region":{"kind":"Top"},"role":"GenericElement","states":[],"uniqueId":"3 из 3 полосы Wi-Fi","value":"SSID, 3 из 3 полосы Wi-Fi"},{"aliases":{"at":4},"depth":1,"frame":{"height":14,"width":31,"x":368,"y":25},"label":"Заряд аккумулятора 100 %","region":{"kind":"Top"},"role":"GenericElement","states":[],"value":"Не заряжается"},{"aliases":{"at":5},"depth":1,"frame":{"height":22,"width":50,"x":59,"y":22},"label":"22:38","region":{"kind":"Top"},"role":"StaticText","states":[]},{"aliases":{"at":6,"list":{"index":1,"scope":1}},"depth":1,"frame":{"height":34,"width":354,"x":18,"y":83},"label":"Фильтр по типу","region":{"kind":"Top"},"role":"Button","states":[]},{"aliases":{"at":7},"depth":1,"frame":{"height":48,"width":48,"x":384,"y":76},"label":"Закрыть","region":{"kind":"Top"},"role":"GenericElement","states":[]},{"aliases":{"at":8,"list":{"index":2,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":156},"label":"Все типы","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-all","value":"checkbox, unchecked"},{"aliases":{"at":9,"list":{"index":3,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":208},"label":"Дефект","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-type-defect","value":"checkbox, unchecked"},{"aliases":{"at":10,"list":{"index":4,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":260},"label":"Задача","region":{"kind":"Content"},"role":"Button","states":[],"uniqueId":"filter-type-task","value":"checkbox, checked"},{"aliases":{"at":11,"list":{"index":5,"scope":1}},"depth":1,"frame":{"height":36,"width":404,"x":18,"y":347},"label":"Можно выбрать несколько значений. Полный набор автоматически превращается в «Все».","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":12},"depth":1,"frame":{"height":26,"width":26,"x":28,"y":842},"label":"gearshape.fill","region":{"kind":"Bottom"},"role":"Image","states":[],"uniqueId":"gearshape.fill"},{"aliases":{"at":13,"list":{"index":6,"scope":1}},"depth":1,"frame":{"height":48,"width":404,"x":18,"y":862},"label":"Готово","region":{"kind":"Bottom"},"role":"GenericElement","states":[]}],"lists":[{"bbox":{"height":827,"width":404,"x":18,"y":83},"cellCount":6,"cellHeight":52,"containerLabel":"QA Lab — Трекер дефектов","containerRole":"Application","scope":1,"score":6.240000000000001}],"orientation":"portrait","outline":"App: QA Lab — Трекер дефектов  440x956\n\n[Top  y<120]\n  @1  GenericElement  \"Dynamic Island, пусто\"  (157,14 125x37)\n  @2  GenericElement  \"Сотовая связь\"  (312,25 22x14)\n  @3  GenericElement  \"SSID, 3 из 3 полосы Wi-Fi\"  #3 из 3 полосы Wi-Fi  (341,25 20x14)\n  @4  GenericElement  \"Заряд аккумулятора 100 %\"  (368,25 31x14)\n  @5  StaticText  \"22:38\"  (59,22 50x22)\n  @6 #1  Button  \"Фильтр по типу\"  (18,83 354x34)\n  @7  GenericElement  \"Закрыть\"  (384,76 48x48)\n\n[Content  y=120..836]\n  @8 #2  GenericElement  \"Все типы\"  #filter-type-all  (18,156 404x52)\n  @9 #3  GenericElement  \"Дефект\"  #filter-type-defect  (18,208 404x52)\n  @10 #4  Button  \"Задача\"  #filter-type-task  (18,260 404x52)\n  @11 #5  StaticText  \"Можно выбрать несколько значений. Полный набор автоматическ…\"  (18,347 404x36)\n\n[Bottom  y>=836]\n  @12  Image  \"gearshape.fill\"  #gearshape.fill  (28,842 26x26)\n  @13 #6  GenericElement  \"Готово\"  (18,862 404x48)\n","platform":"ios","raw":[
+    | …[обрезано 6293 символов]
+#58 2026-08-04T19:39:05.243Z sim-use tap --label Готово --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 433ms selector=selector
+    | ✓ Tap at (220.0, 886.0) completed successfully
+#59 2026-08-04T19:39:06.752Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 497ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#60 2026-08-04T19:39:22.474Z sim-use tap --label Все значения --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 558ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (346.0, 706.0) completed successfully
+#61 2026-08-04T19:39:24.117Z sim-use ui --json --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 412ms
+    | {"data":{"appLabel":"QA Lab — Трекер дефектов","appPackage":"ru.maksim.qalab","entries":[{"aliases":{"at":1},"depth":1,"frame":{"height":37,"width":125,"x":157,"y":14},"label":"Dynamic Island, пусто","region":{"kind":"Top"},"role":"GenericElement","states":[]},{"aliases":{"at":2},"depth":1,"frame":{"height":14,"width":22,"x":312,"y":25},"label":"Сотовая связь","region":{"kind":"Top"},"role":"GenericElement","states":[],"value":"Нет сигнала"},{"aliases":{"at":3},"depth":1,"frame":{"height":14,"width":20,"x":341,"y":25},"label":"SSID, 3 из 3 полосы Wi-Fi","region":{"kind":"Top"},"role":"GenericElement","states":[],"uniqueId":"3 из 3 полосы Wi-Fi","value":"SSID, 3 из 3 полосы Wi-Fi"},{"aliases":{"at":4},"depth":1,"frame":{"height":14,"width":31,"x":368,"y":25},"label":"Заряд аккумулятора 100 %","region":{"kind":"Top"},"role":"GenericElement","states":[],"value":"Не заряжается"},{"aliases":{"at":5},"depth":1,"frame":{"height":22,"width":50,"x":59,"y":22},"label":"22:39","region":{"kind":"Top"},"role":"StaticText","states":[]},{"aliases":{"at":6,"list":{"index":1,"scope":1}},"depth":1,"frame":{"height":34,"width":354,"x":18,"y":83},"label":"Фильтр по критичности","region":{"kind":"Top"},"role":"GenericElement","states":[]},{"aliases":{"at":7},"depth":1,"frame":{"height":48,"width":48,"x":384,"y":76},"label":"Закрыть","region":{"kind":"Top"},"role":"GenericElement","states":[]},{"aliases":{"at":8,"list":{"index":2,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":156},"label":"Все значения","region":{"kind":"Content"},"role":"Button","states":[],"uniqueId":"filter-severity-all","value":"checkbox, checked"},{"aliases":{"at":9,"list":{"index":3,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":208},"label":"Низкая","region":{"kind":"Content"},"role":"Button","states":[],"uniqueId":"filter-severity-low","value":"checkbox, unchecked"},{"aliases":{"at":10},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":260},"label":"Средняя","region":{"kind":"Content"},"role":"Heading","states":[],"uniqueId":"filter-severity-medium","value":"checkbox, unchecked"},{"aliases":{"at":11,"list":{"index":4,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":312},"label":"Высокая","region":{"kind":"Content"},"role":"Button","states":[],"uniqueId":"filter-severity-high","value":"checkbox, unchecked"},{"aliases":{"at":12,"list":{"index":5,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":364},"label":"Критическая","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-severity-critical","value":"checkbox, unchecked"},{"aliases":{"at":13,"list":{"index":6,"scope":1}},"depth":1,"frame":{"height":52,"width":404,"x":18,"y":416},"label":"Блокер","region":{"kind":"Content"},"role":"GenericElement","states":[],"uniqueId":"filter-severity-blocker","value":"checkbox, unchecked"},{"aliases":{"at":14,"list":{"index":7,"scope":1}},"depth":1,"frame":{"height":36,"width":404,"x":18,"y":503},"label":"Можно выбрать несколько значений. Полный набор автоматически превращается в «Все».","region":{"kind":"Content"},"role":"StaticText","states":[]},{"aliases":{"at":15},"depth":1,"frame":{"height":26,"width":26,"x":28,"y":842},"label":"gearshape.fill","region":{"kind":"Bottom"},"role":"Image","states":[],"uniqueId":"gearshape.fill"},{"aliases":{"at":16,"list":{"index":8,"scope":1}},"depth":1,"frame":{"height":48,"width":404,"x":18,"y":862},"label":"Готово","region":{"kind":"Bottom"},"role":"Button","states":[]}],"lists":[{"bbox":{"height":827,"width":404,"x":18,"y":83},"cellCount":8,"cellHeight":52,"containerLabel":"QA Lab — Трекер дефектов","containerRole":"Application","scope":1,"score":8.914285714285715}],"orientation":"portrait","outline":"App: QA Lab — Трекер дефектов  440x956\n\n[Top  y<120]\n  @1  GenericElement  \"Dynamic Island, пусто\"  (157,14 125x37)\n  @2  GenericElement  \"Сотовая связь\"  (312,25 22x14)\n  @3  GenericElement  \"SSID, 3 из 3 полосы Wi-Fi\"  #3 из 3 полосы Wi-
+    | …[обрезано 8408 символов]
+#62 2026-08-04T19:39:41.127Z sim-use tap --label Готово --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 514ms selector=selector
+    | ✓ Tap at (220.0, 886.0) completed successfully
+#63 2026-08-04T19:39:42.717Z sim-use swipe --from 30,700 --to 30,300 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 833ms selector=coordinate
+    | ✓ Swipe (30,700) → (30,300) completed successfully
+#64 2026-08-04T19:39:44.623Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 384ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#65 2026-08-04T19:39:56.381Z sim-use tap #issue-card-edit-777f3a42-9048-4043-943f-04012758f158 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 422ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (222.0, 784.0) completed successfully
+#66 2026-08-04T19:39:57.883Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 443ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#67 2026-08-04T19:40:14.409Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/edit-task.png
+    → exit=0 267ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/edit-task.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/edit-task.png
+#68 2026-08-04T19:40:34.265Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 533ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#69 2026-08-04T19:40:35.874Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 435ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#70 2026-08-04T19:40:51.995Z sim-use tap --x 220 --y 249 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 345ms selector=coordinate
+    | ✓ Tap at (220.0, 249.0) completed successfully
+#71 2026-08-04T19:40:53.413Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 478ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#72 2026-08-04T19:41:29.063Z sim-use screenshot --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/edit-task-type-changed.png
+    → exit=0 360ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/edit-task-type-changed.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/edit-task-type-changed.png
+#73 2026-08-04T19:41:51.379Z sim-use swipe --from 220,555 --to 220,180 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 819ms selector=coordinate
+    | ✓ Swipe (220,555) → (220,180) completed successfully
+#74 2026-08-04T19:41:53.269Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 378ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#75 2026-08-04T19:42:18.557Z sim-use tap --label Отмена --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 481ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (117.0, 886.0) completed successfully
+#76 2026-08-04T19:42:20.109Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 388ms
+    | [i] Screen orientation could not be confirmed (0 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#77 2026-08-04T19:42:41.052Z sim-use tap --label Закрыть без сохранения --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 431ms selector=selector
+    | [i] Screen orientation could not be confirmed (0 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (220.0, 520.0) completed successfully
+#78 2026-08-04T19:42:42.568Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 386ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#79 2026-08-04T19:43:00.358Z sim-use tap --label Сбросить фильтры --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 492ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (220.0, 121.0) completed successfully
+#80 2026-08-04T19:43:01.927Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 438ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#81 2026-08-04T19:43:13.869Z sim-use swipe --from 30,700 --to 30,300 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 835ms selector=coordinate
+    | ✓ Swipe (30,700) → (30,300) completed successfully
+#82 2026-08-04T19:43:15.795Z sim-use tap #issue-card-edit-b5804aab-65b4-45a9-ba20-384b818dc88a --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 479ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (222.0, 291.33333333333326) completed successfully
+#83 2026-08-04T19:43:17.351Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 442ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#84 2026-08-04T19:43:28.746Z sim-use tap #issue-card-edit-b5804aab-65b4-45a9-ba20-384b818dc88a --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 489ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (222.0, 288.0) completed successfully
+#85 2026-08-04T19:43:30.315Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 371ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#86 2026-08-04T19:43:40.124Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 382ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#87 2026-08-04T19:43:52.172Z sim-use tap --x 220 --y 276 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 321ms selector=coordinate
+    | ✓ Tap at (220.0, 276.0) completed successfully
+#88 2026-08-04T19:43:53.568Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 365ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#89 2026-08-04T19:44:11.608Z sim-use tap --label Отмена --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 496ms selector=selector
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (117.0, 920.0) completed successfully
+#90 2026-08-04T19:44:13.224Z sim-use tap --label Закрыть без сохранения --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 435ms selector=selector
+    | [i] Screen orientation could not be confirmed (0 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | ✓ Tap at (220.0, 520.0) completed successfully
+#91 2026-08-04T19:44:14.728Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 417ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]
+#92 2026-08-04T19:44:27.821Z sim-use swipe --from 30,250 --to 30,780 --duration 0.4 --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 796ms selector=coordinate
+    | ✓ Swipe (30,250) → (30,780) completed successfully
+#93 2026-08-04T19:44:29.706Z sim-use ui --device A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37
+    → exit=0 563ms
+    | [i] Screen orientation could not be confirmed (3 probe(s)); assuming portrait. If the screen changed or the device rotated, re-run describe-ui, or pass explicit -x/-y coordinates.
+    | App: QA Lab — Трекер дефектов  440x956
+    | [Top  y<120]

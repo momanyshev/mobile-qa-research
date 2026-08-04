@@ -1,0 +1,54 @@
+{
+  "checks": [
+    {
+      "name": "sim-use доступен",
+      "level": "fail",
+      "ok": true,
+      "detail": "версия 0.10.0"
+    },
+    {
+      "name": "локаль UTF-8",
+      "level": "fail",
+      "ok": true,
+      "detail": "LANG/LC_ALL = en_US.UTF-8"
+    },
+    {
+      "name": "целевое устройство доступно",
+      "level": "fail",
+      "ok": true,
+      "detail": "sdk_gphone64_arm64 (Android, device)"
+    },
+    {
+      "name": "платформа совпадает",
+      "level": "fail",
+      "ok": true,
+      "detail": "устройство android, запрошено android"
+    },
+    {
+      "name": "нет лишних устройств платформы",
+      "level": "fail",
+      "ok": true,
+      "detail": "запущено ровно одно"
+    },
+    {
+      "name": "устройства другой платформы",
+      "level": "warn",
+      "ok": true,
+      "detail": "запущены и не мешают: iPhone 17 Pro Max"
+    },
+    {
+      "name": "backend QA Lab отвечает",
+      "level": "fail",
+      "ok": true,
+      "detail": "http://127.0.0.1:8888 → 200"
+    },
+    {
+      "name": "приложение наведено на Workspace run'а",
+      "level": "warn",
+      "ok": true,
+      "detail": "643d5da1-96ad-4b75-8499-602f255f7771 виден на экране"
+    }
+  ],
+  "ok": true,
+  "failed": []
+}
