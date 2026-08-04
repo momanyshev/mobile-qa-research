@@ -431,10 +431,16 @@ async function cycleTests(t) {
   let out = harness(["start", "--case", "C1-create-issue", "--platform", "ios", "--no-device"]);
   const run1 = runIdFrom(out);
   const ws1 = workspaceOf(run1);
+  // Дефект требует шагов и результатов с момента появления типа записи
+  // (коммит приложения 735612d). Без них создание возвращает 422, и selftest
+  // ловил бы не логику контура, а устаревшую фикстуру.
   await api.create({
     title: "Кнопка сохранения не реагирует",
     description: "Кнопка остаётся неактивной после заполнения всех обязательных полей",
     severity: "high", status: "open",
+    stepsToReproduce: "Открыть форму, заполнить все поля и нажать кнопку сохранения",
+    expectedResult: "Запись сохраняется",
+    actualResult: "Кнопка не реагирует",
   }, { workspaceId: ws1 });
   out = harness(["finish", "--run", run1, "--tool-calls", "7", "--retries", "0", "--interventions", "0"]);
   const e1 = jsonlLast("ios");
@@ -459,6 +465,9 @@ async function cycleTests(t) {
     title: "Кнопка сохранения не реагирует",
     description: "Кнопка остаётся неактивной после заполнения всех обязательных полей",
     severity: "low", status: "open",
+    stepsToReproduce: "Открыть форму, заполнить все поля и нажать кнопку сохранения",
+    expectedResult: "Запись сохраняется",
+    actualResult: "Кнопка не реагирует",
   }, { workspaceId: ws2 });
   harness(["finish", "--run", run2]);
   const e2 = jsonlLast("ios");

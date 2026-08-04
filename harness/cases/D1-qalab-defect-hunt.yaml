@@ -29,14 +29,23 @@ preconditions:
       description: Приложение падает при нажатии на аватар пользователя
       severity: low
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Список загружается медленно
       description: Долгая загрузка перечня на холодном старте приложения
       severity: critical
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Экспорт отчёта не открывается
       description: Сформированный файл не открывается во внешнем приложении
       severity: critical
       status: in_progress
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
 allowedActions:
   - read-ui
   - mobile-ui-interaction

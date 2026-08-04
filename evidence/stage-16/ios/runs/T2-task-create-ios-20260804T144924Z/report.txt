@@ -1,0 +1,27 @@
+Run ID: T2-task-create-ios-20260804T144924Z
+Case ID: T2-task-create
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: eb7dc6d
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@917fc921b0b2 | метка: новая фича: типы записей
+Workspace / test namespace: qalab: Workspace 8f0a4a33-027c-49ff-b01e-830fc041ce9e
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Заведи в трекере запись типа «задача» с названием «Задача 67aeb3». Остальные поля заполни по своему усмотрению так, чтобы приложение приняло запись. Убедись, что она появилась в перечне. Ничего не удаляй и не меняй у существующих записей. Если что-то в поведении расходится с тем, что приложение о себе заявляет, — опиши это со шагами воспроизведения.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, issue-creation | запрещено: production-access, issue-deletion, status-change
+Started at / finished at: 2026-08-04T14:49:26.856Z → 2026-08-04T15:03:33.905Z
+Tool calls: 55 (действий 17, по координатам 5, ошибок 1)
+Retries: 1
+Manual interventions: 0
+API before: 1 → runs/T2-task-create-ios-20260804T144924Z/api-before.json
+API after: 1 → runs/T2-task-create-ios-20260804T144924Z/api-after.json
+UI postcondition: финальный outline снят (runs/T2-task-create-ios-20260804T144924Z/final-ui.json)
+Oracle result: api.count=fail, api.fields=fail, manual.manual=unsupported
+Agent self-report: Запись типа «задача» с названием «Задача 67aeb3» создать не удалось. Форма заполнена полностью (тип «Задача» — picker переключён с «Дефект», Slider 0→1, поле «Шаги для воспроизведения» сменилось на «Критичность»; название «Задача 67aeb3» без mojibake; описание 55/2000; критичность «Средняя»; статус «Открыт»). Две отправки кнопкой «Создать»: кнопки уходят в disabled, затем возвращаются, в шапке формы появляется «Не удалось связаться с API. Попробуйте ещё раз.». Независимая проверка backend (GET /api/issues с X-Demo-Workspace-Id 8f0a4a33-027c-49ff-b01e-830fc041ce9e) — total=1, только seed-дефект «Не сохраняется черновик формы»; записи «Задача 67aeb3» нет. Причина видна во вкладке «API-запрос»: GET http://10.0.2.2:8888/api/issues, статус NETWORK ERROR, 19047 мс. 10.0.2.2 — alias хоста Android-эмулятора; с iOS Simulator он не маршрутизируется, тогда как backend на http://localhost:8888 отвечает. Список записей по той же причине не загружается («Не удалось загрузить записи»), «Повторить» не помогает. Существующие записи не изменялись и не удалялись.
+Final verdict: FAIL
+Failure category: product | agent | sim-use — требует классификации (1 вызовов завершились ошибкой)
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (16.5 МБ), commandLog, deviceLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: 1) iOS-сборка обращается к http://10.0.2.2:8888 — Android-alias хоста; на iOS Simulator это гарантированный NETWORK ERROR с таймаутом ~19 с. Проверяется без исходников: вкладка «API-запрос» показывает абсолютный URL последнего вызова. 2) Ошибка отправки формы рисуется в самом верху модалки: при заполненной форме она вне видимой области, а кнопка «Создать» внизу — снизу выглядит как «нажатие без реакции». Единственный наблюдаемый признак работы запроса — Отмена/Создать переходят в disabled. Чтобы увидеть причину, надо прокрутить форму вверх. 3) Селектор типа записи — iOS wheel-picker, в дереве только Slider со значением 0/1; строки «Дефект»/«Задача» не адресуемы. Переключение подтверждается косвенно: значение Slider и смена набора полей (Шаги → Критичность). Оба колеса занимают почти всю ширину модалки (28..412 из 440), безопасный коридор для прокрутки — x≈428. 4) Плавающая иконка #gearshape.fill на (28,221) на всех экранах — кнопка меню Expo dev-client, не элемент приложения.
+Follow-up decision: Человеку: проверить, откуда iOS-сборка берёт базовый URL API (похоже на EXPO_PUBLIC-переменную, выставленную под Android-сессию, либо на платформенно-независимый дефолт 10.0.2.2). До исправления любой сценарий с сетью на этом устройстве недостижим. Отдельно на ревью — draft дефекта об ошибке отправки формы, отрисованной вне видимой области.

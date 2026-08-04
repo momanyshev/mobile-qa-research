@@ -28,34 +28,58 @@ preconditions:
       description: Порядок записей не меняется при переключении направления сортировки
       severity: medium
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Обрезается длинное описание
       description: Текст описания в карточке списка не переносится и теряет окончание
       severity: low
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Экспорт падает на больших выборках
       description: Формирование отчёта прерывается при количестве строк больше тысячи
       severity: critical
       status: in_progress
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Поиск не учитывает регистр
       description: Запрос строчными буквами не находит записи с заглавными буквами
       severity: medium
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Пустой список без пояснения
       description: При отсутствии записей экран не объясняет что делать дальше
       severity: low
       status: testing
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Не грузится аватар в профиле
       description: Изображение профиля остаётся пустым после входа в аккаунт
       severity: low
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Дублируется запись при быстром нажатии
       description: Повторный тап по кнопке отправки создаёт вторую копию записи
       severity: blocker
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Подпись фильтра обрезана
       description: Текст подписи не помещается в кнопку и обрывается многоточием
       severity: low
       status: in_progress
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
 allowedActions:
   - read-ui
   - mobile-ui-interaction

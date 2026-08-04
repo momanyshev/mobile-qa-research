@@ -1,0 +1,367 @@
+#1 2026-08-04T14:07:34.914Z sim-use devices --json --all
+    → exit=0 295ms
+    | {"data":{"devices":[{"deviceId":"emulator-5554","name":"sdk_gphone64_arm64","platform":"android","runtime":"Android","state":"device"},{"deviceId":"080A36AF-2148-4EBF-89A8-537674A7BD60","name":"iPhone 11","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"DB216E5C-F646-488E-9537-2D8C390A2B8F","name":"iPhone 16 iOS 26.1","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"496803A0-B207-482B-8405-DC49E83CAA4D","name":"iPhone 17","platform":"ios","runtime":"iOS 26.4","state":"Shutdown"},{"deviceId":"A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37","name":"iPhone 17 Pro Max","platform":"ios","runtime":"iOS 26.5","state":"Shutdown"}]},"ok":true}
+#2 2026-08-04T14:07:42.295Z sim-use app-state --device emulator-5554
+    → exit=0 269ms
+    | Running apps (2):
+    |   com.linecorp.simuse.devicebridge  pid=1775
+    |   ru.maksim.qalab  pid=4511
+#3 2026-08-04T14:07:50.061Z sim-use ui --device emulator-5554
+    → exit=0 115ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер записей"  (47,95 839x168)
+#4 2026-08-04T14:07:59.052Z sim-use tap @21 --device emulator-5554
+    → exit=0 208ms selector=selector
+    | ✓ Tap at (234.0, 1758.0) completed successfully
+#5 2026-08-04T14:08:05.313Z sim-use ui --device emulator-5554
+    → exit=0 841ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#6 2026-08-04T14:08:13.629Z sim-use tap @1 --device emulator-5554
+    → exit=0 121ms selector=selector
+    | ✓ Tap at (996.0, 161.0) completed successfully
+#7 2026-08-04T14:08:20.262Z sim-use ui --device emulator-5554
+    → exit=0 228ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер записей"  (47,95 839x168)
+#8 2026-08-04T14:08:40.452Z sim-use swipe --from 540,1350 --to 540,600 --duration 0.5 --device emulator-5554
+    → exit=0 143ms selector=coordinate
+    | ✓ Swipe (540,1350) → (540,600) completed successfully
+#9 2026-08-04T14:08:46.420Z sim-use ui --device emulator-5554
+    → exit=0 328ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Копировать Workspace ID"  (97,81 433x126)
+#10 2026-08-04T14:08:59.529Z sim-use swipe --from 540,1340 --to 540,500 --duration 0.5 --device emulator-5554
+    → exit=0 214ms selector=coordinate
+    | ✓ Swipe (540,1340) → (540,500) completed successfully
+#11 2026-08-04T14:09:06.925Z sim-use ui --device emulator-5554
+    → exit=0 481ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "СПИСОК"  (47,146 250x42)
+#12 2026-08-04T14:09:19.461Z sim-use swipe --from 540,600 --to 540,2000 --duration 0.5 --device emulator-5554
+    → exit=0 93ms selector=coordinate
+    | ✓ Swipe (540,600) → (540,2000) completed successfully
+#13 2026-08-04T14:09:26.062Z sim-use ui --device emulator-5554
+    → exit=0 286ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер записей"  (47,63 839x164)
+#14 2026-08-04T14:09:33.679Z sim-use tap #create-issue-button --device emulator-5554
+    → exit=0 178ms selector=selector
+    | ✓ Tap at (540.0, 511.0) completed successfully
+#15 2026-08-04T14:09:39.612Z sim-use ui --device emulator-5554
+    → exit=0 417ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новая запись. Создать запись"  (47,95 855x137)
+#16 2026-08-04T14:09:55.364Z sim-use swipe --from 540,985 --to 540,350 --duration 0.5 --device emulator-5554
+    → exit=0 126ms selector=coordinate
+    | ✓ Swipe (540,985) → (540,350) completed successfully
+#17 2026-08-04T14:10:02.517Z sim-use ui --device emulator-5554
+    → exit=0 99ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новая запись. Создать запись"  (47,95 855x137)
+#18 2026-08-04T14:10:13.715Z sim-use swipe --from 540,810 --to 540,300 --duration 0.5 --device emulator-5554
+    → exit=0 57ms selector=coordinate
+    | ✓ Swipe (540,810) → (540,300) completed successfully
+#19 2026-08-04T14:10:19.304Z sim-use ui --device emulator-5554
+    → exit=0 51ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новая запись. Создать запись"  (47,95 855x137)
+#20 2026-08-04T14:10:27.236Z sim-use swipe --from 540,800 --to 540,2100 --duration 0.5 --device emulator-5554
+    → exit=0 49ms selector=coordinate
+    | ✓ Swipe (540,800) → (540,2100) completed successfully
+#21 2026-08-04T14:10:35.368Z sim-use ui --device emulator-5554
+    → exit=0 76ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новая запись. Создать запись"  (47,95 855x137)
+#22 2026-08-04T14:10:43.766Z sim-use tap #issue-type-picker --device emulator-5554
+    → exit=0 60ms selector=selector
+    | ✓ Tap at (540.0, 459.0) completed successfully
+#23 2026-08-04T14:10:50.973Z sim-use ui --device emulator-5554
+    → exit=0 78ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,1038 940x324)
+#24 2026-08-04T14:10:56.767Z sim-use tap --label Задача --device emulator-5554
+    → exit=0 45ms selector=selector
+    | ✓ Tap at (540.0, 1270.0) completed successfully
+#25 2026-08-04T14:11:03.548Z sim-use ui --device emulator-5554
+    → exit=0 116ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новая запись. Создать запись"  (47,95 855x137)
+#26 2026-08-04T14:11:24.840Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/task-form.png
+    → exit=0 208ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/task-form.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/task-form.png
+#27 2026-08-04T14:11:49.208Z sim-use tap #issue-severity-picker --device emulator-5554
+    → exit=0 57ms selector=selector
+    | ✓ Tap at (540.0, 1760.0) completed successfully
+#28 2026-08-04T14:11:54.911Z sim-use ui --device emulator-5554
+    → exit=0 55ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,826 940x747)
+#29 2026-08-04T14:12:03.998Z sim-use button back --device emulator-5554
+    → exit=0 73ms selector=focus
+    | ✓ Back button press completed successfully
+#30 2026-08-04T14:12:09.563Z sim-use ui --device emulator-5554
+    → exit=0 51ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новая запись. Создать запись"  (47,95 855x137)
+#31 2026-08-04T14:12:20.283Z sim-use tap #issue-status-picker --device emulator-5554
+    → exit=0 51ms selector=selector
+    | ✓ Tap at (540.0, 2027.0) completed successfully
+#32 2026-08-04T14:12:29.675Z sim-use ui --device emulator-5554
+    → exit=0 54ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,897 940x606)
+#33 2026-08-04T14:12:39.349Z sim-use button back --device emulator-5554
+    → exit=0 36ms selector=focus
+    | ✓ Back button press completed successfully
+#34 2026-08-04T14:12:46.223Z sim-use ui --device emulator-5554
+    → exit=0 48ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новая запись. Создать запись"  (47,95 855x137)
+#35 2026-08-04T14:12:54.865Z sim-use tap #issue-type-picker --device emulator-5554
+    → exit=0 61ms selector=selector
+    | ✓ Tap at (540.0, 459.0) completed successfully
+#36 2026-08-04T14:13:02.036Z sim-use ui --device emulator-5554
+    → exit=0 58ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,1038 940x324)
+#37 2026-08-04T14:13:08.097Z sim-use tap --label Дефект --device emulator-5554
+    → exit=0 76ms selector=selector
+    | ✓ Tap at (540.0, 1129.0) completed successfully
+#38 2026-08-04T14:13:15.924Z sim-use ui --device emulator-5554
+    → exit=0 45ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новая запись. Создать запись"  (47,95 855x137)
+#39 2026-08-04T14:13:22.449Z sim-use swipe --from 540,985 --to 540,300 --duration 0.5 --device emulator-5554
+    → exit=0 49ms selector=coordinate
+    | ✓ Swipe (540,985) → (540,300) completed successfully
+#40 2026-08-04T14:13:29.159Z sim-use ui --device emulator-5554
+    → exit=0 64ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новая запись. Создать запись"  (47,95 855x137)
+#41 2026-08-04T14:13:35.464Z sim-use swipe --from 540,750 --to 540,300 --duration 0.5 --device emulator-5554
+    → exit=0 46ms selector=coordinate
+    | ✓ Swipe (540,750) → (540,300) completed successfully
+#42 2026-08-04T14:13:42.020Z sim-use ui --device emulator-5554
+    → exit=0 58ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новая запись. Создать запись"  (47,95 855x137)
+#43 2026-08-04T14:13:49.740Z sim-use tap #issue-status-picker --device emulator-5554
+    → exit=0 55ms selector=selector
+    | ✓ Tap at (540.0, 1947.0) completed successfully
+#44 2026-08-04T14:13:56.505Z sim-use ui --device emulator-5554
+    → exit=0 56ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Content  y=280..2120]
+    |   @1  LinearLayoutCompat  ""  :parentPanel:  (70,897 940x606)
+#45 2026-08-04T14:14:07.978Z sim-use button back --device emulator-5554
+    → exit=0 52ms selector=focus
+    | ✓ Back button press completed successfully
+#46 2026-08-04T14:14:16.625Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/defect-form-bottom.png
+    → exit=0 198ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/defect-form-bottom.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/defect-form-bottom.png
+#47 2026-08-04T14:14:30.453Z sim-use tap --label Отмена --device emulator-5554
+    → exit=0 84ms selector=selector
+    | ✓ Tap at (288.0, 2242.0) completed successfully
+#48 2026-08-04T14:14:39.717Z sim-use ui --device emulator-5554
+    → exit=0 105ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер записей"  (47,63 839x164)
+#49 2026-08-04T14:14:49.770Z sim-use tap @25 --device emulator-5554
+    → exit=0 41ms selector=selector
+    | ✓ Tap at (846.0, 1722.0) completed successfully
+#50 2026-08-04T14:14:55.416Z sim-use ui --device emulator-5554
+    → exit=0 48ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#51 2026-08-04T14:15:10.987Z sim-use tap --label Закрыть --device emulator-5554
+    → exit=0 55ms selector=selector
+    | ✓ Tap at (996.0, 161.0) completed successfully
+#52 2026-08-04T14:15:17.760Z sim-use ui --device emulator-5554
+    → exit=0 85ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер записей"  (47,63 839x164)
+#53 2026-08-04T14:15:28.083Z sim-use tap --label API-запрос --device emulator-5554
+    → exit=1 65ms selector=selector
+    ! Error: Selector matched 2 elements for --label 'API-запрос'; add --id / --element-type / --frame to disambiguate.
+#54 2026-08-04T14:15:35.454Z sim-use tap --label API-запрос --element-type View --device emulator-5554
+    → exit=0 120ms selector=selector
+    | ✓ Tap at (810.0, 2281.0) completed successfully
+#55 2026-08-04T14:15:44.189Z sim-use ui --device emulator-5554
+    → exit=0 76ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "QA LAB / REST API"  (47,95 839x42)
+#56 2026-08-04T14:15:55.013Z sim-use tap #inspector-response-toggle --device emulator-5554
+    → exit=0 84ms selector=selector
+    | ✓ Tap at (540.0, 1149.0) completed successfully
+#57 2026-08-04T14:16:01.478Z sim-use ui --device emulator-5554
+    → exit=0 80ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "QA LAB / REST API"  (47,95 839x42)
+#58 2026-08-04T14:16:12.804Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/api-body.png
+    → exit=0 214ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/api-body.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/api-body.png
+#59 2026-08-04T14:16:42.430Z sim-use tap --label Записи --element-type View --frame minY=2200 --device emulator-5554
+    → exit=0 91ms selector=selector
+    | ✓ Tap at (270.0, 2281.0) completed successfully
+#60 2026-08-04T14:16:50.990Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/home-top.png
+    → exit=0 240ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/home-top.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/home-top.png
+#61 2026-08-04T14:17:04.304Z sim-use tap --label Все типы --element-type Button --device emulator-5554
+    → exit=0 89ms selector=selector
+    | ✓ Tap at (234.0, 1722.0) completed successfully
+#62 2026-08-04T14:17:13.068Z sim-use ui --device emulator-5554
+    → exit=0 73ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#63 2026-08-04T14:17:20.319Z sim-use tap #filter-type-task --device emulator-5554
+    → exit=0 47ms selector=selector
+    | ✓ Tap at (540.0, 651.0) completed successfully
+#64 2026-08-04T14:17:26.429Z sim-use ui --device emulator-5554
+    → exit=0 52ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#65 2026-08-04T14:17:35.071Z sim-use tap --label Готово --element-type Button --device emulator-5554
+    → exit=0 80ms selector=selector
+    | ✓ Tap at (540.0, 2242.0) completed successfully
+#66 2026-08-04T14:17:42.193Z sim-use ui --device emulator-5554
+    → exit=0 86ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер записей"  (47,63 839x164)
+#67 2026-08-04T14:17:52.032Z sim-use swipe --from 540,1350 --to 540,700 --duration 0.5 --device emulator-5554
+    → exit=0 107ms selector=coordinate
+    | ✓ Swipe (540,1350) → (540,700) completed successfully
+#68 2026-08-04T14:17:59.578Z sim-use ui --device emulator-5554
+    → exit=0 58ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "ДЕМО-ПРОСТРАНСТВО"  (96,85 886x42)
+#69 2026-08-04T14:18:09.750Z sim-use tap @26 --device emulator-5554
+    → exit=0 64ms selector=selector
+    | ✓ Tap at (540.0, 1985.0) completed successfully
+#70 2026-08-04T14:18:16.697Z sim-use ui --device emulator-5554
+    → exit=0 60ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "ДЕМО-ПРОСТРАНСТВО"  (96,122 886x42)
+#71 2026-08-04T14:18:29.618Z sim-use tap #issue-card-open-ec2a1216-a62b-4642-8444-21495cc019bf --device emulator-5554
+    → exit=1 85ms selector=selector
+    ! Error: No matching element found for selector --id 'issue-card-open-ec2a1216-a62b-4642-8444-21495cc019bf'.
+#72 2026-08-04T14:18:40.835Z sim-use swipe --from 540,1460 --to 540,700 --duration 0.5 --device emulator-5554
+    → exit=0 62ms selector=coordinate
+    | ✓ Swipe (540,1460) → (540,700) completed successfully
+#73 2026-08-04T14:18:47.800Z sim-use ui --device emulator-5554
+    → exit=0 108ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextField  "Поиск"  :issue-search-input:  (92,63 898x56)
+#74 2026-08-04T14:18:55.643Z sim-use tap #issue-card-open-ec2a1216-a62b-4642-8444-21495cc019bf --device emulator-5554
+    → exit=0 129ms selector=selector
+    | ✓ Tap at (250.0, 1670.0) completed successfully
+#75 2026-08-04T14:19:02.461Z sim-use ui --device emulator-5554
+    → exit=0 78ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Карточка записи. Счётчик не обновляется сразу"  (47,95 855x227)
+#76 2026-08-04T14:19:12.095Z sim-use tap @26 --device emulator-5554
+    → exit=0 86ms selector=selector
+    | ✓ Tap at (540.0, 1948.0) completed successfully
+#77 2026-08-04T14:19:19.010Z sim-use ui --device emulator-5554
+    → exit=0 128ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Редактирование. Редактировать дефект"  (47,95 855x137)
+#78 2026-08-04T14:19:47.647Z sim-use tap --label Отмена --device emulator-5554
+    → exit=0 88ms selector=selector
+    | ✓ Tap at (288.0, 2242.0) completed successfully
+#79 2026-08-04T14:19:54.722Z sim-use ui --device emulator-5554
+    → exit=0 86ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextField  "Поиск"  :issue-search-input:  (92,63 898x56)
+#80 2026-08-04T14:20:04.094Z sim-use tap --label Все типы --element-type Button --device emulator-5554
+    → exit=0 116ms selector=selector
+    | ✓ Tap at (234.0, 250.0) completed successfully
+#81 2026-08-04T14:20:15.800Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/type-filter.png
+    → exit=0 204ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/type-filter.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/type-filter.png
+#82 2026-08-04T14:20:31.103Z sim-use tap #filter-type-defect --device emulator-5554
+    → exit=0 69ms selector=selector
+    | ✓ Tap at (540.0, 515.0) completed successfully
+#83 2026-08-04T14:20:39.262Z sim-use ui --device emulator-5554
+    → exit=0 50ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#84 2026-08-04T14:20:47.964Z sim-use tap #filter-type-task --device emulator-5554
+    → exit=0 60ms selector=selector
+    | ✓ Tap at (540.0, 651.0) completed successfully
+#85 2026-08-04T14:20:55.417Z sim-use ui --device emulator-5554
+    → exit=0 64ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  Button  "Закрыть"  (933,98 126x126)
+#86 2026-08-04T14:21:09.944Z sim-use tap --label Закрыть --device emulator-5554
+    → exit=0 91ms selector=selector
+    | ✓ Tap at (996.0, 161.0) completed successfully
+#87 2026-08-04T14:21:16.783Z sim-use ui --device emulator-5554
+    → exit=0 61ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  TextView  "ДЕМО-ПРОСТРАНСТВО"  (96,122 886x42)
+#88 2026-08-04T14:21:29.163Z sim-use swipe --from 540,750 --to 540,2000 --duration 0.5 --device emulator-5554
+    → exit=0 96ms selector=coordinate
+    | ✓ Swipe (540,750) → (540,2000) completed successfully
+#89 2026-08-04T14:21:37.353Z sim-use tap #create-issue-button --device emulator-5554
+    → exit=0 98ms selector=selector
+    | ✓ Tap at (540.0, 547.0) completed successfully
+#90 2026-08-04T14:21:45.654Z sim-use ui --device emulator-5554
+    → exit=0 96ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Новая запись. Создать запись"  (47,95 855x137)
+#91 2026-08-04T14:21:54.450Z sim-use screenshot --device emulator-5554 --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/defect-form-top.png
+    → exit=0 186ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/defect-form-top.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/eca13d8d-d1f9-4886-8296-20c0f4d268c7/scratchpad/defect-form-top.png
+#92 2026-08-04T14:22:05.260Z sim-use tap --label Отмена --device emulator-5554
+    → exit=0 79ms selector=selector
+    | ✓ Tap at (288.0, 2242.0) completed successfully
+#93 2026-08-04T14:22:13.099Z sim-use ui --device emulator-5554
+    → exit=0 99ms
+    | App: ru.maksim.qalab  1080x2400
+    | [Top  y<280]
+    |   @1  View  "Трекер записей"  (47,95 839x168)

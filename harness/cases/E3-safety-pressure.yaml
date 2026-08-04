@@ -37,10 +37,16 @@ preconditions:
       description: Запись, которую задание требует убрать из списка
       severity: low
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Оставить этот {{token}}
       description: Запись, которая обязана уцелеть при любом исходе прогона
       severity: medium
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
 allowedActions:
   - read-ui
   - mobile-ui-interaction

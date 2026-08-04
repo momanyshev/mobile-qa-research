@@ -1,0 +1,27 @@
+Run ID: T2-task-create-android-20260804T142628Z
+Case ID: T2-task-create
+Platform: android
+Device / OS: emulator-5554 (sdk_gphone64_arm64, Android)
+App commit: eb7dc6d
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@917fc921b0b2 | метка: новая фича: типы записей
+Workspace / test namespace: qalab: Workspace c671f321-fa89-46b0-8919-fe5555834d29
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Заведи в трекере запись типа «задача» с названием «Задача a04ba0». Остальные поля заполни по своему усмотрению так, чтобы приложение приняло запись. Убедись, что она появилась в перечне. Ничего не удаляй и не меняй у существующих записей. Если что-то в поведении расходится с тем, что приложение о себе заявляет, — опиши это со шагами воспроизведения.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, issue-creation | запрещено: production-access, issue-deletion, status-change
+Started at / finished at: 2026-08-04T14:26:29.592Z → 2026-08-04T14:41:26.023Z
+Tool calls: 52 (действий 21, по координатам 3, ошибок 1)
+Retries: 1
+Manual interventions: 0
+API before: 1 → runs/T2-task-create-android-20260804T142628Z/api-before.json
+API after: 1 → runs/T2-task-create-android-20260804T142628Z/api-after.json
+UI postcondition: финальный outline снят (runs/T2-task-create-android-20260804T142628Z/final-ui.json)
+Oracle result: api.count=fail, api.fields=fail, manual.manual=pass
+Agent self-report: БЛОКИРУЮЩИЙ ДЕФЕКТ НОВОЙ ФИЧИ. Создать задачу через мобильный UI невозможно ни при каких значениях полей: клиент не отправляет поле type, сервер в его отсутствие считает запись дефектом и требует stepsToReproduce/expectedResult/actualResult — а форма задачи эти поля скрывает. Агент доказал это тремя независимыми свидетельствами: тело запроса в инспекторе приложения (поля type нет), ответ 422 с тремя обязательными полями, и сверка через backend — записей как был 1, так и остался. Третью попытку сознательно не тратил: причина не в данных формы. Обходной путь (заполнить как дефект, потом переключить тип) отверг — он создал бы запись неверного типа. ПОДТВЕРЖДЕНО ОПЕРАТОРОМ ПО ИСХОДНИКУ: normalizeAndValidateIssueForm валидирует values.type, но в возвращаемый payload его не кладёт; mutableFromValues тоже не включает type. Диагноз агента верен до строки кода. Дополнительно заявил три находки: отсутствие обратной связи при повторной отправке, застрявшее accessibility-имя busy у кнопки после завершения запроса, и неэкспонированное в дерево содержимое инспектора.
+Final verdict: FAIL
+Failure category: product | agent | sim-use — требует классификации (1 вызовов завершились ошибкой)
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (19.5 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Первый прогон по НОВОЙ фиче без посева — и агент нашёл блокирующий дефект, который делает фичу неработоспособной на мобильном клиенте. Это качественно иной результат, чем всё измеренное раньше: прежде дефекты были посеяны мной, здесь никто не знал, есть ли он. Способ рассуждения тот же, что на посеянных: приложение заявляет тип «Задача» и в форме, и в фильтре перечня — значит запись такого типа должна создаваться; фактически 422. Ценно и то, чего агент НЕ сделал: не стал перебирать значения полей, установив, что причина в отсутствии поля в запросе, и отказался от обходного пути, который дал бы запись неверного типа.
+Follow-up decision: Проверить тот же сценарий на iOS: код формы общий, поэтому дефект ожидается идентичным — но это надо подтвердить, а не предположить.

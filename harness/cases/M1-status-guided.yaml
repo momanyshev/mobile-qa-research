@@ -25,6 +25,9 @@ preconditions:
       description: После возврата из карточки выбранный фильтр статуса теряется
       severity: medium
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
 allowedActions:
   - read-ui
   - mobile-ui-interaction

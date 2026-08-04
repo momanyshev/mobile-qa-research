@@ -13,18 +13,30 @@ preconditions:
       description: Приложение закрывается при переходе в детали дефекта из списка
       severity: critical
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Опечатка в подписи фильтра
       description: В подписи фильтра критичности пропущена буква в слове критичность
       severity: low
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Долгая загрузка списка
       description: Список дефектов загружается дольше пяти секунд на холодном старте
       severity: critical
       status: testing
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Не сохраняется черновик
       description: Черновик формы теряется после сворачивания приложения в фон
       severity: medium
       status: in_progress
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
 allowedActions:
   - read-ui
   - mobile-ui-interaction

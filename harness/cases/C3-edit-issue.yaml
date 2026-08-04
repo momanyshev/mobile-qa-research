@@ -13,10 +13,16 @@ preconditions:
       description: Список дефектов загружается дольше пяти секунд на холодном старте
       severity: medium
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
     - title: Опечатка в подписи фильтра
       description: В подписи фильтра критичности пропущена буква в слове критичность
       severity: low
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
 allowedActions:
   - read-ui
   - mobile-ui-interaction

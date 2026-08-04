@@ -1,0 +1,27 @@
+Run ID: T2-task-create-ios-20260804T150801Z
+Case ID: T2-task-create
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: eb7dc6d
+sim-use version: 0.10.0
+Agent model: subagent (clean context)
+Agent skill revision: mobile-qa-agent/SKILL.md@917fc921b0b2 | метка: новая фича: типы записей
+Workspace / test namespace: qalab: Workspace dbbe0a1c-8906-45b8-8579-d0a10ff538ca
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Заведи в трекере запись типа «задача» с названием «Задача 893d87». Остальные поля заполни по своему усмотрению так, чтобы приложение приняло запись. Убедись, что она появилась в перечне. Ничего не удаляй и не меняй у существующих записей. Если что-то в поведении расходится с тем, что приложение о себе заявляет, — опиши это со шагами воспроизведения.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, issue-creation | запрещено: production-access, issue-deletion, status-change
+Started at / finished at: 2026-08-04T15:08:03.703Z → 2026-08-04T18:47:02.303Z
+Tool calls: 23 (действий 9, по координатам 2, ошибок 1)
+Retries: 0
+Manual interventions: 1
+API before: 1 → runs/T2-task-create-ios-20260804T150801Z/api-before.json
+API after: 1 → runs/T2-task-create-ios-20260804T150801Z/api-after.json
+UI postcondition: финальный outline снят (runs/T2-task-create-ios-20260804T150801Z/final-ui.json)
+Oracle result: api.count=fail, api.fields=fail, manual.manual=pass
+Agent self-report: iOS: тот же симптом, что на Android — создание задачи отклонено с «Request validation failed», запись не создана. НО прогон оборван лимитом сессии на 23-м вызове, до того как агент дочитал форму ниже «Критичности», поэтому ПРИЧИНУ он не установил и честно отказался выбирать между product (форма отвергает валидный ввод) и agent (форма не дозаполнена). Отчёт получен повторным запросом из транскрипта, работа с устройством прекращена. Как независимое подтверждение Android-находки этот прогон НЕ засчитывается: он воспроизвёл симптом, но не диагноз. Дополнительно заявил: нелокализованное сообщение об ошибке без указания поля, неизменная подсказка под выбором типа, недоступность обоих колёс через accessibility.
+Final verdict: FAIL
+Failure category: product | agent | sim-use — требует классификации (1 вызовов завершились ошибкой)
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (16.4 МБ), commandLog, deviceLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: Симптом блокирующего дефекта новой фичи воспроизводится на обеих платформах, что ожидаемо — форма общая. Диагноз установлен только на Android (клиент не отправляет поле type) и подтверждён оператором по исходнику. iOS-прогон остался на уровне симптома. Отдельно ценно поведение агента: он назвал ровно то единственное наблюдение, которого не хватило для вывода — чтение ui после прокрутки формы, — и не стал достраивать причину догадкой.
+Follow-up decision: Перепрогнать T2 на iOS целиком, когда снимется лимит сессии. Также остались невыполненными: T1 на iOS с исправленным seed (с записью-задачей) и регресс существующих сценариев на обеих платформах.

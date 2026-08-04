@@ -1,0 +1,401 @@
+# последние 400 строк системного журнала
+2026-08-04 18:03:27.469 Df GeneralMapsWidget[52601:36b8f2] [com.apple.chrono:widget] Supports content layers? true, archiveVersion=4
+2026-08-04 18:03:27.470 Df GeneralMapsWidget[52601:36b8f2] [com.apple.chrono:widget] Supports content layers? true, archiveVersion=4
+2026-08-04 18:03:27.476 Df GeneralMapsWidget[52601:36b8f2] [com.apple.chrono:timeline] Request ended for com.apple.Maps:systemMedium:(noIntent) - success
+2026-08-04 18:03:27.476 Df GeneralMapsWidget[52601:36b8f2] [com.apple.chrono:timeline] Batch end (ti-4d123f) - success
+2026-08-04 18:03:27.476 Df chronod[52487:3757cd] [com.apple.chrono:session] [Maps.GeneralMapsWidget-DEB5833FFE5A] Session operation: `getTimelines(2)` result.
+2026-08-04 18:03:27.478 Df chronod[52487:3757cd] [com.apple.chrono:archiving] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps:systemMedium::378.00/176.67/30.03:(null)~(null)] on local-file:///Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/Containers/Data/PluginKitPlugin/95C8CB83-B717-46BB-8BE1-AF75F0B5C3B9/SystemData/com.apple.chrono/timelines/com.apple.Maps/systemMedium----378.00w-176.67h-30.03r-yumRhkMo4r6dn3YTiLN3M8CwcyL5PdKCrF%232%23rNS0HU=.chrono-timeline destroying promise for 'Accepted successfully to file:///Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/Containers/Data/PluginKitPlugin/95C8CB83-B717-46BB-8BE1-AF75F0B5C3B9/SystemData/com.apple.chrono/timelines/com.apple.Maps/systemMedium----378.00w-176.67h-30.03r-yumRhkMo4r6dn3YTiLN3M8CwcyL5PdKCrF%232%23rNS0HU=.chrono-timeline.' - </Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/tmp/com.apple.chrono/NSIRD_chronod_OVjuzI/systemMedium----378.00w-176.67h-30.03r-yumRhkMo4r6dn3YTiL<…>
+2026-08-04 18:03:27.480 Df chronod[52487:3757cd] [com.apple.chrono:timeline.store] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps:systemMedium::378.00/176.67/30.03:(null)~(null)] on local reload: succeeded with 1 entries
+2026-08-04 18:03:27.481 Df chronod[52487:3757cd] [com.apple.chrono:archiving] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps:systemSmall::176.67/176.67/30.03:(null)~(null)] on local-file:///Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/Containers/Data/PluginKitPlugin/95C8CB83-B717-46BB-8BE1-AF75F0B5C3B9/SystemData/com.apple.chrono/timelines/com.apple.Maps/systemSmall----176.67w-176.67h-30.03r-yumRhkMo4r6dn3YTiLN3M8CwcyL5PdKCrF%232%23rNS0HU=.chrono-timeline destroying promise for 'Accepted successfully to file:///Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/Containers/Data/PluginKitPlugin/95C8CB83-B717-46BB-8BE1-AF75F0B5C3B9/SystemData/com.apple.chrono/timelines/com.apple.Maps/systemSmall----176.67w-176.67h-30.03r-yumRhkMo4r6dn3YTiLN3M8CwcyL5PdKCrF%232%23rNS0HU=.chrono-timeline.' - </Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/tmp/com.apple.chrono/NSIRD_chronod_AOELIb/systemSmall----176.67w-176.67h-30.03r-yumRhkMo4r6dn3YTiLN3M8<…>
+2026-08-04 18:03:27.483 Df chronod[52487:3757cd] [com.apple.chrono:timeline.store] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps:systemSmall::176.67/176.67/30.03:(null)~(null)] on local reload: succeeded with 1 entries
+2026-08-04 18:03:27.483 Df chronod[52487:3757cd] [com.apple.chrono:timeline.store] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps] reload: succeeded
+2026-08-04 18:03:27.483 A  runningboardd[52424:3757d2] (RunningBoard) acquireAssertionWithDescriptor
+2026-08-04 18:03:27.483 Df runningboardd[52424:3757d2] [com.apple.runningboard:ttl] Acquiring assertion targeting [xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}:52601] from originator [osservice<com.apple.chronod>:52487] with description <RBSAssertionDescriptor| "[Maps.GeneralMapsWidget-DEB5833FFE5A]" ID:52424-52487-863 target:52601 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.chronod" name:"WaitForWidgetSuspension" sourceEnvironment:"(null)">
+	]>
+2026-08-04 18:03:27.483 Df runningboardd[52424:3757d2] [com.apple.runningboard:ttl] Assertion 52424-52487-863 (target:[xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}:52601]) will be created as active
+2026-08-04 18:03:27.483 Df chronod[52487:3757cd] [com.apple.chrono:session] [Maps.GeneralMapsWidget-DEB5833FFE5A] acquired WaitForWidgetSuspension
+2026-08-04 18:03:27.483 A  runningboardd[52424:374128] (RunningBoard) state update
+2026-08-04 18:03:27.483 Df chronod[52487:3757cd] [com.apple.chrono:session] [Maps.GeneralMapsWidget-DEB5833FFE5A] WidgetExtensionAssertion invalidated
+2026-08-04 18:03:27.483 Df chronod[52487:3757cd] [com.apple.chrono:session] [Maps.GeneralMapsWidget-DEB5833FFE5A] Session invalidated
+2026-08-04 18:03:27.483 A  runningboardd[52424:3757d2] (RunningBoard) invalidateAssertionWithIdentifier
+2026-08-04 18:03:27.483 Df runningboardd[52424:3757d2] [com.apple.runningboard:ttl] Invalidating assertion 52424-52487-860 (target:[xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}:52601]) from originator [osservice<com.apple.chronod>:52487]
+2026-08-04 18:03:27.483 Df chronod[52487:3757cd] [com.apple.chrono:location] [ext:com.apple.Maps::com.apple.Maps.GeneralMapsWidget] invalidating underlying activity assertion
+2026-08-04 18:03:27.483 A  chronod[52487:3757cd] (CoreLocation) CL: CLAssertion
+2026-08-04 18:03:27.483 Df runningboardd[52424:374128] [com.apple.runningboard:ttl] Attempting to rename power assertion 65535 for target xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]} to xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]};52424-52487-858:Taking assertion for pid 52601;52424-52487-860:[Maps.GeneralMapsWidget-DEB5833FFE5A];52424-52487-863:[Maps.GeneralMapsWidget-DEB5833FFE5A]
+2026-08-04 18:03:27.483 Df chronod[52487:3757cd] [com.apple.locationd.Core:Client] {"msg":"CLAssertion", "event":activity, "_cmd":invalidate, "self":"0x10666cce0"}
+2026-08-04 18:03:27.483 Df runningboardd[52424:3757d0] [com.apple.runningboard:monitor] Calculated state for xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}: running-active (role: LaunchTAL) (endowments: (null))
+2026-08-04 18:03:27.483 A  chronod[52487:3757cd] (CoreLocation) CL: CLAssertion
+2026-08-04 18:03:27.483 Df chronod[52487:3757cd] [com.apple.locationd.Core:Client] {"msg":"CLAssertion", "event":activity, "_cmd":dealloc, "self":"0x10666cce0"}
+2026-08-04 18:03:27.483 Df chronod[52487:3757cc] [com.apple.xpc:connection] [0x10ad44140] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 18:03:27.483 Df chronod[52487:3757cd] [com.apple.chrono:keepalive] Removed: Reload timeline: com.apple.Maps::com.apple.Maps.GeneralMapsWidget
+2026-08-04 18:03:27.483 Df chronod[52487:3757cb] [com.apple.chrono:keepalive] Removed: <Task 94038C33-A918-4791-819B-C91B25CFFB05: timeline<com.apple.chronod.timeline-host::[com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps]>>
+2026-08-04 18:03:27.483 A  chronod[52487:3757df] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.483 A  SpringBoard[52421:375665] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.483 A  locationd[52445:373b47] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.483 Df chronod[52487:3757cd] [com.apple.chrono:session] Connection to extension process was invalidated: com.apple.Maps.GeneralMapsWidget
+2026-08-04 18:03:27.483 Df SpringBoard[52421:375665] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-active-NotVisible
+2026-08-04 18:03:27.483 Df chronod[52487:3757cb] [com.apple.chrono:tasksession] [B55B6E10]: _taskQueue_evaluate() with task timeline<com.apple.chronod.timeline-host::[com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps]>.B55B6E10
+2026-08-04 18:03:27.483 Df locationd[52445:373b47] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-active-NotVisible
+2026-08-04 18:03:27.483 A  mediaremoted[52428:3757d8] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.483 Df chronod[52487:3757df] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-active-NotVisible
+2026-08-04 18:03:27.483 Df locationd[52445:373b47] [com.apple.xpc:connection] [0x106553600] invalidated because the client process (pid 52487) either cancelled the connection or exited
+2026-08-04 18:03:27.483 Df locationd[52445:373b47] [com.apple.LocationSupport:Connection] #Warning Location connection invalid!
+2026-08-04 18:03:27.483 Df mediaremoted[52428:3757d8] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-active-NotVisible
+2026-08-04 18:03:27.483 A  locationd[52445:373b47] (LocationSupport) CL: CLConnection::handleDisconnection
+2026-08-04 18:03:27.483 Df locationd[52445:373b47] [com.apple.LocationSupport:Connection] {"msg":"CLConnection::handleDisconnection", "event":activity}
+2026-08-04 18:03:27.484 Df locationd[52445:373b47] [com.apple.locationd.Core:Core] Client /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/ChronoCore.framework/Support/chronod disconnected
+2026-08-04 18:03:27.484 Df locationd[52445:373b47] [com.apple.locationd.Core:Core] {"msg":"#CLIUA Marking change", "clientKey":icom.apple.Maps:, "reason":Recently on-screen, "AssertionLevel":1, "coming":0}
+2026-08-04 18:03:27.484 Df locationd[52445:373b47] [com.apple.locationd.Core:Core] {"msg":"#CLIUA updating AssertionRecord", "ClientKey":icom.apple.Maps:, "AssertionLevel":1}
+2026-08-04 18:03:27.484 Df chronod[52487:3757cb] [com.apple.chrono:tasksession] [B55B6E10]: _taskQueue_teardown() with task timeline<com.apple.chronod.timeline-host::[com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps]>.B55B6E10
+2026-08-04 18:03:27.484 Df chronod[52487:3757df] [com.apple.chrono:timeline.store] Task [39] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps] Completed
+2026-08-04 18:03:27.484 Df locationd[52445:373b47] [com.apple.locationd.Core:Core] {"msg":"#CLIUA AssertionRecord updated", "ClientKey":icom.apple.Maps:, "AssertionLevel":1}
+2026-08-04 18:03:27.484 Df chronod[52487:3757cb] [com.apple.chrono:tasksession] [B55B6E10]: _taskQueue_complete() with task timeline<com.apple.chronod.timeline-host::[com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps]>.B55B6E10
+2026-08-04 18:03:27.484 Df chronod[52487:3757df] [com.apple.chrono:timeline.store] Task [39] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps] Reload success
+2026-08-04 18:03:27.484 Df chronod[52487:3757cd] [com.apple.chrono:activityscheduler] [B55B6E10]: activity completed
+2026-08-04 18:03:27.484 Df chronod[52487:3757cd] [com.apple.chrono:taskservice] [B55B6E10]: task session completed in 2.733556s. time since creation: 2.733604s
+2026-08-04 18:03:27.484 Df chronod[52487:375849] [com.apple.chrono:widgetPowerlog] Flushed 2 powerlog update entries.
+2026-08-04 18:03:27.484 Df chronod[52487:3757df] [com.apple.chrono:timeline.store] Task [39] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps] New state: reload
+2026-08-04 18:03:27.484 Df chronod[52487:3757cd] [com.apple.chrono:taskservice] No tasks pending
+2026-08-04 18:03:27.484 Df chronod[52487:3757cd] [com.apple.chrono:session] [Maps.GeneralMapsWidget-DEB5833FFE5A] Session deinit
+2026-08-04 18:03:27.484 Df chronod[52487:3757df] [com.apple.chrono:timeline.store] Task [39] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps] Follow-on reload from completion needed: [[timelineExhausted-2026-08-04T18:08:27+03:00-budgeted-1]]
+2026-08-04 18:03:27.484 Df chronod[52487:3757df] [com.apple.chrono:timeline.store] Task [42] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps] Preparing reload
+2026-08-04 18:03:27.484 Df chronod[52487:3757df] [com.apple.chrono:timeline.store] Task [42] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps] Dispatching new task
+2026-08-04 18:03:27.484 A  runningboardd[52424:3757d0] (RunningBoard) invalidateAssertionWithIdentifier
+2026-08-04 18:03:27.484 Df chronod[52487:3757df] [com.apple.chrono:timeline.store] Task [42] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps] Scheduling reload with configuration: [timelineExhausted-2026-08-04T18:08:27+03:00-budgeted-1]
+2026-08-04 18:03:27.484 Df runningboardd[52424:3757d0] [com.apple.runningboard:ttl] Invalidating assertion 52424-52487-858 (target:[xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}:52601]) from originator [osservice<com.apple.chronod>:52487]
+2026-08-04 18:03:27.484 Df chronod[52487:3757df] [com.apple.chrono:timeline.store] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps] Not checking cache (timelineExhausted)
+2026-08-04 18:03:27.484 Df chronod[52487:3757df] [com.apple.chrono:timeline.store] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps] scheduled [timelineExhausted-2026-08-04T18:08:27+03:00-budgeted-1]
+2026-08-04 18:03:27.484 Df chronod[52487:3757df] [com.apple.chrono:taskservice] [97D75730]: task submitted timeline<com.apple.chronod.timeline-host::[com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps]>.97D75730
+2026-08-04 18:03:27.484 Df chronod[52487:374122] [com.apple.duetexpertd.atx:timeline] Establishing new connection to com.apple.proactive.infoSuggestion.xpc .
+2026-08-04 18:03:27.484 Df runningboardd[52424:3757d0] [com.apple.runningboard:message] PERF: Received lookupHandleForPredicate request from [osservice<com.apple.chronod>:52487] (euid 501, auid 501) (persona (null))
+2026-08-04 18:03:27.484 A  runningboardd[52424:3757d0] (RunningBoard) lookupHandleForPredicate
+2026-08-04 18:03:27.484 Df chronod[52487:374122] [com.apple.xpc:connection] [0x10ad44140] activating connection: mach=true listener=false peer=false name=com.apple.proactive.infoSuggestion.xpc
+2026-08-04 18:03:27.484 Df launchd_sim[52416:372eee] [user/501:] failed lookup: name = com.apple.proactive.infoSuggestion.xpc, requestor = chronod[52487], error = 3: No such process
+2026-08-04 18:03:27.485 Df chronod[52487:374122] [com.apple.xpc:connection] [0x10ad44140] failed to do a bootstrap look-up: xpc_error=[3: No such process]
+2026-08-04 18:03:27.485 Df chronod[52487:374122] [com.apple.xpc:connection] [0x10ad44140] invalidated after a failed init
+2026-08-04 18:03:27.485 Df chronod[52487:3757cc] [com.apple.duetexpertd.atx:timeline] Connection to com.apple.proactive.infoSuggestion.xpc invalidated.
+2026-08-04 18:03:27.485 Df chronod[52487:3757cc] [com.apple.duetexpertd.atx:timeline] ATXInfoTimelineDonationClient: xpc connection invalidated.
+2026-08-04 18:03:27.485 E  chronod[52487:3757cc] [com.apple.duetexpertd.atx:timeline] ATXInfoTimelineDonationClient: Error reloading timeline for widget <CHSWidget: 0x1064d9740; extensionIdentity: com.apple.Maps::com.apple.Maps.GeneralMapsWidget; kind: com.apple.Maps; family: systemMedium; intentHash: 0; activityIdentifier: 0x0> - Error Domain=NSCocoaErrorDomain Code=4099 "The connection to service named com.apple.proactive.infoSuggestion.xpc was invalidated: Connection init failed at lookup with error 3 - No such process." UserInfo={NSDebugDescription=The connection to service named com.apple.proactive.infoSuggestion.xpc was invalidated: Connection init failed at lookup with error 3 - No such process.}
+2026-08-04 18:03:27.485 A  chronod[52487:3757df] (BiomeFoundation) _BMXPCFileManager._fileHandleForFileAtPath:flags:protection:error:
+2026-08-04 18:03:27.485 E  chronod[52487:3757cc] [com.apple.duetexpertd.atx:timeline] ATXInfoTimelineDonationClient: Error reloading timeline for widget <CHSWidget: 0x1064d9300; extensionIdentity: com.apple.Maps::com.apple.Maps.GeneralMapsWidget; kind: com.apple.Maps; family: systemSmall; intentHash: 0; activityIdentifier: 0x0> - Error Domain=NSCocoaErrorDomain Code=4099 "The connection to service named com.apple.proactive.infoSuggestion.xpc was invalidated: Connection init failed at lookup with error 3 - No such process." UserInfo={NSDebugDescription=The connection to service named com.apple.proactive.infoSuggestion.xpc was invalidated: Connection init failed at lookup with error 3 - No such process.}
+2026-08-04 18:03:27.485 Df chronod[52487:3757df] [com.apple.xpc:connection] [0x10ad44780] activating connection: mach=true listener=false peer=false name=com.apple.biome.access.user
+2026-08-04 18:03:27.486 Df biomed[52435:36cbe5] [com.apple.Biome:BiomeAccessService] Incoming connection from chronod(52487)
+2026-08-04 18:03:27.486 Df biomed[52435:36cbe5] [com.apple.xpc:connection] [0x106dde280] activating connection: mach=false listener=false peer=true name=com.apple.biome.access.user.peer[52487].0x106dde280
+2026-08-04 18:03:27.486 A  chronod[52487:3757df] (BiomeFoundation) _BMXPCFileManager._fileHandleForFileAtPath:flags:protection:error:
+2026-08-04 18:03:27.486 Df chronod[52487:3757df] [com.apple.xpc:connection] [0x10ad44780] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 18:03:27.486 A  chronod[52487:3757df] (BiomeFoundation) _BMXPCFileManager._fileHandleForFileAtPath:flags:protection:error:
+2026-08-04 18:03:27.486 Df chronod[52487:3757df] [com.apple.xpc:connection] [0x10ad44000] activating connection: mach=true listener=false peer=false name=com.apple.biome.access.user
+2026-08-04 18:03:27.487 Df biomed[52435:36cbe5] [com.apple.Biome:BiomeAccessService] Incoming connection from chronod(52487)
+2026-08-04 18:03:27.487 Df biomed[52435:36cbe5] [com.apple.xpc:connection] [0x106ddc780] activating connection: mach=false listener=false peer=true name=com.apple.biome.access.user.peer[52487].0x106ddc780
+2026-08-04 18:03:27.487 Df biomed[52435:36cbe5] [com.apple.xpc:connection] [0x106dde280] invalidated because the client process (pid 52487) either cancelled the connection or exited
+2026-08-04 18:03:27.487 A  chronod[52487:3757df] (BiomeFoundation) _BMXPCFileManager._fileHandleForFileAtPath:flags:protection:error:
+2026-08-04 18:03:27.487 Df chronod[52487:3757df] [com.apple.xpc:connection] [0x10ad44000] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 18:03:27.487 Df biomed[52435:36cbe5] [com.apple.xpc:connection] [0x106ddc780] invalidated because the client process (pid 52487) either cancelled the connection or exited
+2026-08-04 18:03:27.487 Df chronod[52487:3757df] [com.apple.chrono:activityscheduler] [97D75730]: activity added
+2026-08-04 18:03:27.487 Df chronod[52487:3757df] [com.apple.chrono:activityscheduler] [97D75730]: scheduled activity enqueued after: 2026-08-04T18:08:27+03:00 before: 2026-08-04T18:23:27+03:00 with data class (ClassC)
+2026-08-04 18:03:27.487 Df chronod[52487:3757df] [com.apple.chrono:localActivityScheduler] [97D75730]: scheduled activity with local scheduler
+2026-08-04 18:03:27.487 Df chronod[52487:3757df] [com.apple.chrono:timeline.store] Task [42] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps] Scheduled with cancellable token: [<TaskService.TaskCancellable: TaskID: 97D75730>]
+2026-08-04 18:03:27.493 A  runningboardd[52424:3757d0] (RunningBoard) acquireAssertionWithDescriptor
+2026-08-04 18:03:27.493 Df runningboardd[52424:3757d0] [com.apple.runningboard:ttl] Acquiring assertion targeting [app<com.apple.chrono.WidgetRenderer-Default((null))>:52561] from originator [app<com.apple.chrono.WidgetRenderer-Default((null))>:52561] with description <RBSAssertionDescriptor| "Timeline archive file reading" ID:52424-52561-864 target:52561 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.chronod" name:"DeliverEvent" sourceEnvironment:"(null)">
+	]>
+2026-08-04 18:03:27.493 Df runningboardd[52424:3757d0] [com.apple.runningboard:ttl] Assertion 52424-52561-864 (target:[app<com.apple.chrono.WidgetRenderer-Default((null))>:52561]) will be created as active
+2026-08-04 18:03:27.493 A  runningboardd[52424:374128] (RunningBoard) state update
+2026-08-04 18:03:27.493 Df WidgetRenderer_Default[52561:3757e1] [com.apple.chrono:archiving] Acquired runtime assertion for WidgetArchiver.unarchive
+2026-08-04 18:03:27.493 Df runningboardd[52424:374128] [com.apple.runningboard:monitor] Calculated state for app<com.apple.chrono.WidgetRenderer-Default((null))>: running-active (role: Background) (endowments: (null))
+2026-08-04 18:03:27.493 A  SpringBoard[52421:3757d5] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.493 A  chronod[52487:374122] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.493 Df chronod[52487:374122] [com.apple.runningboard:monitor] Received state update for 52561 (app<com.apple.chrono.WidgetRenderer-Default((null))>, running-active-NotVisible
+2026-08-04 18:03:27.493 Df SpringBoard[52421:3757d5] [com.apple.runningboard:monitor] Received state update for 52561 (app<com.apple.chrono.WidgetRenderer-Default((null))>, running-active-NotVisible
+2026-08-04 18:03:27.493 A  locationd[52445:373b47] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.493 Df locationd[52445:373b47] [com.apple.runningboard:monitor] Received state update for 52561 (app<com.apple.chrono.WidgetRenderer-Default((null))>, running-active-NotVisible
+2026-08-04 18:03:27.493 A  mediaremoted[52428:374129] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.494 Df mediaremoted[52428:374129] [com.apple.runningboard:monitor] Received state update for 52561 (app<com.apple.chrono.WidgetRenderer-Default((null))>, running-active-NotVisible
+2026-08-04 18:03:27.497 Df WidgetRenderer_Default[52561:3757e1] [com.apple.chrono:archiving] [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps:systemSmall::176.67/176.67/30.03:(null)~(null)] on local Cache hit; url: `file:///Users/maksim/Library/Developer/CoreSimulator/Devices/A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37/data/Containers/Data/PluginKitPlugin/95C8CB83-B717-46BB-8BE1-AF75F0B5C3B9/SystemData/com.apple.chrono/timelines/com.apple.Maps/systemSmall----176.67w-176.67h-30.03r-yumRhkMo4r6dn3YTiLN3M8CwcyL5PdKCrF%232%23rNS0HU=.chrono-timeline`; entry count: 1; urlAttributes: ; date range: 2026-08-04 15:03:26 +0000 to 2026-08-04 15:03:26 +0000
+2026-08-04 18:03:27.497 Df WidgetRenderer_Default[52561:3757e1] [com.apple.chrono:timeline] Content load successful for key: [com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps:systemSmall::176.67/176.67/30.03:(null)~(null)] on local with data protection level of entry [ClassC] (system protection level: ClassC)
+2026-08-04 18:03:27.501 Df WidgetRenderer_Default[52561:36b621] [com.apple.chrono:timelineLiveView] [[com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps:systemSmall::(null)~(null)]] Ignored view update for reason: [timelineAdvancedOrNewArchive], (content paused: false, foreground: false)
+2026-08-04 18:03:27.502 Df WidgetRenderer_Default[52561:36b621] [com.apple.chrono:visibility] [Timeline[com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps:systemSmall::176.67/176.67/30.03:(null)~(null)]--EAA169DB1222::0x11b009c00)] Content reload detected - evaluating staleness.
+2026-08-04 18:03:27.502 Df WidgetRenderer_Default[52561:36b621] [com.apple.chrono:visibility] [Timeline[com.apple.Maps::com.apple.Maps.GeneralMapsWidget:com.apple.Maps:systemSmall::176.67/176.67/30.03:(null)~(null)]--EAA169DB1222::0x11b009c00)] Ignoring staleness check - not visibly settled for current view session yet.
+2026-08-04 18:03:27.586 Df runningboardd[52424:3757d2] [com.apple.runningboard:assertion] Removed last relative-start-date-defining assertion for process xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}
+2026-08-04 18:03:27.586 A  runningboardd[52424:3757d2] (RunningBoard) state update
+2026-08-04 18:03:27.586 A  runningboardd[52424:3757d2] (RunningBoard) state notification
+2026-08-04 18:03:27.586 Df runningboardd[52424:3757d3] [com.apple.runningboard:ttl] Attempting to rename power assertion 65535 for target xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]} to xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}52424-52487-863:[Maps.GeneralMapsWidget-DEB5833FFE5A]
+2026-08-04 18:03:27.586 Df runningboardd[52424:3757d0] [com.apple.runningboard:ttl] [xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}:52601] Suspending task.
+2026-08-04 18:03:27.586 Df runningboardd[52424:3757d2] [com.apple.runningboard:monitor] Calculated state for xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}: running-suspended (role: None) (endowments: (null))
+2026-08-04 18:03:27.586 A  SpringBoard[52421:375665] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.586 A  chronod[52487:3757cc] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.586 Df SpringBoard[52421:375665] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-suspended-NotVisible
+2026-08-04 18:03:27.586 Df chronod[52487:3757cc] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-suspended-NotVisible
+2026-08-04 18:03:27.586 A  locationd[52445:36f1ec] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.586 A  mediaremoted[52428:3757d8] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.586 Df mediaremoted[52428:3757d8] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-suspended-NotVisible
+2026-08-04 18:03:27.586 A  runningboardd[52424:374128] (RunningBoard) statesForPredicate
+2026-08-04 18:03:27.586 Df locationd[52445:36f1ec] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-suspended-NotVisible
+2026-08-04 18:03:27.586 A  runningboardd[52424:374128] (RunningBoard) invalidateAssertionWithIdentifier
+2026-08-04 18:03:27.586 Df runningboardd[52424:374128] [com.apple.runningboard:ttl] Invalidating assertion 52424-52487-863 (target:[xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}:52601]) from originator [osservice<com.apple.chronod>:52487]
+2026-08-04 18:03:27.586 Df locationd[52445:373b47] [com.apple.locationd.Core:Core] {"msg":"RBS #AppMonitor process monitor update handler invoked", "pid":52601, "bundleID":com.apple.Maps.GeneralMapsWidget, "state":3}
+2026-08-04 18:03:27.587 Df locationd[52445:36f1eb] [com.apple.locationd.Core:Core] {"msg":"RBS #AppMonitor Post Application State Change Notification", "notification":BackgroundTaskSuspended, "pid":52601, "bundleId":com.apple.Maps.GeneralMapsWidget}
+2026-08-04 18:03:27.587 Df locationd[52445:36f1ec] [com.apple.locationd.Core:Core] Client icom.apple.Maps: disconnected
+2026-08-04 18:03:27.587 Df SpringBoard[52421:3757d5] [com.apple.FrontBoard:Process] [xpcservice<com.apple.Maps.GeneralMapsWidget>:52601] Setting process task state to: Suspended
+2026-08-04 18:03:27.587 Df locationd[52445:36f1ec] [com.apple.locationd.Core:Core] {"msg":"#CLIUA AppMonitor notification", "notification":2, "pid":52601, "bundleId":com.apple.Maps.GeneralMapsWidget, "ClientKey":icom.apple.Maps:}
+2026-08-04 18:03:27.587 Df locationd[52445:36f1ec] [com.apple.xpc:connection] [0x106550600] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 18:03:27.587 A  runningboardd[52424:3757d2] (RunningBoard) timer
+2026-08-04 18:03:27.587 Df GeneralMapsWidget[52601:3757e3] [com.apple.xpc:connection] [0x103564a00] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-08-04 18:03:27.587 Df GeneralMapsWidget[52601:3757e3] [com.apple.LocationSupport:Connection] #Warning Connection interrupted!
+2026-08-04 18:03:27.587 A  GeneralMapsWidget[52601:3757e3] (LocationSupport) CL: CLConnection::handleInterruption
+2026-08-04 18:03:27.587 Df GeneralMapsWidget[52601:3757e3] [com.apple.LocationSupport:Connection] {"msg":"CLConnection::handleInterruption", "event":activity}
+2026-08-04 18:03:27.587 A  GeneralMapsWidget[52601:3757e3] (LocationSupport) CL: Sending cached messages to daemon
+2026-08-04 18:03:27.587 Df GeneralMapsWidget[52601:3757e3] [com.apple.LocationSupport:Connection] {"msg":"Sending cached messages to daemon", "event":activity}
+2026-08-04 18:03:27.587 A  GeneralMapsWidget[52601:3757e3] (LocationSupport) CL: CLConnection::sendMessage
+2026-08-04 18:03:27.587 A  GeneralMapsWidget[52601:3757e3] (LocationSupport) CL: CLConnection::sendMessage
+2026-08-04 18:03:27.587 A  GeneralMapsWidget[52601:3757e3] (CoreLocation) CL: CLClientInterruptionHandler
+2026-08-04 18:03:27.587 Df GeneralMapsWidget[52601:3757e3] [com.apple.locationd.Core:Client] {"msg":"CLClientInterruptionHandler", "event":activity, "client":"0x102fdc5a0"}
+2026-08-04 18:03:27.587 Df locationd[52445:36f1ec] [com.apple.xpc:connection] [0x106550600] activating connection: mach=false listener=false peer=true name=com.apple.locationd.registration.peer[52601].0x106550600
+2026-08-04 18:03:27.587 A  locationd[52445:36f1ec] CL: CLDaemonClient(ctor)
+2026-08-04 18:03:27.588 Df locationd[52445:36f1ec] [com.apple.locationd.Core:Core] {"msg":"client sdk", "NaturalKeyPath":icom.apple.Maps:, "sdkAtLeast2014?":1, "sdkAtLeast2017?":1, "sdkAtLeast2019?":1}
+2026-08-04 18:03:27.588 Df locationd[52445:36f1ec] [com.apple.locationd.Core:Client] {"msg":"Client is setting effective bundle identifier", "NaturalBundleId":com.apple.Maps, "MasqueradingBundleId":com.apple.Maps, "shouldAuthSlide":1, "shouldUpdateEntitlements":0}
+2026-08-04 18:03:27.588 Df locationd[52445:36f1ec] [com.apple.locationd.Core:Core] {"msg":"Created CLDC for connecting client", "CLDC":"0x106570000", "ConnectingMessage":LocationManager/kCLConnectionMessageRegistration, "ClientKeyPath":icom.apple.Maps:, "RegistrationComplete":1}
+2026-08-04 18:03:27.588 Df locationd[52445:36f1ec] [com.apple.locationd.Core:Core] {"msg":"computing freshAuthorizationContext", "Client":icom.apple.Maps:, "BigSwitch":1, "InUseLevel":1}
+2026-08-04 18:03:27.588 Df locationd[52445:36f1ec] [com.apple.locationd.Core:Client] {"msg":"#AuthContext Set authorization context", "ckp":icom.apple.Maps:, "prevAuthContext":AuthContext InUse:0  RegResult:4(4) EffectiveMask:0  ProvisionalMask:0  DiagnosticMask:0, "newAuthContext":AuthContext InUse:1  RegResult:4(4) EffectiveMask:1572864  ProvisionalMask:1572864  DiagnosticMask:0}
+2026-08-04 18:03:27.588 A  GeneralMapsWidget[52601:36b8f2] (CoreLocation) CL: CLLocationManager
+2026-08-04 18:03:27.588 Df GeneralMapsWidget[52601:36b8f2] [com.apple.locationd.Core:Client] {"msg":"CLLocationManager", "event":activity, "_cmd":onClientEventRegistration:, "self":"0x1035b40b0", "clientKey":icom.apple.Maps:}
+2026-08-04 18:03:27.588 A  locationd[52445:36f1ec] CL: Incoming message
+2026-08-04 18:03:27.588 Df locationd[52445:36f1ec] [com.apple.locationd.Core:Client] {"msg":"Incoming message", "event":activity, "name":kCLConnectionMessagePausesLocationUpdatesAutomatically, "this":"0x106570000", "registrationReceived":1}
+2026-08-04 18:03:27.589 Df locationd[52445:36f1ec] [com.apple.locationd.Core:Client] Background indicator enabled for icom.apple.Maps: is now 1 (was 1)
+2026-08-04 18:03:27.589 E  runningboardd[52424:3757d0] [com.apple.runningboard:process] [xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}:52601] pid_suspend() failed with error 1: Operation not permitted
+2026-08-04 18:03:27.589 Df runningboardd[52424:3757d0] [com.apple.runningboard:ttl] [xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}:52601] Set darwin role to: None
+2026-08-04 18:03:27.693 A  runningboardd[52424:3757d0] (RunningBoard) state update
+2026-08-04 18:03:27.693 A  runningboardd[52424:3757d0] (RunningBoard) state notification
+2026-08-04 18:03:27.693 Df runningboardd[52424:374128] [com.apple.runningboard:ttl] Released power assertion with ID 65535
+2026-08-04 18:03:27.693 Df runningboardd[52424:3757d0] [com.apple.runningboard:monitor] Calculated state for xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}: running-suspended (role: None) (endowments: (null))
+2026-08-04 18:03:27.694 A  runningboardd[52424:3757d0] (RunningBoard) invalidateAssertionWithIdentifier
+2026-08-04 18:03:27.694 A  SpringBoard[52421:375665] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.694 Df runningboardd[52424:3757d0] [com.apple.runningboard:ttl] Invalidating assertion 52424-52561-864 (target:[app<com.apple.chrono.WidgetRenderer-Default((null))>:52561]) from originator [app<com.apple.chrono.WidgetRenderer-Default((null))>:52561]
+2026-08-04 18:03:27.694 A  chronod[52487:374122] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.694 Df SpringBoard[52421:375665] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-suspended-NotVisible
+2026-08-04 18:03:27.694 Df chronod[52487:374122] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-suspended-NotVisible
+2026-08-04 18:03:27.694 A  locationd[52445:36f1ec] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.694 A  mediaremoted[52428:374129] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.694 Df locationd[52445:36f1ec] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-suspended-NotVisible
+2026-08-04 18:03:27.694 Df mediaremoted[52428:374129] [com.apple.runningboard:monitor] Received state update for 52601 (xpcservice<com.apple.Maps.GeneralMapsWidget([osservice<com.apple.chronod>:52487])>{vt hash: 65357341}[uuid:42DBB763-97E9-4BA2-ACF5-4FC647200F8A]{definition:com.apple.Maps.GeneralMapsWidget[extension][client]}, running-suspended-NotVisible
+2026-08-04 18:03:27.798 A  runningboardd[52424:3757d0] (RunningBoard) state update
+2026-08-04 18:03:27.798 A  runningboardd[52424:3757d0] (RunningBoard) state notification
+2026-08-04 18:03:27.799 Df runningboardd[52424:3757d4] [com.apple.runningboard:monitor] Calculated state for app<com.apple.chrono.WidgetRenderer-Default((null))>: running-active (role: Background) (endowments: (null))
+2026-08-04 18:03:27.799 A  SpringBoard[52421:3757d5] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.799 A  chronod[52487:3757cc] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.799 Df SpringBoard[52421:3757d5] [com.apple.runningboard:monitor] Received state update for 52561 (app<com.apple.chrono.WidgetRenderer-Default((null))>, running-active-NotVisible
+2026-08-04 18:03:27.799 Df chronod[52487:3757cc] [com.apple.runningboard:monitor] Received state update for 52561 (app<com.apple.chrono.WidgetRenderer-Default((null))>, running-active-NotVisible
+2026-08-04 18:03:27.799 A  locationd[52445:373b47] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.799 Df locationd[52445:373b47] [com.apple.runningboard:monitor] Received state update for 52561 (app<com.apple.chrono.WidgetRenderer-Default((null))>, running-active-NotVisible
+2026-08-04 18:03:27.799 A  mediaremoted[52428:3757d8] (RunningBoardServices) observedProcessStatesDidChange
+2026-08-04 18:03:27.799 Df mediaremoted[52428:3757d8] [com.apple.runningboard:monitor] Received state update for 52561 (app<com.apple.chrono.WidgetRenderer-Default((null))>, running-active-NotVisible
+2026-08-04 18:03:28.159 Df locationd[52445:373b47] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807548627.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807548627.0
+2026-08-04 18:03:28.159 F  locationd[52445:373b43] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 18:03:28.159 A  locationd[52445:373b43] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 18:03:28.159 Df locationd[52445:373b47] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 18:03:28.159 Df locationd[52445:373b43] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807548608.119
+2026-08-04 18:03:28.160 Df locationd[52445:373b43] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 18:03:28.160 Df locationd[52445:36f1eb] [com.apple.locationd.Utility:QA] os_transaction created: (0x1702539d8) wifi1Event
+2026-08-04 18:03:28.160 Df locationd[52445:36f1eb] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 18:03:28.161 Df locationd[52445:36f1eb] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x1702539d8) wifi1Event
+2026-08-04 18:03:28.460 Df launchd_sim[52416:372ef0] [user/501/com.apple.facetimemessagestored:] service state: spawning
+2026-08-04 18:03:28.460 Df launchd_sim[52416:372ef0] [user/501/com.apple.facetimemessagestored:] launching: xpc event
+2026-08-04 18:03:28.461 Df launchd_sim[52416:372ef0] [user/501/com.apple.facetimemessagestored [57892]:] xpcproxy_sim spawned with pid 57892
+2026-08-04 18:03:28.461 Df launchd_sim[52416:372ef0] [user/501/com.apple.facetimemessagestored [57892]:] internal event: SPAWNED, code = 0
+2026-08-04 18:03:28.462 Df launchd_sim[52416:372ef0] [user/501/com.apple.facetimemessagestored [57892]:] service state: xpcproxy
+2026-08-04 18:03:28.462 Df launchd_sim[52416:372ef0] [user/501/com.apple.facetimemessagestored [57892]:] deferred event: domain spawn response: 0
+2026-08-04 18:03:28.462 Df launchd_sim[52416:372ef0] [user/501/com.apple.facetimemessagestored [57892]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.chrono:wake] Scheduled work did change.
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.chrono:wake] No wake work scheduled
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.chrono:wake] No wake work scheduled
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.chrono:wake] Scheduling nonwaking work for: 2026-08-04T18:08:28+03:00 in 299.999948s
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.chrono:wake] Scheduling waking work for: 2026-08-04T18:08:28+03:00 in 299.999901s
+2026-08-04 18:03:28.492 Df chronod[52487:374122] (ChronoCore) Acquiring keep-alive with reason: wake scheduling
+2026-08-04 18:03:28.492 Df chronod[52487:374122] (ChronoCore) Keep-alive reasons: ["wake scheduling": 1]
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.xpc.activity:Client] __xpc_activity_unregister: com.apple.chronod.nextScheduledTimelineRefresh (0x109f51e00) seqno: 1, (is registered)
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.xpc.activity:Client] _xpc_activity_dispose: com.apple.chronod.nextScheduledTimelineRefresh (0x109f51e00) seqno: 1, (not running)
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.xpc.activity:Client] _xpc_activity_unregister: com.apple.chronod.nextScheduledTimelineRefresh 1, last registration: true
+2026-08-04 18:03:28.492 Df launchd_sim[52416:372eee] Remove subscription with token 1649
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.chrono:wake] Scheduling waking task for adjusted date: 2026-08-04T18:08:28+03:00 in 299.999978s
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.xpc.activity:Client] xpc_activity_register: com.apple.chronod.nextScheduledTimelineRefresh, criteria: dictionary
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.xpc.activity:Client] _xpc_activity_register: com.apple.chronod.nextScheduledTimelineRefresh (0x109f51e00), 0
+2026-08-04 18:03:28.492 Df chronod[52487:374122] [com.apple.xpc.activity:Client] xpc_activity_set_criteria: com.apple.chronod.nextScheduledTimelineRefresh (0x109f51e00), dict
+2026-08-04 18:03:28.493 Df chronod[52487:374122] (ChronoCore) Releasing keep-alive with reason: wake scheduling
+2026-08-04 18:03:28.493 Df chronod[52487:3757cc] [com.apple.xpc.activity:Client] xpc_activity_set_criteria, lower half: com.apple.chronod.nextScheduledTimelineRefresh (0x109f51e00), dict
+2026-08-04 18:03:28.493 Df chronod[52487:374122] (ChronoCore) Keep-alive reasons: [:]
+2026-08-04 18:03:28.493 Df chronod[52487:3757cc] [com.apple.xpc.activity:Client] _xpc_activity_set_criteria: com.apple.chronod.nextScheduledTimelineRefresh (0x109f51e00), dict
+2026-08-04 18:03:28.493 Df chronod[52487:3757cc] [com.apple.xpc.activity:Client] _xpc_activity_set_criteria: xpc_set_event com.apple.chronod.nextScheduledTimelineRefresh, 1
+2026-08-04 18:03:28.493 Df chronod[52487:3757cc] [com.apple.xpc.activity:Client] xpc_activity_set_criteria: com.apple.chronod.nextScheduledTimelineRefresh (0x109f51e00), setting state now to 1
+2026-08-04 18:03:28.493 Df chronod[52487:3757cc] [com.apple.xpc.activity:Client] _xpc_activity_set_state: com.apple.chronod.nextScheduledTimelineRefresh (0x109f51e00), 1
+2026-08-04 18:03:28.493 Df UserEventAgent[52420:375663] [com.apple.xpc.activity:Activities] Unregistered on XPC remove event: com.apple.chronod.nextScheduledTimelineRefresh (0x103e51680)
+2026-08-04 18:03:28.494 Df UserEventAgent[52420:375823] [com.apple.xpc.activity:Internal] Creating on XPC add event: com.apple.chronod.nextScheduledTimelineRefresh
+2026-08-04 18:03:28.494 Df UserEventAgent[52420:375823] [com.apple.xpc.activity:Internal] Created: com.apple.chronod.nextScheduledTimelineRefresh (0x103e51680)
+2026-08-04 18:03:28.494 Df UserEventAgent[52420:375823] [com.apple.xpc.activity:Activities] Registered: com.apple.chronod.nextScheduledTimelineRefresh (0x103e51680)
+2026-08-04 18:03:28.559 Df launchd_sim[52416:372eee] [user/501/com.apple.facetimemessagestored [57892]:] service state: running
+2026-08-04 18:03:28.559 Df launchd_sim[52416:372eee] [user/501/com.apple.facetimemessagestored [57892]:] internal event: INIT, code = 0
+2026-08-04 18:03:28.559 Df launchd_sim[52416:372eee] [user/501/com.apple.facetimemessagestored [57892]:] Successfully spawned facetimemessagestored[57892] because xpc event
+2026-08-04 18:03:28.647 Df launchd_sim[52416:372ef0] [pid/57892 [facetimemessage]:] uncorking exec source upfront
+2026-08-04 18:03:28.647 Df launchd_sim[52416:372ef0] [pid/57892 [facetimemessage]:] created
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [user/501/com.apple.facetimemessagestored [57892]:] exited due to exit(0), ran for 190ms
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [user/501/com.apple.facetimemessagestored [57892]:] service state: exited
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [user/501/com.apple.facetimemessagestored [57892]:] internal event: EXITED, code = 0
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [user/501:] service inactive: com.apple.facetimemessagestored
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [user/501/com.apple.facetimemessagestored [57892]:] service state: not running
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [pid/57892 [facetimemessage]:] shutting down
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [pid/57892 [facetimemessage]:] cleaning up
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [user/501/com.apple.facetimemessagestored:] Service only ran for 0 seconds. Pushing respawn out by 10 seconds.
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [user/501/com.apple.facetimemessagestored:] internal event: WILL_SPAWN, code = 0
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [user/501/com.apple.facetimemessagestored:] service state: spawn scheduled
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [user/501/com.apple.facetimemessagestored:] service spawn deferred by 10 seconds due to throttle
+2026-08-04 18:03:28.654 Df launchd_sim[52416:372eee] [system:] removing child: pid/57892
+2026-08-04 18:03:29.163 Df locationd[52445:36f1eb] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807548628.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807548628.0
+2026-08-04 18:03:29.163 F  locationd[52445:36f1ec] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 18:03:29.163 A  locationd[52445:36f1ec] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 18:03:29.163 Df locationd[52445:36f1eb] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 18:03:29.163 Df locationd[52445:36f1ec] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807548609.123
+2026-08-04 18:03:29.163 Df locationd[52445:373b47] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 18:03:29.164 Df locationd[52445:373b43] [com.apple.locationd.Utility:QA] os_transaction created: (0x17013b9d8) wifi1Event
+2026-08-04 18:03:29.164 Df locationd[52445:373b43] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 18:03:29.164 Df locationd[52445:373b43] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x17013b9d8) wifi1Event
+2026-08-04 18:03:29.801 E  launchd_sim[52416:372eee] [fixup-mobile-tmp:] launchd has not fixed mobile/tmp (service)
+2026-08-04 18:03:29.801 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl:] internal event: WILL_SPAWN, code = 0
+2026-08-04 18:03:29.801 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl:] service state: spawn scheduled
+2026-08-04 18:03:29.801 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl:] service state: spawning
+2026-08-04 18:03:29.801 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl:] launching: one-shot
+2026-08-04 18:03:29.802 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl [57902]:] xpcproxy_sim spawned with pid 57902
+2026-08-04 18:03:29.802 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl [57902]:] internal event: SPAWNED, code = 0
+2026-08-04 18:03:29.802 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl [57902]:] service state: xpcproxy
+2026-08-04 18:03:29.802 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl [57902]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 18:03:29.898 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl [57902]:] service state: running
+2026-08-04 18:03:29.898 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl [57902]:] internal event: INIT, code = 0
+2026-08-04 18:03:29.898 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl [57902]:] Successfully spawned launchctl[57902] because one-shot
+2026-08-04 18:03:29.967 Df launchctl[57902:3758a3] [com.apple.xpc.launchctl:All] launchctl list: launchctl list
+2026-08-04 18:03:29.970 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl [57902]:] exited due to exit(0), ran for 166ms
+2026-08-04 18:03:29.970 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl [57902]:] service state: exited
+2026-08-04 18:03:29.970 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl [57902]:] internal event: EXITED, code = 0
+2026-08-04 18:03:29.970 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl [57902]:] service state: not running
+2026-08-04 18:03:29.970 Df launchd_sim[52416:372f0b] [user/501:] service inactive: com.apple.xpc.launchd.oneshot.0x10000056.launchctl
+2026-08-04 18:03:29.970 Df launchd_sim[52416:372f0b] [user/501:] removing service: com.apple.xpc.launchd.oneshot.0x10000056.launchctl
+2026-08-04 18:03:29.970 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000056.launchctl:] internal event: PETRIFIED, code = 0
+2026-08-04 18:03:30.070 Df chronod[52487:3757df] [com.apple.xpc:connection] [0x10ad44500] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 18:03:30.070 Df BatteriesAvocadoWidgetExtension[52591:3757db] [com.apple.xpc:connection] [0x101a8c000] invalidated because the client process (pid 52487) either cancelled the connection or exited
+2026-08-04 18:03:30.070 E  BatteriesAvocadoWidgetExtension[52591:3757db] [com.apple.BoardServices:XPCErrors] [S:6] Error received: Connection invalidated.
+2026-08-04 18:03:30.167 Df locationd[52445:373b43] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807548629.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807548629.0
+2026-08-04 18:03:30.167 F  locationd[52445:373b43] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 18:03:30.167 A  locationd[52445:373b43] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 18:03:30.167 Df locationd[52445:36f1eb] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 18:03:30.167 Df locationd[52445:373b43] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807548610.127
+2026-08-04 18:03:30.167 Df locationd[52445:36f1eb] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 18:03:30.167 Df locationd[52445:373b43] [com.apple.locationd.Utility:QA] os_transaction created: (0x17013b9d8) wifi1Event
+2026-08-04 18:03:30.167 Df locationd[52445:373b43] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 18:03:30.167 Df locationd[52445:373b43] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x17013b9d8) wifi1Event
+2026-08-04 18:03:30.482 A  runningboardd[52424:3757d0] (RunningBoard) timer
+2026-08-04 18:03:31.044 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd:] service state: spawning
+2026-08-04 18:03:31.044 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd:] launching: xpc event
+2026-08-04 18:03:31.046 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd [57910]:] xpcproxy_sim spawned with pid 57910
+2026-08-04 18:03:31.046 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd [57910]:] internal event: SPAWNED, code = 0
+2026-08-04 18:03:31.046 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd [57910]:] service state: xpcproxy
+2026-08-04 18:03:31.046 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd [57910]:] deferred event: domain spawn response: 0
+2026-08-04 18:03:31.046 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd [57910]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 18:03:31.056 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond:] service state: spawning
+2026-08-04 18:03:31.056 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond:] launching: xpc event
+2026-08-04 18:03:31.057 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] xpcproxy_sim spawned with pid 57911
+2026-08-04 18:03:31.057 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] internal event: SPAWNED, code = 0
+2026-08-04 18:03:31.057 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] service state: xpcproxy
+2026-08-04 18:03:31.057 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] deferred event: domain spawn response: 0
+2026-08-04 18:03:31.057 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 18:03:31.132 Df launchd_sim[52416:372f0b] [user/501/com.apple.mlhostd [57910]:] service state: running
+2026-08-04 18:03:31.132 Df launchd_sim[52416:372f0b] [user/501/com.apple.mlhostd [57910]:] internal event: INIT, code = 0
+2026-08-04 18:03:31.133 Df launchd_sim[52416:372f0b] [user/501/com.apple.mlhostd [57910]:] Successfully spawned mlhostd[57910] because xpc event
+2026-08-04 18:03:31.137 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] service state: running
+2026-08-04 18:03:31.137 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] internal event: INIT, code = 0
+2026-08-04 18:03:31.137 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] Successfully spawned managedappdistributiond[57911] because xpc event
+2026-08-04 18:03:31.169 Df locationd[52445:373b47] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807548630.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807548630.0
+2026-08-04 18:03:31.169 F  locationd[52445:373b47] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 18:03:31.169 A  locationd[52445:373b47] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 18:03:31.169 Df locationd[52445:373b43] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 18:03:31.169 Df locationd[52445:373b47] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807548611.129
+2026-08-04 18:03:31.169 Df locationd[52445:36f1eb] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 18:03:31.170 Df locationd[52445:373b43] [com.apple.locationd.Utility:QA] os_transaction created: (0x17013b9d8) wifi1Event
+2026-08-04 18:03:31.170 Df locationd[52445:373b43] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 18:03:31.170 Df locationd[52445:373b43] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x17013b9d8) wifi1Event
+2026-08-04 18:03:31.211 Df launchd_sim[52416:372f0b] [pid/57910 [mlhostd]:] uncorking exec source upfront
+2026-08-04 18:03:31.211 Df launchd_sim[52416:372f0b] [pid/57910 [mlhostd]:] created
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [pid/57910 [mlhostd]:] shutting down
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [pid/57910 [mlhostd]:] cleaning up
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd [57910]:] exited due to exit(0), ran for 170ms
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd [57910]:] service state: exited
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd [57910]:] internal event: EXITED, code = 0
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [user/501:] service inactive: com.apple.mlhostd
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd [57910]:] service state: not running
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [system:] removing child: pid/57910
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd:] Service only ran for 0 seconds. Pushing respawn out by 10 seconds.
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd:] internal event: WILL_SPAWN, code = 0
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd:] service state: spawn scheduled
+2026-08-04 18:03:31.218 Df launchd_sim[52416:372eee] [user/501/com.apple.mlhostd:] service spawn deferred by 10 seconds due to throttle
+2026-08-04 18:03:31.225 Df launchd_sim[52416:372f0b] [pid/57911 [managedappdistr]:] uncorking exec source upfront
+2026-08-04 18:03:31.225 Df launchd_sim[52416:372f0b] [pid/57911 [managedappdistr]:] created
+2026-08-04 18:03:31.230 E  managedappdistributiond[57911:3758d0] [com.apple.ManagedAppDistribution:Daemon] Simulator is not supported
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] exited due to exit(0), ran for 174ms
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] service state: exited
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] internal event: EXITED, code = 0
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [user/501:] service inactive: com.apple.managedappdistributiond
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond [57911]:] service state: not running
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [pid/57911 [managedappdistr]:] shutting down
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [pid/57911 [managedappdistr]:] cleaning up
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond:] Service only ran for 0 seconds. Pushing respawn out by 10 seconds.
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond:] internal event: WILL_SPAWN, code = 0
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond:] service state: spawn scheduled
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [user/501/com.apple.managedappdistributiond:] service spawn deferred by 10 seconds due to throttle
+2026-08-04 18:03:31.234 Df launchd_sim[52416:372eee] [system:] removing child: pid/57911
+2026-08-04 18:03:32.169 Df locationd[52445:373b43] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807548631.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807548631.0
+2026-08-04 18:03:32.170 F  locationd[52445:373b43] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 18:03:32.170 A  locationd[52445:373b43] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 18:03:32.170 Df locationd[52445:36f1eb] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 18:03:32.170 Df locationd[52445:373b43] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807548612.130
+2026-08-04 18:03:32.170 Df locationd[52445:373b43] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 18:03:32.171 Df locationd[52445:36f1eb] [com.apple.locationd.Utility:QA] os_transaction created: (0x1702539d8) wifi1Event
+2026-08-04 18:03:32.171 Df locationd[52445:36f1eb] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 18:03:32.171 Df locationd[52445:36f1eb] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x1702539d8) wifi1Event
+2026-08-04 18:03:32.540 E  launchd_sim[52416:372f0b] [fixup-mobile-tmp:] launchd has not fixed mobile/tmp (service)
+2026-08-04 18:03:32.540 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000057.log:] internal event: WILL_SPAWN, code = 0
+2026-08-04 18:03:32.540 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000057.log:] service state: spawn scheduled
+2026-08-04 18:03:32.540 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000057.log:] service state: spawning
+2026-08-04 18:03:32.540 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000057.log:] launching: one-shot
+2026-08-04 18:03:32.541 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000057.log [57947]:] xpcproxy_sim spawned with pid 57947
+2026-08-04 18:03:32.541 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000057.log [57947]:] internal event: SPAWNED, code = 0
+2026-08-04 18:03:32.541 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000057.log [57947]:] service state: xpcproxy
+2026-08-04 18:03:32.541 Df launchd_sim[52416:372f0b] [user/501/com.apple.xpc.launchd.oneshot.0x10000057.log [57947]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 18:03:32.637 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000057.log [57947]:] service state: running
+2026-08-04 18:03:32.637 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000057.log [57947]:] internal event: INIT, code = 0
+2026-08-04 18:03:32.637 Df launchd_sim[52416:372eee] [user/501/com.apple.xpc.launchd.oneshot.0x10000057.log [57947]:] Successfully spawned log[57947] because one-shot
+2026-08-04 18:03:32.731 Df chronod[52487:3757cb] [com.apple.xpc:connection] [0x10ad45400] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-08-04 18:03:32.731 Df GeneralMapsWidget[52601:3757e3] [com.apple.xpc:connection] [0x103598300] invalidated because the client process (pid 52487) either cancelled the connection or exited
+2026-08-04 18:03:32.731 E  GeneralMapsWidget[52601:3757e3] [com.apple.BoardServices:XPCErrors] [S:6] Error received: Connection invalidated.
+2026-08-04 18:03:32.735 Df launchd_sim[52416:372f0b] [pid/57947 [log]:] uncorking exec source upfront
+2026-08-04 18:03:32.735 Df launchd_sim[52416:372f0b] [pid/57947 [log]:] created
+2026-08-04 18:03:32.737 Df log[57947:0] [com.apple.log:] log run noninteractively, parent: 52416 (launchd_sim), args: 'log' 'show' '--last' '10m' '--style' 'compact'
+2026-08-04 18:03:32.742 Df launchd_sim[52416:372eee] [system/com.apple.logd_helper:] internal event: WILL_SPAWN, code = 0
+2026-08-04 18:03:32.742 Df launchd_sim[52416:372eee] [system/com.apple.logd_helper:] service state: spawn scheduled
+2026-08-04 18:03:32.742 Df launchd_sim[52416:372eee] [system/com.apple.logd_helper:] service state: spawning
+2026-08-04 18:03:32.742 Df launchd_sim[52416:372eee] [system/com.apple.logd_helper:] launching: ipc (mach)
+2026-08-04 18:03:32.742 Df launchd_sim[52416:372eee] [system/com.apple.logd_helper [57948]:] xpcproxy_sim spawned with pid 57948
+2026-08-04 18:03:32.742 Df launchd_sim[52416:372eee] [system/com.apple.logd_helper [57948]:] internal event: SPAWNED, code = 0
+2026-08-04 18:03:32.742 Df launchd_sim[52416:372eee] [system/com.apple.logd_helper [57948]:] service state: xpcproxy
+2026-08-04 18:03:32.742 Df launchd_sim[52416:372eee] [system/com.apple.logd_helper [57948]:] internal event: SOURCE_ATTACH, code = 0
+2026-08-04 18:03:32.815 Df launchd_sim[52416:372f0b] [system/com.apple.logd_helper [57948]:] service state: running
+2026-08-04 18:03:32.815 Df launchd_sim[52416:372f0b] [system/com.apple.logd_helper [57948]:] internal event: INIT, code = 0
+2026-08-04 18:03:32.815 Df launchd_sim[52416:372f0b] [system/com.apple.logd_helper [57948]:] Successfully spawned logd_helper[57948] because ipc (mach)
+2026-08-04 18:03:32.894 Df launchd_sim[52416:372eee] [pid/57948 [logd_helper]:] uncorking exec source upfront
+2026-08-04 18:03:32.894 Df launchd_sim[52416:372eee] [pid/57948 [logd_helper]:] created
+2026-08-04 18:03:33.171 Df locationd[52445:36f1eb] [com.apple.locationd.Position:GeneralCLX] @ClxSimulated, Fix, 1, ll, <private>, <private>, acc, 5.00, course, -1.0, time, 807548632.0, deltaDistance, 0.0, deltaDistanceAccuracy, 0.8, odometer, -1.0, timestampGps, 807548632.0
+2026-08-04 18:03:33.171 F  locationd[52445:36f1eb] [com.apple.locationd.Position:Position] LocationProvider,Provider controller is notifying clients (notification type=10) of a <0,0> raw coordinate, at location (<+37.78583400,-122.40641700>) of type 1
+2026-08-04 18:03:33.171 A  locationd[52445:36f1eb] (libsystem_trace.dylib) Activity for state dumps
+2026-08-04 18:03:33.171 Df locationd[52445:36f1ec] [com.apple.locationd.Position:GeneralCLX] MovingApDetector, received location: <private>, success: yes
+2026-08-04 18:03:33.172 Df locationd[52445:36f1eb] [com.apple.locationd.Position:GeneralCLX] @ClxClient, Fix, 1, ll, <private>, <private>, acc, 5.00, speed, -1.0, course, -1.0, type, 1, alt, 0.0, altunc, -1.0, ellipsoidalAlt, 0.0, speedUnc, -1.0, courseUnc, -1.0, signalEnv, 0, timestamp, 807548613.131
+2026-08-04 18:03:33.172 Df locationd[52445:373b43] [com.apple.locationd.Core:Core] {"msg":"#pla #zone-relevance-tracker, location notification", "notification":5, "_currentLocation":'00 00 00 00 00 00 00 00', "NewLocation":'00 00 00 00 00 00 00 00'}
+2026-08-04 18:03:33.172 Df locationd[52445:373b47] [com.apple.locationd.Utility:QA] os_transaction created: (0x1702df9d8) wifi1Event
+2026-08-04 18:03:33.172 Df locationd[52445:373b47] [com.apple.locationd.Position:WifiPosition] @WifiLogic, handleInput, System::LeechLocation
+2026-08-04 18:03:33.172 Df locationd[52445:373b47] [com.apple.locationd.Utility:QA] os_transaction releasing: (0x1702df9d8) wifi1Event
+

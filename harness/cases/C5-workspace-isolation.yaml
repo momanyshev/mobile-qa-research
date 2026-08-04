@@ -15,6 +15,9 @@ preconditions:
       description: Приложение закрывается при переходе в детали дефекта из списка
       severity: critical
       status: open
+      stepsToReproduce: Открыть перечень записей и повторить действие из сценария
+      expectedResult: Поведение совпадает с заявленным
+      actualResult: Поведение отличается от заявленного
 allowedActions:
   - read-ui
   - mobile-ui-interaction

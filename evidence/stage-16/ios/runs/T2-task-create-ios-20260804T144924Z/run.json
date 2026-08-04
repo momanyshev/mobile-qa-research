@@ -1,0 +1,62 @@
+{
+  "runId": "T2-task-create-ios-20260804T144924Z",
+  "caseId": "T2-task-create",
+  "platform": "ios",
+  "device": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "8f0a4a33-027c-49ff-b01e-830fc041ce9e",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "67aeb3",
+  "startedAt": "2026-08-04T14:49:26.856Z",
+  "seeded": [
+    {
+      "id": "64774b1e-e464-4f88-9c17-35a5ab1929d0",
+      "title": "Не сохраняется черновик формы",
+      "status": "open",
+      "severity": "medium"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-08-04T14:49:25.390Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "eb7dc6d",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "ab28f0d",
+      "dirty": true
+    },
+    "platform": "ios",
+    "device": {
+      "deviceId": "A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37",
+      "name": "iPhone 17 Pro Max",
+      "platform": "ios",
+      "runtime": "iOS 26.5",
+      "state": "Booted"
+    },
+    "agentModel": "subagent (clean context)",
+    "agentContract": {
+      "path": "mobile-qa-agent/SKILL.md",
+      "sha256": "917fc921b0b2",
+      "bytes": 12849
+    },
+    "skillRevision": "новая фича: типы записей",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/T2-task-create.yaml",
+  "limits": {
+    "timeoutSeconds": 900,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "videoPid": 55749,
+  "armedAt": "2026-08-04T14:50:04.839Z",
+  "finishedAt": "2026-08-04T15:03:33.905Z",
+  "verdict": "FAIL"
+}
