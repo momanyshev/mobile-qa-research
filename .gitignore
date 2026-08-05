@@ -12,3 +12,7 @@ evidence/**/run-video.mp4
 
 # Local Netlify folder
 .netlify
+
+# Логи фоновых процессов, поднятых harness prepare (backend, Metro).
+# Нужны при разборе отказа подготовки, но это вывод чужих процессов, не результат.
+harness/.prepare-logs/

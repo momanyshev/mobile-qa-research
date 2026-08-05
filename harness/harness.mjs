@@ -37,6 +37,7 @@ import { versionManifest } from "./lib/versions.mjs";
 import { renderReport, reportStructure } from "./lib/report.mjs";
 import { summarizeLog, renderTranscript, retryViolations } from "./lib/cmdlog.mjs";
 import { runPreflight, renderPreflight, observedApp } from "./lib/preflight.mjs";
+import { runPrepare, renderPrepare } from "./lib/prepare.mjs";
 import { captureDeviceLog, needsDiagnostics } from "./lib/diagnostics.mjs";
 import { startRecording, stopRecording } from "./lib/video.mjs";
 import { renderSummary } from "./lib/summary.mjs";
@@ -148,6 +149,24 @@ async function cmdStart(f) {
   if (f.workspace && f.workspace !== true) {
     if (context.kind !== "workspace") die(`--workspace неприменим к adapter «${adapter.id}»`);
     context.workspaceId = f.workspace;
+    // Признак осознанного выбора: prepare не имеет права подменить такое
+    // пространство тем, что показывает приложение, — он обязан отказаться.
+    context.workspacePinned = true;
+  }
+
+  // Prepare до preflight: сначала приводим стенд, потом проверяем. Порядок
+  // важен — prepare никогда не выносит вердикт о готовности сам, это работа
+  // preflight, поэтому неудачная починка не может тихо пропустить run.
+  let prepareResult = null;
+  if (device && !f["no-prepare"]) {
+    prepareResult = await runPrepare(adapter, { platform, device, context });
+    console.log("prepare:");
+    console.log(renderPrepare(prepareResult));
+    if (!prepareResult.ok) {
+      die(`\nRun не начат: не удалось подготовить стенд (${prepareResult.failed.length} шагов).\n`
+        + "Разберите причины выше либо запустите с --no-prepare, если готовите стенд сами.");
+    }
+    console.log("");
   }
 
   // Preflight до создания каталога, seed и первого действия: отделяем
@@ -168,6 +187,9 @@ async function cmdStart(f) {
 
   mkdirSync(dir, { recursive: true });
   if (preflightResult) writeFileSync(`${dir}/preflight.json`, JSON.stringify(preflightResult, null, 2));
+  // Что именно пришлось чинить перед прогоном — часть истории стенда: если
+  // результат придётся оспаривать, «стенд был не готов» должно быть видно.
+  if (prepareResult) writeFileSync(`${dir}/prepare.json`, JSON.stringify(prepareResult, null, 2));
 
   const versions = versionManifest({
     deviceId: device, platform,
@@ -227,8 +249,11 @@ async function cmdStart(f) {
   console.log(manifest.instruction.trim());
   console.log("");
   if (seeded.length && device) {
-    console.log(`ВНИМАНИЕ: seed создан после снимка. Наведите приложение на ${adapter.describeContext(context)},`);
-    console.log(`дождитесь загрузки данных и переснимите исходное состояние:`);
+    // Наведение на Workspace делает prepare, поэтому здесь остаётся только
+    // причина, по которой arm нужен и после него: seed создан ПОСЛЕ снимка,
+    // и на экране всё ещё доисходное состояние.
+    console.log(`ВНИМАНИЕ: seed создан после снимка. Обновите данные в приложении`);
+    console.log(`(${adapter.describeContext(context)}) и переснимите исходное состояние:`);
     console.log(`  node harness.mjs arm --run ${runId}`);
   }
   console.log(`По завершении: node harness.mjs finish --run ${runId} --transcript <файл>`);
@@ -568,6 +593,28 @@ function cmdValidate(f) {
 }
 
 /** Проверка среды без начала run — агент может позвать её отдельно. */
+/**
+ * Подъём стенда отдельной командой — для отладки самой подготовки и для
+ * случая, когда стенд нужен без прогона. При обычной работе вызывается сам
+ * из `start`, руками запускать не требуется.
+ */
+async function cmdPrepare(f) {
+  const platform = requireFlag(f, "platform");
+  const device = requireFlag(f, "device");
+  const adapter = f.case && f.case !== true ? adapterFor(loadManifest(f.case)) : null;
+  const context = adapter ? await adapter.createContext({ platform, device }).catch(() => null) : null;
+  if (context && f.workspace && f.workspace !== true) {
+    context.workspaceId = f.workspace;
+    context.workspacePinned = true;
+  }
+
+  const res = await runPrepare(adapter, { platform, device, context });
+  console.log(renderPrepare(res));
+  if (context?.workspaceId) console.log(`\nWorkspace прогона: ${context.workspaceId}`);
+  console.log(res.ok ? "\nстенд готов" : `\nстенд НЕ готов: ${res.failed.length} шагов не выполнено`);
+  if (!res.ok) process.exit(1);
+}
+
 async function cmdPreflight(f) {
   const platform = requireFlag(f, "platform");
   const device = requireFlag(f, "device");
@@ -629,6 +676,7 @@ try {
     case "arm": cmdArm(flags); break;
     case "finish": await cmdFinish(flags); break;
     case "abort": await cmdAbort(flags); break;
+    case "prepare": await cmdPrepare(flags); break;
     case "preflight": await cmdPreflight(flags); break;
     case "validate": cmdValidate(flags); break;
     case "list": cmdList(); break;
@@ -636,7 +684,7 @@ try {
     case "summary": cmdSummary(flags); break;
     case "selftest": await cmdSelftest(); break;
     default:
-      console.error("Команды: list | validate [case] | preflight | new-workspace | start | arm | finish | abort | summary | selftest");
+      console.error("Команды: list | validate [case] | prepare | preflight | new-workspace | start | arm | finish | abort | summary | selftest");
       process.exit(2);
   }
 } catch (err) {

@@ -15,13 +15,14 @@ import { fileURLToPath } from "node:url";
 import { parseYaml, YamlError } from "./lib/yaml.mjs";
 import { validateManifest, loadManifest, listCases, ManifestError } from "./lib/manifest.mjs";
 import { runOracle as runOracleRaw, uiText } from "./lib/oracle-runner.mjs";
-import qalabAdapter from "./adapters/qalab.mjs";
+import qalabAdapter, { readWorkspaceFromScreen } from "./adapters/qalab.mjs";
 import speecherAdapter from "./adapters/speecher.mjs";
 import elementxAdapter from "./adapters/elementx.mjs";
 import { getAdapter, listAdapters } from "./adapters/index.mjs";
 import { renderReport, reportStructure, REPORT_FIELDS } from "./lib/report.mjs";
 import { classifyCall, runLogged, summarizeLog, renderTranscript, retryViolations } from "./lib/cmdlog.mjs";
 import { genericPreflight } from "./lib/preflight.mjs";
+import { step as prepareStep } from "./lib/prepare.mjs";
 import { needsDiagnostics } from "./lib/diagnostics.mjs";
 import { agentContract } from "./lib/versions.mjs";
 import { IssuesClient } from "../tools/lib/client.mjs";
@@ -325,6 +326,59 @@ async function preflightTests(t) {
   rmSync(log, { force: true });
 }
 
+// ── 3.47. Prepare: семантика шага подготовки ──────────────────────────────────
+
+async function prepareTests(t) {
+  console.log("\nPrepare (подъём стенда):");
+
+  const run = async (opts) => {
+    const out = { steps: [] };
+    const value = await prepareStep(out, "проба", opts);
+    return { value, s: out.steps[0] };
+  };
+
+  // Идемпотентность — главное свойство: повторный prepare на готовом стенде
+  // не должен трогать ничего, иначе он сам станет источником дрейфа.
+  let r = await run({ check: () => "уже готово", fix: () => { throw new Error("fix не должен вызываться"); } });
+  t.ok("выполненное условие не чинится", r.s.status === "ok" && r.value === "уже готово");
+
+  let fixCalls = 0, ready = false;
+  r = await run({ check: () => (ready ? "готово" : null), fix: () => { fixCalls++; ready = true; return "починили"; } });
+  t.ok("невыполненное условие чинится один раз", r.s.status === "fixed" && fixCalls === 1);
+  t.ok("что именно чинилось, видно в отчёте", /починили/.test(r.s.detail));
+
+  // Починка, которая «прошла», но условие не выполнила, — провал, а не успех:
+  // молчаливый ok здесь пропустил бы сломанный стенд в прогон.
+  r = await run({ check: () => null, fix: () => "сделали вид" });
+  t.ok("безрезультатная починка → failed", r.s.status === "failed" && r.value === null);
+
+  r = await run({ check: () => null, fix: () => { throw new Error("нет прав"); } });
+  t.ok("исключение в починке → failed с причиной", r.s.status === "failed" && /нет прав/.test(r.s.detail));
+
+  r = await run({ check: () => null });
+  t.ok("шаг без fix не выдумывает починку", r.s.status === "failed");
+
+  // Уровень warn не блокирует старт, fail блокирует.
+  const steps = [
+    { name: "a", status: "failed", level: "warn" },
+    { name: "b", status: "failed", level: "fail" },
+  ];
+  t.ok("блокирует только уровень fail",
+    steps.filter((s) => s.status === "failed" && s.level !== "warn").length === 1);
+
+  // Чтение Workspace с экрана: ровно один UUID — иначе отказ, а не догадка.
+  const one = '@12 #3  StaticText  "b840eb36-7fcf-4ce9-a95e-9b65c34073bc"  (37,383 366x18)';
+  const two = `${one}\n@20 #9  StaticText  "84c88bda-230d-4624-a6d3-2ec4011c19f0"  (37,500 366x18)`;
+  const H = (tree) => ({ shq: () => tree });
+  t.ok("единственный UUID на экране принимается",
+    readWorkspaceFromScreen(H(one), "dev") === "b840eb36-7fcf-4ce9-a95e-9b65c34073bc");
+  t.ok("два разных UUID → отказ вместо догадки", readWorkspaceFromScreen(H(two), "dev") === null);
+  t.ok("повтор одного UUID неоднозначностью не считается",
+    readWorkspaceFromScreen(H(`${one}\n${one}`), "dev") === "b840eb36-7fcf-4ce9-a95e-9b65c34073bc");
+  t.ok("экран без UUID → отказ", readWorkspaceFromScreen(H('StaticText  "Записи"'), "dev") === null);
+  t.ok("нечитаемый экран → отказ", readWorkspaceFromScreen(H(null), "dev") === null);
+}
+
 // ── 3.5. Журнал вызовов ───────────────────────────────────────────────────────
 
 async function cmdlogTests(t) {
@@ -529,6 +583,7 @@ export async function selftest() {
   await oracleTests(t);
   await adapterTests(t);
   await preflightTests(t);
+  await prepareTests(t);
   await cmdlogTests(t);
   await reportTests(t);
   await cycleTests(t);

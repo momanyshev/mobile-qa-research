@@ -3,6 +3,7 @@
 // Поведение намеренно совпадает с этапами 10–11: манифесты C1…C6 не менялись.
 
 import { execFileSync } from "node:child_process";
+import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { IssuesClient } from "../../tools/lib/client.mjs";
 import { newWorkspaceId } from "../../tools/lib/workspace.mjs";
@@ -14,6 +15,35 @@ import {
 
 const PASS = "pass", FAIL = "fail", ERROR = "error";
 const PROXY_CLI = fileURLToPath(new URL("../../tools/proxy.mjs", import.meta.url));
+
+const UUID_TEXT = /StaticText\s+"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"/gi;
+
+/**
+ * Прочитать Workspace, на который приложение смотрит сейчас.
+ *
+ * Направление согласования выбрано после неудачной попытки обратного.
+ * Сначала prepare наводил приложение на сгенерированный UUID через модалку —
+ * и упёрся в то, что поле открывается заполненным текущим значением, а
+ * backspace у `sim-use` нет: `selectTextOnFocus` выделяет текст только при
+ * настоящем фокусе, программный тап такого выделения не даёт ни на Android
+ * (R-48), ни, как выяснилось, на iOS. Ввод дописывался к прежнему UUID и
+ * давал невалидное значение.
+ *
+ * Поэтому Workspace берётся у приложения, а не навязывается ему. Побочно это
+ * убирает целый класс расхождений: приложение и oracle не могут смотреть в
+ * разные пространства, если пространство ровно одно и прочитано с экрана.
+ * Изоляция при этом сохраняется — её обеспечивает teardown, опустошающий
+ * пространство после каждого прогона, а не свежесть UUID. Плата за решение:
+ * параллельные прогоны на одном устройстве недопустимы, что и так верно.
+ */
+export function readWorkspaceFromScreen(H, device) {
+  const tree = H.shq("sim-use", ["ui", "--device", device], { timeout: 90_000 });
+  if (!tree) return null;
+  const found = [...tree.matchAll(UUID_TEXT)].map((m) => m[1]);
+  const unique = [...new Set(found)];
+  // Ровно один — иначе непонятно, какой из них рабочий, и угадывать нельзя.
+  return unique.length === 1 ? unique[0] : null;
+}
 
 /** Возврат observation-proxy в чистый pass-through после run (этап 9). */
 function resetFaultProfile() {
@@ -52,6 +82,214 @@ export default {
   id: "qalab",
   displayName: "QA Lab Mobile",
   bundleId: { ios: "ru.maksim.qalab", android: "ru.maksim.qalab" },
+
+  /**
+   * Подъём стенда полигона. Схема канонична и не обсуждается по месту:
+   * backend слушает 8890, proxy 8888 → 8890, приложение ходит через 8888,
+   * oracle бьёт в 8890 напрямую. Смысл — иммунитет oracle к fault-профилям:
+   * если бы он ходил через proxy, поднятый профиль искажал бы и проверку.
+   */
+  async prepare({ platform, device, context, helpers: H } = {}) {
+    const out = { steps: [] };
+    const backendUrl = "http://127.0.0.1:8890";
+
+    // 1. Backend. Порт 8890 намеренно нештатный: netlify dev по умолчанию
+    //    занимает 8888, который в этой схеме принадлежит proxy. Стенд,
+    //    поднятый «как обычно», ломает схему тихо — приложение работает,
+    //    а журнала наблюдения нет.
+    await H.step(out, "backend QA Lab на 8890", {
+      check: async () => {
+        try {
+          const res = await new IssuesClient(backendUrl, "00000000-0000-4000-8000-000000000000").list();
+          return res.status === 200 ? backendUrl : null;
+        } catch { return null; }
+      },
+      fix: async () => {
+        const owner = H.portOwner(8890);
+        if (owner && !/netlify|node/.test(owner.cmd)) {
+          throw new Error(`порт 8890 занят посторонним процессом (pid ${owner.pid}): ${owner.cmd.slice(0, 90)}. `
+            + "Prepare не снимает неопознанные процессы — освободите порт вручную");
+        }
+        // netlify dev поднимает внутренний сервер функций на 3999 отдельным
+        // процессом, и тот переживает SIGTERM родителя. Осиротевший 3999 —
+        // причина, по которой следующий netlify dev падает с EADDRINUSE ещё
+        // до того, как займёт свой порт: снимаем его вместе с родителем.
+        for (const port of [8890, 3999]) {
+          const o = H.portOwner(port);
+          if (o && /netlify|node/.test(o.cmd)) {
+            H.shq("kill", [String(o.pid)], { timeout: 10_000 });
+            await H.sleep(1_500);
+          }
+        }
+        const dir = H.appDir();
+        if (!existsSync(`${dir}/package.json`)) {
+          throw new Error(`каталог полигона не найден: ${dir}. Задайте QALAB_APP_DIR`);
+        }
+        const { pid, logPath } = H.spawnBackground(
+          "npx", ["netlify", "dev", "--offline", "--no-open", "--port", "8890"],
+          { cwd: dir, logName: "backend-8890" },
+        );
+        const up = await H.waitFor(async () => {
+          try {
+            const res = await new IssuesClient(backendUrl, "00000000-0000-4000-8000-000000000000").list();
+            return res.status === 200 ? true : null;
+          } catch { return null; }
+        }, { timeoutMs: 180_000, everyMs: 2_000 });
+        if (!up) throw new Error(`netlify dev не ответил за 180 с, лог: ${logPath}`);
+        return `поднят netlify dev (pid ${pid}), лог ${logPath}`;
+      },
+      detailOk: () => `${backendUrl} → 200`,
+    });
+
+    // 2. Proxy. Он же обнуляет fault-профиль: профиль, забытый предыдущим
+    //    прогоном, — это тихо искажённый стенд, а не заметная поломка.
+    await H.step(out, "observation proxy 8888 → 8890", {
+      check: () => {
+        const raw = H.shq("node", [PROXY_CLI, "status"], { timeout: 20_000 });
+        if (!raw) return null;
+        try {
+          const st = JSON.parse(raw);
+          return st.running && H.portOwner(8888) ? st : null;
+        } catch { return null; }
+      },
+      fix: async () => {
+        const owner = H.portOwner(8888);
+        if (owner && !/proxy\.mjs|netlify|node/.test(owner.cmd)) {
+          throw new Error(`порт 8888 занят посторонним процессом (pid ${owner.pid}): ${owner.cmd.slice(0, 90)}`);
+        }
+        // Частый случай: netlify dev поднят «как обычно» и сам сел на 8888.
+        // Это не посторонний процесс, но схему он ломает — снимаем адресно.
+        if (owner && /netlify/.test(owner.cmd)) {
+          H.shq("kill", [String(owner.pid)], { timeout: 10_000 });
+          await H.sleep(3_000);
+        }
+        H.shq("node", [PROXY_CLI, "start", "--port", "8888", "--target", backendUrl], { timeout: 30_000 });
+        const up = await H.waitFor(() => (H.portOwner(8888) ? true : null), { timeoutMs: 30_000 });
+        if (!up) throw new Error("proxy не занял 8888");
+        return "proxy поднят" + (owner ? ` (снят netlify dev с 8888, pid ${owner.pid})` : "");
+      },
+      detailOk: (st) => `running, профиль ${st.fault?.profile || "passthrough"}`,
+    });
+
+    await H.step(out, "fault profile = passthrough", {
+      check: () => {
+        const raw = H.shq("node", [PROXY_CLI, "status"], { timeout: 20_000 });
+        try { return JSON.parse(raw)?.fault?.profile === "passthrough" ? "passthrough" : null; } catch { return null; }
+      },
+      fix: () => { H.shq("node", [PROXY_CLI, "reset"], { timeout: 20_000 }); return "сброшен"; },
+    });
+
+    // 3. Metro. Самая дорогая ошибка проекта: базовый URL API зашивается
+    //    ПЛАТФОРМЕННОЙ командой сборки, поэтому Metro, поднятый для другой
+    //    платформы, отдаёт чужой bundle — приложение стучится не туда при
+    //    полностью исправном backend. Прогон 4 августа был так потерян
+    //    целиком. Проверка идёт по тому, кто фактически слушает 8081.
+    if (device) {
+      const wantScript = platform === "ios" ? "ios:local" : "android:local";
+      const foreign = platform === "ios" ? /run:android|:android/ : /run:ios|:ios/;
+      await H.step(out, `Metro под платформу ${platform}`, {
+        check: () => {
+          const owner = H.portOwner(8081);
+          if (!owner) return null;
+          if (foreign.test(owner.cmd)) return null;
+          return owner;
+        },
+        fix: async () => {
+          const owner = H.portOwner(8081);
+          let note = "";
+          if (owner) {
+            if (!/expo|metro|react-native/.test(owner.cmd)) {
+              throw new Error(`порт 8081 занят неопознанным процессом (pid ${owner.pid}): ${owner.cmd.slice(0, 90)}`);
+            }
+            // pkill по имени здесь не работает: expo run:* поднимает Metro
+            // под собственным именем процесса. Снимается ровно тот, кто
+            // фактически держит порт.
+            H.shq("kill", [String(owner.pid)], { timeout: 10_000 });
+            await H.sleep(3_000);
+            note = `снят чужой Metro (pid ${owner.pid}); `;
+          }
+          const mobileDir = `${H.appDir()}/mobile`;
+          const env = { ...process.env };
+          if (platform === "android") {
+            env.JAVA_HOME = env.JAVA_HOME || "/Applications/Android Studio.app/Contents/jbr/Contents/Home";
+            env.ANDROID_HOME = env.ANDROID_HOME || `${process.env.HOME}/Library/Android/sdk`;
+          }
+          const { pid, logPath } = H.spawnBackground(
+            "npm", ["run", wantScript], { cwd: mobileDir, env, logName: `metro-${platform}` },
+          );
+          // Сборка и установка идут в этой же команде, поэтому ожидание
+          // длинное: холодный expo run:* доходит до 10 минут.
+          const up = await H.waitFor(() => {
+            const o = H.portOwner(8081);
+            return o && !foreign.test(o.cmd) ? true : null;
+          }, { timeoutMs: 900_000, everyMs: 5_000 });
+          if (!up) throw new Error(`${wantScript} не поднял Metro за 15 мин, лог: ${logPath}`);
+          return `${note}запущен npm run ${wantScript} (pid ${pid}), лог ${logPath}`;
+        },
+        detailOk: (o) => `pid ${o.pid}, ${o.cmd.slice(0, 60)}`,
+      });
+
+      // 4. Приложение запущено. После expo run:* оно поднимается само, но
+      //    prepare может быть вызван и на уже собранном стенде.
+      await H.step(out, "приложение запущено", {
+        check: () => {
+          const raw = H.shq("sim-use", ["app-state", "--device", device, "--json"], { timeout: 60_000 });
+          if (!raw) return null;
+          try {
+            // app-state отдаёт СПИСОК запущенных приложений, включая системные;
+            // нужное ищется по bundleId, а не берётся первым попавшимся.
+            const apps = JSON.parse(raw)?.data?.apps || [];
+            const app = apps.find((a) => String(a.bundleId || "").includes("qalab"));
+            return app ? `${app.bundleId} (pid ${app.pid})` : null;
+          } catch { return null; }
+        },
+        fix: async () => {
+          if (platform === "ios") H.shq("xcrun", ["simctl", "launch", device, "ru.maksim.qalab"], { timeout: 60_000 });
+          else H.shq("adb", ["-s", device, "shell", "monkey", "-p", "ru.maksim.qalab", "-c", "android.intent.category.LAUNCHER", "1"], { timeout: 60_000 });
+          await H.sleep(4_000);
+          return "приложение запущено";
+        },
+        level: "warn",
+      });
+
+      // 5. Workspace прогона. Раньше это был единственный оставшийся ручной
+      //    шаг между start и arm: человек открывал модалку и вбивал UUID.
+      //    Расхождение здесь тихое — агент видит чужие данные, oracle свои,
+      //    и результат выглядит как «дефектов нет».
+      if (context) {
+        await H.step(out, "Workspace прогона согласован с приложением", {
+          check: () => {
+            const shown = readWorkspaceFromScreen(H, device);
+            if (!shown) return null;
+            // Явно переданный --workspace не подменяется: оператор мог указать
+            // конкретное пространство осознанно, и молча увести прогон в
+            // другое было бы хуже отказа.
+            if (context.workspacePinned) return shown === context.workspaceId ? shown : null;
+            context.workspaceId = shown;
+            return shown;
+          },
+          detailOk: (id) => (context.workspacePinned
+            ? `${id} — совпадает с переданным --workspace`
+            : `${id} — взят с экрана приложения`),
+        });
+
+        // Пустота проверяется, но НЕ чинится: удалять чужие данные молча
+        // нельзя, а непустое пространство означает, что предыдущий teardown
+        // не отработал — это повод разобраться, а не подчистить и забыть.
+        await H.step(out, "Workspace прогона пуст", {
+          check: async () => {
+            const res = await new IssuesClient(context.baseUrl, context.workspaceId).list();
+            if (res.status !== 200) return null;
+            const n = res.body?.items?.length ?? 0;
+            return n === 0 ? "0 записей" : null;
+          },
+          detailOk: (v) => v,
+        });
+      }
+    }
+
+    return out.steps;
+  },
 
   /** Полигону нужен живой backend: без него seed и oracle недоказуемы. */
   async preflight({ device, context } = {}) {
