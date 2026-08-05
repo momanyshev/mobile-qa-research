@@ -47,6 +47,8 @@
 | [docs/knowledge/recording-rules.md](docs/knowledge/recording-rules.md) | Как результат попадает в документы: verdict, системные наблюдения против дефектов полигона, галочки, evidence, git |
 | [docs/decision-log.md](docs/decision-log.md) | Принятые решения с обоснованием и альтернативами |
 | [docs/test-asset-register.md](docs/test-asset-register.md) | Реестр проверок `R-NN`: что автоматизировано, что отложено и почему |
+| [docs/comparison-agent-vs-manual.md](docs/comparison-agent-vs-manual.md) | Очная ставка агента и ручного прогона на одной сборке: что ловит каждый, где границы подхода |
+| [docs/feature-run-record-types.md](docs/feature-run-record-types.md) | Сторона агента в этой очной ставке: прогоны по новой фиче без посева дефектов |
 
 ### Работа с инструментом и платформами
 
