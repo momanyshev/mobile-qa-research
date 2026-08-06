@@ -1,0 +1,88 @@
+{
+  "steps": [
+    {
+      "name": "локаль UTF-8",
+      "status": "fixed",
+      "level": "fail",
+      "detail": "экспортированы LANG/LC_ALL, daemon снят для перезапуска с верной локалью → LANG/LC_ALL = en_US.UTF-8"
+    },
+    {
+      "name": "устройство загружено",
+      "status": "fixed",
+      "level": "fail",
+      "detail": "Simulator.app поднят, устройство загружено → A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 Booted"
+    },
+    {
+      "name": "sim-use видит устройство",
+      "status": "ok",
+      "level": "fail",
+      "detail": "устройство в списке sim-use"
+    },
+    {
+      "name": "backend QA Lab на 8890",
+      "status": "ok",
+      "level": "fail",
+      "detail": "http://127.0.0.1:8890 → 200"
+    },
+    {
+      "name": "observation proxy 8888 → 8890",
+      "status": "ok",
+      "level": "fail",
+      "detail": "running, профиль passthrough"
+    },
+    {
+      "name": "fault profile = passthrough",
+      "status": "ok",
+      "level": "fail",
+      "detail": "passthrough"
+    },
+    {
+      "name": "Metro под платформу ios",
+      "status": "ok",
+      "level": "fail",
+      "detail": "pid 83496, node /Users/maksim/Documents/Projects/portfolio-site/mobile/"
+    },
+    {
+      "name": "приложение запущено",
+      "status": "fixed",
+      "level": "warn",
+      "detail": "приложение запущено → ru.maksim.qalab (pid 2746)"
+    },
+    {
+      "name": "Workspace прогона согласован с приложением",
+      "status": "ok",
+      "level": "fail",
+      "detail": "b840eb36-7fcf-4ce9-a95e-9b65c34073bc — взят с экрана приложения"
+    },
+    {
+      "name": "Workspace прогона пуст",
+      "status": "ok",
+      "level": "fail",
+      "detail": "0 записей"
+    }
+  ],
+  "startedAt": "2026-08-06T09:41:56.730Z",
+  "finishedAt": "2026-08-06T09:42:16.080Z",
+  "failed": [],
+  "fixed": [
+    {
+      "name": "локаль UTF-8",
+      "status": "fixed",
+      "level": "fail",
+      "detail": "экспортированы LANG/LC_ALL, daemon снят для перезапуска с верной локалью → LANG/LC_ALL = en_US.UTF-8"
+    },
+    {
+      "name": "устройство загружено",
+      "status": "fixed",
+      "level": "fail",
+      "detail": "Simulator.app поднят, устройство загружено → A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 Booted"
+    },
+    {
+      "name": "приложение запущено",
+      "status": "fixed",
+      "level": "warn",
+      "detail": "приложение запущено → ru.maksim.qalab (pid 2746)"
+    }
+  ],
+  "ok": true
+}

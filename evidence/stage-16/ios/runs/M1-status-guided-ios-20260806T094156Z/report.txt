@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-ios-20260806T094156Z
+Case ID: M1-status-guided
+Platform: ios
+Device / OS: A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37 (iPhone 17 Pro Max, iOS 26.5)
+App commit: eb7dc6d
+sim-use version: 0.10.0
+Agent model: —
+Agent skill revision: mobile-qa-agent/SKILL.md@917fc921b0b2
+Workspace / test namespace: qalab: Workspace b840eb36-7fcf-4ce9-a95e-9b65c34073bc
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается e76527». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-08-06T09:42:20.054Z → 2026-08-06T09:49:23.855Z
+Tool calls: 11 (действий 2, по координатам 2, ошибок 0)
+Retries: —
+Manual interventions: —
+API before: 1 → runs/M1-status-guided-ios-20260806T094156Z/api-before.json
+API after: 1 → runs/M1-status-guided-ios-20260806T094156Z/api-after.json
+UI postcondition: финальный outline снят (runs/M1-status-guided-ios-20260806T094156Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: —
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (9.5 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —
