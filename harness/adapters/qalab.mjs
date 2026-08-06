@@ -16,7 +16,11 @@ import {
 const PASS = "pass", FAIL = "fail", ERROR = "error";
 const PROXY_CLI = fileURLToPath(new URL("../../tools/proxy.mjs", import.meta.url));
 
-const UUID_TEXT = /StaticText\s+"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"/gi;
+// Роль узла в выражение не входит намеренно: iOS отдаёт `StaticText`, Android
+// — `TextView`, и привязка к роли делала бы чтение односторонне iOS-овым.
+// Совпадением считается только строка, целиком равная UUID, — UUID внутри
+// более длинной подписи не подойдёт, что и требуется.
+const UUID_TEXT = /"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"/gi;
 
 /**
  * Прочитать Workspace, на который приложение смотрит сейчас.
@@ -185,8 +189,41 @@ export default {
     //    полностью исправном backend. Прогон 4 августа был так потерян
     //    целиком. Проверка идёт по тому, кто фактически слушает 8081.
     if (device) {
-      const wantScript = platform === "ios" ? "ios:local" : "android:local";
-      const foreign = platform === "ios" ? /run:android|:android/ : /run:ios|:ios/;
+      // Физическое устройство отличается от эмулятора по форме серийника:
+      // adb выдаёт эмуляторам `emulator-NNNN`, реальным устройствам — серийный
+      // номер производителя. Различие существенно для двух вещей ниже.
+      const physical = platform === "android" && !/^emulator-/.test(device);
+
+      // Реверс-туннель: на эмуляторе стенд достижим по алиасу 10.0.2.2, у
+      // физического устройства такого алиаса нет, а идти по LAN означало бы
+      // зависеть от топологии сети (VPN, изоляция клиентов на точке доступа,
+      // смена сети — всё это ломает зашитый в сборку адрес, ср. R-29).
+      // `adb reverse` уводит трафик в USB: телефон стучится в собственный
+      // 127.0.0.1:8888, а попадает на стенд Mac.
+      if (physical) {
+        await H.step(out, "reverse-туннель 8888 на устройство", {
+          check: () => {
+            const list = H.shq("adb", ["-s", device, "reverse", "--list"], { timeout: 20_000 });
+            return list?.includes("tcp:8888 tcp:8888") ? "tcp:8888 → tcp:8888" : null;
+          },
+          fix: () => {
+            H.sh("adb", ["-s", device, "reverse", "tcp:8888", "tcp:8888"], { timeout: 20_000 });
+            return "туннель поднят";
+          },
+        });
+      }
+
+      const wantScript = platform === "ios"
+        ? "ios:local"
+        : (physical ? "android:device" : "android:local");
+      // «Чужим» считается не только Metro другой платформы, но и Metro той же
+      // платформы, поднятый ДРУГИМ скриптом: `android:local` зашивает
+      // 10.0.2.2, `android:device` — 127.0.0.1. Бандл от неверного скрипта
+      // выглядит рабочим и молча стучится не туда — тот же класс отказа, что
+      // потерял прогон 4 августа, только внутри одной платформы.
+      const foreign = platform === "ios"
+        ? /run:android|:android/
+        : (physical ? /run:ios|:ios|android:local/ : /run:ios|:ios|android:device/);
       await H.step(out, `Metro под платформу ${platform}`, {
         check: () => {
           const owner = H.portOwner(8081);
@@ -214,8 +251,13 @@ export default {
             env.JAVA_HOME = env.JAVA_HOME || "/Applications/Android Studio.app/Contents/jbr/Contents/Home";
             env.ANDROID_HOME = env.ANDROID_HOME || `${process.env.HOME}/Library/Android/sdk`;
           }
+          // Серийник передаётся явно: при нескольких видимых устройствах
+          // `expo run:android` просит выбрать интерактивно и падает в
+          // неинтерактивном режиме.
+          const args = ["run", wantScript];
+          if (platform === "android") args.push("--", "--device", device);
           const { pid, logPath } = H.spawnBackground(
-            "npm", ["run", wantScript], { cwd: mobileDir, env, logName: `metro-${platform}` },
+            "npm", args, { cwd: mobileDir, env, logName: `metro-${platform}` },
           );
           // Сборка и установка идут в этой же команде, поэтому ожидание
           // длинное: холодный expo run:* доходит до 10 минут.

@@ -377,6 +377,15 @@ async function prepareTests(t) {
     readWorkspaceFromScreen(H(`${one}\n${one}`), "dev") === "b840eb36-7fcf-4ce9-a95e-9b65c34073bc");
   t.ok("экран без UUID → отказ", readWorkspaceFromScreen(H('StaticText  "Записи"'), "dev") === null);
   t.ok("нечитаемый экран → отказ", readWorkspaceFromScreen(H(null), "dev") === null);
+
+  // Роли узлов различаются по платформам: iOS отдаёт StaticText, Android —
+  // TextView. Привязка к роли делала чтение односторонне iOS-овым и роняла
+  // подготовку на физическом устройстве.
+  const android = '@12  TextView  "b840eb36-7fcf-4ce9-a95e-9b65c34073bc"  (111,1186 858x54)';
+  t.ok("Android-дерево (TextView) читается так же",
+    readWorkspaceFromScreen(H(android), "dev") === "b840eb36-7fcf-4ce9-a95e-9b65c34073bc");
+  t.ok("UUID внутри длинной подписи не считается значением",
+    readWorkspaceFromScreen(H('TextView  "Workspace b840eb36-7fcf-4ce9-a95e-9b65c34073bc активен"'), "dev") === null);
 }
 
 // ── 3.5. Журнал вызовов ───────────────────────────────────────────────────────

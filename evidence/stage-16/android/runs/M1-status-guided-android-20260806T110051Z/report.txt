@@ -1,0 +1,27 @@
+Run ID: M1-status-guided-android-20260806T110051Z
+Case ID: M1-status-guided
+Platform: android
+Device / OS: RFCYA00GX7B (SM_S931B, Android)
+App commit: eb7dc6d (dirty)
+sim-use version: 0.10.0
+Agent model: —
+Agent skill revision: mobile-qa-agent/SKILL.md@917fc921b0b2
+Workspace / test namespace: qalab: Workspace 19e9d8f6-fd4c-4007-ac47-b0ca4d92124a
+Start state: seed 1 записей, состояние «до» = 1
+Instruction: Найди дефект «Фильтр статуса сбрасывается 7e5e0a». Прямо в его карточке в списке измени статус с «Открыт» на «В работе». Не открывай форму редактирования.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, status-change | запрещено: production-access, issue-deletion, issue-creation
+Started at / finished at: 2026-08-06T11:00:53.921Z → 2026-08-06T11:11:17.655Z
+Tool calls: 34 (действий 9, по координатам 4, ошибок 0)
+Retries: —
+Manual interventions: —
+API before: 1 → runs/M1-status-guided-android-20260806T110051Z/api-before.json
+API after: 1 → runs/M1-status-guided-android-20260806T110051Z/api-after.json
+UI postcondition: финальный outline снят (runs/M1-status-guided-android-20260806T110051Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass
+Agent self-report: —
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (6.6 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —

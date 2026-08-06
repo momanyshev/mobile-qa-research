@@ -1,0 +1,62 @@
+{
+  "runId": "M1-status-guided-android-20260806T110051Z",
+  "caseId": "M1-status-guided",
+  "platform": "android",
+  "device": "RFCYA00GX7B",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "19e9d8f6-fd4c-4007-ac47-b0ca4d92124a",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "7e5e0a",
+  "startedAt": "2026-08-06T11:00:53.921Z",
+  "seeded": [
+    {
+      "id": "f7ab0681-9e1e-4b75-83c1-a91b5ea381ca",
+      "title": "Фильтр статуса сбрасывается 7e5e0a",
+      "status": "open",
+      "severity": "medium"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-08-06T11:00:52.809Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "eb7dc6d",
+      "dirty": true
+    },
+    "researchRepo": {
+      "commit": "88c31fe",
+      "dirty": true
+    },
+    "platform": "android",
+    "device": {
+      "deviceId": "RFCYA00GX7B",
+      "name": "SM_S931B",
+      "platform": "android",
+      "runtime": "Android",
+      "state": "device"
+    },
+    "agentModel": null,
+    "agentContract": {
+      "path": "mobile-qa-agent/SKILL.md",
+      "sha256": "917fc921b0b2",
+      "bytes": 12849
+    },
+    "skillRevision": null,
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/M1-status-guided.yaml",
+  "limits": {
+    "timeoutSeconds": 900,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "videoPid": 7728,
+  "armedAt": "2026-08-06T11:01:13.585Z",
+  "finishedAt": "2026-08-06T11:11:17.655Z",
+  "verdict": "PASS"
+}
