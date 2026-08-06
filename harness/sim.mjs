@@ -13,9 +13,10 @@
 // Exit code и потоки пробрасываются как есть, поэтому обёртка прозрачна для
 // любого вызывающего.
 
-import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { runLogged } from "./lib/cmdlog.mjs";
+import { parseCrashSignals, classifyCrashSignal, renderCrashNote } from "./lib/crash-guard.mjs";
 import { runDir } from "../tools/lib/capture.mjs";
 
 const STAGE = process.env.HARNESS_STAGE || "10";
@@ -90,4 +91,35 @@ if (OUTPUT_COMMANDS[simCommand] && !simArgs.includes("--output") && !simArgs.inc
 const { status, stdout, stderr } = runLogged(`${dir}/commands.jsonl`, simArgs);
 if (stdout) process.stdout.write(stdout);
 if (stderr) process.stderr.write(stderr);
+
+// Сигнал о крахе разбирается ПОСЛЕ проброса вывода: первоисточник агент видит
+// нетронутым, а заключение harness идёт следом и его не подменяет.
+//
+// Кэш нужен потому, что шапка «has not relaunched…» повторяется на КАЖДОЙ
+// последующей команде до конца прогона: без него состояние целевого приложения
+// перепроверялось бы десятки раз за прогон. Ключ кэша — имена процессов из
+// сигнала, поэтому если позже пропадёт уже целевой пакет, ключ изменится,
+// кэш не сработает и проверка выполнится заново.
+const CACHE = `${dir}/.crash-guard.json`;
+try {
+  const combined = `${stdout || ""}\n${stderr || ""}`;
+  if (parseCrashSignals(combined).length) {
+    const key = parseCrashSignals(combined).map((s) => s.process).sort().join(",");
+    let result = null;
+    if (existsSync(CACHE)) {
+      const cached = JSON.parse(readFileSync(CACHE, "utf8"));
+      if (cached.key === key && cached.result?.verdict === "foreign") result = cached.result;
+    }
+    if (!result) {
+      result = classifyCrashSignal({ output: combined, appId: state.appId, device: state.device });
+      writeFileSync(CACHE, JSON.stringify({ key, result, at: new Date().toISOString() }, null, 2));
+    }
+    const note = renderCrashNote(result, state.appId);
+    if (note) process.stderr.write(`\n${note}\n`);
+  }
+} catch {
+  // Разбор сигнала не влияет на исход команды: обёртка обязана оставаться
+  // прозрачной, иначе сама станет источником отказов.
+}
+
 process.exit(status === null ? 1 : status);

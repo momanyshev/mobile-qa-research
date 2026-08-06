@@ -22,6 +22,7 @@ import { getAdapter, listAdapters } from "./adapters/index.mjs";
 import { renderReport, reportStructure, REPORT_FIELDS } from "./lib/report.mjs";
 import { classifyCall, runLogged, summarizeLog, renderTranscript, retryViolations } from "./lib/cmdlog.mjs";
 import { genericPreflight } from "./lib/preflight.mjs";
+import { parseCrashSignals, classifyCrashSignal, renderCrashNote } from "./lib/crash-guard.mjs";
 import { step as prepareStep } from "./lib/prepare.mjs";
 import { needsDiagnostics } from "./lib/diagnostics.mjs";
 import { agentContract } from "./lib/versions.mjs";
@@ -388,6 +389,58 @@ async function prepareTests(t) {
     readWorkspaceFromScreen(H('TextView  "Workspace b840eb36-7fcf-4ce9-a95e-9b65c34073bc активен"'), "dev") === null);
 }
 
+// ── 3.48. Защита от ложного сигнала о крахе (R-59) ────────────────────────────
+
+async function crashGuardTests(t) {
+  console.log("\nСигнал о крахе (R-59):");
+
+  // Тексты дословно из прогона на физическом устройстве, а не придуманные:
+  // разбор обязан ловить именно то, что печатает инструмент.
+  const banner = "================ PROCESS DISAPPEARED ================\n"
+    + "ir.ilmili.telegraph (pid 16330) was alive at the previous command and is GONE now.\n"
+    + "Likely crash or termination, not a backgrounding. Verify before trusting subsequent actions.\n"
+    + "=====================================================\nApp: ru.maksim.qalab  1080x2340";
+  const header = "[!] ir.ilmili.telegraph (pid 16330) has not relaunched since it disappeared."
+    + " You may be acting against the home screen.\nApp: ru.maksim.qalab  1080x2340";
+  const targetBanner = banner.replace(/ir\.ilmili\.telegraph/g, "ru.maksim.qalab");
+  const APP = "ru.maksim.qalab";
+
+  t.ok("баннер разобран", parseCrashSignals(banner)[0]?.process === "ir.ilmili.telegraph");
+  t.ok("вид сигнала различается", parseCrashSignals(banner)[0]?.kind === "gone"
+    && parseCrashSignals(header)[0]?.kind === "not-relaunched");
+  t.ok("повторная шапка разобрана", parseCrashSignals(header)[0]?.pid === 16330);
+  t.ok("баннер и шапка про один процесс — один сигнал",
+    parseCrashSignals(`${banner}\n${header}`).length === 1);
+  t.ok("чистый вывод сигналов не даёт", parseCrashSignals("App: ru.maksim.qalab\n@1 Button").length === 0);
+
+  const alive = () => ({ alive: true, pid: 17078 });
+  const dead = () => ({ alive: false, pid: null });
+  const unknown = () => null;
+
+  let r = classifyCrashSignal({ output: banner, appId: APP, device: "d", verify: alive });
+  t.ok("посторонний процесс при живом целевом → foreign", r.verdict === "foreign" && r.targetPid === 17078);
+  t.ok("вывод для агента говорит продолжать", /НЕ применяется/.test(renderCrashNote(r, APP)));
+
+  r = classifyCrashSignal({ output: targetBanner, appId: APP, device: "d", verify: alive });
+  t.ok("назван целевой пакет → target даже если процесс жив", r.verdict === "target");
+  t.ok("вывод для агента говорит остановиться", /остановись/.test(renderCrashNote(r, APP)));
+
+  r = classifyCrashSignal({ output: banner, appId: APP, device: "d", verify: dead });
+  t.ok("посторонний назван, но целевой мёртв → target", r.verdict === "target");
+
+  // Неизвестность разрешается в пользу остановки: продолжить по недоказанному
+  // «всё в порядке» дороже, чем зря остановиться.
+  r = classifyCrashSignal({ output: banner, appId: APP, device: "d", verify: unknown });
+  t.ok("состояние целевого не читается → unclear", r.verdict === "unclear");
+  t.ok("unclear трактуется как остановка", /остановись/.test(renderCrashNote(r, APP)));
+
+  r = classifyCrashSignal({ output: banner, appId: null, device: "d", verify: alive });
+  t.ok("appId прогона неизвестен → unclear, а не foreign", r.verdict === "unclear");
+
+  r = classifyCrashSignal({ output: "обычный вывод", appId: APP, device: "d", verify: alive });
+  t.ok("нет сигнала — нет заключения", r.verdict === "none" && renderCrashNote(r, APP) === null);
+}
+
 // ── 3.5. Журнал вызовов ───────────────────────────────────────────────────────
 
 async function cmdlogTests(t) {
@@ -593,6 +646,7 @@ export async function selftest() {
   await adapterTests(t);
   await preflightTests(t);
   await prepareTests(t);
+  await crashGuardTests(t);
   await cmdlogTests(t);
   await reportTests(t);
   await cycleTests(t);

@@ -221,6 +221,11 @@ async function cmdStart(f) {
 
   const state = {
     runId, caseId: manifest.id, platform, device,
+    // Пакет приложения под тестом нужен обёртке sim.mjs, чтобы отличить
+    // краха целевого приложения от пропажи постороннего процесса (R-59).
+    // Хранится в состоянии прогона, а не вычитывается из манифеста заново:
+    // манифест мог измениться между start и последним вызовом.
+    appId: manifest.appId || null,
     adapter: adapter.id, context, runToken,
     startedAt: new Date().toISOString(),
     seeded,
