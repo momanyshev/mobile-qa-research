@@ -5,8 +5,11 @@
 **teardown** (очистка). Плюс pass-through **proxy** для наблюдения фактического
 HTTP-трафика приложения. Без внешних зависимостей — только Node ≥ 20.
 
-Контракт API — `../../portfolio-site/docs/openapi.yaml` (полигон). Базовый URL
-берётся из `ORACLE_BASE_URL` (по умолчанию `http://127.0.0.1:8888`).
+Контракт API — `../../portfolio-site/docs/openapi.yaml` (полигон). Default
+независимого oracle — прямой backend `http://127.0.0.1:8890`; fault proxy
+приложения на 8888 в control plane не используется. `ORACLE_BASE_URL` нужен
+только как override на другой прямой HTTP origin без path. Локальный `:8888`
+resolver отвергает до запроса.
 
 ## Структура
 
@@ -20,7 +23,22 @@ tools/
     fixtures.mjs   seedIssues, teardownIssues, teardownWorkspace
   oracle.mjs       CLI: new-workspace | seed | list | get | teardown | selftest
   proxy.mjs        pass-through proxy: serve | start | status | clear-log | stop
+  check-docs.mjs   ledger + README + contract + Markdown links без устройства
 ```
+
+## Проверка документационного drift
+
+После добавления прогонов или изменения операционного контракта запускается:
+
+```bash
+node tools/check-docs.mjs
+```
+
+Команда выводит агрегаты напрямую из всех `runs.jsonl`, сверяет число case и
+adapter'ов с исполняемым контуром, проверяет актуальные README, обязательные
+правила `SKILL.md` и локальные Markdown-ссылки. Это структурный gate, а не
+исследовательский oracle: он ловит рассинхронизацию документов, но не выставляет
+verdict мобильному run.
 
 ## Oracle: быстрый старт
 
@@ -31,6 +49,10 @@ node oracle.mjs seed <ws> 'high:open:Заголовок:Описание дли�
 node oracle.mjs list <ws>
 node oracle.mjs teardown <ws>     # без id — очистка всего Workspace
 ```
+
+Для нестандартного direct backend задайте, например,
+`ORACLE_BASE_URL=http://127.0.0.1:9890`. Это не адрес приложения и не способ
+направить oracle через observation proxy.
 
 Проверки в `verify.mjs`:
 
@@ -44,12 +66,16 @@ node oracle.mjs teardown <ws>     # без id — очистка всего Work
 
 `PASS` выставляют только эти функции, а не формулировка агента.
 
-## Teardown устойчив к сбоям
+## Примитивы teardown устойчивы после вызова
 
 `teardownIssues`/`teardownWorkspace` не бросают на 404 (цель уже достигнута) и
 не прерываются на первой ошибке — пытаются удалить всё и возвращают отчёт
-`{ deleted, alreadyAbsent, failed }`. Поэтому очистка отрабатывает после `FAIL`,
-`BLOCKED` и аварийного завершения сценария (проверено на этапе 6).
+`{ deleted, alreadyAbsent, failed }`. Если lifecycle дошёл до вызова teardown,
+эти примитивы применяются после `FAIL`, `BLOCKED` и аварийного завершения
+сценария (проверено на этапе 6). Но текущий harness ещё не защищает весь
+`start`/`finish` через `finally`: исключение capture/readState/oracle может не
+вызвать cleanup вообще. Это открытое exception-safety несоответствие, а не
+свойство самих примитивов teardown.
 
 ## Журнал прогонов и полный evidence pack (`runlog.mjs`)
 

@@ -65,7 +65,9 @@ export function agentContract() {
   }
 }
 
-export function versionManifest({ deviceId, platform, agentModel, skillRevision } = {}) {
+export function versionManifest({
+  deviceId, platform, agentModel, skillRevision, baseUrl = null, baseUrlSource = null,
+} = {}) {
   const app = repoState(APP_REPO);
   const research = repoState(RESEARCH_REPO);
   return {
@@ -81,6 +83,9 @@ export function versionManifest({ deviceId, platform, agentModel, skillRevision 
     agentContract: agentContract(),
     // Свободная метка оператора: чем прогон отличался, если контракт тот же.
     skillRevision: skillRevision || process.env.AGENT_SKILL_REVISION || null,
-    baseUrl: process.env.ORACLE_BASE_URL || "http://127.0.0.1:8888",
+    // Маршрут приходит из уже разрешённого adapter context. Повторное чтение
+    // env здесь могло записать не тот endpoint, которым реально пользовался run.
+    baseUrl,
+    baseUrlSource,
   };
 }

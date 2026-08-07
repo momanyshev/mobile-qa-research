@@ -10,9 +10,10 @@
 //   node oracle.mjs teardown <ws>
 //   node oracle.mjs selftest            # полный цикл seed→verify→teardown
 //
-// Базовый URL берётся из ORACLE_BASE_URL (по умолчанию http://127.0.0.1:8888).
+// Базовый URL берётся из ORACLE_BASE_URL (по умолчанию прямой backend
+// http://127.0.0.1:8890; proxy приложения 8888 сюда не относится).
 
-import { IssuesClient, DEFAULT_BASE_URL } from "./lib/client.mjs";
+import { IssuesClient, resolveOracleRoute } from "./lib/client.mjs";
 import { newWorkspaceId, claim, release } from "./lib/workspace.mjs";
 import { seedIssues, teardownIssues, teardownWorkspace } from "./lib/fixtures.mjs";
 import {
@@ -20,7 +21,7 @@ import {
   expect404, expectWorkspaceIsolation, expectUnchanged,
 } from "./lib/verify.mjs";
 
-const baseUrl = DEFAULT_BASE_URL;
+const { baseUrl } = resolveOracleRoute();
 const [cmd, ...args] = process.argv.slice(2);
 
 function out(obj) {

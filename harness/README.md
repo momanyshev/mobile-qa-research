@@ -1,11 +1,18 @@
-# Harness (этапы 10.0, 11, 12) — воспроизводимый eval-контур run
+# Harness (этапы 10–14 + post-plan) — воспроизводимый eval-контур run
 
 Закрывает обязательное условие этапа 10 плана: до серии из 36 pilot-runs нужен
 контур, в котором **каждый run одинаково структурирован** — иначе benchmark
-несравним. Harness даёт один и тот же путь для любого case и любого исхода:
-свежий Workspace → seed → фиксация исходного состояния → задание агенту →
-фиксация финального состояния → независимый oracle verdict → teardown → полный
-evidence pack и отчёт по Приложению B.
+несравним. Требуемый compliant-путь для любого case и исхода:
+prepare → preflight → отдельный изолированный контекст → seed → фиксация
+исходного состояния → задание агенту → фиксация финального состояния →
+независимый oracle verdict → teardown → evidence pack и отчёт по Приложению B.
+Default-подготовка QA Lab пока не обеспечивает отдельный контекст без явного
+`--workspace`; несоответствие и безопасный текущий запуск описаны ниже.
+
+На 7 августа 2026 года ledger содержит 89 записей: 71 `PASS`, 12 `FAIL`,
+5 `BLOCKED`, 1 `INCONCLUSIVE`; 56 на iOS и 33 на Android.
+`evidenceComplete: true` имеют 64 записи, `false` — одна, а у 24 legacy-записей
+поля нет. Это накопленная история, не один benchmark.
 
 Строится поверх инструментария этапа 6 (`../tools/lib`): тот же клиент API,
 oracle (`verify.mjs`), fixtures и захват UI. Harness не дублирует их, а
@@ -14,8 +21,8 @@ oracle (`verify.mjs`), fixtures и захват UI. Harness не дублиру�
 С этапа 12 знание о конкретном приложении вынесено в **project adapter**
 (`adapters/`, контракт — `adapters/README.md`). Generic-контур не содержит ни
 одного identifier, label или бизнес-шага приложения и общается с ним только
-через `createContext / seed / readState / teardown / checks`. Манифест выбирает
-адаптер полем `adapter:`; без поля используется `qalab`.
+через `prepare? / createContext / seed / readState / teardown / checks`.
+Манифест выбирает адаптер полем `adapter:`; без поля используется `qalab`.
 
 ## Ключевые свойства
 
@@ -28,11 +35,19 @@ oracle (`verify.mjs`), fixtures и захват UI. Harness не дублиру�
 - **Строгий манифест.** `lib/yaml.mjs` громко падает на табах, flow-коллекциях,
   якорях, дублирующихся ключах и многодокументных файлах — с номером строки.
   Тихо неверно прочитанный манифест испортил бы данные benchmark.
-- **Teardown при любом исходе**, включая аварийный `abort`. Что именно чистить,
-  знает адаптер: QA Lab удаляет fixtures и возвращает proxy в passthrough,
-  Speecher останавливает приложение и сбрасывает системные разрешения.
+- **Teardown обязателен при любом исходе**, включая аварийный `abort`. Явные
+  `finish`/`abort` пути проверены, но exception-safety пока неполна: исключение
+  при финальном capture/readState/oracle может обойти cleanup, а сбой capture
+  после seed в `start` — оставить fixtures. Это открытое несоответствие
+  реализации, поэтому обещание «teardown гарантирован» до code-fix не даётся.
+  Что именно чистить, знает адаптер: QA Lab удаляет fixtures и возвращает proxy
+  в passthrough, Speecher останавливает приложение и сбрасывает системные
+  разрешения, Element X останавливает приложение, сохраняя одноразовую локальную
+  базу для oracle.
 - **Version manifest на каждый run**: commit приложения, версия sim-use, модель,
-  ревизия skill, устройство и ОС — без этого метрики невоспроизводимы.
+  ревизия skill, устройство и ОС, а для сетевого adapter — фактические
+  `baseUrl`/`baseUrlSource` из уже разрешённого context. Без этого метрики
+  невоспроизводимы.
 - **Машинный журнал вызовов** (этап 11): каждый вызов sim-use через `sim.mjs`
   пишется с timestamp, длительностью, exit code, stdout и stderr. Transcript и
   selector mix выводятся из журнала, а не пишутся руками.
@@ -46,6 +61,9 @@ oracle (`verify.mjs`), fixtures и захват UI. Harness не дублиру�
   UTF-8 локаль, целевое устройство, совпадение платформы, отсутствие лишних
   устройств той же платформы плюс проектные условия адаптера. Не пройден — run
   не начинается и не оставляет следов на диске.
+- **Prepare перед preflight**: приводит стенд к ожидаемому состоянию, но не
+  выносит verdict о готовности. `start` вызывает его автоматически; отдельная
+  команда нужна для диагностики подготовки.
 - **Retry budget по журналу**: бюджет из `limits.retryPerAction` проверяется по
   фактическим вызовам, а не со слов агента. Даёт нижнюю оценку — серии со
   сменой селектора между попытками из журнала неразличимы.
@@ -54,7 +72,7 @@ oracle (`verify.mjs`), fixtures и захват UI. Harness не дублиру�
 
 ```
 harness/
-  cases/          C1…C6, D1…D3, M1…M2, E1…E3, C7…C8 — QA Lab; S1…S5 — Speecher (iOS); A1…A5 — Element X (Android)
+  cases/          29 манифестов: 18 QA Lab, 5 Speecher, 6 Element X
   adapters/       сменный слой знания о приложении: qalab, speecher, elementx
   lib/
     yaml.mjs        строгий парсер подмножества YAML (громкий отказ)
@@ -66,20 +84,25 @@ harness/
     diagnostics.mjs системный журнал устройства при неуспешном исходе
     video.mjs       запись экрана на весь run, обязательный артефакт
     summary.mjs     метрики раздела 10.4 по серии runs
+    prepare.mjs     приведение стенда перед preflight
     preflight.mjs   проверки среды до старта run (этап 14.B)
-  harness.mjs     CLI: list | validate | preflight | new-workspace | start | arm | finish | abort | summary | selftest
+  harness.mjs     CLI: list | validate | prepare | preflight | new-workspace | start | arm | finish | abort | summary | selftest
   sim.mjs         журналирующая обёртка вокруг sim-use
-  selftest.mjs    проверка контура (142 проверок), нужен живой backend
+  selftest.mjs    suite контура (202 проверки; 26 требуют живой backend)
 ```
 
 Evidence: `../evidence/stage-<N>/<platform>/runs/<runId>/` + строка в
 `runs.jsonl` с `evidenceComplete`. Стадия задаётся `HARNESS_STAGE` (по умолчанию
-`10`).
+`10`). Каталог `stage-16` — технический namespace постплановой валидации 4–7
+августа, а не дополнительный этап завершённого 15-этапного плана.
 
 ## Быстрый старт
 
-Предусловие: backend `npm run dev` (порт 8888) в `../../portfolio-site`. Для
-прогонов с устройством — поднятый Simulator/Emulator и наведённое приложение.
+Для QA Lab нужен внешний sibling-репозиторий `../../portfolio-site`; его путь
+для подготовки задаётся `QALAB_APP_DIR`. Version manifest отдельно использует
+`APP_REPO`: пока это известное несоответствие, обе переменные должны указывать
+на один checkout. Для прогонов с устройством нужен целевой Simulator, Emulator
+или физическое устройство.
 **До первой sim-use-команды экспортировать UTF-8 локаль** (иначе кириллица
 через `paste` даст mojibake, см. runbook TOOL-LOCALE-001):
 
@@ -88,15 +111,19 @@ export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 ```
 
 ```bash
-node harness.mjs selftest                 # 142 проверок контура (без устройства)
+node harness.mjs selftest                 # 202 проверки контура (26 требуют живой backend)
 node harness.mjs validate                 # разбор и проверка всех манифестов
 node harness.mjs list                     # доступные case
 
-# проверка среды до старта (14.B):
+# отдельная диагностика подготовки; start вызывает prepare сам:
+node harness.mjs prepare --platform ios --device <UDID> --case <caseId>
+
+# проверка готовности без изменений среды:
 node harness.mjs preflight --platform ios --device <UDID> --case <caseId>
 
-# один run с устройством:
-WS=$(node harness.mjs new-workspace)       # заранее задать этот UUID в приложении
+# один QA Lab run: новый UUID сначала явно задаётся в приложении;
+# oracle по умолчанию идёт прямо на backend 8890, приложение — через proxy 8888
+WS=$(node harness.mjs new-workspace)
 node harness.mjs start --case C1-create-issue --platform ios --device <UDID> \
      --workspace "$WS" --model "<модель>" --skill "sim-use-skill-v0.10.0"
 # (если seed непустой или приложение наведено уже после start — переснять
@@ -118,12 +145,27 @@ node harness.mjs abort --run <runId> --reason "…" [--category environment]
 node harness.mjs summary --stage 10
 ```
 
+`ORACLE_BASE_URL` нужен только для нестандартного прямого HTTP backend. QA Lab
+нормализует его как origin, сохраняет вместе с source в version manifest и
+отвергает локальный адрес proxy `:8888` до seed.
+
+После CHG-002 176 offline-проверок suite прошли. Полный цикл из 26 сетевых
+проверок на текущей ревизии ещё не перепройден: среда Codex не получила доступ
+к уже работающему локальному backend 8890. Последний полный запуск до CHG-002 —
+180 PASS; он не выдаётся за проверку нового routing-кода.
+
 Если вызовы шли через `sim.mjs`, флаг `--transcript` не нужен: transcript и
 число вызовов берутся из журнала. `--transcript` остаётся запасным путём для
 прогонов без обёртки.
 
 `start` печатает задание, разрешённые/запрещённые действия и лимиты из
 манифеста — это и есть prompt агенту.
+
+Отдельный контекст на run остаётся обязательным. Автоматический QA Lab
+`prepare` без явно закреплённого `--workspace` сейчас переиспользует UUID,
+прочитанный с экрана. Это известное несоответствие реализации, а не разрешение
+заменить изоляцию teardown'ом; до исправления compliant-run использует новый
+UUID и проверяет его совпадение с приложением.
 
 ## Case-манифесты
 
@@ -148,10 +190,17 @@ C4 несохранённые изменения, C5 Workspace isolation, C6 API
 S2 смена языка с проверкой после перезапуска, S3 сохранение выбора иконки,
 S4 отказ в системном разрешении, S5 exploratory charter.
 
-## Границы (scope MVP)
+Шесть case Element X (Android): A1…A5 и G1; oracle читает состояние локального
+Synapse независимо от UI.
 
-Это gate-контур, не полный runner этапа 11. Он **не** запускает агента, не
-управляет устройством и не считает агрегированные метрики benchmark — эти
-измерения (10.1–10.3) требуют агента с чистым контекстом и выполняются на
-этапе 14. Два drive-only прогона C1 (модель ведёт UI вручную) проверяют сам
-harness, а не автономность агента.
+## Границы контура
+
+Harness готовит и проверяет среду, фиксирует lifecycle, evidence и агрегаты, но
+не запускает модель как отдельный процесс: выданное `start` задание выполняет
+агент, а все его команды проходят через `sim.mjs`. Формальный verdict остаётся
+за независимым oracle.
+
+Контур не доказывает экономию времени сам по себе. В одном коротком замере 10.1
+получено `A=4`, `B=0`, `C=15` — 19 человеко-минут; сравнивать их с 270 минутами
+ручного исследования нельзя из-за разного scope. Поэтому итог исследования
+остаётся `PIVOT`, а не `GO`.

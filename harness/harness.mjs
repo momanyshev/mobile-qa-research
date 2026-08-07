@@ -195,6 +195,8 @@ async function cmdStart(f) {
     deviceId: device, platform,
     agentModel: f.model !== true ? f.model : null,
     skillRevision: f.skill !== true ? f.skill : null,
+    baseUrl: context.baseUrl || null,
+    baseUrlSource: context.baseUrlSource || null,
   });
   writeFileSync(`${dir}/version-manifest.json`, JSON.stringify(versions, null, 2));
 
@@ -625,7 +627,7 @@ async function cmdPrepare(f) {
   const platform = requireFlag(f, "platform");
   const device = requireFlag(f, "device");
   const adapter = f.case && f.case !== true ? adapterFor(loadManifest(f.case)) : null;
-  const context = adapter ? await adapter.createContext({ platform, device }).catch(() => null) : null;
+  const context = adapter ? await adapter.createContext({ platform, device }) : null;
   if (context && f.workspace && f.workspace !== true) {
     context.workspaceId = f.workspace;
     context.workspacePinned = true;
@@ -642,7 +644,7 @@ async function cmdPreflight(f) {
   const platform = requireFlag(f, "platform");
   const device = requireFlag(f, "device");
   const adapter = f.case && f.case !== true ? adapterFor(loadManifest(f.case)) : null;
-  const context = adapter ? await adapter.createContext({ platform, device }).catch(() => null) : null;
+  const context = adapter ? await adapter.createContext({ platform, device }) : null;
 
   const pre = await runPreflight(adapter, { platform, device, context, appId: f.case && f.case !== true ? loadManifest(f.case).appId : null });
   console.log(renderPreflight(pre));

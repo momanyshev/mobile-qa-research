@@ -76,6 +76,10 @@ function countLoggedLines(path) {
 
 function serve(flags) {
   const target = new URL(flags.target);
+  // WHATWG URL сохраняет скобки в hostname IPv6, а node:http ожидает адрес
+  // без них. Иначе direct IPv6 проходит resolver/preflight, но proxy получает
+  // ENOTFOUND и ломает только путь приложения.
+  const targetHostname = target.hostname.replace(/^\[|\]$/gu, "");
   // In-memory состояние профиля, сбрасывается при смене token конфига.
   let faultState = { token: null, matchedCount: 0 };
 
@@ -94,7 +98,7 @@ function serve(flags) {
 
   function forward(req, res, requestBody, started, { transformBody, extraLog, afterEnd } = {}) {
     const proxyReq = http.request({
-      hostname: target.hostname, port: target.port, path: req.url, method: req.method,
+      hostname: targetHostname, port: target.port, path: req.url, method: req.method,
       headers: { ...req.headers, host: target.host },
     }, (proxyRes) => {
       const resChunks = [];
@@ -120,7 +124,7 @@ function serve(flags) {
   // «Тихая» пересылка копии запроса (для double-write) — ответ игнорируется.
   function forwardSilent(req, requestBody) {
     const r = http.request({
-      hostname: target.hostname, port: target.port, path: req.url, method: req.method,
+      hostname: targetHostname, port: target.port, path: req.url, method: req.method,
       headers: { ...req.headers, host: target.host },
     }, (rr) => { rr.on("data", () => {}); rr.on("end", () => {}); });
     r.on("error", () => {});

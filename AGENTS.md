@@ -33,7 +33,8 @@
 
 Будущие нетривиальные изменения собственного кода, контрактов и рабочих правил
 ведутся по SDD. До реализации открой и выполни канонический регламент
-`docs/knowledge/development-workflow.md`.
+`docs/knowledge/development-workflow.md`; сама запись изменения заводится в
+`docs/changes/` как `CHG-NNN`.
 
 ## Оглавление
 
@@ -42,8 +43,9 @@
 | Документ | О чём |
 | --- | --- |
 | [docs/testing-learning-plan.md](docs/testing-learning-plan.md) | Главный документ: 15 этапов, «Карта прогресса», обязательные правила запуска, глоссарий, системные наблюдения, accessibility-карты |
-| [docs/knowledge/README.md](docs/knowledge/README.md) | Точка входа в свод знаний: 12 обязательных документов и порядок чтения для нового участника |
+| [docs/knowledge/README.md](docs/knowledge/README.md) | Точка входа в свод знаний и порядок чтения для нового участника. Двенадцать обязательных документов плана — счёт по плану, а не по файлам: часть из них живёт вне `docs/knowledge/`, и там же сказано, какие |
 | [docs/knowledge/development-workflow.md](docs/knowledge/development-workflow.md) | Принятая методология SDD для будущих изменений собственного кода, контрактов и рабочих правил |
+| [docs/changes/](docs/changes/) | Change-записи SDD (`CHG-NNN`): основание, согласование, решения, критерии приёмки. Заводится до реализации нетривиального изменения — порядок в `development-workflow.md` |
 | [docs/knowledge/recording-rules.md](docs/knowledge/recording-rules.md) | Как результат попадает в документы: verdict, системные наблюдения против дефектов полигона, галочки, evidence, git |
 | [docs/decision-log.md](docs/decision-log.md) | Принятые решения с обоснованием и альтернативами |
 | [docs/test-asset-register.md](docs/test-asset-register.md) | Реестр проверок `R-NN`: что автоматизировано, что отложено и почему |

@@ -5,7 +5,9 @@
 import { execFileSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { IssuesClient } from "../../tools/lib/client.mjs";
+import {
+  CANONICAL_ORACLE_BASE_URL, IssuesClient, normalizeOracleBaseUrl, resolveOracleRoute,
+} from "../../tools/lib/client.mjs";
 import { newWorkspaceId } from "../../tools/lib/workspace.mjs";
 import { seedIssues, teardownWorkspace } from "../../tools/lib/fixtures.mjs";
 import {
@@ -15,6 +17,20 @@ import {
 
 const PASS = "pass", FAIL = "fail", ERROR = "error";
 const PROXY_CLI = fileURLToPath(new URL("../../tools/proxy.mjs", import.meta.url));
+const APP_PROXY_PORT = 8888;
+export { resolveOracleRoute };
+
+/** Readiness proxy доказывает port + target + владельца listener, а не сам факт порта. */
+export function proxyMatchesRoute(status, owner, targetBaseUrl) {
+  if (!status?.running || !status?.meta || !owner) return false;
+  try {
+    return Number(status.meta.port) === APP_PROXY_PORT
+      && normalizeOracleBaseUrl(status.meta.target) === normalizeOracleBaseUrl(targetBaseUrl)
+      && Number(status.pid) === Number(owner.pid);
+  } catch {
+    return false;
+  }
+}
 
 // Роль узла в выражение не входит намеренно: iOS отдаёт `StaticText`, Android
 // — `TextView`, и привязка к роли делала бы чтение односторонне iOS-овым.
@@ -25,20 +41,24 @@ const UUID_TEXT = /"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12
 /**
  * Прочитать Workspace, на который приложение смотрит сейчас.
  *
- * Направление согласования выбрано после неудачной попытки обратного.
- * Сначала prepare наводил приложение на сгенерированный UUID через модалку —
- * и упёрся в то, что поле открывается заполненным текущим значением, а
- * backspace у `sim-use` нет: `selectTextOnFocus` выделяет текст только при
- * настоящем фокусе, программный тап такого выделения не даёт ни на Android
- * (R-48), ни, как выяснилось, на iOS. Ввод дописывался к прежнему UUID и
- * давал невалидное значение.
+ * ЭТО ВРЕМЕННОЕ ПОВЕДЕНИЕ, А НЕ ПРИНЯТОЕ РЕШЕНИЕ. Оно нарушает контракт
+ * «отдельный Workspace на прогон»: teardown свежести namespace не заменяет —
+ * неудачная уборка тихо протекает в следующий прогон, а параллельные прогоны
+ * становятся невозможны. Статус и план исправления — `R-56` в
+ * `docs/test-asset-register.md`; чинится отдельным change, не по месту.
  *
- * Поэтому Workspace берётся у приложения, а не навязывается ему. Побочно это
- * убирает целый класс расхождений: приложение и oracle не могут смотреть в
- * разные пространства, если пространство ровно одно и прочитано с экрана.
- * Изоляция при этом сохраняется — её обеспечивает teardown, опустошающий
- * пространство после каждого прогона, а не свежесть UUID. Плата за решение:
- * параллельные прогоны на одном устройстве недопустимы, что и так верно.
+ * Причина, которой это было обосновано 5 августа, **оказалась ложной**.
+ * Утверждалось, что навязать свежий UUID нельзя: поле модалки открывается
+ * заполненным, а очистить его нечем. Механизмы очистки есть на обеих
+ * платформах и задокументированы в самом инструменте — `sim-use paste
+ * --replace` делает Cmd+A перед вставкой, `sim-use android type --clear`
+ * заменяет содержимое, — и скрипт этапа 14.E пользовался первым успешно.
+ * Ошибка была в выводе, а не в инструменте, поэтому и вывод из неё
+ * («читаем с экрана») силы не имеет.
+ *
+ * Что при исправлении придётся учесть: успешный ответ на ввод не доказывает,
+ * что текст попал в нужное поле (`R-65`), поэтому наведение обязано
+ * заканчиваться сверкой — UUID на экране равен ожидаемому, иначе отказ.
  */
 export function readWorkspaceFromScreen(H, device, { attempts = 3, pauseMs = 2_000 } = {}) {
   // Читаем несколько раз, а не однажды. На Android дерево регулярно отстаёт от
@@ -70,7 +90,8 @@ function resetFaultProfile() {
 }
 
 function client(context) {
-  return new IssuesClient(context.baseUrl || undefined, context.workspaceId);
+  if (!context?.baseUrl) throw new Error("QA Lab context не содержит direct baseUrl oracle");
+  return new IssuesClient(context.baseUrl, context.workspaceId);
 }
 
 function findWhere(items, where) {
@@ -102,16 +123,24 @@ export default {
    * backend слушает 8890, proxy 8888 → 8890, приложение ходит через 8888,
    * oracle бьёт в 8890 напрямую. Смысл — иммунитет oracle к fault-профилям:
    * если бы он ходил через proxy, поднятый профиль искажал бы и проверку.
-   */
+  */
   async prepare({ platform, device, context, helpers: H } = {}) {
     const out = { steps: [] };
-    const backendUrl = "http://127.0.0.1:8890";
+    if (!context?.baseUrl) {
+      out.steps.push({
+        name: "direct backend QA Lab", status: "failed", level: "fail",
+        detail: "context не содержит direct baseUrl oracle; fallback запрещён",
+      });
+      return out.steps;
+    }
+    const backendUrl = context.baseUrl;
+    const managedBackend = backendUrl === CANONICAL_ORACLE_BASE_URL;
 
     // 1. Backend. Порт 8890 намеренно нештатный: netlify dev по умолчанию
     //    занимает 8888, который в этой схеме принадлежит proxy. Стенд,
     //    поднятый «как обычно», ломает схему тихо — приложение работает,
     //    а журнала наблюдения нет.
-    await H.step(out, "backend QA Lab на 8890", {
+    await H.step(out, `direct backend QA Lab ${backendUrl}`, {
       check: async () => {
         try {
           const res = await new IssuesClient(backendUrl, "00000000-0000-4000-8000-000000000000").list();
@@ -119,6 +148,9 @@ export default {
         } catch { return null; }
       },
       fix: async () => {
+        if (!managedBackend) {
+          throw new Error(`внешний direct backend ${backendUrl} недоступен; prepare не подменяет явный ORACLE_BASE_URL локальным 8890`);
+        }
         const owner = H.portOwner(8890);
         if (owner && !/netlify|node/.test(owner.cmd)) {
           throw new Error(`порт 8890 занят посторонним процессом (pid ${owner.pid}): ${owner.cmd.slice(0, 90)}. `
@@ -157,19 +189,28 @@ export default {
 
     // 2. Proxy. Он же обнуляет fault-профиль: профиль, забытый предыдущим
     //    прогоном, — это тихо искажённый стенд, а не заметная поломка.
-    await H.step(out, "observation proxy 8888 → 8890", {
+    await H.step(out, `observation proxy 8888 → ${backendUrl}`, {
       check: () => {
         const raw = H.shq("node", [PROXY_CLI, "status"], { timeout: 20_000 });
         if (!raw) return null;
         try {
           const st = JSON.parse(raw);
-          return st.running && H.portOwner(8888) ? st : null;
+          return proxyMatchesRoute(st, H.portOwner(APP_PROXY_PORT), backendUrl) ? st : null;
         } catch { return null; }
       },
       fix: async () => {
-        const owner = H.portOwner(8888);
+        const owner = H.portOwner(APP_PROXY_PORT);
+        const rawStatus = H.shq("node", [PROXY_CLI, "status"], { timeout: 20_000 });
+        try {
+          const status = rawStatus ? JSON.parse(rawStatus) : null;
+          if (status?.running && !proxyMatchesRoute(status, owner, backendUrl)) {
+            throw new Error(`запущенный proxy не соответствует route run: pid=${status.pid}, port=${status.meta?.port}, target=${status.meta?.target}; ожидались pid владельца ${owner?.pid || "?"}, port=${APP_PROXY_PORT}, target=${backendUrl}. Остановите его явно и повторите prepare`);
+          }
+        } catch (err) {
+          if (/запущенный proxy не соответствует route run/.test(err.message)) throw err;
+        }
         if (owner && !/proxy\.mjs|netlify|node/.test(owner.cmd)) {
-          throw new Error(`порт 8888 занят посторонним процессом (pid ${owner.pid}): ${owner.cmd.slice(0, 90)}`);
+          throw new Error(`порт ${APP_PROXY_PORT} занят посторонним процессом (pid ${owner.pid}): ${owner.cmd.slice(0, 90)}`);
         }
         // Частый случай: netlify dev поднят «как обычно» и сам сел на 8888.
         // Это не посторонний процесс, но схему он ломает — снимаем адресно.
@@ -177,12 +218,19 @@ export default {
           H.shq("kill", [String(owner.pid)], { timeout: 10_000 });
           await H.sleep(3_000);
         }
-        H.shq("node", [PROXY_CLI, "start", "--port", "8888", "--target", backendUrl], { timeout: 30_000 });
-        const up = await H.waitFor(() => (H.portOwner(8888) ? true : null), { timeoutMs: 30_000 });
-        if (!up) throw new Error("proxy не занял 8888");
+        H.shq("node", [PROXY_CLI, "start", "--port", String(APP_PROXY_PORT), "--target", backendUrl], { timeout: 30_000 });
+        const up = await H.waitFor(() => {
+          const raw = H.shq("node", [PROXY_CLI, "status"], { timeout: 20_000 });
+          if (!raw) return null;
+          try {
+            const status = JSON.parse(raw);
+            return proxyMatchesRoute(status, H.portOwner(APP_PROXY_PORT), backendUrl) ? status : null;
+          } catch { return null; }
+        }, { timeoutMs: 30_000 });
+        if (!up) throw new Error(`proxy не подтвердил ${APP_PROXY_PORT} → ${backendUrl} своим PID`);
         return "proxy поднят" + (owner ? ` (снят netlify dev с 8888, pid ${owner.pid})` : "");
       },
-      detailOk: (st) => `running, профиль ${st.fault?.profile || "passthrough"}`,
+      detailOk: (st) => `pid ${st.pid}, target ${st.meta?.target}, профиль ${st.fault?.profile || "passthrough"}`,
     });
 
     await H.step(out, "fault profile = passthrough", {
@@ -330,7 +378,7 @@ export default {
         // не отработал — это повод разобраться, а не подчистить и забыть.
         await H.step(out, "Workspace прогона пуст", {
           check: async () => {
-            const res = await new IssuesClient(context.baseUrl, context.workspaceId).list();
+            const res = await client(context).list();
             if (res.status !== 200) return null;
             const n = res.body?.items?.length ?? 0;
             return n === 0 ? "0 записей" : null;
@@ -346,17 +394,24 @@ export default {
   /** Полигону нужен живой backend: без него seed и oracle недоказуемы. */
   async preflight({ device, context } = {}) {
     const out = [];
-    const baseUrl = context?.baseUrl || process.env.ORACLE_BASE_URL || "http://127.0.0.1:8888";
+    const baseUrl = context?.baseUrl;
+    if (!baseUrl) {
+      out.push({
+        name: "direct backend QA Lab отвечает", level: "fail", ok: false,
+        detail: "context не содержит direct baseUrl oracle; fallback на proxy 8888 запрещён",
+      });
+      return out;
+    }
     try {
       const res = await new IssuesClient(baseUrl, "00000000-0000-4000-8000-000000000000").list();
       out.push({
-        name: "backend QA Lab отвечает", level: "fail", ok: res.status === 200,
+        name: "direct backend QA Lab отвечает", level: "fail", ok: res.status === 200,
         detail: res.status === 200 ? `${baseUrl} → 200` : `${baseUrl} → ${res.status}`,
       });
     } catch (err) {
       out.push({
-        name: "backend QA Lab отвечает", level: "fail", ok: false,
-        detail: `${baseUrl} недоступен: ${err.message}. Запустите npm run dev в portfolio-site`,
+        name: "direct backend QA Lab отвечает", level: "fail", ok: false,
+        detail: `${baseUrl} недоступен: ${err.message}. Fallback на proxy 8888 не выполняется`,
       });
     }
 
@@ -387,10 +442,12 @@ export default {
   },
 
   async createContext({ baseUrl } = {}) {
+    const route = resolveOracleRoute({ baseUrl });
     return {
       kind: "workspace",
       workspaceId: newWorkspaceId(),
-      baseUrl: baseUrl || process.env.ORACLE_BASE_URL || "http://127.0.0.1:8888",
+      baseUrl: route.baseUrl,
+      baseUrlSource: route.source,
     };
   },
 

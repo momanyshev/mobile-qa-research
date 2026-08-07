@@ -3,7 +3,7 @@
 // PASS/FAIL/INCONCLUSIVE, teardown срабатывает после аварийного прерывания, а
 // два run одного case дают отчёты одинаковой структуры.
 //
-// Требуется работающий backend (npm run dev, порт 8888). Устройство не нужно:
+// Требуется работающий direct backend (npm run dev, порт 8890). Устройство не нужно:
 // UI-проверки в этом режиме обязаны давать INCONCLUSIVE, что тоже проверяется.
 //
 // Запуск: node harness.mjs selftest
@@ -15,7 +15,9 @@ import { fileURLToPath } from "node:url";
 import { parseYaml, YamlError } from "./lib/yaml.mjs";
 import { validateManifest, loadManifest, listCases, ManifestError } from "./lib/manifest.mjs";
 import { runOracle as runOracleRaw, uiText } from "./lib/oracle-runner.mjs";
-import qalabAdapter, { readWorkspaceFromScreen } from "./adapters/qalab.mjs";
+import qalabAdapter, {
+  proxyMatchesRoute, readWorkspaceFromScreen, resolveOracleRoute,
+} from "./adapters/qalab.mjs";
 import speecherAdapter from "./adapters/speecher.mjs";
 import elementxAdapter from "./adapters/elementx.mjs";
 import { getAdapter, listAdapters } from "./adapters/index.mjs";
@@ -25,8 +27,8 @@ import { genericPreflight } from "./lib/preflight.mjs";
 import { parseCrashSignals, classifyCrashSignal, renderCrashNote } from "./lib/crash-guard.mjs";
 import { step as prepareStep } from "./lib/prepare.mjs";
 import { needsDiagnostics } from "./lib/diagnostics.mjs";
-import { agentContract } from "./lib/versions.mjs";
-import { IssuesClient } from "../tools/lib/client.mjs";
+import { agentContract, versionManifest } from "./lib/versions.mjs";
+import { CANONICAL_ORACLE_BASE_URL, IssuesClient } from "../tools/lib/client.mjs";
 import { teardownWorkspace } from "../tools/lib/fixtures.mjs";
 
 const HARNESS = fileURLToPath(new URL("./harness.mjs", import.meta.url));
@@ -284,6 +286,155 @@ async function adapterTests(t) {
   t.ok("elementx unchanged: состояние изменилось → fail", r.status === "fail");
   r = await elementxAdapter.checks.unchanged({}, { before: mBefore, after: mBefore });
   t.ok("elementx unchanged: без изменений → pass", r.status === "pass");
+}
+
+// ── 3.42. Routing QA Lab oracle (CHG-002) ───────────────────────────────────
+
+async function qalabRoutingTests(t) {
+  console.log("\nRouting QA Lab oracle (CHG-002):");
+
+  const hadOracleBaseUrl = Object.hasOwn(process.env, "ORACLE_BASE_URL");
+  const savedOracleBaseUrl = process.env.ORACLE_BASE_URL;
+  const hadFetch = Object.hasOwn(globalThis, "fetch");
+  const savedFetch = globalThis.fetch;
+
+  try {
+    delete process.env.ORACLE_BASE_URL;
+    let route = resolveOracleRoute({ envBaseUrl: undefined });
+    let context = await qalabAdapter.createContext();
+    let standalone = new IssuesClient();
+    t.ok("без override oracle использует канонический backend 8890",
+      route.baseUrl === CANONICAL_ORACLE_BASE_URL && route.source === "default"
+      && context.baseUrl === CANONICAL_ORACLE_BASE_URL && context.baseUrlSource === "default"
+      && standalone.baseUrl === CANONICAL_ORACLE_BASE_URL);
+
+    const envUrl = "http://127.0.0.1:9890";
+    process.env.ORACLE_BASE_URL = envUrl;
+    route = resolveOracleRoute({ envBaseUrl: process.env.ORACLE_BASE_URL });
+    context = await qalabAdapter.createContext();
+    standalone = new IssuesClient();
+    t.ok("ORACLE_BASE_URL переопределяет default",
+      route.baseUrl === envUrl && route.source === "environment"
+      && context.baseUrl === envUrl && context.baseUrlSource === "environment"
+      && standalone.baseUrl === envUrl);
+
+    const explicitUrl = "http://127.0.0.1:9891";
+    route = resolveOracleRoute({ baseUrl: `${explicitUrl}/`, envBaseUrl: envUrl });
+    context = await qalabAdapter.createContext({ baseUrl: `${explicitUrl}/` });
+    t.ok("явный baseUrl имеет приоритет над окружением",
+      route.baseUrl === explicitUrl && route.source === "argument"
+      && context.baseUrl === explicitUrl && context.baseUrlSource === "argument");
+
+    for (const proxyUrl of [
+      "http://127.0.0.1:8888", "http://localhost:8888",
+      "http://[::1]:8888", "http://10.0.2.2:8888",
+      "http://localhost.:8888", "http://127.0.0.2:8888",
+      "http://[::ffff:127.0.0.1]:8888",
+    ]) {
+      await t.throws(`локальный proxy отвергнут: ${proxyUrl}`,
+        () => resolveOracleRoute({ baseUrl: proxyUrl, envBaseUrl: undefined }));
+    }
+
+    const proxyStatus = { running: true, pid: 4321, meta: { port: 8888, target: explicitUrl } };
+    const proxyOwner = { pid: 4321, cmd: "node tools/proxy.mjs serve" };
+    t.ok("proxy route принят при точных port, target и PID",
+      proxyMatchesRoute(proxyStatus, proxyOwner, explicitUrl));
+    t.ok("proxy route отвергнут при другом target",
+      !proxyMatchesRoute({ ...proxyStatus, meta: { ...proxyStatus.meta, target: envUrl } }, proxyOwner, explicitUrl));
+    t.ok("proxy route отвергнут при другом port",
+      !proxyMatchesRoute({ ...proxyStatus, meta: { ...proxyStatus.meta, port: 8890 } }, proxyOwner, explicitUrl));
+    t.ok("proxy route отвергнут при несовпадении PID listener",
+      !proxyMatchesRoute(proxyStatus, { ...proxyOwner, pid: 4322 }, explicitUrl));
+
+    const requests = [];
+    const issues = [];
+    let proxyHits = 0;
+    let directUnavailable = false;
+    const response = (status, body = null) => ({
+      status, ok: status >= 200 && status < 300,
+      headers: { get: (name) => name.toLowerCase() === "x-request-id" ? "selftest-route" : null },
+      text: async () => body === null ? "" : JSON.stringify(body),
+    });
+
+    globalThis.fetch = async (input, options = {}) => {
+      const url = new URL(typeof input === "string" ? input : input.url);
+      const method = options.method || "GET";
+      if (url.port === "8888") proxyHits++;
+      requests.push({ method, origin: url.origin, pathname: url.pathname, search: url.search });
+      if (directUnavailable && url.origin === explicitUrl) throw new Error("direct backend offline");
+      if (url.origin !== explicitUrl) throw new Error(`неожиданный origin ${url.origin}`);
+
+      if (method === "POST" && url.pathname === "/api/issues") {
+        const body = JSON.parse(options.body);
+        const created = {
+          id: "route-issue-1", status: "open", severity: "high",
+          createdAt: "2026-08-07T00:00:00.000Z", updatedAt: "2026-08-07T00:00:00.000Z", ...body,
+        };
+        issues.push(created);
+        return response(201, created);
+      }
+      if (method === "GET" && url.pathname === "/api/issues") {
+        const selected = url.searchParams.get("severity")
+          ? issues.filter((issue) => issue.severity === url.searchParams.get("severity")) : issues;
+        return response(200, { items: selected, total: selected.length });
+      }
+      if (method === "DELETE" && url.pathname.startsWith("/api/issues/")) {
+        const id = decodeURIComponent(url.pathname.slice("/api/issues/".length));
+        const at = issues.findIndex((issue) => issue.id === id);
+        if (at < 0) return response(404, { error: { code: "NOT_FOUND" } });
+        issues.splice(at, 1);
+        return response(204);
+      }
+      throw new Error(`fetch-spy не знает ${method} ${url.pathname}`);
+    };
+
+    const directContext = await qalabAdapter.createContext({ baseUrl: explicitUrl });
+    let from = requests.length;
+    const seeded = await qalabAdapter.seed(directContext, [{ title: "route probe", severity: "high" }]);
+    t.ok("qalab.seed обращается только к direct backend",
+      seeded.length === 1 && requests.slice(from).length === 1
+      && requests.slice(from).every((r) => r.origin === explicitUrl && r.method === "POST"));
+
+    from = requests.length;
+    const state = await qalabAdapter.readState(directContext);
+    t.ok("qalab.readState обращается только к direct backend",
+      state.total === 1 && requests.slice(from).length === 1
+      && requests.slice(from).every((r) => r.origin === explicitUrl && r.method === "GET"));
+
+    from = requests.length;
+    const count = await qalabAdapter.checks.count(
+      { type: "count", expected: 1, query: { severity: "high" } }, { context: directContext, after: state },
+    );
+    t.ok("сетевой query-check обращается только к direct backend",
+      count.status === "pass" && requests.slice(from).length === 1
+      && requests[from].origin === explicitUrl && requests[from].search === "?severity=high");
+
+    from = requests.length;
+    const teardown = await qalabAdapter.teardown(directContext);
+    t.ok("qalab.teardown читает и очищает только direct backend",
+      issues.length === 0 && /удалено 1/.test(teardown)
+      && requests.slice(from).length === 2 && requests.slice(from).every((r) => r.origin === explicitUrl));
+    t.ok("seed/read/check/teardown не сделали запросов к proxy 8888",
+      proxyHits === 0 && requests.length === 5, `proxyHits=${proxyHits}, requests=${requests.length}`);
+
+    directUnavailable = true;
+    const beforePreflightProxyHits = proxyHits;
+    const preflight = await qalabAdapter.preflight({ context: directContext });
+    t.ok("недоступный direct backend блокирует preflight без fallback на proxy",
+      preflight[0]?.level === "fail" && preflight[0]?.ok === false
+      && preflight[0]?.detail.includes(explicitUrl) && proxyHits === beforePreflightProxyHits);
+
+    const versions = versionManifest({
+      baseUrl: directContext.baseUrl, baseUrlSource: directContext.baseUrlSource,
+    });
+    t.ok("version manifest сохраняет exact route и provenance context",
+      versions.baseUrl === explicitUrl && versions.baseUrlSource === "argument");
+  } finally {
+    if (hadOracleBaseUrl) process.env.ORACLE_BASE_URL = savedOracleBaseUrl;
+    else delete process.env.ORACLE_BASE_URL;
+    if (hadFetch) globalThis.fetch = savedFetch;
+    else delete globalThis.fetch;
+  }
 }
 
 // ── 3.45. Preflight и retry budget (этап 14.B) ────────────────────────────────
@@ -593,6 +744,11 @@ async function cycleTests(t) {
   let out = harness(["start", "--case", "C1-create-issue", "--platform", "ios", "--no-device"]);
   const run1 = runIdFrom(out);
   const ws1 = workspaceOf(run1);
+  const run1State = JSON.parse(readFileSync(`${EV_DIR}/ios/runs/${run1}/run.json`, "utf8"));
+  const run1Versions = JSON.parse(readFileSync(`${EV_DIR}/ios/runs/${run1}/version-manifest.json`, "utf8"));
+  t.ok("run context и version manifest фиксируют один exact baseUrl",
+    run1State.context.baseUrl === run1Versions.baseUrl
+    && run1State.context.baseUrlSource === run1Versions.baseUrlSource);
   // Дефект требует шагов и результатов с момента появления типа записи
   // (коммит приложения 735612d). Без них создание возвращает 422, и selftest
   // ловил бы не логику контура, а устаревшую фикстуру.
@@ -690,6 +846,7 @@ export async function selftest() {
   await manifestTests(t);
   await oracleTests(t);
   await adapterTests(t);
+  await qalabRoutingTests(t);
   await preflightTests(t);
   await prepareTests(t);
   await crashGuardTests(t);
