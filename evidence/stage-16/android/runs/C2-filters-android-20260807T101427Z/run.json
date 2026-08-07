@@ -1,0 +1,81 @@
+{
+  "runId": "C2-filters-android-20260807T101427Z",
+  "caseId": "C2-filters",
+  "platform": "android",
+  "device": "RFCYA00GX7B",
+  "appId": "ru.maksim.qalab",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "19e9d8f6-fd4c-4007-ac47-b0ca4d92124a",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "3966cc",
+  "startedAt": "2026-08-07T10:14:32.028Z",
+  "seeded": [
+    {
+      "id": "c34173a5-1af1-4b9d-aaac-13a820ef0ea2",
+      "title": "Падение при открытии деталей",
+      "status": "open",
+      "severity": "critical"
+    },
+    {
+      "id": "0ee0f567-6bbb-4821-9536-e853acaaabdd",
+      "title": "Опечатка в подписи фильтра",
+      "status": "open",
+      "severity": "low"
+    },
+    {
+      "id": "03307515-9fc8-4d26-9a79-47253168b3d4",
+      "title": "Долгая загрузка списка",
+      "status": "testing",
+      "severity": "critical"
+    },
+    {
+      "id": "3546e6ac-7916-4dd6-90e5-ea53a75cda72",
+      "title": "Не сохраняется черновик",
+      "status": "in_progress",
+      "severity": "medium"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-08-07T10:14:29.495Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "a633d5f",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "375178b",
+      "dirty": true
+    },
+    "platform": "android",
+    "device": {
+      "deviceId": "RFCYA00GX7B",
+      "name": "SM_S931B",
+      "platform": "android",
+      "runtime": "Android",
+      "state": "device"
+    },
+    "agentModel": null,
+    "agentContract": {
+      "path": "mobile-qa-agent/SKILL.md",
+      "sha256": "22e3b3161db7",
+      "bytes": 14061
+    },
+    "skillRevision": null,
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/C2-filters.yaml",
+  "limits": {
+    "timeoutSeconds": 300,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "videoPid": 25923,
+  "armedAt": "2026-08-07T10:14:43.016Z",
+  "finishedAt": "2026-08-07T10:25:33.064Z",
+  "verdict": "PASS"
+}

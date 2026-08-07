@@ -40,13 +40,23 @@ const UUID_TEXT = /"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12
  * пространство после каждого прогона, а не свежесть UUID. Плата за решение:
  * параллельные прогоны на одном устройстве недопустимы, что и так верно.
  */
-export function readWorkspaceFromScreen(H, device) {
-  const tree = H.shq("sim-use", ["ui", "--device", device], { timeout: 90_000 });
-  if (!tree) return null;
-  const found = [...tree.matchAll(UUID_TEXT)].map((m) => m[1]);
-  const unique = [...new Set(found)];
-  // Ровно один — иначе непонятно, какой из них рабочий, и угадывать нельзя.
-  return unique.length === 1 ? unique[0] : null;
+export function readWorkspaceFromScreen(H, device, { attempts = 3, pauseMs = 2_000 } = {}) {
+  // Читаем несколько раз, а не однажды. На Android дерево регулярно отстаёт от
+  // экрана на два снимка (R-46), и подготовка, запущенная сразу после teardown
+  // предыдущего прогона, стабильно попадала в это окно: UUID на экране был, а
+  // в дереве ещё нет. Одиночное чтение здесь ненадёжно по устройству
+  // платформы, а не по случайности.
+  for (let i = 0; i < attempts; i++) {
+    const tree = H.shq("sim-use", ["ui", "--device", device], { timeout: 90_000 });
+    const unique = tree ? [...new Set([...tree.matchAll(UUID_TEXT)].map((m) => m[1]))] : [];
+    // Ровно один — иначе непонятно, какой из них рабочий, и угадывать нельзя.
+    if (unique.length === 1) return unique[0];
+    // Несколько разных UUID — это неоднозначность, а не отставание: повторное
+    // чтение её не разрешит, и ждать бессмысленно.
+    if (unique.length > 1) return null;
+    if (i < attempts - 1 && H.sleepSync) H.sleepSync(pauseMs);
+  }
+  return null;
 }
 
 /** Возврат observation-proxy в чистый pass-through после run (этап 9). */

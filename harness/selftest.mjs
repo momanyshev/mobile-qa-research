@@ -379,6 +379,20 @@ async function prepareTests(t) {
   t.ok("экран без UUID → отказ", readWorkspaceFromScreen(H('StaticText  "Записи"'), "dev") === null);
   t.ok("нечитаемый экран → отказ", readWorkspaceFromScreen(H(null), "dev") === null);
 
+  // Отставание дерева на Android (R-46) — не случайность, а свойство
+  // платформы: подготовка сразу после teardown стабильно попадала в окно, где
+  // UUID уже на экране, но ещё не в дереве. Поэтому чтение повторяется.
+  let call = 0;
+  const lagging = { shq: () => (++call < 3 ? "" : one), sleepSync: () => {} };
+  t.ok("отставание дерева переживается повтором",
+    readWorkspaceFromScreen(lagging, "dev") === "b840eb36-7fcf-4ce9-a95e-9b65c34073bc" && call === 3);
+
+  // А неоднозначность повтором не лечится — ждать бессмысленно, нужен отказ.
+  let calls2 = 0;
+  const ambiguous = { shq: () => { calls2++; return two; }, sleepSync: () => {} };
+  t.ok("неоднозначность не переживается повтором, отказ сразу",
+    readWorkspaceFromScreen(ambiguous, "dev") === null && calls2 === 1);
+
   // Роли узлов различаются по платформам: iOS отдаёт StaticText, Android —
   // TextView. Привязка к роли делала чтение односторонне iOS-овым и роняла
   // подготовку на физическом устройстве.
@@ -406,6 +420,38 @@ async function crashGuardTests(t) {
   const APP = "ru.maksim.qalab";
 
   t.ok("баннер разобран", parseCrashSignals(banner)[0]?.process === "ir.ilmili.telegraph");
+
+  // Третья форма найдена прогоном C2 уже после первой версии разбора: он знал
+  // две формулировки, эта не подошла ни под одну, и заключение не появилось.
+  const relaunched = "================ PROCESS DISAPPEARED ================\n"
+    + "app.nicegram (pid 20431) crashed and relaunched under a new process since the previous command.\n"
+    + "Likely crash or termination, not a backgrounding. Verify before trusting subsequent actions.\n"
+    + "=====================================================\nApp: ru.maksim.qalab  1080x2340";
+  t.ok("форма «crashed and relaunched» разобрана",
+    parseCrashSignals(relaunched)[0]?.process === "app.nicegram");
+  t.ok("вид «relaunched» распознан", parseCrashSignals(relaunched)[0]?.kind === "relaunched");
+
+  // Незнакомая формулировка внутри блока обязана давать разбор, а не молчание:
+  // пропущенный сигнал опаснее лишнего.
+  const unknownWording = "================ PROCESS DISAPPEARED ================\n"
+    + "com.example.app (pid 77) вдруг повёл себя как-то иначе.\n"
+    + "=====================================================";
+  t.ok("незнакомая формулировка всё равно разобрана",
+    parseCrashSignals(unknownWording)[0]?.process === "com.example.app");
+  t.ok("незнакомый вид помечен как unknown",
+    parseCrashSignals(unknownWording)[0]?.kind === "unknown");
+
+  // Два процесса в одном блоке — два сигнала (наблюдалось на этом же телефоне).
+  const twoProcs = "================ PROCESS DISAPPEARED ================\n"
+    + "com.samsung.android.calendar (pid 17699) was alive at the previous command and is GONE now.\n"
+    + "com.samsung.android.app.reminder (pid 17752) was alive at the previous command and is GONE now.\n"
+    + "=====================================================";
+  t.ok("два процесса в одном блоке дают два сигнала", parseCrashSignals(twoProcs).length === 2);
+
+  // Строка «App: …» вне блока не должна попадать в сигналы.
+  t.ok("строка App вне блока сигналом не считается",
+    parseCrashSignals("App: ru.maksim.qalab  1080x2340\n@1 Button").length === 0);
+
   t.ok("вид сигнала различается", parseCrashSignals(banner)[0]?.kind === "gone"
     && parseCrashSignals(header)[0]?.kind === "not-relaunched");
   t.ok("повторная шапка разобрана", parseCrashSignals(header)[0]?.pid === 16330);

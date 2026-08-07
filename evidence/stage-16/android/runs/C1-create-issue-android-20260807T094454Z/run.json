@@ -1,0 +1,56 @@
+{
+  "runId": "C1-create-issue-android-20260807T094454Z",
+  "caseId": "C1-create-issue",
+  "platform": "android",
+  "device": "RFCYA00GX7B",
+  "appId": "ru.maksim.qalab",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "19e9d8f6-fd4c-4007-ac47-b0ca4d92124a",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "d3aca4",
+  "startedAt": "2026-08-07T09:44:57.172Z",
+  "seeded": [],
+  "versions": {
+    "capturedAt": "2026-08-07T09:44:56.237Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "a633d5f",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "375178b",
+      "dirty": true
+    },
+    "platform": "android",
+    "device": {
+      "deviceId": "RFCYA00GX7B",
+      "name": "SM_S931B",
+      "platform": "android",
+      "runtime": "Android",
+      "state": "device"
+    },
+    "agentModel": null,
+    "agentContract": {
+      "path": "mobile-qa-agent/SKILL.md",
+      "sha256": "22e3b3161db7",
+      "bytes": 14061
+    },
+    "skillRevision": null,
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/C1-create-issue.yaml",
+  "limits": {
+    "timeoutSeconds": 300,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "videoPid": 18718,
+  "armedAt": "2026-08-07T09:45:07.136Z",
+  "finishedAt": "2026-08-07T10:13:28.837Z",
+  "verdict": "FAIL"
+}

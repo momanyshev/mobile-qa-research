@@ -23,26 +23,43 @@
 import { execFileSync } from "node:child_process";
 
 /**
- * Обе формы сообщения называют пакет и pid, поэтому разбор один на обе:
+ * Все известные формы сообщения называют пакет и pid, поэтому разбор один:
  *   ir.ilmili.telegraph (pid 16330) was alive at the previous command and is GONE now.
  *   [!] ir.ilmili.telegraph (pid 16330) has not relaunched since it disappeared.
+ *   app.nicegram (pid 20431) crashed and relaunched under a new process since the previous command.
+ *
+ * Третья форма найдена прогоном `C2` уже ПОСЛЕ первой версии разбора, который
+ * знал только две: заключение не появилось, и агент шёл запасным путём. Отсюда
+ * правило — хвост фразы не перечисляется, а задаётся широко: опознаём по
+ * «<пакет> (pid N)» внутри блока `PROCESS DISAPPEARED` либо по строке-шапке.
+ * Незнакомая формулировка должна давать разбор, а не молчание: пропущенный
+ * сигнал опаснее лишнего.
  */
-const SIGNAL = new RegExp(
-  String.raw`(?:^|\n)\s*(?:\[!\]\s*)?([A-Za-z][A-Za-z0-9_]*(?:\.[A-Za-z0-9_]+)+)\s+\(pid\s+(\d+)\)\s+`
-  + String.raw`(was alive at the previous command and is GONE now|has not relaunched since it disappeared)`,
-  "g",
-);
+const BLOCK = /={5,}\s*PROCESS DISAPPEARED\s*={5,}([\s\S]*?)(?:={5,}|$)/g;
+const NAMED = /([A-Za-z][A-Za-z0-9_]*(?:\.[A-Za-z0-9_]+)+)\s+\(pid\s+(\d+)\)\s*([^\n]*)/g;
+const HEADER = /(?:^|\n)\s*\[!\]\s*([A-Za-z][A-Za-z0-9_]*(?:\.[A-Za-z0-9_]+)+)\s+\(pid\s+(\d+)\)\s*([^\n]*)/g;
 
-/** @returns {{process: string, pid: number, kind: "gone"|"not-relaunched"}[]} */
+function kindOf(tail) {
+  if (/has not relaunched/i.test(tail)) return "not-relaunched";
+  if (/crashed and relaunched/i.test(tail)) return "relaunched";
+  if (/GONE now/i.test(tail)) return "gone";
+  return "unknown";
+}
+
+/** @returns {{process: string, pid: number, kind: string}[]} */
 export function parseCrashSignals(output) {
   if (!output) return [];
+  const text = String(output);
   const seen = new Map();
-  for (const m of String(output).matchAll(SIGNAL)) {
-    const kind = m[3].startsWith("was alive") ? "gone" : "not-relaunched";
+  const add = (name, pid, tail) => {
     // Одна команда может нести и баннер, и шапку про тот же процесс — это один
     // сигнал, а не два.
-    if (!seen.has(m[1])) seen.set(m[1], { process: m[1], pid: Number(m[2]), kind });
+    if (!seen.has(name)) seen.set(name, { process: name, pid: Number(pid), kind: kindOf(tail) });
+  };
+  for (const block of text.matchAll(BLOCK)) {
+    for (const m of block[1].matchAll(NAMED)) add(m[1], m[2], m[3]);
   }
+  for (const m of text.matchAll(HEADER)) add(m[1], m[2], m[3]);
   return [...seen.values()];
 }
 

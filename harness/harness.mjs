@@ -175,7 +175,7 @@ async function cmdStart(f) {
   // в статистику. Пропуск возможен только явным флагом.
   let preflightResult = null;
   if (device && !f["skip-preflight"]) {
-    preflightResult = await runPreflight(adapter, { platform, device, context });
+    preflightResult = await runPreflight(adapter, { platform, device, context, appId: manifest.appId });
     console.log("preflight:");
     console.log(renderPreflight(preflightResult));
     if (!preflightResult.ok) {
@@ -271,6 +271,24 @@ function cmdArm(f) {
   const state = findRun(runId, f.platform !== true ? f.platform : null);
   if (!state.device) die(`Run ${runId} стартовал без устройства — пересъёмка невозможна`);
   if (state.status !== "started") die(`Run ${runId} уже ${state.status} — пересъёмка исходного состояния запрещена`);
+
+  // Наблюдаемое приложение сверяется ДО съёмки. Прогон C1 на физическом
+  // устройстве показал, зачем: приложение упало нативным SIGSEGV через ~1.7 с
+  // после запуска, `arm` спокойно снял экран лаунчера как «исходное
+  // состояние», и агент получил стенд, объявленный готовым. Краш-сигнал
+  // `sim-use` здесь молчит по устройству механизма — он видит только
+  // ИСЧЕЗНОВЕНИЕ процесса между снимками, а к моменту первого снимка процесс
+  // был уже мёртв. Молчание детектора не означает «приложение живо».
+  if (state.appId) {
+    const seen = observedApp(state.device);
+    if (seen && seen !== state.appId) {
+      die(`На экране наблюдается «${seen}», а приложение под тестом — «${state.appId}».\n`
+        + "Исходное состояние не переснято: снимок чужого экрана стал бы ложным baseline, "
+        + "а прогон начался бы с заведомо неверного постусловия.\n"
+        + "Поднимите приложение и повторите arm.");
+    }
+  }
+
   const cap = captureSnapshot({
     stage: STAGE, platform: state.platform, run: runId, phase: "initial", device: state.device,
   });
@@ -626,7 +644,7 @@ async function cmdPreflight(f) {
   const adapter = f.case && f.case !== true ? adapterFor(loadManifest(f.case)) : null;
   const context = adapter ? await adapter.createContext({ platform, device }).catch(() => null) : null;
 
-  const pre = await runPreflight(adapter, { platform, device, context });
+  const pre = await runPreflight(adapter, { platform, device, context, appId: f.case && f.case !== true ? loadManifest(f.case).appId : null });
   console.log(renderPreflight(pre));
   const app = observedApp(device);
   console.log(`  ${app ? "✓" : "?"} наблюдаемое приложение: ${app || "экран не читается или приложение не запущено"}`);

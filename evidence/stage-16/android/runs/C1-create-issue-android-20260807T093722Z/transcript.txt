@@ -1,0 +1,22 @@
+#1 2026-08-07T09:38:41.792Z sim-use devices --json --all
+    → exit=0 226ms
+    | {"data":{"devices":[{"deviceId":"RFCYA00GX7B","name":"SM_S931B","platform":"android","runtime":"Android","state":"device"},{"deviceId":"080A36AF-2148-4EBF-89A8-537674A7BD60","name":"iPhone 11","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"DB216E5C-F646-488E-9537-2D8C390A2B8F","name":"iPhone 16 iOS 26.1","platform":"ios","runtime":"iOS 26.1","state":"Shutdown"},{"deviceId":"496803A0-B207-482B-8405-DC49E83CAA4D","name":"iPhone 17","platform":"ios","runtime":"iOS 26.4","state":"Shutdown"},{"deviceId":"A4FB9F80-3147-45FC-9DBE-53DE7D2FBC37","name":"iPhone 17 Pro Max","platform":"ios","runtime":"iOS 26.5","state":"Shutdown"}]},"ok":true}
+#2 2026-08-07T09:38:48.232Z sim-use ui --device RFCYA00GX7B
+    → exit=0 155ms
+    | App: com.sec.android.app.launcher  1080x2340
+    | [Content  y=280..2060]
+    |   @1  LinearLayout  "Страница 2 из 2."  (41,0 998x1885)
+#3 2026-08-07T09:39:04.579Z sim-use app-state --device RFCYA00GX7B
+    → exit=0 131ms
+    | Running apps (7):
+    |   app.nicegram  pid=20431
+    |   com.figma.mirror  pid=17644
+#4 2026-08-07T09:40:20.624Z sim-use screenshot --device RFCYA00GX7B --output /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/a6658d20-aede-403c-8337-444f07357bca/scratchpad/C1-state-after-crash.png
+    → exit=0 532ms
+    | /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/a6658d20-aede-403c-8337-444f07357bca/scratchpad/C1-state-after-crash.png
+    ! Screenshot saved to /private/tmp/claude-501/-Users-maksim-Documents-Projects-portfolio-site/a6658d20-aede-403c-8337-444f07357bca/scratchpad/C1-state-after-crash.png
+#5 2026-08-07T09:40:21.226Z sim-use app-state --device RFCYA00GX7B
+    → exit=0 112ms
+    | Running apps (7):
+    |   app.nicegram  pid=20431
+    |   com.figma.mirror  pid=17644

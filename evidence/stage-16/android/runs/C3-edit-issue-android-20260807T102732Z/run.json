@@ -1,0 +1,69 @@
+{
+  "runId": "C3-edit-issue-android-20260807T102732Z",
+  "caseId": "C3-edit-issue",
+  "platform": "android",
+  "device": "RFCYA00GX7B",
+  "appId": "ru.maksim.qalab",
+  "adapter": "qalab",
+  "context": {
+    "kind": "workspace",
+    "workspaceId": "19e9d8f6-fd4c-4007-ac47-b0ca4d92124a",
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "runToken": "39ebe4",
+  "startedAt": "2026-08-07T10:27:36.219Z",
+  "seeded": [
+    {
+      "id": "1a83f7fa-7a41-4b01-9558-d2dc7ac8b031",
+      "title": "Долгая загрузка списка",
+      "status": "open",
+      "severity": "medium"
+    },
+    {
+      "id": "24e12a9a-ac80-4402-87f3-890200f5b378",
+      "title": "Опечатка в подписи фильтра",
+      "status": "open",
+      "severity": "low"
+    }
+  ],
+  "versions": {
+    "capturedAt": "2026-08-07T10:27:34.625Z",
+    "simUseVersion": "0.10.0",
+    "node": "v25.9.0",
+    "appRepo": {
+      "path": "/Users/maksim/Documents/Projects/portfolio-site",
+      "commit": "a633d5f",
+      "dirty": false
+    },
+    "researchRepo": {
+      "commit": "375178b",
+      "dirty": true
+    },
+    "platform": "android",
+    "device": {
+      "deviceId": "RFCYA00GX7B",
+      "name": "SM_S931B",
+      "platform": "android",
+      "runtime": "Android",
+      "state": "device"
+    },
+    "agentModel": null,
+    "agentContract": {
+      "path": "mobile-qa-agent/SKILL.md",
+      "sha256": "22e3b3161db7",
+      "bytes": 14061
+    },
+    "skillRevision": null,
+    "baseUrl": "http://127.0.0.1:8888"
+  },
+  "manifestPath": "cases/C3-edit-issue.yaml",
+  "limits": {
+    "timeoutSeconds": 300,
+    "retryPerAction": 3
+  },
+  "status": "finished",
+  "videoPid": 29236,
+  "armedAt": "2026-08-07T10:27:47.217Z",
+  "finishedAt": "2026-08-07T10:36:38.597Z",
+  "verdict": "PASS"
+}

@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-08-07T09:37:24.659Z",
+  "simUseVersion": "0.10.0",
+  "node": "v25.9.0",
+  "appRepo": {
+    "path": "/Users/maksim/Documents/Projects/portfolio-site",
+    "commit": "a633d5f",
+    "dirty": false
+  },
+  "researchRepo": {
+    "commit": "375178b",
+    "dirty": true
+  },
+  "platform": "android",
+  "device": {
+    "deviceId": "RFCYA00GX7B",
+    "name": "SM_S931B",
+    "platform": "android",
+    "runtime": "Android",
+    "state": "device"
+  },
+  "agentModel": null,
+  "agentContract": {
+    "path": "mobile-qa-agent/SKILL.md",
+    "sha256": "22e3b3161db7",
+    "bytes": 14061
+  },
+  "skillRevision": null,
+  "baseUrl": "http://127.0.0.1:8888"
+}

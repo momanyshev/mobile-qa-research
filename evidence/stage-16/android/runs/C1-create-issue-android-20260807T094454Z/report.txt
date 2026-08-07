@@ -1,0 +1,27 @@
+Run ID: C1-create-issue-android-20260807T094454Z
+Case ID: C1-create-issue
+Platform: android
+Device / OS: RFCYA00GX7B (SM_S931B, Android)
+App commit: a633d5f
+sim-use version: 0.10.0
+Agent model: —
+Agent skill revision: mobile-qa-agent/SKILL.md@22e3b3161db7
+Workspace / test namespace: qalab: Workspace 19e9d8f6-fd4c-4007-ac47-b0ca4d92124a
+Start state: seed 0 записей, состояние «до» = 0
+Instruction: Создай в приложении новый дефект: заголовок «Кнопка сохранения не реагирует», описание «Кнопка остаётся неактивной после заполнения всех обязательных полей», критичность high, статус open. Убедись, что дефект появился в списке.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, read-test-api | запрещено: production-access, unrelated-data-modification, silent-app-relaunch-after-crash
+Started at / finished at: 2026-08-07T09:44:57.172Z → 2026-08-07T10:13:28.837Z
+Tool calls: 66 (действий 19, по координатам 7, ошибок 1)
+Retries: —
+Manual interventions: —
+API before: 0 → runs/C1-create-issue-android-20260807T094454Z/api-before.json
+API after: 1 → runs/C1-create-issue-android-20260807T094454Z/api-after.json
+UI postcondition: финальный outline снят (runs/C1-create-issue-android-20260807T094454Z/final-ui.json)
+Oracle result: api.count=pass, api.fields=fail, ui.containsText=pass
+Agent self-report: —
+Final verdict: FAIL
+Failure category: product | agent | sim-use — требует классификации (1 вызовов завершились ошибкой)
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (23.7 МБ), commandLog
+Teardown result: удалено 1, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —

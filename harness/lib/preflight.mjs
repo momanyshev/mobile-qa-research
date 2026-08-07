@@ -108,8 +108,23 @@ export function observedApp(device) {
  * Полный preflight: общие проверки + проверки adapter'а.
  * Adapter может не реализовывать `preflight` — тогда используются только общие.
  */
-export async function runPreflight(adapter, { platform, device, context }) {
+export async function runPreflight(adapter, { platform, device, context, appId }) {
   const checks = genericPreflight({ platform, device });
+
+  // Что фактически на экране. Блокирующая проверка: прогон C1 на физическом
+  // устройстве стартовал при упавшем приложении — на экране был лаунчер, а
+  // стенд считался готовым. Краш-сигнал `sim-use` устроен как дельта между
+  // снимками процессов и падение ДО первого снимка не замечает вовсе, поэтому
+  // полагаться на его молчание нельзя.
+  if (device && appId) {
+    const seen = observedApp(device);
+    checks.push(check(
+      "на экране приложение под тестом", "fail", seen === appId,
+      seen === appId ? appId
+        : `наблюдается «${seen || "экран не читается"}», ожидалось «${appId}» — приложение упало, свёрнуто или не запущено`,
+    ));
+  }
+
   if (typeof adapter?.preflight === "function") {
     try {
       checks.push(...(await adapter.preflight({ platform, device, context })));

@@ -1,0 +1,54 @@
+{
+  "checks": [
+    {
+      "name": "sim-use доступен",
+      "level": "fail",
+      "ok": true,
+      "detail": "версия 0.10.0"
+    },
+    {
+      "name": "локаль UTF-8",
+      "level": "fail",
+      "ok": true,
+      "detail": "LANG/LC_ALL = en_US.UTF-8"
+    },
+    {
+      "name": "целевое устройство доступно",
+      "level": "fail",
+      "ok": true,
+      "detail": "SM_S931B (Android, device)"
+    },
+    {
+      "name": "платформа совпадает",
+      "level": "fail",
+      "ok": true,
+      "detail": "устройство android, запрошено android"
+    },
+    {
+      "name": "нет лишних устройств платформы",
+      "level": "fail",
+      "ok": true,
+      "detail": "запущено ровно одно"
+    },
+    {
+      "name": "на экране приложение под тестом",
+      "level": "fail",
+      "ok": true,
+      "detail": "ru.maksim.qalab"
+    },
+    {
+      "name": "backend QA Lab отвечает",
+      "level": "fail",
+      "ok": true,
+      "detail": "http://127.0.0.1:8888 → 200"
+    },
+    {
+      "name": "приложение наведено на Workspace run'а",
+      "level": "warn",
+      "ok": true,
+      "detail": "19e9d8f6-fd4c-4007-ac47-b0ca4d92124a виден на экране"
+    }
+  ],
+  "ok": true,
+  "failed": []
+}

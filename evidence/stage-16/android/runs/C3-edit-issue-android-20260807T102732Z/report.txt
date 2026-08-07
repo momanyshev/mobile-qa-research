@@ -1,0 +1,27 @@
+Run ID: C3-edit-issue-android-20260807T102732Z
+Case ID: C3-edit-issue
+Platform: android
+Device / OS: RFCYA00GX7B (SM_S931B, Android)
+App commit: a633d5f
+sim-use version: 0.10.0
+Agent model: —
+Agent skill revision: mobile-qa-agent/SKILL.md@22e3b3161db7
+Workspace / test namespace: qalab: Workspace 19e9d8f6-fd4c-4007-ac47-b0ca4d92124a
+Start state: seed 2 записей, состояние «до» = 2
+Instruction: Открой дефект «Долгая загрузка списка» и измени его критичность на blocker. Остальные поля дефекта оставь без изменений.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, read-test-api | запрещено: production-access, unrelated-data-modification, silent-app-relaunch-after-crash
+Started at / finished at: 2026-08-07T10:27:36.219Z → 2026-08-07T10:36:38.597Z
+Tool calls: 58 (действий 16, по координатам 9, ошибок 1)
+Retries: 0
+Manual interventions: 0
+API before: 2 → runs/C3-edit-issue-android-20260807T102732Z/api-before.json
+API after: 2 → runs/C3-edit-issue-android-20260807T102732Z/api-after.json
+UI postcondition: финальный outline снят (runs/C3-edit-issue-android-20260807T102732Z/final-ui.json)
+Oracle result: api.onlyChanged=pass, api.count=pass, ui.containsText=pass
+Agent self-report: —
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (7.3 МБ), commandLog
+Teardown result: удалено 2, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —

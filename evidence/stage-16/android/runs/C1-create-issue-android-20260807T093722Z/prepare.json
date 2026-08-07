@@ -1,0 +1,82 @@
+{
+  "steps": [
+    {
+      "name": "локаль UTF-8",
+      "status": "fixed",
+      "level": "fail",
+      "detail": "экспортированы LANG/LC_ALL, daemon снят для перезапуска с верной локалью → LANG/LC_ALL = en_US.UTF-8"
+    },
+    {
+      "name": "устройство загружено",
+      "status": "ok",
+      "level": "fail",
+      "detail": "RFCYA00GX7B boot_completed"
+    },
+    {
+      "name": "sim-use видит устройство",
+      "status": "ok",
+      "level": "fail",
+      "detail": "устройство в списке sim-use"
+    },
+    {
+      "name": "backend QA Lab на 8890",
+      "status": "ok",
+      "level": "fail",
+      "detail": "http://127.0.0.1:8890 → 200"
+    },
+    {
+      "name": "observation proxy 8888 → 8890",
+      "status": "ok",
+      "level": "fail",
+      "detail": "running, профиль passthrough"
+    },
+    {
+      "name": "fault profile = passthrough",
+      "status": "ok",
+      "level": "fail",
+      "detail": "passthrough"
+    },
+    {
+      "name": "reverse-туннель 8888 на устройство",
+      "status": "ok",
+      "level": "fail",
+      "detail": "tcp:8888 → tcp:8888"
+    },
+    {
+      "name": "Metro под платформу android",
+      "status": "ok",
+      "level": "fail",
+      "detail": "pid 7045, node /Users/maksim/Documents/Projects/portfolio-site/mobile/"
+    },
+    {
+      "name": "приложение запущено",
+      "status": "ok",
+      "level": "warn",
+      "detail": "ru.maksim.qalab (pid 2318)"
+    },
+    {
+      "name": "Workspace прогона согласован с приложением",
+      "status": "ok",
+      "level": "fail",
+      "detail": "19e9d8f6-fd4c-4007-ac47-b0ca4d92124a — взят с экрана приложения"
+    },
+    {
+      "name": "Workspace прогона пуст",
+      "status": "ok",
+      "level": "fail",
+      "detail": "0 записей"
+    }
+  ],
+  "startedAt": "2026-08-07T09:37:22.979Z",
+  "finishedAt": "2026-08-07T09:37:24.259Z",
+  "failed": [],
+  "fixed": [
+    {
+      "name": "локаль UTF-8",
+      "status": "fixed",
+      "level": "fail",
+      "detail": "экспортированы LANG/LC_ALL, daemon снят для перезапуска с верной локалью → LANG/LC_ALL = en_US.UTF-8"
+    }
+  ],
+  "ok": true
+}

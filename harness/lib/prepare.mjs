@@ -246,8 +246,17 @@ export async function runPrepare(adapter, { platform, device, context } = {}) {
 }
 
 /** Помощники, которые адаптер получает вместо собственных импортов. */
+/**
+ * Синхронная пауза. Нужна там, где ждать приходится внутри синхронной функции
+ * (чтение дерева между попытками): async там сделал бы функцию непригодной для
+ * selftest'а, где она вызывается с подставными помощниками.
+ */
+function sleepSync(ms) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}
+
 export const PREPARE_HELPERS = {
-  sh, shq, sleep, waitFor, portOwner, spawnBackground, step, appDir, REPO_ROOT,
+  sh, shq, sleep, sleepSync, waitFor, portOwner, spawnBackground, step, appDir, REPO_ROOT,
 };
 
 const MARK = { ok: "=", fixed: "+", failed: "x", skipped: "-" };

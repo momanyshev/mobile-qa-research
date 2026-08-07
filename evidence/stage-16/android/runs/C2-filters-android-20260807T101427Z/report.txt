@@ -1,0 +1,27 @@
+Run ID: C2-filters-android-20260807T101427Z
+Case ID: C2-filters
+Platform: android
+Device / OS: RFCYA00GX7B (SM_S931B, Android)
+App commit: a633d5f
+sim-use version: 0.10.0
+Agent model: —
+Agent skill revision: mobile-qa-agent/SKILL.md@22e3b3161db7
+Workspace / test namespace: qalab: Workspace 19e9d8f6-fd4c-4007-ac47-b0ca4d92124a
+Start state: seed 4 записей, состояние «до» = 4
+Instruction: В списке дефектов оставь видимыми только дефекты со статусом open и критичностью critical. Не создавай, не меняй и не удаляй записи.
+Allowed / forbidden actions: разрешено: read-ui, mobile-ui-interaction, read-test-api | запрещено: production-access, unrelated-data-modification, silent-app-relaunch-after-crash, any-write-request
+Started at / finished at: 2026-08-07T10:14:32.028Z → 2026-08-07T10:25:33.064Z
+Tool calls: 36 (действий 13, по координатам 4, ошибок 0)
+Retries: —
+Manual interventions: —
+API before: 4 → runs/C2-filters-android-20260807T101427Z/api-before.json
+API after: 4 → runs/C2-filters-android-20260807T101427Z/api-after.json
+UI postcondition: финальный outline снят (runs/C2-filters-android-20260807T101427Z/final-ui.json)
+Oracle result: api.unchanged=pass, api.count=pass, ui.listMatchesQuery=pass
+Agent self-report: —
+Final verdict: PASS
+Failure category: —
+Evidence paths: versionManifest, initialUi, initialScreen, finalUi, finalScreen, apiBefore, apiAfter, transcript, video (7.3 МБ), commandLog
+Teardown result: удалено 4, отсутствовало 0, не удалось 0; fault profile → passthrough
+New knowledge: —
+Follow-up decision: —
